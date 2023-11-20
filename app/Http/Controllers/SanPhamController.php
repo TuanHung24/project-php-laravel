@@ -27,6 +27,8 @@ class SanPhamController extends Controller
         $sanPham = new SanPham();
         $sanPham->ten               = $request->ten;
         $sanPham->mo_ta             = $request->mo_ta;
+        $sanPham->gia_ban           = $request->gia_ban;
+        $sanPham->so_luong          = $request->so_luong;
         $sanPham->loai_san_pham_id  = $request->loai_san_pham;
         $sanPham->thong_tin         = $request->thong_tin; 
         $sanPham->trang_thai        =1;   
