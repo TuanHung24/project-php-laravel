@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/', [SanPhamController::class, 'danhSach'])->name('san-pham.danh-sach');
     Route::get('hinh-anh/{id}', [HinhAnhController::class, 'hinhAnhXoa'])->name('hinh-anh');
     Route::get('dang-xuat', [DangNhapController::class, 'dangXuat'])->name('dang-xuat');
-
+    Route::get('thong-tin',[DangNhapController::class,'thongTin'])->name('thong-tin');
     Route::prefix('san-pham')->group(function(){
         Route::name('san-pham.')->group(function(){
             Route::get('them-moi', [SanPhamController::class, 'themMoi'])->name('them-moi');

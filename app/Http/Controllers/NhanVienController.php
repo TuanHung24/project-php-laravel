@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\NhanVien;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use LengthException;
 
 class NhanVienController extends Controller
@@ -18,6 +19,9 @@ class NhanVienController extends Controller
         $nhanVien = new NhanVien();
         if($request->ho_ten!=null)
         {
+            $file=$request->hinh_anh;
+            $path=$file->store('avt');
+            $nhanVien->avatar           = $path;
             $nhanVien->ho_ten           = $request->ho_ten;
             $nhanVien->email            = $request->email;
             $nhanVien->dien_thoai       = $request->dien_thoai;

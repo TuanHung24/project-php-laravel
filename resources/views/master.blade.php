@@ -54,12 +54,12 @@
                     <ul class="nav flex-column">
                         <div class="dropdown" id="dropdown">
                             <div class="dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" />
+                                <img src="{{asset(Auth::user()->avatar)}}" class="rounded-circle" />
                             </div>
                             <span class="admin">{{Auth::user()->username}}</span>
                             <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
                                 <li>
-                                    <a class="dropdown-item"><span data-feather="archive"></span>My profile</a>
+                                    <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>My profile</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item"><span data-feather="settings"></span>Settings</a>

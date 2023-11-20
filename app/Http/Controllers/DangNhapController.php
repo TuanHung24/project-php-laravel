@@ -28,9 +28,8 @@ class DangNhapController extends Controller
     public function thongTin()
     {
         if(Auth::check())
-        {
-            $thongTin=Auth::user();
-            return $thongTin;
+        { 
+            return view('thong-tin');
         }
         return view('dang-nhap');
     }

@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">THÊM MỚI NHÂN VIÊN</h1>
 </div>
-<form method="POST" action="{{ route('nhan-vien.xl-them-moi') }}" id="add">
+<form method="POST" action="{{ route('nhan-vien.xl-them-moi') }}" id="add" enctype="multipart/form-data">
 @csrf
 <div class="row">
     <div class="col-md-6">
@@ -48,6 +48,12 @@
         <span id="password_error" class="error-message"></span>
     </div>
 </div>
+<div class=row>
+    <div class="col-md-6">
+        <label for="hinh_anh" class="form-label">Chọn ảnh đại diện:</label>
+        <input type="file" name="hinh_anh"/>
+    </div>
+</div>
 <div class="col-md-2">
     <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>
   </div>
@@ -65,7 +71,7 @@
             var Username=$('#username').val();
             var Password=$('#password').val();
 
-            if(hoTen.length <=10 || hoTen.length>=40 || isNaN(hoTen))
+            if(hoTen.length <=10 || hoTen.length>=40)
             {
                 e.preventDefault();
                 $('#ho_ten_error').text("Họ tên phải lớn hơn 10 ký tự và bé hơn 40 ký tự!")
