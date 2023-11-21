@@ -196,3 +196,9 @@ h3 {
     border-radius: 10px;
     padding: 20px;
 }
+.reset_password{
+    width: 500px;
+    border: 1px solid black;
+    padding: 2% 2%;
+    border-radius: 15px;
+}

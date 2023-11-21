@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\NhanVien;
+use Dotenv\Exception\ValidationException;
+use Illuminate\Support\Facades\Hash;
+
 class DangNhapController extends Controller
 {
     public function dangNhap()
@@ -37,11 +40,12 @@ class DangNhapController extends Controller
         return view("admin.doi-mat-khau");
     }
     public function xlDoiMatKhau(Request $rq){
-        
-           dd($taiKhoan=NhanVien::find(Auth::user()->username));
-           $taiKhoan->password=$rq->respassword;
-           $taiKhoan->save();
-        
+        if (!Hash::check($rq->password, Auth::user()->password)) {
+            return redirect()->route("doi-mat-khau")->with(['error' => 'Mật khẩu cũ không đúng!']);
+        }
+        $taiKhoan=NhanVien::find(Auth::user()->id);
+        $taiKhoan->password=Hash::make($rq->respassword);
+        $taiKhoan->save();
+        return redirect()->route('thong-tin')->with(['thong_bao'=>"Thay đổi mật khẩu thành công!"]);
     }
-
 }
