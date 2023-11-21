@@ -33,4 +33,15 @@ class DangNhapController extends Controller
         }
         return view('dang-nhap');
     }
+    public function DoiMatKhau(){
+        return view("admin.doi-mat-khau");
+    }
+    public function xlDoiMatKhau(Request $rq){
+        
+           dd($taiKhoan=NhanVien::find(Auth::user()->username));
+           $taiKhoan->password=$rq->respassword;
+           $taiKhoan->save();
+        
+    }
+
 }
