@@ -46,6 +46,12 @@
             <input type="password" class="form-control" name="password" value="{{$nhanVien->password}}" readonly>
         </div>
     </div>
+    <div class=row>
+    <div class="col-md-6">
+        <label for="hinh_anh" class="form-label">Chọn ảnh đại diện:</label>
+        <input type="file" name="hinh_anh"/>
+    </div>
+</div>
     <div class="row">
     <div class="col-md-6">
         <label for="trang_thai" class="form-label">Trạng thái</label>
