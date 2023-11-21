@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("email",80)->collation("utf8_unicode_ci")->nullable();
             $table->string("dia_chi",128)->collation("utf8_unicode_ci")->nullable();
             $table->string("username",60)->collation("utf8_unicode_ci");
-            $table->string("password",60)->collation("utf8_unicode_ci");
+            $table->string("password",100)->collation("utf8_unicode_ci");
             $table->boolean("trang_thai")->default(1);
             $table->timestamps();
         });
