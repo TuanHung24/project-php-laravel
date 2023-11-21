@@ -21,7 +21,7 @@ class NhanVienController extends Controller
         {
             $file=$request->hinh_anh;
             $path=$file->store('avt');
-            $nhanVien->avatar           = $path;
+            $nhanVien->avatar_url       = $path;
             $nhanVien->ho_ten           = $request->ho_ten;
             $nhanVien->email            = $request->email;
             $nhanVien->dien_thoai       = $request->dien_thoai;

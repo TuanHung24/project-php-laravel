@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('nhan_vien', function (Blueprint $table) {
             $table->id();
+            $table->text('avatar_url')->nullable();
             $table->string("ho_ten",40)->collation("utf8_unicode_ci");
             $table->string("dien_thoai",10)->collation("utf8_unicode_ci")->nullable();
             $table->string("email",80)->collation("utf8_unicode_ci")->nullable();
