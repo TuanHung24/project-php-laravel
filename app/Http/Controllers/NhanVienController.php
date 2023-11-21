@@ -71,7 +71,7 @@ class NhanVienController extends Controller
         {
             $nhanVien->trang_thai=0;
         }
-        $nhanVien->save();
+        $nhanVien->save();      
 
         return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Cập nhật nhân viên {$nhanVien->ho_ten} thành công!"]);
     }

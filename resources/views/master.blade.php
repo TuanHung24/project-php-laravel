@@ -54,7 +54,7 @@
                     <ul class="nav flex-column">
                         <div class="dropdown" id="dropdown">
                             <div class="dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <img src="{{asset(Auth::user()->avatar)}}" class="rounded-circle" />
+                                <img src="{{asset(Auth::user()->avatar_url)}}" class="rounded-circle" />
                             </div>
                             <span class="admin">{{Auth::user()->username}}</span>
                             <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
