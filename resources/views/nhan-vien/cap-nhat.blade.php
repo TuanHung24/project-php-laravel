@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">CẬP NHẬT NHÂN VIÊN</h1>
 </div>
-<form class="row g-3" method="POST" id="update" action="{{ route('nhan-vien.xl-cap-nhat', ['id' => $nhanVien->id]) }}">
+<form class="row g-3" method="POST" id="update" action="{{ route('nhan-vien.xl-cap-nhat', ['id' => $nhanVien->id]) }}" enctype="multipart/form-data">
    @csrf
    <div class="row">
         <div class="col-md-6">
