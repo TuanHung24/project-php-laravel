@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('khuyen_mai_id');
             $table->bigInteger('san_pham_id');
             $table->bigInteger('dat_hang_id');
-            $table->decimal('so_tien_chiet_khau',10,2);
+            $table->decimal('tong_tien',10,2);
             $table->timestamps();
         });
     }

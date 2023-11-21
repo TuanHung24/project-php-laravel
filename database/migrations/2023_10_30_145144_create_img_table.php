@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('img', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("san_pham_id");
-            $table->text("ten")->collation("utf8_unicode_ci");
+            $table->text("img_url");
             $table->timestamps();
         });
     }
