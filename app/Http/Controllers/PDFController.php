@@ -18,7 +18,7 @@ class PDFController extends Controller
         $pdf = app('dompdf.wrapper')->loadView('pdf.hd', ['hoaDon'=>$hoaDon],['dsCTHoaDon'=>$dsCTHoaDon]);
         return $pdf->stream('hoa-don.pdf');
     }
-    public function export_import_goods_pdf($id)
+    public function export_goods_pdf($id)
     {
         $phieuNhap=PhieuNhap::find($id);
         $dsCTPhieuNhap=CTPhieuNhap::where('phieu_nhap_id',$id)->get();

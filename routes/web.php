@@ -72,7 +72,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('pdf')->group(function(){
         Route::name('pdf.')->group(function(){
             Route::get('hd/{id}',[PDFController::class, 'export_bill_pdf'])->name('hoa-don');
-            Route::get('nh/{id}',[PDFController::class, 'export_import_goods_pdf'])->name('nhap-hang');
+            Route::get('nh/{id}',[PDFController::class, 'export_goods_pdf'])->name('nhap-hang');
         });
     });
 
