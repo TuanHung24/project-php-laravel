@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('khach_hang_id');
             $table->bigInteger('san_pham_id');
-            $table->integer('danh_gia')->nullable();
+            $table->integer('so_sao')->nullable();
             $table->timestamps();
         });
     }

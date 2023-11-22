@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('size', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('san_pham_id');
-            $table->string('dung_luong',10);
+            $table->string('ten',10);
             $table->timestamps();
         });
     }
