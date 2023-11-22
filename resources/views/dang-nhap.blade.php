@@ -8,12 +8,13 @@
 <body>
     <form method="POST" action="{{route('xl-dang-nhap')}}" class="login">
     @csrf
+    <h1 class="dang-nhap">Đăng Nhập</h1>
     <div class="mb-3">
-    <label for="ten_dang_nhap" class="form-label">Username:</label>
+    <label for="ten_dang_nhap" class="form-label">Tài Khoản:</label>
     <input type="text" class="form-control" name="ten_dang_nhap" required>
     </div>
   <div class="mb-3">
-    <label for="password" class="form-label">Password:</label>
+    <label for="password" class="form-label">Mật Khẩu:</label>
     <input type="password" class="form-control" name="password" required>
   </div>
   <button type="submit" class="btn btn-primary" id="login">Đăng nhập</button>

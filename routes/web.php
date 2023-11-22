@@ -10,6 +10,7 @@ use App\Http\Controllers\CTPhieuNhapController;
 use App\Http\Controllers\HinhAnhController;
 use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\MauSacController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -109,6 +110,15 @@ Route::middleware('auth')->group(function(){
             Route::get('xoa/{id}', [NhanVienController::class, 'xoa'])->name('xoa');
         });
     });
+
+
+    Route::prefix('mau-dung-luong')->group(function(){
+        Route::name('mau-dung-luong.')->group(function(){
+            Route::get('/', [MauSacController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/them-moi', [MauSacController::class, 'themMoi'])->name('them-moi');
+        });
+    });
+
 });
 
 Route::middleware('guest')->group(function(){
