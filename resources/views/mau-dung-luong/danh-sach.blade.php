@@ -95,7 +95,6 @@
                     method: "POST",
                     url: "{{route('mau-dung-luong.them-moi-dung-luong-ajax')}}",
                     data: {
-                        
                         "dung_luong":dungLuong}
                 })
                 .done(function(response) {
