@@ -10,7 +10,7 @@ use App\Http\Controllers\CTPhieuNhapController;
 use App\Http\Controllers\HinhAnhController;
 use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\PDFController;
-use App\Http\Controllers\MauSacController;
+use App\Http\Controllers\DungLuongMauSacController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -114,8 +114,13 @@ Route::middleware('auth')->group(function(){
 
     Route::prefix('mau-dung-luong')->group(function(){
         Route::name('mau-dung-luong.')->group(function(){
-            Route::get('/', [MauSacController::class, 'danhSach'])->name('danh-sach');
-            Route::get('/them-moi', [MauSacController::class, 'themMoi'])->name('them-moi');
+            Route::get('/', [DungLuongMauSacController::class, 'danhSach'])->name('danh-sach');
+            Route::post('/them-moi/mau', [DungLuongMauSacController::class, 'themMoiMauAjax'])->name('them-moi-mau-ajax');
+            Route::post('/them-moi/dung-luong', [DungLuongMauSacController::class, 'themMoiDungLuongAjax'])->name('them-moi-dung-luong-ajax');
+            Route::get('/danh-sach-mau', [DungLuongMauSacController::class, 'danhSachMauSacAjax'])->name('danh-sach-mau-ajax');
+            Route::get('/mau/xoa/{id}', [DungLuongMauSacController::class, 'mauSacXoa'])->name('mau.xoa');
+            Route::get('/dung-luong/xoa/{id}', [DungLuongMauSacController::class, 'dungLuongXoa'])->name('dung-luong.xoa');
+            Route::get('/dung-luong', [DungLuongMauSacController::class, 'danhSachDungLuongSacAjax'])->name('danh-sach-dung-luong-ajax');
         });
     });
 

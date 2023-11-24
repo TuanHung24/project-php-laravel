@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('color', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('san_pham_id');
+            $table->bigInteger('san_pham_id')->nullable();
             $table->string('ten',50);
             $table->timestamps();
         });

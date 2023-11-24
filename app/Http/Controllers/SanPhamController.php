@@ -38,7 +38,7 @@ class SanPhamController extends Controller
         {
             $hinhAnh=new HinhAnh();
             $hinhAnh->san_pham_id=$sanPham->id;
-            $hinhAnh->ten=$paths[$i];
+            $hinhAnh->img_url=$paths[$i];
             $hinhAnh->save();
         }
         
@@ -100,7 +100,7 @@ class SanPhamController extends Controller
             {
                 $hinhAnh=new HinhAnh();
                 $hinhAnh->san_pham_id=$id;
-                $hinhAnh->ten=$paths[$i];
+                $hinhAnh->img_url=$paths[$i];
                 $hinhAnh->save();
             }
         }  

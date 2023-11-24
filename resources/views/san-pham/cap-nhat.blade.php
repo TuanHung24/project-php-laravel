@@ -15,7 +15,7 @@
         @foreach($dsHinhAnh as $hinhAnh)
         <tr>
             <td>
-                <img class="img" src="{{asset($hinhAnh->ten)}}" alt="hinh_anh" />
+                <img class="img" src="{{asset($hinhAnh->img_url)}}" alt="hinh_anh" />
             </td>
             <td class="td-xoa-anh">
                 <a href="{{ route('hinh-anh', ['id' => $hinhAnh->id]) }}" class="btn btn-outline-danger">Xóa</a>

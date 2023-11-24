@@ -57,8 +57,11 @@ class NhanVienController extends Controller
             return "Nhân viên không tồn tại";
         }
         $file                       = $request->hinh_anh;
-        $paths                       = $file->store('avt');
-        $nhanVien->avatar_url       = $paths;
+        if(isset($file))
+        {
+            $paths                       = $file->store('avt');
+            $nhanVien->avatar_url       = $paths;
+        }
         $nhanVien->ho_ten           = $request->ho_ten;
         $nhanVien->dien_thoai       = $request->dien_thoai;
         $nhanVien->dia_chi          = $request->dia_chi;

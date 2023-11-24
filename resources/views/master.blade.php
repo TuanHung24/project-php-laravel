@@ -112,7 +112,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('mau-dung-luong.danh-sach')}}">
-                                <span data-feather="shopping-bag" class="align-text-bottom"></span>
+                                <span data-feather="battery-charging" class="align-text-bottom"></span>
                                 Quản lý dung lượng và màu sắc
                             </a>
                         </li>

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('size', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('san_pham_id');
-            $table->string('ten',10);
+            $table->bigInteger('san_pham_id')->nullable();
+            $table->string('ten',20);
             $table->timestamps();
         });
     }
