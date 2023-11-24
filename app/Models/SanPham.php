@@ -18,6 +18,10 @@ class SanPham extends Model
     {
         return $this->hasMany(HinhAnh::class);
     }
+    public function hoa_don()
+    {
+        return $this->hasMany(HoaDon::class);
+    }
 }
 
 
