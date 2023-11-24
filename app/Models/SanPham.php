@@ -27,6 +27,7 @@ class SanPham extends Model
         return $this->hasMany(DungLuong::class);
     }
     
+    
 }
 
 

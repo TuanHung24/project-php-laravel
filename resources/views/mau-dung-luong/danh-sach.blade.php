@@ -95,7 +95,7 @@
                     method: "POST",
                     url: "{{route('mau-dung-luong.them-moi-dung-luong-ajax')}}",
                     data: {
-                        "_token":"{{ csrf_token() }}",
+                        
                         "dung_luong":dungLuong}
                 })
                 .done(function(response) {
