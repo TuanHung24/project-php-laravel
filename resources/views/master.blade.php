@@ -59,13 +59,13 @@
                             <span class="admin">{{Auth::user()->username}}</span>
                             <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
                                 <li>
-                                    <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>My profile</a>
+                                    <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>Thông tin cá nhân</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item"><span data-feather="settings"></span>Settings</a>
+                                    <a class="dropdown-item"><span data-feather="settings"></span>Cài đặt</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{route('dang-xuat')}}"><span data-feather="log-out"></span>Logout</a>
+                                    <a class="dropdown-item" href="{{route('dang-xuat')}}"><span data-feather="log-out"></span>Đăng xuất</a>
                                 </li>
                             </ul>
                         </div>
