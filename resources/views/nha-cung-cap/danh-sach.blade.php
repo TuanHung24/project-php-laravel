@@ -17,7 +17,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">DANH SÁCH NHÀ CUNG CẤP</h1>
+    <h1 class="h2"><span data-feather="list" ></span>DANH SÁCH NHÀ CUNG CẤP</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
             <a href="{{ route('nha-cung-cap.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
@@ -28,38 +28,35 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-    <tr>
-        <th>Id</th>
-        <th>Tên</th>
-        <th>Điện thoại</th>
-        <th>Địa chỉ</th>
-        <th>Trạng thái</th>
-        <th>Thao tác</th>
-    </tr>
-    </thead>
-    @foreach($dsnhaCungCap as $nhaCungCap)
-    <tr>
-        <td>{{ $nhaCungCap->id }}</td>
-        <td>{{ $nhaCungCap->ten }}</td>
-        <td>{{ $nhaCungCap->dien_thoai }}</td>
-        <td>{{ $nhaCungCap->dia_chi }}</td>
-        <?php
-        if($nhaCungCap->trang_thai==1)
-        {
-            $trang_thai="Hoạt động";
-        }
-        else
-        {
-            $trang_thai="Không hoạt động";
-        }
-        ?>
-        <td>{{ $trang_thai }}</td>
-        <td class="chuc-nang">
-            <a href="{{ route('nha-cung-cap.cap-nhat', ['id' => $nhaCungCap->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
-             <a href="{{ route('nha-cung-cap.xoa', ['id' => $nhaCungCap->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
-        </td>
-    <tr>
-    @endforeach
-</table>
-@endsection
+            <tr>
+                <th>Id</th>
+                <th>Tên</th>
+                <th>Điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        @foreach($dsnhaCungCap as $nhaCungCap)
+        <tr>
+            <td>{{ $nhaCungCap->id }}</td>
+            <td>{{ $nhaCungCap->ten }}</td>
+            <td>{{ $nhaCungCap->dien_thoai }}</td>
+            <td>{{ $nhaCungCap->dia_chi }}</td>
+            <?php
+            if ($nhaCungCap->trang_thai == 1) {
+                $trang_thai = "Hoạt động";
+            } else {
+                $trang_thai = "Không hoạt động";
+            }
+            ?>
+            <td>{{ $trang_thai }}</td>
+            <td class="chuc-nang">
+                <a href="{{ route('nha-cung-cap.cap-nhat', ['id' => $nhaCungCap->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
+                <a href="{{ route('nha-cung-cap.xoa', ['id' => $nhaCungCap->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+            </td>
+        <tr>
+            @endforeach
+    </table>
 </div>
+@endsection

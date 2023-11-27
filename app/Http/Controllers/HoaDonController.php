@@ -8,6 +8,7 @@ use App\Models\HoaDon;
 use App\Models\NhanVien;
 use App\Models\SanPham;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class HoaDonController extends Controller
 {
@@ -25,7 +26,7 @@ class HoaDonController extends Controller
         try
         {
         $hoaDon= new HoaDon();
-        $hoaDon->nhan_vien_id = $request->nhanVien[0];
+        $hoaDon->nhan_vien_id = Auth::user()->id;
         $hoaDon->khach_hang= $request->kHang[0];
         $hoaDon->save();
         $tongTien=0;

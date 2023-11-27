@@ -8,26 +8,26 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-    <tr>
-        <th>Mã chi tiết phiếu nhập</th>
-        <th>Sản phẩm</th>
-        <th>Số lượng</th>
-        <th>Giá nhập</th>
-        <th>Giá bán</th>
-        <th>Thành tiền</th>
-    </tr>
-    </thead>
-  @foreach($dsCTPhieuNhap as $ctPhieuNhap)
-    <tr>
-        <td>{{ $ctPhieuNhap->id }}</td>
-        <td>{{ $ctPhieuNhap->san_pham->ten }}</td>
-        <td>{{ $ctPhieuNhap->so_luong }}</td>
-        <td>{{ $ctPhieuNhap->gia_nhap }}</td>
-        <td>{{ $ctPhieuNhap->gia_ban }}</td>
-        <td>{{ $ctPhieuNhap->thanh_tien }}</td>
-        
-    <tr>
-    @endforeach
-</table>
-@endsection
+            <tr>
+                <th>Mã chi tiết phiếu nhập</th>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá nhập</th>
+                <th>Giá bán</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        @foreach($dsCTPhieuNhap as $ctPhieuNhap)
+        <tr>
+            <td>{{ $ctPhieuNhap->id }}</td>
+            <td>{{ $ctPhieuNhap->san_pham->ten }}</td>
+            <td>{{ $ctPhieuNhap->so_luong }}</td>
+            <td>{{ $ctPhieuNhap->gia_nhap }}</td>
+            <td>{{ $ctPhieuNhap->gia_ban }}</td>
+            <td>{{ $ctPhieuNhap->thanh_tien }}</td>
+
+        <tr>
+            @endforeach
+    </table>
 </div>
+@endsection

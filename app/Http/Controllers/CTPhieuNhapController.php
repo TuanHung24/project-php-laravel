@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PhieuNhap;
 use App\Models\CTPhieuNhap;
+use App\Models\DungLuong;
+use App\Models\MauSac;
 use App\Models\NhaCungCap;
 use App\Models\NhanVien;
 use App\Models\SanPham;
@@ -17,7 +19,9 @@ class CTPhieuNhapController extends Controller
         $dsNhaCungCap = NhaCungCap::all();
         $dsSanPham=SanPham::all();
         $dsnhanVien=NhanVien::all();
-        return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien'));
+        $dsMau=MauSac::all();
+        $dsDungLuong=DungLuong::all();
+        return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien','dsMau','dsDungLuong'));
  
     }
 
@@ -34,6 +38,15 @@ class CTPhieuNhapController extends Controller
             $ctPhieuNhap= new CTPhieuNhap();
             $ctPhieuNhap->phieu_nhap_id         = $phieuNhap->id;
             $ctPhieuNhap->san_pham_id          = $request->idSP[$i];
+
+            $mauSac=MauSac::find($request->idMauSac[$i]);
+            $mauSac->san_pham_id=$request->idSP[$i];
+            $mauSac->save();
+            
+            $dungLuong=DungLuong::find($request->idDungLuong[$i]);
+            $dungLuong->san_pham_id=$request->idSP[$i];
+            $dungLuong->save();
+            
             $ctPhieuNhap->so_luong           = $request->soLuong[$i];
             $ctPhieuNhap->gia_nhap         = $request->giaNhap[$i];
             $ctPhieuNhap->gia_ban            = $request->giaBan[$i];

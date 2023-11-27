@@ -36,6 +36,25 @@ class DangNhapController extends Controller
         }
         return view('dang-nhap');
     }
+    public function capNhatThongTin(Request $request)
+    {
+        
+        $nhanVien=NhanVien::find(Auth::user()->id);
+        if(isset($request->avatar))
+        {
+            $file=$request->avatar;
+            $path=$file->store('avt');
+            $nhanVien->avatar_url=$path;
+        }
+        $nhanVien->username=$request->username;
+        $nhanVien->ho_ten=$request->ho_ten;
+        $nhanVien->email=$request->email;
+        $nhanVien->dien_thoai=$request->dien_thoai;
+        $nhanVien->dia_chi=$request->dia_chi;
+        $nhanVien->save();
+        return redirect()->route('thong-tin')->with(['thong_bao'=>"Cập nhật thông tin thành công!"]);
+
+    }
     public function DoiMatKhau(){
         return view("admin.doi-mat-khau");
     }
