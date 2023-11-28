@@ -14,9 +14,9 @@ class ThemAdminSeeder extends Seeder
     public function run(): void
     {
         $nhanVien=new NhanVien();
-        $nhanVien->ho_ten='Hung';
-        $nhanVien->username='admin';
-        $nhanVien->password=Hash::make('123');
+        $nhanVien->ho_ten='Nguyễn Tuấn Dĩ';
+        $nhanVien->username='admin123';
+        $nhanVien->password=Hash::make('123456');
         $nhanVien->save();
 
         echo "Thêm nhân viên thành công";
