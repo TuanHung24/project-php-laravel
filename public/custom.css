@@ -12,6 +12,7 @@ user-select: none;
 }
 }
 
+
 .b-example-divider {
 height: 3rem;
 background-color: rgba(0, 0, 0, .1);
@@ -36,6 +37,7 @@ fill: currentColor;
     border: 2px solid blue;
     padding: 2% 2%;
     border-radius: 15px;
+    background: aliceblue;
 
 }
 .dn{
@@ -79,6 +81,7 @@ td{
     width: auto;
     max-width: 80px;
 }
+
 .chuc-nang{
     width: 16%;
     vertical-align: middle;
@@ -87,20 +90,24 @@ td{
 .feather.feather-save, .feather.feather-plus{
     margin-bottom: 9%;
 }
+
 .feather.feather-edit, .feather.feather-trash-2{
     margin-right: 0px;
 }
+
 .rounded-circle{
     margin-left: 7%;
     height: 40px;
     width: 40px;
     margin-bottom: 3%;
 }
+
 .feather-plus-circle{
     margin-bottom:4px;
 }
+
 .dropdown{
-    padding: 2% 0%;
+    padding: 4% 0%;
     height: 80px;
     background: rgb(42, 103, 177);
 }
@@ -110,7 +117,7 @@ td{
 }
 .dropdown-menu{
     display: block;
-    margin-left: 31%;
+    margin-left: 27%;
     margin-top: -29%;
     display: none;
     
@@ -130,10 +137,12 @@ h3 {
     background: rgb(1 19 47);;
     padding-bottom: 1rem;
 }
+
 #sidebarMenu{
     padding-top: 0%;
-    margin-top: 7%;
+    margin-top: 70px;
 }
+
 .navbar
 {
     width: 82%;
@@ -153,16 +162,23 @@ h3 {
     background: rgb(216, 216, 216);
     margin-right: 5px;
 }
-.feather.feather-bell,.feather.feather-mail{
+.feather.feather-mail{
     height: 30px;
     margin-left: 10px;
     width: 30px;
 }
+
+.feather.feather-bell{
+    margin-top: -2.5px;
+    height: 30px;
+    margin-left: 10px;
+    width: 30px;
+}
+
 #dropdown-bell{
    background-color: white;
     margin-top: 10px;
     margin-left: 0%;
-    
 }
 .dropdown.bell{
     background: rgb(250, 250, 250);
@@ -227,4 +243,28 @@ h3 {
     border-radius: 4px;
     background: aquamarine;
     padding: 1%;
+}
+.info-name,.info-email,.info-phone,.info-address,.info-username{
+    width: 50%;
+    padding: 1%;
+    border-bottom: 1px solid #000;
+    font-weight: 600;
+}
+#info-cn{
+    border: none;
+    width: 80%;
+}
+#info-cn:focus{
+    outline: none;
+}
+.feather.feather-edit-3{
+    float: right;
+}
+#info-save-cn{
+    margin-left: 140px;
+}
+#logo{
+    height: 70px;
+    width: 321px;
+    margin-left: -255px;
 }

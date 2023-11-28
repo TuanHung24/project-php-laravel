@@ -15,8 +15,9 @@
     <link href="{{ asset('style.css') }}" rel="stylesheet">
 </head>
 <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+<img src="{{asset('logo/logo-dt-2.png')}}" id="logo"/>
     <div class="navbar navbar-collapse responsive-navbar p-0">
-
+       
         <div class="Search">
             <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -59,13 +60,13 @@
                             <span class="admin">{{Auth::user()->username}}</span>
                             <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
                                 <li>
-                                    <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>My profile</a>
+                                    <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>Thông tin cá nhân</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item"><span data-feather="settings"></span>Settings</a>
+                                    <a class="dropdown-item"><span data-feather="settings"></span>Cài đặt</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{route('dang-xuat')}}"><span data-feather="log-out"></span>Logout</a>
+                                    <a class="dropdown-item" href="{{route('dang-xuat')}}"><span data-feather="log-out"></span>Đăng xuất</a>
                                 </li>
                             </ul>
                         </div>

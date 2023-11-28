@@ -80,7 +80,6 @@ class NhanVienController extends Controller
 
         return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Cập nhật nhân viên {$nhanVien->ho_ten} thành công!"]);
     }
-
     public function xoa($id)
     {
         $nhanVien = NhanVien::find($id);

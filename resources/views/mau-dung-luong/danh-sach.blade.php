@@ -74,7 +74,6 @@
          
         $('#save-color').click(function() {
             var mauSac=$('#mau-sac').val();
-            
             $.ajax({
                     
                     method: "POST",
@@ -84,7 +83,14 @@
                         "mau_sac": mauSac}
                 })
                 .done(function(response) {
-                    console.log(response);
+                    Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: `Thêm màu ${mauSac} thành công!`,
+                                showConfirmButton: true,
+                                timer: 3000
+                            });
+                            $('#mau-sac').val("");
                 });
             
         });
@@ -101,7 +107,14 @@
 
                 })
                 .done(function(response) {
-                    alert(response);
+                    Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: `Thêm dung lượng ${dungLuong} thành công!`,
+                                showConfirmButton: true,
+                                timer: 3000
+                            });
+                            $('#dung-luong').val("");
                 });
         });
     })

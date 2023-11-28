@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('san_pham', function (Blueprint $table) {
+        Schema::create('chi_tiet_san_pham', function (Blueprint $table) {
             $table->id();
-            $table->string('ten',50);
+            $table->bigInteger("san_pham_id");
+            $table->decimal("gia_ban",10,0);
+            $table->integer("so_luong");
             $table->text('mo_ta')->collation("utf8_unicode_ci");
-            $table->decimal('gia_ban',10,0)->default(0);
-            $table->integer('so_luong')->default(0);
-            $table->text('thong_tin')->collation("utf8_unicode_ci");
-            $table->bigInteger('loai_san_pham_id');
-            $table->boolean('trang_thai')->default(1);
+            $table->boolean("trang_thai")->default(1);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('san_pham');
+        Schema::dropIfExists('chi_tiet_san_pham');
     }
 };

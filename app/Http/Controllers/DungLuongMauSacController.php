@@ -21,14 +21,14 @@ class DungLuongMauSacController extends Controller
             $mauSac             = new MauSac();   
             $mauSac->ten        = $request->mau_sac;
             $mauSac->save();       
-        return redirect()->route('mau-dung-luong.danh-sach')->with(['thong_bao'=>"Thêm màu sắc {$mauSac->ten} thành công!"]);
+        return redirect()->route('mau-dung-luong.danh-sach');
         
     }
     public function themMoiDungLuongAjax(Request $request){     
-        $dungLuong = new DungLuong();
-        $dungLuong->ten         = $request->data->dung_luong;
+        $dungLuong              = new DungLuong();
+        $dungLuong->ten         = $request->dung_luong;
         $dungLuong->save();   
-        return redirect()->route('mau-dung-luong.danh-sach')->with(['thong_bao'=>"Thêm dung lượng {$dungLuong->ten} thành công!"]);
+        return redirect()->route('mau-dung-luong.danh-sach');
     
 }
     

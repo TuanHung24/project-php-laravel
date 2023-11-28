@@ -15,11 +15,12 @@
     </style>
 <body>
     <h2>Hóa đơn bán hàng</h2>
-    <h3>Tên khách hàng:{{$hoaDon->khach_hang}} </h3>
-    <h3>Mã hóa đơn:{{$hoaDon->id}} </h3>
-    <h3>Ngày tạo:{{$hoaDon->ngay_tao}} </h3>
+    <h4>Nhân viên:{{$hoaDon->nhan_vien->ho_ten}} </h4>
+    <h4>Tên khách hàng:{{$hoaDon->khach_hang}} </h4>
+    <h4>Mã hóa đơn:{{$hoaDon->id}} </h4>
+    <h4>Ngày tạo:{{$hoaDon->ngay_tao}} </h4>
     <div class="bd-example">
-        <table class="table" border="1">
+        <table class="table" border="1" style="width:60%;margin:2% 2% 2% 0;text-align:center">
             <thead>
                 <tr>
                     <th>Sản phẩm</th>
@@ -37,7 +38,7 @@
                     @endforeach
             </tbody>
         </table>
-        <span>Thành tiền: {{ $hoaDon->tong_tien }}</span>
+        <span>Thành tiền: {{ $hoaDon->tong_tien }} VND</span>
     </div>
 </body>
 </html>

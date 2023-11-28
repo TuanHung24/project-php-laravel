@@ -50,7 +50,7 @@
 <div class=row>
     <div class="col-md-6">
         <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
-        <input type="file" name="hinh_anh[]" multiple/>
+        <input type="file" name="hinh_anh[]" multiple required/>
     </div>
 </div>
 <div class="col-md-2">
