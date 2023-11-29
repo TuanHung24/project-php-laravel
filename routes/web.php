@@ -11,6 +11,7 @@ use App\Http\Controllers\HinhAnhController;
 use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\DungLuongMauSacController;
+use App\Http\Controllers\BinhLuanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,7 +112,14 @@ Route::middleware('auth')->group(function(){
             Route::get('xoa/{id}', [NhanVienController::class, 'xoa'])->name('xoa');
         });
     });
-
+    
+    Route::prefix('binh-luan')->group(function(){
+        Route::name('binh-luan.')->group(function(){
+            Route::get('/',[BinhLuanController::class, 'danhSach'])->name('danh-sach');
+            Route::get('chi-tiet/{id}',[BinhLuanController::class, 'chiTiet'])->name('chi-tiet');
+            Route::get('xoa/{id}',[BinhLuanController::class, 'xoa'])->name('xoa');
+        });
+    });
 
     Route::prefix('mau-dung-luong')->group(function(){
         Route::name('mau-dung-luong.')->group(function(){
