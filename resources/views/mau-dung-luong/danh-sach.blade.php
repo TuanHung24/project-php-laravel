@@ -103,6 +103,8 @@
                     data: {
                         "_token":"{{ csrf_token() }}",
                         "dung_luong":dungLuong}
+                    
+
                 })
                 .done(function(response) {
                     Swal.fire({
