@@ -32,11 +32,8 @@
         <th>Id</td>
         
         <th>Tên</th>
-        <th>Mô tả</th>
-        <th>Giá bán</th>
-        <th>Số lượng</th>
+        <th>Mô tả</th>  
         <th>Loại sản phẩm</th>
-        <th>Thông tin</th>
         <th>Trạng thái</th>
         <th>Thao tác</th>
     </tr>
@@ -46,10 +43,7 @@
         <td>{{ $sanPham->id }}</td>
         <td>{{ $sanPham->ten }}</td>
         <td>{{ $sanPham->mo_ta }}</td>
-        <td>{{ $sanPham->gia_ban }}</td>
-        <td>{{ $sanPham->so_luong }}</td>
         <td>{{ $sanPham->loai_san_pham->ten }}</td>
-        <td>{{ $sanPham->thong_tin }}</td>
         <?php
         if($sanPham->trang_thai==1)
         {

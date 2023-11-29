@@ -9,9 +9,9 @@ class HoaDon extends Model
 {
     use HasFactory;
     protected $table="hoa_don";
-    public function nhan_vien()
+    public function quan_tri()
     {
-        return $this->belongsTo(NhanVien::class);
+        return $this->belongsTo(QuanTri::class);
     }
     
     public function nha_cung_cap()

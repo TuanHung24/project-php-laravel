@@ -35,8 +35,8 @@
     <label for="mau_sac" class="form-label">Màu sắc:</label>
     <select name="mau_sac" class="form-select" id="mau-sac">
       <option selected disabled>Chọn màu</option>
-      @foreach($dsMau as $Mau)
-      <option value="{{$Mau->id}}">{{$Mau->ten}}</option>
+      @foreach($dsMau as $mau)
+      <option value="{{$mau->id}}">{{$mau->ten}}</option>
       @endforeach
     </select>
     <span class="error-message" id="error-mau"></span>

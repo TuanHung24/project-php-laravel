@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PhieuNhap;
 use App\Models\CTPhieuNhap;
+use App\Models\CTSanPham;
 use App\Models\DungLuong;
 use App\Models\MauSac;
 use App\Models\NhaCungCap;
-use App\Models\NhanVien;
+use App\Models\QuanTri;
 use App\Models\SanPham;
 use Exception;
 
@@ -18,10 +19,10 @@ class CTPhieuNhapController extends Controller
     {
         $dsNhaCungCap = NhaCungCap::all();
         $dsSanPham=SanPham::all();
-        $dsnhanVien=NhanVien::all();
+        $dsQuanTri=QuanTri::all();
         $dsMau=MauSac::all();
         $dsDungLuong=DungLuong::all();
-        return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien','dsMau','dsDungLuong'));
+        return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsQuanTri','dsMau','dsDungLuong'));
  
     }
 
@@ -39,13 +40,13 @@ class CTPhieuNhapController extends Controller
             $ctPhieuNhap->phieu_nhap_id         = $phieuNhap->id;
             $ctPhieuNhap->san_pham_id          = $request->idSP[$i];
 
-            $mauSac=MauSac::find($request->idMauSac[$i]);
-            $mauSac->san_pham_id=$request->idSP[$i];
-            $mauSac->save();
-            
-            $dungLuong=DungLuong::find($request->idDungLuong[$i]);
-            $dungLuong->san_pham_id=$request->idSP[$i];
-            $dungLuong->save();
+            $ctSanPham=new CTSanPham();
+            $ctSanPham->san_pham_id=$request->idSP[$i];
+            $ctSanPham->mau_sac_id=$request->idMauSac[$i];
+            $ctSanPham->dung_luong_id=$request->idDungLuong[$i];
+            $ctSanPham->gia_ban=$request->giaBan[$i];
+            $ctSanPham->so_luong=$request->soLuong[$i];
+            $ctSanPham->save();
             
             $ctPhieuNhap->so_luong           = $request->soLuong[$i];
             $ctPhieuNhap->gia_nhap         = $request->giaNhap[$i];
@@ -70,7 +71,7 @@ class CTPhieuNhapController extends Controller
         {
             $dsNhaCungCap = NhaCungCap::all();
             $dsSanPham=SanPham::all();
-            $dsnhanVien=NhanVien::all();
+            $dsnhanVien=QuanTri::all();
             return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien'));
         }
        

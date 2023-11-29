@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nhan_vien', function (Blueprint $table) {
+        Schema::create('quan_tri', function (Blueprint $table) {
             $table->id();
             $table->text('avatar_url')->nullable();
             $table->string("ho_ten",40)->collation("utf8_unicode_ci");
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nhan_vien');
+        Schema::dropIfExists('quan_tri');
     }
 };

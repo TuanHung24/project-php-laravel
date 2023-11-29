@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('chi_tiet_san_pham', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("san_pham_id");
+            $table->bigInteger("mau_sac_id");
+            $table->bigInteger("dung_luong_id");
             $table->decimal("gia_ban",10,0);
             $table->integer("so_luong");
-            $table->text('mo_ta')->collation("utf8_unicode_ci");
             $table->boolean("trang_thai")->default(1);
             $table->timestamps();
         });

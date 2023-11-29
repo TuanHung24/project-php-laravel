@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\SanPham;
 use App\Models\LoaiSanPham;
 use App\Models\HinhAnh;
+use App\Http\Requests\SanPhamRequest;
 class SanPhamController extends Controller
 {
     public function themMoi()
@@ -14,8 +15,9 @@ class SanPhamController extends Controller
         return view('san-pham.them-moi',compact('dsLoaiSanPham'));
     }
 
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(SanPhamRequest $request)
     {
+       
         $files=$request->hinh_anh;
         $paths=[];
         
@@ -27,11 +29,7 @@ class SanPhamController extends Controller
         $sanPham = new SanPham();
         $sanPham->ten               = $request->ten;
         $sanPham->mo_ta             = $request->mo_ta;
-        $sanPham->gia_ban           = $request->gia_ban;
-        $sanPham->so_luong          = $request->so_luong;
         $sanPham->loai_san_pham_id  = $request->loai_san_pham;
-        $sanPham->thong_tin         = $request->thong_tin; 
-        $sanPham->trang_thai        =1;   
         $sanPham->save();
         
         for($i=0;$i<count($paths);$i++)
@@ -66,26 +64,20 @@ class SanPhamController extends Controller
     {
         $sanPham = SanPham::find($id);
         $files=$request->hinh_anh;
+        $sanPham->ten               = $request->ten;
+        $sanPham->mo_ta             = $request->mo_ta;
+        $sanPham->loai_san_pham_id  = $request->loai_san_pham;
         
-
-            $sanPham->ten               = $request->ten;
-            $sanPham->mo_ta             = $request->mo_ta;
-            $sanPham->gia_ban           = $request->gia_ban;
-            $sanPham->so_luong          = $request->so_luong;
-            $sanPham->loai_san_pham_id  = $request->loai_san_pham;
-            
-            if(isset($request->trang_thai))
-            {
-                $sanPham->trang_thai=1;
-            }
-            else
-            {
-                $sanPham->trang_thai=0;
-            }
-            $sanPham->thong_tin         = $request->thong_tin;
-            $sanPham->save();
-
-            
+        if(isset($request->trang_thai))
+        {
+            $sanPham->trang_thai=1;
+        }
+        else
+        {
+            $sanPham->trang_thai=0;
+        }
+        $sanPham->save();
+        
         if(!empty($files))
         {
             $paths=[];

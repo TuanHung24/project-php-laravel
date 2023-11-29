@@ -4,46 +4,46 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">CẬP NHẬT NHÂN VIÊN</h1>
 </div>
-<form class="row g-3" method="POST" id="update" action="{{ route('nhan-vien.xl-cap-nhat', ['id' => $nhanVien->id]) }}" enctype="multipart/form-data">
+<form class="row g-3" method="POST" id="update" action="{{ route('nhan-vien.xl-cap-nhat', ['id' => $quanTri->id]) }}" enctype="multipart/form-data">
    @csrf
    <div class="row">
         <div class="col-md-6">
             <label for="ho_ten" class="form-label">Họ tên:</label>
-            <input type="text" class="form-control" name="ho_ten" id="ho_ten" value="{{$nhanVien->ho_ten}}">
+            <input type="text" class="form-control" name="ho_ten" id="ho_ten" value="{{$quanTri->ho_ten}}">
             <span id="ho_ten_error" class="error-message"></span>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="dien_thoai" class="form-label">Điện thoại:</label>
-            <input type="text" class="form-control" name="dien_thoai" id="dien-thoai" value="{{$nhanVien->dien_thoai}}">
+            <input type="text" class="form-control" name="dien_thoai" id="dien-thoai" value="{{$quanTri->dien_thoai}}">
             <span id="dien_thoai_error" class="error-message"></span>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" name="email" id="email" value="{{$nhanVien->email}}">
+            <input type="email" class="form-control" name="email" id="email" value="{{$quanTri->email}}">
             <span id="email_error" class="error-message"></span>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="dia_chi" class="form-label">Địa chỉ:</label>
-            <input type="text" class="form-control" name="dia_chi" value="{{$nhanVien->dia_chi}}">
+            <input type="text" class="form-control" name="dia_chi" value="{{$quanTri->dia_chi}}">
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="username" class="form-label">Tên tài khoản:</label>
-            <input type="text" class="form-control" name="username" id="username" value="{{$nhanVien->username}}">
+            <input type="text" class="form-control" name="username" id="username" value="{{$quanTri->username}}">
             <span id="username_error" class="error-message"></span>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="password" class="form-label">Mật khẩu:</label>
-            <input type="password" class="form-control" name="password" value="{{$nhanVien->password}}" readonly>
+            <input type="password" class="form-control" name="password" value="{{$quanTri->password}}" readonly>
         </div>
     </div>
     <div class=row>
@@ -55,7 +55,7 @@
     <div class="row">
     <div class="col-md-6">
         <label for="trang_thai" class="form-label">Trạng thái</label>
-        <?php if($nhanVien->trang_thai==1):?>
+        <?php if($quanTri->trang_thai==1):?>
         <input type="checkbox" name="trang_thai" checked>
         <?php else:?>
         <input type="checkbox" name="trang_thai">

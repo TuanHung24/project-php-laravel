@@ -42,18 +42,6 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label for="gia_ban" class="form-label">Giá bán:</label>
-            <input type="text" class="form-control" name="gia_ban" value="{{$sanPham->gia_ban}}" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label for="so-luong" class="form-label">Số lượng:</label>
-            <input type="text" class="form-control" name="so_luong" value="{{$sanPham->so_luong}}" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
             <label for="loai_san_pham" class="form-label">Loại sản phẩm:</label>
             <select name="loai_san_pham" class="form-select">
                 <option type="text" class="form-control" name="loai_san_pham" value="{{$sanPham->loai_san_pham->id}}">
@@ -65,12 +53,6 @@
                 </option>
                 @endforeach
             </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label for="thong_tin" class="form-label">Thông tin:</label>
-            <textarea type="textarea" class="form-control" id="thong-tin" name="thong_tin" rows="6" cols="50">{{$sanPham->thong_tin}}</textarea>
         </div>
     </div>
     <div class="row">

@@ -10,7 +10,7 @@ class SlidesController extends Controller
 {
     public function themMoi()
     {
-        return view("slide.them-moi");
+        return view("slides.them-moi");
     }
     public function xuLyThemMoi(Request $request)
     {

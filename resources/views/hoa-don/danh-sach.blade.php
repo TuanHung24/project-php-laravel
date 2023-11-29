@@ -41,7 +41,7 @@
         @foreach($dsHoaDon as $hoaDon)
         <tr>
             <td>{{ $hoaDon->id }}</td>
-            <td>{{ $hoaDon->nhan_vien->ho_ten}}</td>
+            <td>{{ $hoaDon->quan_tri->ho_ten}}</td>
             <td>{{ $hoaDon->khach_hang }}</td>
             <td>{{ $hoaDon->tong_tien }}</td>
             <td>{{ $hoaDon->ngay_tao }}</td>

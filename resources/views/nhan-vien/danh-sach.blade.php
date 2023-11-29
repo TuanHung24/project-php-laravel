@@ -39,16 +39,16 @@
                 <th>Thao tác</th>
             </tr>
         </thead>
-        @foreach($dsNhanVien as $nhanVien)
+        @foreach($dsQuanTri as $quanTri)
         <tr>
-            <td>{{ $nhanVien->id }}</td>
-            <td>{{ $nhanVien->ho_ten }}</td>
-            <td>{{ $nhanVien->dien_thoai }}</td>
-            <td>{{ $nhanVien->email }}</td>
-            <td>{{ $nhanVien->dia_chi }}</td>
-            <td>{{ $nhanVien->username }}</td>
+            <td>{{ $quanTri->id }}</td>
+            <td>{{ $quanTri->ho_ten }}</td>
+            <td>{{ $quanTri->dien_thoai }}</td>
+            <td>{{ $quanTri->email }}</td>
+            <td>{{ $quanTri->dia_chi }}</td>
+            <td>{{ $quanTri->username }}</td>
             <?php
-            if ($nhanVien->trang_thai == 1) {
+            if ($quanTri->trang_thai == 1) {
                 $trang_thai = "Hoạt động";
             } else {
                 $trang_thai = "Không hoạt động";
@@ -56,8 +56,8 @@
             ?>
             <td>{{ $trang_thai }}</td>
             <td class="chuc-nang">
-                <a href="{{ route('nhan-vien.cap-nhat', ['id' => $nhanVien->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
-                <a href="{{ route('nhan-vien.xoa', ['id' => $nhanVien->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+                <a href="{{ route('nhan-vien.cap-nhat', ['id' => $quanTri->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
+                <a href="{{ route('nhan-vien.xoa', ['id' => $quanTri->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
             </td>
         <tr>
             @endforeach

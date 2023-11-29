@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('khach_hang', function (Blueprint $table) {
             $table->id();
             $table->string('ho_ten',80);
-            $table->string('ten_dang_nhap',80);
             $table->string('email',100);
+            $table->string('ten_dang_nhap',80);
             $table->string('password',100);
             $table->boolean('trang_thai')->default(1);
             $table->timestamps();

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class NhanVien extends Authenticatable
+class QuanTri extends Authenticatable
 {
     use HasFactory;
-    protected $table = "nhan_vien";
+    protected $table = "quan_tri";
     public function hoa_don()
     {
         return $this->hasMany(HoaDon::class);

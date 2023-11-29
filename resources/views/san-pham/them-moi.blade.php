@@ -9,8 +9,12 @@
 <div class="row">
     <div class="col-md-6">
         <label for="ten" class="form-label">Tên:</label>
-        <input type="text" class="form-control" name="ten" required>
+        <input type="text" class="form-control" name="ten">
+        @error('ten')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
+    
 </div>
 <div class="row">
     <div class="col-md-6">
@@ -50,8 +54,12 @@
 <div class=row>
     <div class="col-md-6">
         <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
-        <input type="file" name="hinh_anh[]" multiple required/>
+        <input type="file" name="hinh_anh[]" multiple/>
+        
     </div>
+        @error('hinh-anh')
+        <span class="error-message">{{$message}}</span>
+        @enderror
 </div>
 <div class="col-md-2">
     <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>

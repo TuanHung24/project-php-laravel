@@ -29,7 +29,17 @@ class APIHoaDonController extends Controller
         $hoaDon->dien_thoai=$request->hd[0]['dien_thoai'];
         $hoaDon->phuong_thuc_tt=$request->hd[0]['phuong_thuc_tt'];   
         $hoaDon->save();
-
+        for($i=0;$i<count($request->cthd);$i++)
+        {
+            $cTHoaDon=new CTHoaDon();
+            $cTHoaDon->hoa_don_id=$hoaDon->id;
+            $cTHoaDon->san_pham_id=$request->cthd[$i]['san_pham_id'];
+            $cTHoaDon->so_luong=$request->cthd[$i]['so_luong'];
+            $cTHoaDon->don_gia=$request->cthd[$i]['gia_ban'];
+            $cTHoaDon->thanh_tien=$request->cthd[$i]['thanh_tien'];
+            $cTHoaDon->save();
+        }
+        
             return response()->json([
                 "success"=>true,
                 "message"=>"Thanh toán thành công!"

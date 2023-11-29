@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\NhanVien::class,
+            'model' => \App\Models\QuanTri::class,
         ],
         
         'khach_hang' => [

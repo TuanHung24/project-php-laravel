@@ -26,11 +26,6 @@ class SanPham extends Model
     {
         return $this->hasMany(DungLuong::class);
     }
-    public function hoa_don()
-    {
-        return $this->hasMany(DungLuong::class);
-    }
-    
     
 }
 

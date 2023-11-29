@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\LoaiSanPhamController;
 use App\Http\Controllers\DangNhapController;
-use App\Http\Controllers\NhanVienController;
+use App\Http\Controllers\QuanTriController;
 use App\Http\Controllers\NhaCungCapController;
 use App\Http\Controllers\CTPhieuNhapController;
 use App\Http\Controllers\HinhAnhController;
@@ -105,12 +105,12 @@ Route::middleware('auth')->group(function(){
 
     Route::prefix('nhan-vien')->group(function(){
         Route::name('nhan-vien.')->group(function(){
-            Route::get('/', [NhanVienController::class, 'danhSach'])->name('danh-sach');
-            Route::get('them-moi',[NhanVienController::class, 'themMoi'])->name('them-moi');
-            Route::post('them-moi',[NhanVienController::class, 'xuLyThemMoi'])->name('xl-them-moi');
-            Route::get('cap-nhat/{id}', [NhanVienController::class, 'capNhat'])->name('cap-nhat');
-            Route::post('cap-nhat/{id}', [NhanVienController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
-            Route::get('xoa/{id}', [NhanVienController::class, 'xoa'])->name('xoa');
+            Route::get('/', [QuanTriController::class, 'danhSach'])->name('danh-sach');
+            Route::get('them-moi',[QuanTriController::class, 'themMoi'])->name('them-moi');
+            Route::post('them-moi',[QuanTriController::class, 'xuLyThemMoi'])->name('xl-them-moi');
+            Route::get('cap-nhat/{id}', [QuanTriController::class, 'capNhat'])->name('cap-nhat');
+            Route::post('cap-nhat/{id}', [QuanTriController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
+            Route::get('xoa/{id}', [QuanTriController::class, 'xoa'])->name('xoa');
         });
     });
     
