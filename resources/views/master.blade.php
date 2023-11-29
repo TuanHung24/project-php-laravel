@@ -117,6 +117,11 @@
                                 Quản lý dung lượng và màu sắc
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('binh-luan.danh-sach')}}">
+                                <span data-feather="battery-charging" class="align-text-bottom"></span>
+                                Quản lý bình luận
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('slides.danh-sach')}}">
                                 <span data-feather="battery-charging" class="align-text-bottom"></span>
