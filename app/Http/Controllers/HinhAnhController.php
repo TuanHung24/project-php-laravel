@@ -11,9 +11,9 @@ class HinhAnhController extends Controller
     public function hinhAnhXoa($id)
     {
         $hinhAnh=HinhAnh::find($id);
-        if(!empty($hinhAnh->ten))
+        if(!empty($hinhAnh->img_url))
         {
-            $imgPath=$hinhAnh->ten;
+            $imgPath=$hinhAnh->img_url;
             if (file_exists(public_path($imgPath))) {
             unlink(public_path($imgPath));
         }
@@ -21,6 +21,7 @@ class HinhAnhController extends Controller
         if(empty($hinhAnh)){
             return redirect()->route("san-pham.danh-sach")->with(['thong_bao'=>"Xóa ảnh thành công!"]);
         }
+        
         $hinhAnh->delete();
        
         return redirect()->route("san-pham.danh-sach")->with(['thong_bao'=>"Xóa ảnh thành công!"]);

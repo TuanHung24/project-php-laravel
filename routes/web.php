@@ -12,6 +12,7 @@ use App\Http\Controllers\HoaDonController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\DungLuongMauSacController;
 use App\Http\Controllers\BinhLuanController;
+use App\Http\Controllers\SlidesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -133,8 +134,15 @@ Route::middleware('auth')->group(function(){
         });
     });
 
-});
 
+    Route::prefix('slides')->group(function(){
+        Route::name('slides.')->group(function(){
+            Route::get('/', [SlidesController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/them-moi', [SlidesController::class, 'themMoi'])->name('them-moi');
+            Route::post('/them-moi', [SlidesController::class, 'xuLyThemMoi'])->name('xl-them-moi');
+            });
+        });
+});
 Route::middleware('guest')->group(function(){
     Route::get('dang-nhap', [DangNhapController::class, 'dangNhap'])->name('dang-nhap');
     Route::post('dang-nhap', [DangNhapController::class, 'xuLyDangNhap'])->name('xl-dang-nhap');
