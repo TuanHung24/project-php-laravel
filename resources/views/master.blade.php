@@ -20,7 +20,7 @@
        
         <div class="Search">
             <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
         </div>
         <div class="bell-mail">
         <div class="dropdown bell" id="bell">
