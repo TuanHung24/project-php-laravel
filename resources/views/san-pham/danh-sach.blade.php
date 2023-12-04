@@ -30,7 +30,6 @@
         <thead>
     <tr>
         <th>Id</td>
-        
         <th>Tên</th>
         <th>Mô tả</th>  
         <th>Loại sản phẩm</th>
@@ -57,7 +56,7 @@
         <td>{{$trang_thai}}</td>
         
         <td class="chuc-nang">
-            <a href="{{ route('san-pham.cap-nhat', ['id' => $sanPham->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a> |
+            <a href="{{ route('san-pham.chi-tiet', ['id' => $sanPham->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a> |
             <a href="{{ route('san-pham.cap-nhat', ['id' => $sanPham->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
             <a href="{{ route('san-pham.xoa', ['id' => $sanPham->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
         </td>

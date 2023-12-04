@@ -20,16 +20,16 @@ class CTPhieuNhapController extends Controller
         $dsNhaCungCap = NhaCungCap::all();
         $dsSanPham=SanPham::all();
         $dsQuanTri=QuanTri::all();
-        $dsMau=MauSac::all();
+        $dsMauSac=MauSac::all();
         $dsDungLuong=DungLuong::all();
-        return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsQuanTri','dsMau','dsDungLuong'));
+        return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsQuanTri','dsMauSac','dsDungLuong'));
  
     }
 
     public function xuLyThemMoi(Request $request)
     {
-        try
-        {
+        // try
+        // {
         $phieuNhap= new PhieuNhap();
         $phieuNhap->nha_cung_cap_id=$request->ncc;
         $phieuNhap->save();
@@ -39,41 +39,44 @@ class CTPhieuNhapController extends Controller
             $ctPhieuNhap= new CTPhieuNhap();
             $ctPhieuNhap->phieu_nhap_id         = $phieuNhap->id;
             $ctPhieuNhap->san_pham_id          = $request->idSP[$i];
-
-            $ctSanPham=new CTSanPham();
-            $ctSanPham->san_pham_id=$request->idSP[$i];
-            $ctSanPham->mau_sac_id=$request->idMauSac[$i];
-            $ctSanPham->dung_luong_id=$request->idDungLuong[$i];
-            $ctSanPham->gia_ban=$request->giaBan[$i];
-            $ctSanPham->so_luong=$request->soLuong[$i];
-            $ctSanPham->save();
-            
+            $ctSanPham=CTSanPham::where('san_pham_id',$request->idSP[$i])->where('mau_sac_id',$request->idMauSac[$i])->where('dung_luong_id',$request->idDungLuong[$i])->get();
+            if(count($ctSanPham)>0){
+                $ctSanPham=CTSanPham::where('san_pham_id',$request->idSP[$i])->where('mau_sac_id',$request->idMauSac[$i])->where('dung_luong_id',$request->idDungLuong[$i])->first();
+                $ctSanPham->gia_ban=$request->giaBan[$i];
+                $ctSanPham->so_luong+=$request->soLuong[$i];
+                $ctSanPham->save();
+            }
+            else{
+                $ctSanPham=new CTSanPham();
+                $ctSanPham->san_pham_id=$request->idSP[$i];
+                $ctSanPham->mau_sac_id=$request->idMauSac[$i];
+                $ctSanPham->dung_luong_id=$request->idDungLuong[$i];
+                $ctSanPham->gia_ban=$request->giaBan[$i];
+                $ctSanPham->so_luong=$request->soLuong[$i];
+                $ctSanPham->save();
+            }
+            $ctPhieuNhap->phieu_nhap_id      = $phieuNhap->id;
             $ctPhieuNhap->so_luong           = $request->soLuong[$i];
-            $ctPhieuNhap->gia_nhap         = $request->giaNhap[$i];
+            $ctPhieuNhap->gia_nhap           = $request->giaNhap[$i];
             $ctPhieuNhap->gia_ban            = $request->giaBan[$i];
             $ctPhieuNhap->thanh_tien         = $request->thanhTien[$i];
             $ctPhieuNhap->save();
-
+            
             $tongTien += $ctPhieuNhap->thanh_tien;
 
-            $sanPham=SanPham::find($ctPhieuNhap->san_pham_id);
-            $sanPham->so_luong+=$ctPhieuNhap->so_luong; 
-            $sanPham->gia_ban=$ctPhieuNhap->gia_ban;
-            $sanPham->save();
-
-            
         }
         $phieuNhap->tong_tien=$tongTien;
         $phieuNhap->save();
-
-        return redirect()->route('nhap-hang.danh-sach')->with(['thong_bao'=>"Nhập đơn hàng {$sanPham->ten} thành công!"]);
-        }catch(Exception $ex)
-        {
-            $dsNhaCungCap = NhaCungCap::all();
-            $dsSanPham=SanPham::all();
-            $dsnhanVien=QuanTri::all();
-            return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien'));
-        }
+        return redirect()->route('nhap-hang.danh-sach')->with(['thong_bao'=>"Nhập đơn hàng {$phieuNhap->id} thành công!"]);
+        // }catch(Exception $ex)
+        // {
+        //     $dsNhaCungCap = NhaCungCap::all();
+        //     $dsSanPham=SanPham::all();
+        //     $dsnhanVien=QuanTri::all();
+        //     $dsMauSac=MauSac::all();
+        //     $dsDungLuong=DungLuong::all();
+        //     return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien','dsMauSac', 'dsDungLuong'));
+        // }
        
     } 
     public function danhSach()

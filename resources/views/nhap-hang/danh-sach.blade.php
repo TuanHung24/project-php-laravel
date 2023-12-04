@@ -30,9 +30,9 @@
         <thead>
             <tr>
                 <th>Mã phiếu nhập</th>
-                <th>Nhà cung cấp</th>
-                <th>Ngày nhập</th>
+                <th>Nhà cung cấp</th>  
                 <th>Tổng tiền</th>
+                <th>Ngày nhập</th>
                 <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
@@ -41,8 +41,8 @@
         <tr>
             <td>{{ $phieuNhap->id }}</td>
             <td>{{ $phieuNhap->nha_cung_cap->ten }}</td>
-            <td>{{ $phieuNhap->ngay_nhap }}</td>
             <td>{{ $phieuNhap->tong_tien }}</td>
+            <td>{{ $phieuNhap->ngay_nhap }}</td>
             <?php
             if ($phieuNhap->trang_thai == true) {
                 $trang_thai = "Hoạt động";

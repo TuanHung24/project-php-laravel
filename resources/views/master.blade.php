@@ -120,11 +120,13 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('binh-luan.danh-sach')}}">
-                                <span data-feather="battery-charging" class="align-text-bottom"></span>
+                                <span data-feather="message-square" class="align-text-bottom"></span>
                                 Quản lý bình luận
+                                </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('slides.danh-sach')}}">
-                                <span data-feather="battery-charging" class="align-text-bottom"></span>
+                                <span data-feather="file-plus" class="align-text-bottom"></span>
                                 Quản lý slide
                             </a>
                         </li>

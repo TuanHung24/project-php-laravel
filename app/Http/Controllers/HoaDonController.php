@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CTHoaDon;
 use Illuminate\Http\Request;
 use App\Models\HoaDon;
-use App\Models\NhanVien;
+use App\Models\QuanTri;
 use App\Models\SanPham;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ class HoaDonController extends Controller
     public function themMoi()
     {
         $dsHoaDon = HoaDon::all();
-        $dsnhanVien=NhanVien::all();
+        $dsnhanVien=QuanTri::all();
         $dsSanPham=SanPham::all();
         return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham'));
  
@@ -49,7 +49,7 @@ class HoaDonController extends Controller
         }catch(Exception $ex)
         {
             $dsHoaDon = HoaDon::all();
-            $dsnhanVien=NhanVien::all();
+            $dsnhanVien=QuanTri::all();
             $dsSanPham=SanPham::all();
             return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham'));
         }

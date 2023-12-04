@@ -21,7 +21,7 @@ class ThemSanPhamSeeder extends Seeder
         echo "Thêm sản phẩm {$sanPham->ten} thành công!";
 
         $sanPham=new SanPham();
-        $sanPham->ten="Samsung A45";
+        $sanPham->ten="Samsung A54";
         $sanPham->mo_ta="Giá siêu rẻ";
         $sanPham->loai_san_pham_id=2;
         $sanPham->save();

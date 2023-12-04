@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('thong_tin_san_pham', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('san_pham_id');
-            $table->string('do_phan_giai');
-            $table->string('trong_luong');
-            $table->string('bo_nho');
-            $table->string('he_dieu_hang');
-            $table->string('the_nho');
-            $table->string('camera');
-            $table->string('pin');
-            $table->string('bao_hanh');
+            $table->string('do_phan_giai',30);
+            $table->string('man_hinh',50);
+            $table->string('kich_thuoc',50);
+            $table->string('trong_luong',10);
+            $table->string('he_dieu_hanh',50);
+            $table->string('camera',50);
+            $table->string('pin',20);
+            $table->string('ram',20);
             $table->timestamps();
         });
     }

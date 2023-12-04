@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/', [SanPhamController::class, 'danhSach'])->name('danh-sach');
             Route::get('cap-nhat/{id}', [SanPhamController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [SanPhamController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
+            Route::get('chi-tiet/{id}', [SanPhamController::class, 'chiTietSanPham'])->name('chi-tiet');
             Route::get('xoa/{id}', [SanPhamController::class, 'xoa'])->name('xoa');
         });
     });

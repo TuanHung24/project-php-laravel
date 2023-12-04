@@ -26,6 +26,10 @@ class SanPham extends Model
     {
         return $this->hasMany(DungLuong::class);
     }
+    public function chi_tiet_san_pham()
+    {
+        return $this->belongsTo(CTSanPham::class);
+    }
     
 }
 
