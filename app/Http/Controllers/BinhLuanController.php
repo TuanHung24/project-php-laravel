@@ -14,23 +14,26 @@ class BinhLuanController extends Controller
         return view("binh-luan.danh-sach" , compact('dsBinhLuan'));
     }
     public function chiTiet($id){
-        $dsBinhLuan=BinhLuan::where('khach_hang_id',$id)->get();
+        $binhLuan=Binhluan::find($id);
         if(empty($dsBinhLuan))
         {
             return "Bình luận không tồn tại";
         }
-        return view("binh-luan.chi-tiet",compact('dsBinhLuan'));
+        return view("binh-luan.chi-tiet",compact('binhLuan'));
+    }
+    public function traLoiBinhLuan($id)
+    {
+            
     }
     public function xoa($id){
-        $dsBinhLuan=BinhLuan::where('khach_hang_id',$id)->get();
-
-        $dsBinhLuan=Binhluan::find($id);
+        $binhLuan=Binhluan::find($id);
         if(empty($dsBinhLuan))
         {
             return "Bình luận không tồn tại";
         }
+        $binhLuan->delete();
         $dsBinhLuan=BinhLuan::all();
-        return redirect()->route('binh-luan.danh-sach',compact('dsBinhLuan'))->with(['thong_bao'=>"Xóa binh luan thành công!"]);;
+        return redirect()->route('binh-luan.danh-sach',compact('dsBinhLuan'))->with(['thong_bao'=>"Xóa bình luận {$binhLuan->noi_dung} thành công!"]);;
 
     }
     
