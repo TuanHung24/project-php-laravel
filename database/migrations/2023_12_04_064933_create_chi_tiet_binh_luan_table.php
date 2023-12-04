@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('binh_luan', function (Blueprint $table) {
+        Schema::create('chi_tiet_binh_luan', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('khach_hang_id');
-            $table->bigInteger('san_pham_id');
+            $table->bigInteger('quan_tri_id');
             $table->text('noi_dung');
             $table->timestamp('ngay_tao');
             $table->timestamps();
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('binh_luan');
+        Schema::dropIfExists('chi_tiet_binh_luan');
     }
 };

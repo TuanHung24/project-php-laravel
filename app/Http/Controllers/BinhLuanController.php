@@ -13,18 +13,15 @@ class BinhLuanController extends Controller
         $dsBinhLuan=BinhLuan::all();
         return view("binh-luan.danh-sach" , compact('dsBinhLuan'));
     }
-    public function chiTiet($id){
+    public function traLoiBinhLuan($id){
         $binhLuan=Binhluan::find($id);
-        if(empty($dsBinhLuan))
+        if(empty($binhLuan))
         {
             return "Bình luận không tồn tại";
         }
-        return view("binh-luan.chi-tiet",compact('binhLuan'));
+        return view("binh-luan.tra-loi",compact('binhLuan'));
     }
-    public function traLoiBinhLuan($id)
-    {
-            
-    }
+    
     public function xoa($id){
         $binhLuan=Binhluan::find($id);
         if(empty($dsBinhLuan))

@@ -118,7 +118,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('binh-luan')->group(function(){
         Route::name('binh-luan.')->group(function(){
             Route::get('/',[BinhLuanController::class, 'danhSach'])->name('danh-sach');
-            Route::get('chi-tiet/{id}',[BinhLuanController::class, 'chiTiet'])->name('chi-tiet');
+            Route::get('tra-loi/{id}',[BinhLuanController::class, 'traLoiBinhLuan'])->name('tra-loi');
             Route::get('xoa/{id}',[BinhLuanController::class, 'xoa'])->name('xoa');
         });
     });

@@ -15,7 +15,7 @@
     <link href="{{ asset('style.css') }}" rel="stylesheet">
 </head>
 <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-<img src="{{asset('logo/logo-dt-2.png')}}" id="logo"/>
+<img src="{{asset('logo/logo-dt.png')}}" id="logo"/>
     <div class="navbar navbar-collapse responsive-navbar p-0">
        
         <div class="Search">

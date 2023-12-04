@@ -23,7 +23,7 @@ class SanPhamController extends Controller
 
     public function xuLyThemMoi(SanPhamRequest $request)
     {
-       
+        
         $files=$request->hinh_anh;
         $paths=[];
         

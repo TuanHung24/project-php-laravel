@@ -331,10 +331,10 @@ h3 {
 .info-detail{
     font-size: 15px;
     margin-left: 400px;
-    margin-top: -290px;
+    margin-top: -220px;
     padding: 2%;
     width:auto;
-    border-left:2px solid #c03d1c;
+    border-left:2px solid white;
 }
 .info-p{
     width: 200px;

@@ -9,4 +9,11 @@ class BinhLuan extends Model
 {
     use HasFactory;
     protected $table="binh_luan";
+
+    public function khach_hang(){
+        return $this->belongsTo(KhachHang::class);
+    }
+    public function san_pham(){
+        return $this->belongsTo(SanPham::class);
+    }
 }

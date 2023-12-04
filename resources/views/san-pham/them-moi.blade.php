@@ -18,24 +18,39 @@
     <div class="col-md-3">
         <label for="do-phan-giai" class="form-label">Độ phân giải:</label>
         <input type="text" id="do-phan-giai" class="form-control" name="do_phan_giai">
+        @error('do_phan_giai')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
     <div class="col-md-3">
         <label for="trong-luong" class="form-label">Trọng lượng:</label>
         <input type="text" id="trong-luong" class="form-control" name="trong_luong">
+        @error('trong_luong')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
         <label for="mo-ta" class="form-label">Mô tả:</label>
         <input type="text" id="mo-ta"class="form-control" name="mo_ta">
+        @error('mo_ta')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
     <div class="col-md-3">
         <label for="kich-thuoc" class="form-label">Kích thước:</label>
-        <input type="text" id="kich-thuoc" class="form-control" name="chip">
+        <input type="text" id="kich-thuoc" class="form-control" name="kich_thuoc">
+        @error('kich_thuoc')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
     <div class="col-md-3">
         <label for="man-hinh" class="form-label">Màn hình:</label>
         <textarea type="text" id="man-hinh" class="form-control" name="man_hinh"></textarea>
+        @error('man_hinh')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
 </div>
 <div class="row">
@@ -46,10 +61,16 @@
     <div class="col-md-3">
         <label for="he-dieu-hanh" class="form-label">Hệ điều hành:</label>
         <input type="text" id="he-dieu-hanh" class="form-control" name="he_dieu_hanh">
+        @error('he_dieu_hanh')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
     <div class="col-md-3">
         <label for="ram" class="form-label">Ram:</label>
         <input type="text" id="ram" class="form-control" name="ram">
+        @error('ram')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
 </div>
     
 </div>
@@ -61,10 +82,16 @@
     <div class="col-md-3">
         <label for="camera" class="form-label">Camera:</label>
         <input type="text" id="camera" class="form-control" name="camera">
+        @error('camera')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
     <div class="col-md-3">
         <label for="pin" class="form-label">Pin:</label>
         <input type="text" id="pin" class="form-control" name="pin">
+        @error('pin')
+        <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
 </div>
 <div class="row">
@@ -78,15 +105,6 @@
     </div>
     
 </div>
-<div class="row">
-    <div class="col-md-6">
-        <label for="thong-tin" class="form-label">Thông tin:</label>
-        <textarea type="textarea" class="form-control" id="thong-tin" name="thong_tin" rows="4" cols="50"></textarea>
-    </div>
-    
-    
-</div>
-
 <div class=row>
     <div class="col-md-6">
         <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
