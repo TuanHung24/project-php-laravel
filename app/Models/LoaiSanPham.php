@@ -12,12 +12,12 @@ class LoaiSanPham extends Model
     protected $table = "loai_san_pham";
     public function san_pham()
     {
-        return $this->hasMany(SanPham::class);
+        return $this->hasMany(SanPham::class,'loai_san_pham_id');
     }
     public function img()
     {
         return $this->belongsTo(HinhAnh::class);
-    }
+    }   
 }
 
 

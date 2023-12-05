@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email',100);
             $table->string('ten_dang_nhap',80);
             $table->string('password',100);
+            $table->string('dien_thoai',10);
             $table->boolean('trang_thai')->default(1);
             $table->timestamps();
         });

@@ -101,7 +101,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('nhap-hang.danh-sach')}}">
                                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                                Quản lý nhập hàng
+                                Quản lý kho
                             </a>
                         </li>
                         <li class="nav-item">
@@ -117,7 +117,6 @@
                                 Quản lý dung lượng và màu sắc
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('binh-luan.danh-sach')}}">
                                 <span data-feather="message-square" class="align-text-bottom"></span>
@@ -127,7 +126,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('slides.danh-sach')}}">
                                 <span data-feather="file-plus" class="align-text-bottom"></span>
-                                Quản lý slide
+                                Quản lý slideshow
                             </a>
                         </li>
                     </ul>

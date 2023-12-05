@@ -15,11 +15,29 @@ class ThemKhachHangSeeder extends Seeder
     public function run(): void
     {
        $khachHang=new KhachHang();
-       $khachHang->ho_ten='abc';
-       $khachHang->ten_dang_nhap='hung';
-       $khachHang->email='hung@gmail.com';
-       $khachHang->password=Hash::make('123');
+       $khachHang->ho_ten='Võ Văn Vinh';
+       $khachHang->ten_dang_nhap='VanVinh';
+       $khachHang->dien_thoai='0946147417';
+       $khachHang->email='vanvinh@gmail.com';
+       $khachHang->password=Hash::make(123);
        $khachHang->save();
+
+       $khachHang=new KhachHang();
+       $khachHang->ho_ten='Đào Hải Đăng';
+       $khachHang->ten_dang_nhap='HaiDang';
+       $khachHang->dien_thoai='0941486416';
+       $khachHang->email='haidang@gmail.com';
+       $khachHang->password=Hash::make(123);
+       $khachHang->save();
+
+       $khachHang=new KhachHang();
+       $khachHang->ho_ten='Trần Thế Thông';
+       $khachHang->ten_dang_nhap='TheThong';
+       $khachHang->dien_thoai='0989714477';
+       $khachHang->email='thethong@gmail.com';
+       $khachHang->password=Hash::make(123);
+       $khachHang->save();
+
        echo 'Thêm khách hàng thành công!';
     }
 }

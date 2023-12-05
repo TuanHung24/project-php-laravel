@@ -13,4 +13,8 @@ class MauSac extends Model
     {
         return $this->belongsTo(SanPham::class);
     }
+    public function chi_tiet_san_pham()
+    {
+        return $this->belongsTo(CTSanPham::class,'mau_sac_id');
+    }
 }

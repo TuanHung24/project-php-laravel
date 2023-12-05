@@ -22,7 +22,7 @@ class ThemAdminSeeder extends Seeder
         $quanTri->username='tuanhung';
         $quanTri->password=Hash::make(123);
         $quanTri->save();
-        echo "Thêm nhân viên {$quanTri->ho_ten} thành công!";
+       
 
         $quanTri=new QuanTri();
         $quanTri->avatar_url='avt/9f1eFXrFyin63Eh3B4OOwHYdtp0kLJuu0QnC6cd4.jpg';
@@ -33,7 +33,7 @@ class ThemAdminSeeder extends Seeder
         $quanTri->username='tuandi';
         $quanTri->password=Hash::make(123);
         $quanTri->save();
-        echo "Thêm nhân viên {$quanTri->ho_ten} thành công!";
+        
 
         $quanTri=new QuanTri();
         $quanTri->avatar_url='avt/9f1eFXrFyin63Eh3B4OOwHYdtp0kLJuu0QnC6cd4.jpg';
@@ -44,7 +44,8 @@ class ThemAdminSeeder extends Seeder
         $quanTri->username='quockhang';
         $quanTri->password=Hash::make(123);
         $quanTri->save();
-        echo "Thêm nhân viên {$quanTri->ho_ten} thành công!";
+        
+        echo "Thêm quản trị thành công!";
 
     }
 }

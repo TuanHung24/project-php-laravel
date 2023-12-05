@@ -5,118 +5,108 @@
     <h1 class="h2">THÊM MỚI SẢN PHẨM</h1>
 </div>
 <form method="POST" action="{{ route('san-pham.xl-them-moi') }}" enctype="multipart/form-data" class="container">
-@csrf
-<h5>Thông tin sản phẩm</h5>
-<div class="row">
-    <div class="col-md-6">
-        <label for="ten" class="form-label">Tên:</label>
-        <input type="text" class="form-control" name="ten">
-        @error('ten')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
+    @csrf
+    <h5 class="offset-md-6">Thông tin sản phẩm:</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ten" class="form-label">Tên:</label>
+            <input type="text" class="form-control" name="ten" value="{{old('ten')}}">
+            @error('ten')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-md-3">
+            <label for="do-phan-giai" class="form-label">Độ phân giải:</label>
+            <input type="text" id="do-phan-giai" class="form-control" name="do_phan_giai" value="{{old('do_phan_giai')}}">
+            @error('do_phan_giai')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-md-3">
+            <label for="trong-luong" class="form-label">Trọng lượng:</label>
+            <input type="text" id="trong-luong" class="form-control" name="trong_luong" value="{{old('trong_luong')}}">
+            @error('trong_luong')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
     </div>
-    <div class="col-md-3">
-        <label for="do-phan-giai" class="form-label">Độ phân giải:</label>
-        <input type="text" id="do-phan-giai" class="form-control" name="do_phan_giai">
-        @error('do_phan_giai')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-md-3">
-        <label for="trong-luong" class="form-label">Trọng lượng:</label>
-        <input type="text" id="trong-luong" class="form-control" name="trong_luong">
-        @error('trong_luong')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label for="mo-ta" class="form-label">Mô tả:</label>
-        <input type="text" id="mo-ta"class="form-control" name="mo_ta">
-        @error('mo_ta')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-md-3">
-        <label for="kich-thuoc" class="form-label">Kích thước:</label>
-        <input type="text" id="kich-thuoc" class="form-control" name="kich_thuoc">
-        @error('kich_thuoc')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-md-3">
-        <label for="man-hinh" class="form-label">Màn hình:</label>
-        <textarea type="text" id="man-hinh" class="form-control" name="man_hinh"></textarea>
-        @error('man_hinh')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label for="gia-ban" class="form-label">Giá bán:</label>
-        <input type="text" id="gia-ban" class="form-control" name="gia_ban">
-    </div>
-    <div class="col-md-3">
-        <label for="he-dieu-hanh" class="form-label">Hệ điều hành:</label>
-        <input type="text" id="he-dieu-hanh" class="form-control" name="he_dieu_hanh">
-        @error('he_dieu_hanh')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-md-3">
-        <label for="ram" class="form-label">Ram:</label>
-        <input type="text" id="ram" class="form-control" name="ram">
-        @error('ram')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-</div>
-    
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label for="so-luong" class="form-label">Số lượng:</label>
-        <input type="text" id="so-luong" class="form-control" name="so_luong">
-    </div>
-    <div class="col-md-3">
-        <label for="camera" class="form-label">Camera:</label>
-        <input type="text" id="camera" class="form-control" name="camera">
-        @error('camera')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-    <div class="col-md-3">
-        <label for="pin" class="form-label">Pin:</label>
-        <input type="text" id="pin" class="form-control" name="pin">
-        @error('pin')
-        <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <label for="loai-san-pham" class="form-label">Loại sản phẩm:</label>
-        <select name="loai_san_pham" class="form-select">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="loai-san-pham" class="form-label">Loại sản phẩm:</label>
+            <select name="loai_san_pham" class="form-select">     
             @foreach($dsLoaiSanPham as $LoaiSanPham)
-            <option value="{{$LoaiSanPham->id}}">{{$LoaiSanPham->ten}}</option>
+                @php
+                    $selectedValue = old('loai_san_pham', $LoaiSanPham->id);
+                @endphp
+            <option value="{{ $LoaiSanPham->id }}"   {{ $selectedValue ==   $LoaiSanPham->id ? 'selected' : '' }} >
+                {{ $LoaiSanPham->ten }}
+            </option>
             @endforeach
-        </select>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="camera" class="form-label">Camera:</label>
+            <input type="text" id="camera" class="form-control" name="camera" value="{{old('camera')}}">
+            @error('camera')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-md-3">
+            <label for="pin" class="form-label">Pin:</label>
+            <input type="text" id="pin" class="form-control" name="pin" value="{{old('pin')}}">
+            @error('pin')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
     </div>
-    
-</div>
-<div class=row>
-    <div class="col-md-6">
-        <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
-        <input type="file" name="hinh_anh[]" multiple/>
-        
+    <div class="row">
+        <div class="col-md-6">
+            <label for="mo-ta" class="form-label">Mô tả:</label>
+            <input type="text" id="mo-ta" class="form-control" name="mo_ta" value="{{old('mo_ta')}}">
+            @error('mo_ta')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-md-3">
+            <label for="kich-thuoc" class="form-label">Kích thước:</label>
+            <input type="text" id="kich-thuoc" class="form-control" name="kich_thuoc" value="{{old('kich_thuoc')}}">
+            @error('kich_thuoc')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-md-3">
+            <label for="man-hinh" class="form-label">Màn hình:</label>
+            <textarea type="text" id="man-hinh" class="form-control" name="man_hinh">{{old('man_hinh')}}</textarea>
+            @error('man_hinh')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
     </div>
-        @error('hinh-anh')
-        <span class="error-message">{{$message}}</span>
-        @enderror
-</div>
-<div class="col-md-2">
-    <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
+            <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple />
+            @error('hinh-anh')
+            <span class="error-message">{{$message}}</span>
+            @enderror
+        </div>
+        <div class="col-md-3 offset-md-3">
+            <label for="he-dieu-hanh" class="form-label">Hệ điều hành:</label>
+            <input type="text" id="he-dieu-hanh" class="form-control" name="he_dieu_hanh" value="{{old('he_dieu_hanh')}}">
+            @error('he_dieu_hanh')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-md-3">
+            <label for="ram" class="form-label">Ram:</label>
+            <input type="text" id="ram" class="form-control" name="ram" value="{{old('ram')}}">
+            @error('ram')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>
+    </div>
 </form>
 @endsection

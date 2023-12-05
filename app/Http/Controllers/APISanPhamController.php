@@ -11,7 +11,7 @@ class APISanPhamController extends Controller
     public function layDanhSach()
     {
         
-        $dsSanPham=SanPham::with('loai_san_pham','img')->get();
+        $dsSanPham=SanPham::with('loai_san_pham','img','chi_tiet_san_pham')->get();
         
         return response()->json([
             'success' =>true,
@@ -20,7 +20,7 @@ class APISanPhamController extends Controller
     }
     public function layChiTiet($id)
     {
-        $sanPham=SanPham::with(["loai_san_pham",'img'])->find($id);
+        $sanPham=SanPham::with(["loai_san_pham",'img','chi_tiet_san_pham'])->find($id);
         if(empty($sanPham))
         {
             return response()->json([
