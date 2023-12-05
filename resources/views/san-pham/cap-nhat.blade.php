@@ -7,7 +7,7 @@
 </div>
 <form class="container" method="POST" action="{{ route('san-pham.xl-cap-nhat', ['id' => $sanPham->id]) }}" enctype="multipart/form-data">
     @csrf
-    
+
     <table class="table table-striped table-sm">
         <thead>
             <tr>
@@ -26,7 +26,7 @@
         <tr>
             @endforeach
     </table>
-
+    
     <div class="row">
         <div class="col-md-6">
             <label for="ten" class="form-label">Tên:</label>

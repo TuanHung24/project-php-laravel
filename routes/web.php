@@ -13,6 +13,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\DungLuongMauSacController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\SlidesController;
+use App\Http\Controllers\KhachHangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function(){
             Route::get('cap-nhat/{id}', [SanPhamController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [SanPhamController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
             Route::get('chi-tiet/{id}', [SanPhamController::class, 'chiTietSanPham'])->name('chi-tiet');
-            Route::get('xoa/{id}', [SanPhamController::class, 'xoa'])->name('xoa');
+            Route::get('xoa/{id}', [SanPhamController::class, 'xoa'])->name('xoa'); 
         });
     });
 
@@ -139,8 +140,11 @@ Route::middleware('auth')->group(function(){
     Route::prefix('slides')->group(function(){
         Route::name('slides.')->group(function(){
             Route::get('/', [SlidesController::class, 'danhSach'])->name('danh-sach');
-            Route::get('/them-moi', [SlidesController::class, 'themMoi'])->name('them-moi');
-            Route::post('/them-moi', [SlidesController::class, 'xuLyThemMoi'])->name('xl-them-moi');
+            Route::get('them-moi', [SlidesController::class, 'themMoi'])->name('them-moi');
+            Route::post('them-moi', [SlidesController::class, 'xuLyThemMoi'])->name('xl-them-moi');
+            Route::get('cap-nhat/{id}', [SlidesController::class, 'capNhat'])->name('cap-nhat');
+            Route::post('cap-nhat/{id}', [SlidesController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
+            Route::get('xoa/{id}', [DungLuongMauSacController::class, 'xoa'])->name('xoa');
             });
         });
 });

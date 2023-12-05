@@ -1,19 +1,7 @@
 @extends('master')
 
 
-@section('page-sw')
-@if(session('thong_bao'))
-<script>
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: "{{session('thong_bao')}}",
-        showConfirmButton: true,
-        timer: 10000
-    })
-</script>
-@endif
-@endsection
+
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -24,23 +12,34 @@
         </div>
     </div>
 </div>
-
+@if(session('thong_bao'))
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div> 
+              {{session('thong_bao')}}
+        </div>
+    </div>
+@endif
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Tên tiêu đề</th>
                 <th>Ảnh tiêu đề</th>
+                <th>Tên tiêu đề</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
         @foreach($dsSlide as $Slide)
         <tr>
+            
             <td>{{ $Slide->id }}</td>
+            <td>
+                <img src="{{ $Slide->img_url}}" alt="ảnh" class="img_slide">
+            </td>
             <td>{{ $Slide->tieu_de }}</td>
             <td class="chuc-nang">
-               
+                <a href="{{ route('slides.cap-nhat', ['id' => $Slide->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
+                <a href="{{ route('slides.xoa', ['id' => $Slide->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
             </td>
         <tr>
             @endforeach

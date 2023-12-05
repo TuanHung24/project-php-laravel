@@ -52,7 +52,7 @@ class SanPhamRequest extends FormRequest
             'mo_ta.min'=>"Mô tả phải lớn hơn :min ký tự!",
             'kich_thuoc.required'=>"Kích thước không được bỏ trống!",
             'kich_thuoc.min'=>"Kích thước phải lớn hơn :min ký tự!",
-            'kich_thuoc.max'=>"Kích thước phải lớn hơn :max ký tự!",  
+            'kich_thuoc.max'=>"Kích thước phải nhỏ hơn :max ký tự!",  
 
             'man_hinh.required'=>"Màn hình không được bỏ trống!",
             'man_hinh.min'=>"Màn hình phải lớn hơn :min ký tự!",

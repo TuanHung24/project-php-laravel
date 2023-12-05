@@ -75,8 +75,14 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('nhan-vien.danh-sach')}}">
-                                <span data-feather="users" class="align-text-bottom"></span>
+                                <span data-feather="smile" class="align-text-bottom"></span>
                                 Quản lý nhân viên
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('khach-hang.danh-sach')}}">
+                                <span data-feather="users" class="align-text-bottom"></span>
+                                Quản lý khách hàng
                             </a>
                         </li>
                         <li class="nav-item">

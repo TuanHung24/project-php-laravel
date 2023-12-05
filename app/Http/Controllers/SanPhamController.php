@@ -67,7 +67,7 @@ class SanPhamController extends Controller
         
         $dsSanPham=SanPham::all();
         return view("san-pham.danh-sach", compact('dsSanPham'));
-    }
+    } 
 
     public function capNhat($id)
     {

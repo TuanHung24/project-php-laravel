@@ -26,6 +26,12 @@
     </div>
     <div class="row">
         <div class="col-md-6">
+            <label for="mat-khau" class="form-label">Mật khẩu:</label>
+            <input type="password" class="form-control" name="password" value="{{$khachHang->password}}" readonly>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
             <label for="dien_thoai" class="form-label">Điện thoại:</label>
             <input type="text" class="form-control" name="dien_thoai" value="{{$khachHang->dien_thoai}}">
         </div>

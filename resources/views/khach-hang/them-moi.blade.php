@@ -26,6 +26,12 @@
 </div>
 <div class="row">
     <div class="col-md-6">
+        <label for="mat-khau" class="form-label">Mật khẩu:</label>
+        <input type="text" class="form-control" name="password">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
         <label for="dien_thoai" class="form-label">Điện thoại:</label>
         <input type="text" class="form-control" name="dien_thoai">
     </div>
