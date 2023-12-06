@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LoaiSanPham;
+use App\Http\Requests\LoaiSanPhamRequest;
 use App\Models\SanPham;
 class LoaiSanPhamController extends Controller
 {
@@ -12,7 +13,7 @@ class LoaiSanPhamController extends Controller
         return view('loai-san-pham.them-moi');
     }
 
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(LoaiSanPhamRequest $request)
     {
         $loaiSanPham = new LoaiSanPham();
         if($request->ten!=null)

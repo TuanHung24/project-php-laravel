@@ -10,6 +10,9 @@
     <div class="col-md-6">
         <label for="ten" class="form-label">Tên:</label>
         <input type="text" class="form-control" name="ten">
+        @error('ten')
+            <span class="error message"> {{ $message }} </span>
+        @enderror
     </div>
 </div>
 
@@ -17,12 +20,18 @@
     <div class="col-md-6">
         <label for="dien_thoai" class="form-label">Điện thoại:</label>
         <input type="text" class="form-control" name="dien_thoai">
+        @error('dien_thoai')
+            <span class="error message"> {{ $message }} </span>
+        @enderror
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
         <label for="dia_chi" class="form-label">Địa chỉ:</label>
         <input type="text" class="form-control" name="dia_chi">
+        @error('dia_chi')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
 </div>
 <div class="col-md-2">

@@ -17,35 +17,24 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">CHI TIẾT HÓA ĐƠN</h1>
+    <h1 class="h2">CHI TIẾT BÌNH LUẬN</h1>
 </div>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
             <tr>
-                <th>Mã hóa đơn</th>
-                <th>Tên sản phẩm</th>
-                <th>Số lượng</th>
-                <th>Đơn giá</th>
-                <th>Thành tiền</th>
-                <th>Trạng thái</th>
+            <th>Mã bình luận</th>
+            <th>Khách hàng</th>
+            <th>Sản phẩm</th>
+            <th>Nội dung</th>
             </tr>
         </thead>
         @foreach($dsCTHoaDon as $cthoaDon)
         <tr>
-            <td>{{ $cthoaDon->hoa_don_id }}</td>
-            <td>{{ $cthoaDon->san_pham->ten }}</td>
-            <td>{{ $cthoaDon->so_luong }}</td>
-            <td>{{ $cthoaDon->don_gia }}</td>
-            <td>{{ $cthoaDon->thanh_tien }}</td>
-            <?php
-            if ($cthoaDon->trang_thai == true) {
-                $trang_thai = "Hoạt động";
-            } else {
-                $trang_thai = "Không hoạt động";
-            }
-            ?>
-            <td>{{ $trang_thai }}</td>
+            <td>{{ $binhLuan->khach_hang_id}}</td>
+            <td>{{ $binhLuan->san_pham_id}}</td>
+            <td>{{ $binhLuan->noi_dung }}</td>
+            <td>{{ $binhLuan->ngay_tao }}</td>
         <tr>
             @endforeach
     </table>

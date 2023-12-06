@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\NhaCungCap;
+use App\http\Requests\NhaCungCapRequest;
 class NhaCungCapController extends Controller
 {
     public function themMoi()
@@ -11,7 +12,7 @@ class NhaCungCapController extends Controller
         return view('nha-cung-cap.them-moi');
     }
 
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(NhaCungCapRequest $request)
     {
         $nhaCungCap = new NhaCungCap();
         if($request->ten!=null)

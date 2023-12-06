@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\QuanTri;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\NhanVienRequest;
 use LengthException;
 
 class QuanTriController extends Controller
@@ -14,9 +15,10 @@ class QuanTriController extends Controller
     {
         return view("nhan-vien.them-moi");
     }
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(NhanVienRequest $request)
     {
         $quanTri = new QuanTri();
+        dd($request);
         if($request->ho_ten!=null)
         {
             $file=$request->hinh_anh;
