@@ -18,11 +18,11 @@ class SanPham extends Model
     {
         return $this->hasMany(HinhAnh::class);
     }
-    public function color()
+    public function mau_sac()
     {
         return $this->hasMany(MauSac::class);
     }
-    public function size()
+    public function dung_luong()
     {
         return $this->hasMany(DungLuong::class);
     }

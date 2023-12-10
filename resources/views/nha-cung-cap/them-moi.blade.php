@@ -11,7 +11,7 @@
         <label for="ten" class="form-label">Tên:</label>
         <input type="text" class="form-control" name="ten">
         @error('ten')
-            <span class="error message"> {{ $message }} </span>
+            <span class="error-message"> {{ $message }} </span>
         @enderror
     </div>
 </div>
@@ -21,7 +21,7 @@
         <label for="dien_thoai" class="form-label">Điện thoại:</label>
         <input type="text" class="form-control" name="dien_thoai">
         @error('dien_thoai')
-            <span class="error message"> {{ $message }} </span>
+            <span class="error-message"> {{ $message }} </span>
         @enderror
     </div>
 </div>

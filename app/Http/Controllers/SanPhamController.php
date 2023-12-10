@@ -64,17 +64,16 @@ class SanPhamController extends Controller
     
     public function danhSach()
     {
-        
         $dsSanPham=SanPham::all();
         return view("san-pham.danh-sach", compact('dsSanPham'));
-    } 
+    }
 
     public function capNhat($id)
     {
         $dsLoaiSanPham=LoaiSanPham::all();
         $sanPham = SanPham::find($id);
         $dsHinhAnh=HinhAnh::where('san_pham_id',$id)->get();
-        $tTSanPham=ThongTinSanPham::with('san_pham')->find($id);
+        $tTSanPham=ThongTinSanPham::where('san_pham_id',$id)->first();
         if (empty($sanPham)) {
             return "Sản phẩm không tồn tại";
         }
@@ -144,7 +143,7 @@ class SanPhamController extends Controller
     public function chiTietSanPham($id)
     {
         $sanPham=SanPham::find($id);
-        $tTSanPham=ThongTinSanPham::with('san_pham')->find($id);
+        $tTSanPham=ThongTinSanPham::where('san_pham_id',$id)->first();
         $dsHinhAnh=HinhAnh::where('san_pham_id',$id)->get();
         $dsCTSanPham=CTSanPham::where('san_pham_id',$id)->get();
         return view('san-pham.chi-tiet', compact('sanPham', 'tTSanPham', 'dsHinhAnh','dsCTSanPham'));

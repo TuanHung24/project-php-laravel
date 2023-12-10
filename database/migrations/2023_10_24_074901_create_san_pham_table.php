@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('san_pham', function (Blueprint $table) {
             $table->id();
             $table->string('ten',50);
-            $table->text('mo_ta')->collation("utf8_unicode_ci")->nullable();
-            $table->bigInteger('loai_san_pham_id');
+            $table->text('mo_ta')->nullable();
+
+
+            $table->foreignId('loai_san_pham_id')->constrained('loai_san_pham');
+
             $table->boolean('trang_thai')->default(1);
             $table->timestamps(); 
         });

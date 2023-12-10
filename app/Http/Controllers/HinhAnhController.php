@@ -13,7 +13,6 @@ class HinhAnhController extends Controller
     
     public function hinhAnhXoa($id)
     {
-
         $hinhAnh=HinhAnh::find($id);
         if(!empty($hinhAnh->img_url))
         {
@@ -21,7 +20,7 @@ class HinhAnhController extends Controller
             if (file_exists(public_path($imgPath))) {
             unlink(public_path($imgPath));
             $hinhAnh->delete();
-        }
+            }
         }
         if(empty($hinhAnh)){
             return redirect()->route("san-pham.danh-sach")->with(['thong_bao'=>"Xóa ảnh thành công!"]);

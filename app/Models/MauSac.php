@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MauSac extends Model
 {
     use HasFactory;
-    protected $table ="color";
+    protected $table ="mau_sac";
+    protected $hidden=['created_at','updated_at'];
     public function san_pham()
     {
         return $this->belongsTo(SanPham::class);

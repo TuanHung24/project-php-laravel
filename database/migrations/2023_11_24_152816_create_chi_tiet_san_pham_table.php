@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_san_pham', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("san_pham_id");
-            $table->bigInteger("mau_sac_id");
-            $table->bigInteger("dung_luong_id");
+            $table->foreignId('san_pham_id')->constrained('san_pham');
+            $table->foreignId('mau_sac_id')->constrained('mau_sac');
+            $table->foreignId('dung_luong_id')->constrained('dung_luong');
             $table->decimal("gia_ban",10,0);
             $table->integer("so_luong");
             $table->boolean("trang_thai")->default(1);

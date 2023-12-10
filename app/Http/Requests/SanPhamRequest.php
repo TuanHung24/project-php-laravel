@@ -21,7 +21,7 @@ class SanPhamRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        return [ 
             'ten'=>'required|min:10',
             'do_phan_giai'=>'required|min:10',
 

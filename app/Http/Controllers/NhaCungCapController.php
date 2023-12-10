@@ -14,10 +14,11 @@ class NhaCungCapController extends Controller
 
     public function xuLyThemMoi(NhaCungCapRequest $request)
     {
-        $nhaCungCap = new NhaCungCap();
+        
         if($request->ten!=null)
         {
-            $nhaCungCap->ten          = $request->ten;
+            $nhaCungCap = new NhaCungCap();
+            $nhaCungCap->ten             = $request->ten;
             $nhaCungCap->dien_thoai      = $request->dien_thoai;
             $nhaCungCap->dia_chi         = $request->dia_chi;
             $nhaCungCap->trang_thai      = 1;

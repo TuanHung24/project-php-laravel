@@ -18,7 +18,7 @@ class DangNhapController extends Controller
     {
         if(Auth::attempt(['username'=> $rq->ten_dang_nhap,'password'=>$rq->password,'trang_thai'=>true]))
         {   
-            return redirect()->route('san-pham.danh-sach')->with(['thong_bao'=>"Đăng nhập thành công!"]);
+            return redirect()->route('san-pham.danh-sach')->with(['dang_nhap'=>"Đăng nhập thành công!"]);
         }
         return view('dang-nhap');
             

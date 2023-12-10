@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('quan_tri', function (Blueprint $table) {
             $table->id();
             $table->text('avatar_url')->nullable();
-            $table->string("ho_ten",40)->collation("utf8_unicode_ci");
-            $table->string("dien_thoai",10)->collation("utf8_unicode_ci")->nullable();
-            $table->string("email",80)->collation("utf8_unicode_ci")->nullable();
-            $table->string("dia_chi",128)->collation("utf8_unicode_ci")->nullable();
-            $table->string("username",60)->collation("utf8_unicode_ci");
-            $table->string("password",100)->collation("utf8_unicode_ci");
+            $table->string("ho_ten",40);
+            $table->string("dien_thoai",10)->nullable();
+            $table->string("email",80)->nullable();
+            $table->string("dia_chi",128)->nullable();
+            $table->string("username",60);
+            $table->string("password",100);
             $table->boolean("trang_thai")->default(1);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

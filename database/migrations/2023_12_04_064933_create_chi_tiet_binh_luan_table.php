@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_binh_luan', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('quan_tri_id');
+            $table->foreignId('quan_tri_id')->constrained('quan_tri');
             $table->text('noi_dung');
             $table->timestamp('ngay_tao');
             $table->timestamps();

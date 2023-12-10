@@ -9,6 +9,7 @@ class CTSanPham extends Model
 {
     use HasFactory;
     protected $table='chi_tiet_san_pham';
+    protected $hidden=['san_pham_id','mau_sac_id','dung_luong_id','trang_thai','created_at','updated_at'];
     public function mau_sac()
     {
         return $this->belongsTo(MauSac::class,'mau_sac_id');
