@@ -22,7 +22,7 @@ class NhaCungCapRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'ten'=>'required|min:10',
+           'ten'=>'required|min:10',  
            'dien_thoai'=>'required|min:10|max:11',
            'dia_chi'=>'required|min:10|max:100',
         ];

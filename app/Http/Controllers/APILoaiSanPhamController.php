@@ -9,13 +9,18 @@ class APILoaiSanPhamController extends Controller
 {
     public function layDanhSach()
     {
-        $dsLoaiSanPham = LoaiSanPham::with(['san_pham.img','san_pham.chi_tiet_san_pham' => function ($query) {
-            $query->where('so_luong', '>', 0);
-        }])
-        ->whereHas('san_pham.chi_tiet_san_pham', function ($query) {
-            $query->where('so_luong', '>', 0);
-        })
+        $dsLoaiSanPham = LoaiSanPham::with([
+            'san_pham.img',
+            'san_pham.chi_tiet_san_pham' => function ($query) {
+                $query->where('so_luong', '>', 0);
+            },
+            'san_pham.chi_tiet_san_pham.mau_sac',
+            'san_pham.chi_tiet_san_pham.dung_luong',
+        ])
+        ->whereHas('chi_tiet_san_pham.mau_sac')
+        ->whereHas('chi_tiet_san_pham.dung_luong')
         ->get();
+
 
         return response()->json([ 
             'success' =>true,

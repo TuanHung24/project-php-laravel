@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('binh_luan', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('khach_hang_id');
-            $table->bigInteger('san_pham_id');
+            
+            $table->foreignId('khach_hang_id')->constrained('khach_hang');
+
+            
+            $table->foreignId('san_pham_id')->constrained('san_pham');
+            
             $table->text('noi_dung');
             $table->timestamp('ngay_tao');
             $table->timestamps();

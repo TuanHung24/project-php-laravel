@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('phieu_nhap', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("nha_cung_cap_id");
+            
+            $table->foreignId('nha_cung_cap_id')->constrained('nha_cung_cap');
+            
             $table->timestamp("ngay_nhap");
             $table->decimal("tong_tien",12,0)->nullable();
             $table->boolean("trang_thai")->default(1);

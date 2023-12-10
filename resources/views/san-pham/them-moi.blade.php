@@ -52,7 +52,7 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="pin" class="form-label">Pin:</label>
+            <label for="pin" class="form-label">Pin(mAh):</label>
             <input type="text" id="pin" class="form-control" name="pin" value="{{old('pin')}}">
             @error('pin')
             <span class="error-message">{{ $message }}</span>
@@ -68,14 +68,14 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="kich-thuoc" class="form-label">Kích thước:</label>
+            <label for="kich-thuoc" class="form-label">Kích thước(dài-ngang-dày):</label>
             <input type="text" id="kich-thuoc" class="form-control" name="kich_thuoc" value="{{old('kich_thuoc')}}">
             @error('kich_thuoc')
             <span class="error-message">{{ $message }}</span>
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="man-hinh" class="form-label">Màn hình:</label>
+            <label for="man-hinh" class="form-label">Màn hình(inch):</label>
             <textarea type="text" id="man-hinh" class="form-control" name="man_hinh">{{old('man_hinh')}}</textarea>
             @error('man_hinh')
             <span class="error-message">{{ $message }}</span>
@@ -98,7 +98,7 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="ram" class="form-label">Ram:</label>
+            <label for="ram" class="form-label">Ram(GB):</label>
             <input type="text" id="ram" class="form-control" name="ram" value="{{old('ram')}}">
             @error('ram')
             <span class="error-message">{{ $message }}</span>

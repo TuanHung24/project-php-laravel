@@ -45,11 +45,11 @@
             </li>
             <li class="info-li">
                 <p class="info-p">Trọng lượng: </p>
-                <span>{{$tTSanPham->trong_luong}}</span>
+                <span>{{$tTSanPham->trong_luong}} g</span>
             </li>
             <li class="info-li">
                 <p class="info-p">Màn hình: </p>
-                <span>{{$tTSanPham->man_hinh}}</span>
+                <span>{{$tTSanPham->man_hinh}} Inch</span>
             </li>
             <li class="info-li">
                 <p class="info-p">Hệ điều hành: </p>
@@ -65,11 +65,11 @@
             </li>
             <li class="info-li">
                 <p class="info-p">Pin: </p>
-                <span>{{$tTSanPham->pin}}</span>
+                <span>{{$tTSanPham->pin}} mAh</span>
             </li>
             <li class="info-li">
                 <p class="info-p">Ram: </p>
-                <span>{{$tTSanPham->ram}}</span>
+                <span>{{$tTSanPham->ram}} GB</span>
             </li>                        
            
     </div>

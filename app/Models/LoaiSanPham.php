@@ -18,6 +18,18 @@ class LoaiSanPham extends Model
     {
         return $this->belongsTo(HinhAnh::class);
     }   
+    public function chi_tiet_san_pham()
+    {
+        // Đảm bảo rằng có sự tương ứng với tên bảng và khóa ngoại
+        return $this->hasManyThrough(
+            CTSanPham::class,
+            SanPham::class,
+            'loai_san_pham_id', // Khóa ngoại của LoaiSanPham trong SanPham
+            'san_pham_id', // Khóa ngoại của SanPham trong ChiTietSanPham
+            'id', // Khóa chính của LoaiSanPham
+            'id' // Khóa chính của ChiTietSanPham
+        );
+    }
 }
 
 

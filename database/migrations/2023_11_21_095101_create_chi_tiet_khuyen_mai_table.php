@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_khuyen_mai', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('khuyen_mai_id');
-            $table->bigInteger('san_pham_id');
-            $table->bigInteger('loai_id');
+           
+            $table->foreignId('khuyen_mai_id')->constrained('khuyen_mai');
+
+           
+            $table->foreignId('san_pham_id')->constrained('san_pham');
+
+            $table->bigInteger('loai_id')->nullable();
             $table->timestamps();
         });
     }

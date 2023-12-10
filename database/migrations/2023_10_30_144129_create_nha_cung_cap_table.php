@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('nha_cung_cap', function (Blueprint $table) {
             $table->id();
-            $table->string("ten",80)->collation("utf8_unicode_ci");
-            $table->string("dien_thoai",10)->collation("utf8_unicode_ci");
-            $table->string("dia_chi",128)->collation("utf8_unicode_ci");
+            $table->string("ten",80);
+            $table->string("dien_thoai",10);
+            $table->string("dia_chi",128);
             $table->boolean("trang_thai")->default(1);
             $table->timestamps();
         });

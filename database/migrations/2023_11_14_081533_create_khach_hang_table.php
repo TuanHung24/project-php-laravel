@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('dien_thoai',10);
             $table->string('dia_chi',100)->nullable();
             $table->boolean('trang_thai')->default(1);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

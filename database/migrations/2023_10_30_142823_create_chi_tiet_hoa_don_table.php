@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_hoa_don', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("hoa_don_id");
-            $table->bigInteger("san_pham_id");
+           
+            $table->foreignId('hoa_don_id')->constrained('hoa_don');
+
+            
+            $table->foreignId('san_pham_id')->constrained('san_pham');
+
             $table->integer("so_luong");
             $table->decimal("don_gia",10,0);
             $table->decimal("thanh_tien",10,0);

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('hoa_don', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("nhan_vien_id")->nullable();
+            $table->foreignId('quan_tri_id')->constrained('quan_tri');
             $table->string("khach_hang",60);
             $table->decimal("tong_tien",12,0)->nullable();
-            $table->string("phuong_thuc_tt",60)->default("COD");
+            $table->string("phuong_thuc_tt",60);
             $table->boolean("trang_thai")->default(1);
             $table->timestamp("ngay_tao");
             $table->timestamps();

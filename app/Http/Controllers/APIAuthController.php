@@ -21,11 +21,12 @@ class APIAuthController extends Controller
         if(!$token=auth('api')->attempt($credentials)){
             return response()->json(['error'=>"Đăng nhập không thành công"],401);
         }
+        
         return $this->respondWithToken($token);
     }
 
     public function logout()
-    {
+    { 
         auth('api')->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
