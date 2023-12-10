@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KhachHang;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\KhachHangRequest;
 
 class KhachHangController extends Controller
 {
@@ -13,7 +14,7 @@ class KhachHangController extends Controller
         return view('khach-hang.them-moi');
     }
 
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(KhachHangRequest $request)
     {
         $khachHang = new KhachHang();
         if($request->ho_ten!=null)

@@ -34,7 +34,7 @@
         <td>{{ $sanPham->id }}</td>
         <td>{{ $sanPham->ten }}</td>
         <td>{{ $sanPham->mo_ta }}</td>
-        <td>{{ $sanPham->loai_san_pham->ten }}</td>
+        <td>{{ $sanPham->loai_san_pham }}</td>
         <?php
         if($sanPham->trang_thai==1)
         {

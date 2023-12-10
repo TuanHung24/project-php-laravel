@@ -21,14 +21,18 @@
   <div class="col-md-6">
     <label for="mau_sac" class="form-label">Màu sắc:</label>
     <input type="text" class="form-control" name="mau_sac" id="mau-sac">
-    <span class="error" id="error-mau-sac">Vui lòng nhập màu sắc!</span>
+    @error('mau_sac')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="dung_luong" class="form-label">Dung lượng:</label>
     <input type="text" class="form-control" name="dung_luong" id="dung-luong">
-    <span class="error" id="error-dung-luong">Vui lòng nhập dung lượng!</span>
+    @error('dung_luong')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <button type="button" id="btn-them" class="btn btn-success"><span data-feather="plus"></span>Thêm</button>
@@ -93,7 +97,7 @@
 
  
 
-      var row = `<tr>
+      var row = <tr>
       <td>${stt}</td>
       <td>${tenSP}<input type="hidden" name="idSP[]" value="${idSP}"/></td>
       <td>${mauSac}<input type="hidden" name="mauSac[]" value="${mauSac}"/></td>

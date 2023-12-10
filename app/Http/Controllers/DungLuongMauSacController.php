@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\MauSac;
 use App\Models\SanPham;
 use App\Models\DungLuong;
+use App\Http\Requests\DungLuongRequest;
+use App\Http\Requests\MauSacRequest;
 class DungLuongMauSacController extends Controller
 {
     
@@ -17,14 +19,14 @@ class DungLuongMauSacController extends Controller
         $dsSanPham = SanPham::all();
         return view("mau-dung-luong.them-moi",compact('dsSanPham'));
     }
-    public function themMoiMauAjax(Request $request){          
+    public function themMoiMauAjax(MauSacRequest $request){          
             $mauSac             = new MauSac();   
             $mauSac->ten        = $request->mau_sac;
             $mauSac->save();       
         return redirect()->route('mau-dung-luong.danh-sach');
         
     }
-    public function themMoiDungLuongAjax(Request $request){     
+    public function themMoiDungLuongAjax(DungLuongRequest $request){     
         $dungLuong              = new DungLuong();
         $dungLuong->ten         = $request->dung_luong;
         $dungLuong->save();   
