@@ -12,7 +12,7 @@
     </div>
 </div>
 @if(session('thong_bao'))
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div class="alert alert-success d-flex align-items-center" role="alert">
         <div> 
               {{session('thong_bao')}}
         </div>
