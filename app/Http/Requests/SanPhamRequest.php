@@ -31,7 +31,7 @@ class SanPhamRequest extends FormRequest
             'kich_thuoc'=>'required|min:10|max:100',
            
             'man_hinh'=>'required|min:1|max:20',
-            'he_dieu_hanh'=>'required|min:3|max:6',
+            'he_dieu_hanh'=>'required|min:3',
 
             'ram'=>'required|min:1',
             'camera'=>'required|min:3',
@@ -60,7 +60,6 @@ class SanPhamRequest extends FormRequest
             
             'he_dieu_hanh.required'=>"Hệ điều hành không được bỏ trống!",
             'he_dieu_hanh.min'=>"Hệ điều hành phải lớn hơn :min ký tự!",
-            'he_dieu_hanh.max'=>"Hệ điều hành phải nhỏ hơn :max ký tự!",
             'ram.required'=>"Ram không được bỏ trống!",
             'ram.min'=>"Ram phải lớn hơn :min ký tự!",  
 
