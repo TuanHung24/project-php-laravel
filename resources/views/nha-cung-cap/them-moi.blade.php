@@ -12,11 +12,8 @@
         <input type="text" class="form-control" name="ten">
         @error('ten')
             <span class="error-message"> {{ $message }} </span>
-<<<<<<< HEAD
-        @enderror`
-=======
+
         @enderror
->>>>>>> 956715489a1ac065fde7033c0f0d073dfaf2c2ec
     </div>
 </div>
 
