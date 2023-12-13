@@ -31,7 +31,7 @@ class SanPhamRequest extends FormRequest
             'kich_thuoc'=>'required|min:10|max:100',
            
             'man_hinh'=>'required|min:1|max:20',
-            'he_dieu_hanh'=>'required|min:6|max:32',
+            'he_dieu_hanh'=>'required|min:3|max:6',
 
             'ram'=>'required|min:1',
             'camera'=>'required|min:3',
