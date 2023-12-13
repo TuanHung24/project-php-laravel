@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\NhanVien;
+use App\Models\QuanTri;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
@@ -40,7 +41,7 @@ class DangNhapController extends Controller
     public function capNhatThongTin(Request $request)
     {
         
-        $nhanVien=NhanVien::find(Auth::user()->id);
+        $nhanVien=QuanTri::find(Auth::user()->id);
         if(isset($request->avatar))
         {
             $file=$request->avatar;
@@ -63,7 +64,7 @@ class DangNhapController extends Controller
         if (!Hash::check($rq->password, Auth::user()->password)) {
             return redirect()->route("doi-mat-khau")->with(['error' => 'Mật khẩu cũ không đúng!']);
         }
-        $taiKhoan=NhanVien::find(Auth::user()->id);
+        $taiKhoan=QuanTri::find(Auth::user()->id);
         $taiKhoan->password=Hash::make($rq->respassword);
         $taiKhoan->save();
         return redirect()->route('thong-tin')->with(['thong_bao'=>"Thay đổi mật khẩu thành công!"]);
