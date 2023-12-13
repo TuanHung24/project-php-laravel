@@ -106,10 +106,10 @@ td{
     margin-bottom:4px;
 }
 
-.dropdown{
-    padding: 4% 0%;
+.dropdown.info{
+    margin-top: -10px;
+    margin-left: 40px;
     height: 80px;
-    background: rgb(42, 103, 177);
 }
 .admin{
     margin-left: 7%;
@@ -117,7 +117,7 @@ td{
 }
 .dropdown-menu{
     display: block;
-    margin-left: 27%;
+    margin-left: -150%;
     margin-top: -29%;
     display: none;
     
@@ -145,27 +145,47 @@ h3 {
 
 .navbar
 {
-    width: 82%;
+    width: 83.5%;
     height: 70px;
     margin-left: 255px;
 }
 .bell-mail{
-    margin: 18px 30px 0 10px;
+    margin: 18px 30px 0 900px;
     display: flex;
     height: -webkit-fill-available;
 }
 .Search{
+    margin-bottom: 20px;
+    margin-left: 30px;
+    height: 50px;
+    width: 500px;
     display: flex;
 }
+.label_title{
+    margin-top: 10px;
+    font-size: 20px;
+}
+.submit_search{
+    display: flex;
+}
+.btn.btn-primary.seach{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -5px;
+    padding: 1px 20px;
+}
 .form-control.form-control-dark{
+    color: black;
     width: 700px;
     background: rgb(216, 216, 216);
     margin-right: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .feather.feather-mail{
     height: 30px;
-    margin-left: 10px;
-    width: 30px;
+    margin-left: -5px;
+    width: 40px;
 }
 
 .feather.feather-bell{
@@ -177,13 +197,15 @@ h3 {
 
 #dropdown-bell{
    background-color: white;
-    margin-top: 10px;
-    margin-left: 0%;
+    margin-top: 30px;
+    margin-left: -100%;
 }
 .dropdown.bell{
+    margin-top: 4px;
+    margin-left: 2px;
+    display: flex;
     background: rgb(250, 250, 250);
     color: rgb(0, 0, 0);
-    
 }
 #bell{
     height: 40px;
@@ -265,13 +287,13 @@ h3 {
 }
 #logo{
     height: 70px;
-    width: 321px;
-    margin-left: -255px;
+    width: 358px;
+    margin-left: -257px;
 }
 
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 20px auto;
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -348,4 +370,38 @@ h3 {
 .img_slide{
     width: 300px;
     height: 60px;
+}
+.thong_ke{
+    display: flex;
+}
+
+.count_container{
+    padding: 10px 20px;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    color: white;
+    
+}
+.count_sp{
+    background: rgb(79, 79, 233);
+    line-height: 1.8em;
+}
+.count_hd{
+    background: rgb(72, 210, 72);
+    line-height: 1.8em;
+}
+.count_nd{
+    background: rgb(235, 71, 71);
+    line-height: 1.8em;
+}
+#icon-tk
+{
+    height: 50px;
+    width: 50px;
+   
+}
+.form-control.dai,.form-control.ngang,.form-control.day{
+    width: 90px;
+   margin: 0px;
 }

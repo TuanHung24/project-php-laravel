@@ -67,16 +67,16 @@
             <span class="error-message">{{ $message }}</span>
             @enderror
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3"> 
             <label for="kich-thuoc" class="form-label">Kích thước(dài-ngang-dày):</label>
-            <input type="text" id="kich-thuoc" class="form-control" name="kich_thuoc" value="{{old('kich_thuoc')}}">
+            <textarea type="text" id="kich-thuoc" class="form-control" cols="3" name="kich_thuoc"></textarea>
             @error('kich_thuoc')
             <span class="error-message">{{ $message }}</span>
             @enderror
         </div>
         <div class="col-md-3">
             <label for="man-hinh" class="form-label">Màn hình(inch):</label>
-            <textarea type="text" id="man-hinh" class="form-control" name="man_hinh">{{old('man_hinh')}}</textarea>
+            <input type="text" id="man-hinh" class="form-control" name="man_hinh" value="{{old('man_hinh')}}">
             @error('man_hinh')
             <span class="error-message">{{ $message }}</span>
             @enderror
@@ -85,8 +85,8 @@
     <div class="row">
         <div class="col-md-3">
             <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
-            <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple />
-            @error('hinh-anh')
+            <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple required/><br/>
+            @error('hinh_anh')
             <span class="error-message">{{$message}}</span>
             @enderror
         </div>

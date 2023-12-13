@@ -99,10 +99,10 @@
       </tbody>
     </table>
   </div>
-  <input type="hidden" id="ncc-id" name="ncc"/>
+  <input type="hidden" id="ncc-id" name="ncc" />
   <input type="hidden" id="sp-id" name="sp" />
-  <input type="hidden" id="mau-id" name="mau"/>
-  <input type="hidden" id="dl-id" name="dl"/>
+  <input type="hidden" id="mau-id" name="mau" />
+  <input type="hidden" id="dl-id" name="dl" />
   <div class="col-md-2">
     <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>
   </div>
@@ -125,59 +125,11 @@
       var giaNhap = $("#gia-nhap").val();
       var giaBan = $("#gia-ban").val();
       var thanhTien = soLuong * giaNhap;
-      
-      if ($("#ncc-id").val() === "" || $("#ncc-id").val() === "Chọn nhà cung cấp") {
-        $("#error-nha-cung-cap").text("Vui lòng chọn nhà cung cấp!");
-        return;
-      } else {
-        $("#error-nha-cung-cap").text("");
-      }
 
-      if ($("#sp-id").val() === "" || $("#sp-id").val() === "Chọn sản phẩm") {
-        $("#error-san-pham").text("Vui lòng chọn sản phẩm!");
+      if (!validateInput()) {
         return;
-      } else {
-        $("#error-san-pham").text("");
-        
       }
-
-      if($("#mau-id").val()==="" || $("#mau-id").val()==="Chọn màu")
-      {
-        $("#error-mau").text("Vui lòng chọn màu!");
-        return;
-      }else{
-        $("#error-mau").text("");
-        
-      }
-
-      if($("#dl-id").val()==="" || $("#dl-id").val()==="Chọn dung lượng")
-      {
-        $("#error-dung-luong").text("Vui lòng chọn dung lượng!");
-        return;
-       
-      }else{
-        $("#error-dung-luong").text("");
-        
-      }
-
-      if (giaNhap === "") {
-        $("#error-gia-nhap").text("Vui lòng nhập giá nhập!");
-        return;
-        
-      } else {
-        $("#error-gia-nhap").text("");
-        
-      }
-
-      if (giaBan === "") {
-        $("#error-gia-ban").text("Vui lòng nhập giá bán");
-        return;
-        
-      } else {
-        $("#error-gia-ban").text("");
-      }
-      
-        var row = `<tr>
+      var row = `<tr>
       <td>${stt}</td>
       <td>${tenSP}<input type="hidden" name="idSP[]" value="${idSP}"/></td>
       <td>${dungLuong}<input type="hidden" name="idDungLuong[]" value="${idDL}"/></td>
@@ -199,7 +151,59 @@
       $("#gia-nhap").val("");
       $("#gia-ban").val("");
       $("#so-luong").val("1");
-      
+
+      function validateInput() {
+        var isValid = true;
+        if ($("#ncc-id").val() === "" || $("#ncc-id").val() === "Chọn nhà cung cấp") {
+          $("#error-nha-cung-cap").text("Vui lòng chọn nhà cung cấp!");
+          isValid = false;
+        } else {
+          $("#error-nha-cung-cap").text("");
+        }
+
+        if ($("#sp-id").val() === "" || $("#sp-id").val() === "Chọn sản phẩm") {
+          $("#error-san-pham").text("Vui lòng chọn sản phẩm!");
+          isValid = false;
+        } else {
+          $("#error-san-pham").text("");
+
+        }
+
+        if ($("#mau-id").val() === "" || $("#mau-id").val() === "Chọn màu") {
+          $("#error-mau").text("Vui lòng chọn màu!");
+          isValid = false;
+        } else {
+          $("#error-mau").text("");
+
+        }
+
+        if ($("#dl-id").val() === "" || $("#dl-id").val() === "Chọn dung lượng") {
+          $("#error-dung-luong").text("Vui lòng chọn dung lượng!");
+          isValid = false;
+
+        } else {
+          $("#error-dung-luong").text("");
+
+        }
+
+        if (giaNhap === "") {
+          $("#error-gia-nhap").text("Vui lòng nhập giá nhập!");
+          isValid = false;
+
+        } else {
+          $("#error-gia-nhap").text("");
+
+        }
+
+        if (giaBan === "") {
+          $("#error-gia-ban").text("Vui lòng nhập giá bán");
+          isValid = false;
+
+        } else {
+          $("#error-gia-ban").text("");
+        }
+        return isValid;
+      }
     });
 
     $('#tb-ds-san-pham').on('click', '#btn-xoa', function() {
@@ -219,11 +223,11 @@
       $("#sp-id").val(this.value);
     });
 
-    $("#mau-sac").click(function(){
+    $("#mau-sac").click(function() {
       $("#mau-id").val(this.value);
     });
 
-    $("#dung-luong").click(function(){
+    $("#dung-luong").click(function() {
       $("#dl-id").val(this.value);
     });
   });

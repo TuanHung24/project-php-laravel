@@ -14,6 +14,8 @@ use App\Http\Controllers\DungLuongMauSacController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\SlidesController;
 use App\Http\Controllers\KhachHangController;
+use App\Http\Controllers\ThongKeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +28,8 @@ use App\Http\Controllers\KhachHangController;
 */
 
 Route::middleware('auth')->group(function(){
+    Route::get('/thong-ke', [ThongKeController::class, 'danhSach'])->name('thong-ke');
     
-    Route::get('/', [SanPhamController::class, 'danhSach'])->name('san-pham.danh-sach');
     Route::get('hinh-anh/{id}', [HinhAnhController::class, 'hinhAnhXoa'])->name('hinh-anh');
     Route::get('dang-xuat', [DangNhapController::class, 'dangXuat'])->name('dang-xuat');
     Route::get('thong-tin',[DangNhapController::class,'thongTin'])->name('thong-tin');
@@ -39,6 +41,7 @@ Route::middleware('auth')->group(function(){
             Route::get('them-moi', [SanPhamController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi', [SanPhamController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('/', [SanPhamController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [SanPhamController::class, 'timKiem'])->name('tim-kiem');
             Route::get('cap-nhat/{id}', [SanPhamController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [SanPhamController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
             Route::get('chi-tiet/{id}', [SanPhamController::class, 'chiTietSanPham'])->name('chi-tiet');

@@ -2,6 +2,13 @@
 
 
 @section('content')
+<form action="{{route('san-pham.tim-kiem')}}" class="submit_search" id="search-form">
+    <label class="label_title">Nhập tên sản phẩm:</label>
+    <div class="Search">
+        <input type="search" class="form-control form-control-dark" name="search_name" value="{{$reQuest ?? null}}" placeholder="Tìm kiếm..." aria-label="Search" />
+        <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
+    </div>
+</form>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2"><span data-feather="list" ></span>DANH SÁCH SẢN PHẨM</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -34,7 +41,7 @@
         <td>{{ $sanPham->id }}</td>
         <td>{{ $sanPham->ten }}</td>
         <td>{{ $sanPham->mo_ta }}</td>
-        <td>{{ $sanPham->loai_san_pham }}</td>
+        <td>{{ $sanPham->loai_san_pham->ten }}</td>
         <?php
         if($sanPham->trang_thai==1)
         {
@@ -56,4 +63,23 @@
     @endforeach
 </table>
 </div>
+@endsection
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#search-form').submit(function(e) {
+           
+            e.preventDefault();
+
+            
+            var searchValue = $('search_name]').val();
+
+           
+            if (searchValue.trim() !== '') {
+                console.log('Searching for: ' + searchValue);
+            }
+        });
+    })
+</script>
+@section('page-js')
+
 @endsection

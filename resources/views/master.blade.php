@@ -17,11 +17,6 @@
 <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
 <img src="{{asset('logo/logo-dt.png')}}" id="logo"/>
     <div class="navbar navbar-collapse responsive-navbar p-0">
-       
-        <div class="Search">
-            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-        </div>
         <div class="bell-mail">
         <div class="dropdown bell" id="bell">
             <a data-feather="bell">
@@ -43,6 +38,22 @@
         </div>
 
             <a data-feather="mail"></a>
+
+            <div class="dropdown info" id="dropdown-avatar">
+                <div class="dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="{{asset(Auth::user()->avatar_url)}}" class="rounded-circle" />
+                </div>
+                <span class="admin">{{Auth::user()->username}}</span>
+                <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li>
+                        <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>Thông tin cá nhân</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{route('dang-xuat')}}"><span data-feather="log-out"></span>Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </header>
@@ -53,23 +64,6 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky sidebar-sticky">
                     <ul class="nav flex-column">
-                        <div class="dropdown" id="dropdown">
-                            <div class="dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <img src="{{asset(Auth::user()->avatar_url)}}" class="rounded-circle" />
-                            </div>
-                            <span class="admin">{{Auth::user()->username}}</span>
-                            <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
-                                <li>
-                                    <a class="dropdown-item" href="{{route('thong-tin')}}"><span data-feather="archive"></span>Thông tin cá nhân</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"><span data-feather="settings"></span>Cài đặt</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{route('dang-xuat')}}"><span data-feather="log-out"></span>Đăng xuất</a>
-                                </li>
-                            </ul>
-                        </div>
                         <li>
                             <h3>Menu</h3>
                         </li>
@@ -135,6 +129,12 @@
                                 Quản lý slideshow
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('thong-ke')}}">
+                                <span data-feather="trending-up" class="align-text-bottom"></span>
+                                Thống kê
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -153,16 +153,28 @@
 
 
     @yield('page-sw')
+
     @yield('page-js')
+
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#navbarDropdownMenuAvatar').click(function() {
+            $('#dropdown-avatar').click(function(event) {
+                event.stopPropagation();
                 $('#dropdown-menu').toggle();
-            })
-            $('#bell').click(function(){
+                $('#dropdown-bell').hide();
+            });
+
+            $('#bell').click(function(event) {
+                event.stopPropagation();
                 $('#dropdown-bell').toggle();
-            })
-        })
+                $('#dropdown-menu').hide(); 
+            });
+
+            $('html').click(function() {
+                $('#dropdown-menu').hide();
+                $('#dropdown-bell').hide();
+            });
+        });
     </script>
 </body>
 

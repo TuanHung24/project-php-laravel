@@ -47,7 +47,7 @@ class SanPhamController extends Controller
         $tTSanPham->ram=$request->ram;
         $tTSanPham->camera=$request->camera;
         $tTSanPham->pin=$request->pin;
-        $tTSanPham->kich_thuoc=$request->kich_thuoc;
+        $tTSanPham->kich_thuoc = $request->kich_thuoc;
         $tTSanPham->save();
 
         
@@ -79,9 +79,13 @@ class SanPhamController extends Controller
         }
         return view('san-pham.cap-nhat', compact('sanPham', 'dsLoaiSanPham','dsHinhAnh','tTSanPham'));
     }
-    public function xuLyCapNhat(Request $request, $id)
+    public function xuLyCapNhat(SanPhamRequest $request, $id)
     {
         $sanPham = SanPham::find($id);
+        if(!$sanPham){
+            $dsSanPham=SanPham::all();
+           return view('san-pham.danh-sach',compact('dsSanPham'))->with(["thong_bao"=>"Sản phẩm không tồn tại!"]);
+        }
         $files=$request->hinh_anh;
         $sanPham->ten               = $request->ten;
         $sanPham->mo_ta             = $request->mo_ta;
@@ -106,7 +110,7 @@ class SanPhamController extends Controller
         $tTSanPham->ram=$request->ram;
         $tTSanPham->camera=$request->camera;
         $tTSanPham->pin=$request->pin;
-        $tTSanPham->kich_thuoc=$request->kich_thuoc;
+        $tTSanPham->kich_thuoc = $request->kich_thuoc;
         $tTSanPham->save();
 
         if(!empty($files))
@@ -147,5 +151,11 @@ class SanPhamController extends Controller
         $dsHinhAnh=HinhAnh::where('san_pham_id',$id)->get();
         $dsCTSanPham=CTSanPham::where('san_pham_id',$id)->get();
         return view('san-pham.chi-tiet', compact('sanPham', 'tTSanPham', 'dsHinhAnh','dsCTSanPham'));
+    }
+    public function timKiem(Request $request)
+    {
+        $reQuest=$request->search_name;
+        $dsSanPham=SanPham::where('ten','like','%'.$reQuest.'%')->get();
+        return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
     }
 }

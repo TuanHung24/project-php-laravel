@@ -16,11 +16,12 @@ class DangNhapController extends Controller
     }
     public function xuLyDangNhap(Request $rq)
     {
-        if(Auth::attempt(['username'=> $rq->ten_dang_nhap,'password'=>$rq->password,'trang_thai'=>true]))
+        $remember = $rq->has('remember');
+        if(Auth::attempt(['username'=> $rq->ten_dang_nhap,'password'=>$rq->password,'trang_thai'=>true],$remember))
         {   
             return redirect()->route('san-pham.danh-sach')->with(['dang_nhap'=>"Đăng nhập thành công!"]);
         }
-        return view('dang-nhap');
+        return view('dang-nhap')->with(['error' => 'Đăng nhập không thành công']);
             
     }
     public function dangXuat()

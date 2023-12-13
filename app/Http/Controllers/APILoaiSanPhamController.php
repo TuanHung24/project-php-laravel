@@ -12,7 +12,10 @@ class APILoaiSanPhamController extends Controller
         $dsLoaiSanPham = LoaiSanPham::with([
             'san_pham.img',
             'san_pham.chi_tiet_san_pham' => function ($query) {
-                $query->where('so_luong', '>', 0);
+                $query->where(function ($subquery) {
+                    $subquery->whereNotNull('id') // Chi tiết sản phẩm không rỗng ([]).
+                             ->where('so_luong', '>', 0); // Số lượng lớn hơn 0.
+                });
             },
             'san_pham.chi_tiet_san_pham.mau_sac',
             'san_pham.chi_tiet_san_pham.dung_luong',
@@ -20,7 +23,7 @@ class APILoaiSanPhamController extends Controller
         ->whereHas('chi_tiet_san_pham.mau_sac')
         ->whereHas('chi_tiet_san_pham.dung_luong')
         ->get();
-
+        
 
         return response()->json([ 
             'success' =>true,

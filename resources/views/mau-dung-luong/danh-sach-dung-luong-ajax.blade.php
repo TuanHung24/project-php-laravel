@@ -14,7 +14,7 @@
                 {{ $dungLuong->id }}
             </td>
             <td>    
-                {{ $dungLuong->ten }}
+                {{ $dungLuong->ten }} GB
             </td>
             <td class="chuc-nang">
                 <a href="{{route('mau-dung-luong.dung-luong.xoa',['id'=> $dungLuong->id])}}" class="btn btn-outline-danger">Xóa</a>
