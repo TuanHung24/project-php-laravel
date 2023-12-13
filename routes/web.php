@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('hoa-don')->group(function(){
         Route::name('hoa-don.')->group(function(){
             Route::get('/',[HoaDonController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [HoaDonController::class, 'timKiem'])->name('tim-kiem');
             Route::get('chi-tiet/{id}',[HoaDonController::class, 'chiTiet'])->name('chi-tiet');
             Route::get('them-moi',[HoaDonController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[HoaDonController::class, 'xuLyThemMoi'])->name('xl-them-moi');
