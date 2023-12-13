@@ -80,4 +80,10 @@ class LoaiSanPhamController extends Controller
         $loaiSanPham->save();
         return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Xóa loại sản phẩm {$loaiSanPham->ten} thành công!"]);
     }
+    public function timKiem(Request $request)
+    {
+        $reQuest=$request->search_name;
+        $dsLoaiSanPham=LoaiSanPham::where('ten','like','%'.$reQuest.'%')->get();
+        return view('loai-san-pham.danh-sach',compact('dsLoaiSanPham','reQuest'));
+    }
 }

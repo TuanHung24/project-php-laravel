@@ -92,4 +92,10 @@ class QuanTriController extends Controller
         $quanTri->save();
         return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Xóa nhân viên {$quanTri->ten} thành công!"]);
     }
+    public function timKiem(Request $request)
+    {
+        $reQuest=$request->search_name;
+        $dsQuanTri=QuanTri::where('ho_ten','like','%'.$reQuest.'%')->get();
+        return view('nhan-vien.danh-sach',compact('dsQuanTri','reQuest'));
+    }
 }
