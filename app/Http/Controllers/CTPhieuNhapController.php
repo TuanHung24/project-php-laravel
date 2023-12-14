@@ -11,6 +11,7 @@ use App\Models\MauSac;
 use App\Models\NhaCungCap;
 use App\Models\QuanTri;
 use App\Models\SanPham;
+use App\Http\Requests\NhapHangRequest;
 use Exception;
 
 class CTPhieuNhapController extends Controller
@@ -26,7 +27,7 @@ class CTPhieuNhapController extends Controller
  
     }
 
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(NhapHangRequest $request)
     {
         // try
         // {

@@ -14,7 +14,9 @@
       <option value="{{$nhaCungCap->id}}" id="nha_cung_cap">{{$nhaCungCap->ten}}</option>
       @endforeach
     </select>
-    <span class="error-message" id="error-nha-cung-cap"></span>
+    @error('nha_cung_cap')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
@@ -26,7 +28,9 @@
       <option value="{{$sanPham->id}}">{{$sanPham->ten}}</option>
       @endforeach
     </select>
-    <span class="error-message" id="error-san-pham"></span>
+    @error('san_pham')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 
@@ -39,7 +43,9 @@
       <option value="{{$mauSac->id}}">{{$mauSac->ten}}</option>
       @endforeach
     </select>
-    <span class="error-message" id="error-mau"></span>
+    @error('mau_sac')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 
@@ -52,28 +58,36 @@
       <option value="{{$dungLuong->id}}">{{$dungLuong->ten}}</option>
       @endforeach
     </select>
-    <span class="error-message" id="error-dung-luong"></span>
+    @error('dung_luong')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="so_luong" class="form-label">Số lượng:</label>
     <input type="number" class="form-control" name="so_luong" id="so-luong" value="1">
-    <span class="error-message" id="error-so-luong"></span>
+    @error('so_luong')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="gia_nhap" class="form-label">Giá nhập:</label>
     <input type="number" class="form-control" name="gia_nhap" id="gia-nhap">
-    <span class="error-message" id="error-gia-nhap"></span>
+    @error('gia_nhap')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="gia_ban" class="form-label">Giá bán:</label>
     <input type="number" class="form-control" name="gia_ban" id="gia-ban">
-    <span class="error-message" id="error-gia-ban"></span>
+    @error('gia_ban')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <button type="button" id="btn-them" class="btn btn-success"><span data-feather="plus"></span>Thêm</button>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\HoaDon;
 use App\Models\QuanTri;
 use App\Models\SanPham;
+use App\Http\Requests\HoaDonRequest;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ class HoaDonController extends Controller
  
     }
 
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(HoaDonRequest $request)
     {
         try
         {

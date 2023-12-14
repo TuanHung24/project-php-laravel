@@ -22,8 +22,26 @@ class NhapHangRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nha_cung_cap'=>'required|min:2',
-            
+            'nha_cung_cap'=>'required',
+            'san_pham'=>'required',
+            'mau_sac'=>'required',
+            'dung_luong'=>'required',
+            'so_luong'=>'required',
+            'gia_nhap'=>'required|min:10|max:1000',
+            'gia_ban'=>'required',
+        ];
+    }
+    public function messages(){
+        return[
+            'nha_cung_cap.required'=>"Cần chọn nhà cung cấp!",
+            'san_pham.required'=>"Cần chọn sản phẩm!",
+            'mau_sac.required'=>"Cần chọn màu sắc!",
+            'dung_luong.required'=>"Cần chọn dung lượng!",
+            'so_luong.required'=>"Cần chọn số lượng phù hợp!",
+            'gia_nhap.required'=>"Giá nhập không được bỏ trống!",
+            'gia_nhap.min'=>"Giá nhập khi nhập vào phải lớn hơn :min ký tự! ",
+            'gia_nhap.max'=>"Giá nhập khi nhập vào phải nhỏ hơn :max ký tự!",
+            'gia_ban.required'=>"Cần chọn sản phẩm phù hợp để xuất hiện giá bán!",
         ];
     }
 }

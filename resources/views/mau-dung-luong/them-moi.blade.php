@@ -105,7 +105,7 @@
       <td>
         <button type="button" id="btn-xoa">Xóa</button>
       </td>
-      </tr>`;
+      </tr>
 
       $('#tb-ds-san-pham').find('tbody').append(row);
       $("#san-pham").val("Chọn sản phẩm");

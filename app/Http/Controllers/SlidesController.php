@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slides;
+use App\Http\Requests\SlidesRequest;
 
 class SlidesController extends Controller
 {
@@ -12,7 +13,7 @@ class SlidesController extends Controller
     {
         return view("slides.them-moi");
     }
-    public function xuLyThemMoi(Request $request)
+    public function xuLyThemMoi(SlidesRequest $request)
     {
         
         if($request->tieu_de!=null)
