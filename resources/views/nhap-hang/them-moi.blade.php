@@ -1,12 +1,11 @@
 @extends('master')
 
 @section('content')
-<div id="thong-bao" class="alert alert-danger" style="display: none;"></div>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h4 class="h2">NHẬP HÀNG</h4>
+  <h2 class="h2">NHẬP HÀNG</h2>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6"> 
     <label for="nha_cung_cap" class="form-label">Chọn nhà cung cấp:</label>
     <select for="nha_cung_cap" class="form-select" id="nha-cung-cap">
       <option selected disabled>Chọn nhà cung cấp</option>
@@ -106,7 +105,7 @@
   <div class="col-md-2">
     <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>
   </div>
-</form>
+</form> 
 @endsection
 
 @section('page-js')

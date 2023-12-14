@@ -14,9 +14,9 @@
     <link href="{{ asset('custom.css') }}" rel="stylesheet">
     <link href="{{ asset('style.css') }}" rel="stylesheet">
 </head>
-<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow" id="header-navbar">
 <img src="{{asset('logo/logo-dt.png')}}" id="logo"/>
-    <div class="navbar navbar-collapse responsive-navbar p-0">
+    <div class="navbar_collapse">
         <div class="bell-mail">
         <div class="dropdown bell" id="bell">
             <a data-feather="bell">

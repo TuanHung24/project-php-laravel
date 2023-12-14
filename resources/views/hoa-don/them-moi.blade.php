@@ -1,21 +1,6 @@
 @extends('master')
 
-@section('page-sw')
-@if(session('thong_bao'))
-<script>
-  Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: "{{session('thong_bao')}}",
-    showConfirmButton: true,
-    timer: 3000
-  })
-</script>
-@endif
-@endsection
-
 @section('content')
-<div id="thong-bao" class="alert alert-danger" style="display: none;"></div>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h2 class="h2">NHẬP HÓA ĐƠN</h2>
 </div>
@@ -32,7 +17,7 @@
     <select name="san_pham" class="form-select" id="san-pham" required>
       <option selected disabled>Chọn sản phẩm</option>
       @foreach($dsSanPham as $sanPham)
-      <option value="{{$sanPham->id}}" data-gia-ban="{{$sanPham->gia_ban}}">{{$sanPham->ten}}</option>
+      <option value="{{$sanPham->id}}" data-gia-ban="{{$sanPham->chi_tiet_san_pham->gia_ban}}">{{$sanPham->ten}}</option>
       @endforeach
     </select>
     <span class="error" id="error-san-pham">Vui lòng chọn sản phẩm.</span>

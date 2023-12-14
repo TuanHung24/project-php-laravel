@@ -4,11 +4,6 @@
 
 
 @section('content')
-<label>Nhập tên Slideshow</label>
-<div class="Search">
-    <input type="search" class="form-control form-control-dark" placeholder="Tìm kiếm..." aria-label="Search" />
-    <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
-</div>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h6 class="h2"><span data-feather="list" ></span>DANH SÁCH SLIDESHOW</h6>
     <div class="btn-toolbar mb-2 mb-md-0">
