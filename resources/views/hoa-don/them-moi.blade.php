@@ -8,6 +8,9 @@
   <div class="col-md-6">
     <label for="nhan_vien" class="form-label">Nhân viên:</label>   
       <input type="text" class="form-control" value="{{Auth::user()->ho_ten}}" id="nhan-vien" readonly/>
+      @error('nhan_vien')
+            <span class="error-message">{{ $message }}</span>
+      @enderror
   </div>
 </div>
 
@@ -21,27 +24,36 @@
       @endforeach
     </select>
     <span class="error" id="error-san-pham">Vui lòng chọn sản phẩm.</span>
+    @error('san_pham')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="khach-hang" class="form-label">Khách hàng:</label>
     <input type="text" class="form-control" name="khach_hang" id="khach-hang">
-    <span class="error" id="error-khach-hang">Vui lòng nhập khách hàng.</span>
+    @error('khach_hang')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="so_luong" class="form-label">Số lượng:</label>
     <input type="number" class="form-control" name="so_luong" id="so-luong" min="1" value="1">
-    <span class="error" id="error-so-luong">Vui lòng nhập số lượng.</span>
+    @error('so_luong')
+            <span class="error-message">{{ $message }}</span>
+    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="gia_ban" class="form-label">Giá bán:</label>
     <input type="number" class="form-control" name="gia_ban" id="gia-ban" min="1" readonly>
-    <span class="error" id="error-gia-ban">Vui lòng chọn sản phẩm.</span>
+    @error('gia_ban')
+            <span class="error-message">{{ $message }}</span>
+     @enderror
   </div>
 </div>
 <button type="button" id="btn-them" class="btn btn-success"><span data-feather="plus"></span>Thêm</button>

@@ -64,8 +64,8 @@
 </div>
 <div class=row>
     <div class="col-md-6">
-        <label for="hinh_anh" class="form-label">Chọn ảnh đại diện:</label>
-        <input type="file" name="hinh_anh"/>
+    <label for="hinh_anh[]" class="form-label">Chọn ảnh Đại diện của cưng đi bé: </label>
+    <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple required/><br/>
         @error('hinh-anh')
             <span class="error-message">{{$message}}</span>
         @enderror

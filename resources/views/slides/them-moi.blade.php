@@ -10,38 +10,20 @@
     <div class="col-md-6">
         <label for="tieu_de" class="form-label">Tên tiêu đề:</label>
         <input type="text" class="form-control" name="tieu_de" id="tieu-de">
-        <span id="tieu_de_error" class="error-message"></span>
+        @error('tieu_de')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
 </div>
 
 <div class=row>
     <div class="col-md-6">
-        <label for="hinh_anh" class="form-label">Chọn ảnh slide:</label>
-        <input type="file" name="hinh_anh"/>
+    <label for="hinh_anh[]" class="form-label">Chọn ảnh Slides: </label>
+    <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple required/><br/>
     </div>
 </div>
 <div class="col-md-2">
     <button type="submit" class="btn btn-primary"><span data-feather="save"></span>Lưu</button>
   </div>
 </form>
-@endsection
-
-@section('page-js')
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        $('#add').submit(function(e)
-        {
-            var tieuDe=$('#tieu-de').val();
-            if(tieuDe.length <=10 || tieuDe.length>=40)
-            {
-                e.preventDefault();
-                $('#tieu_de_error').text("Tiêu đề phải lớn hơn 10 ký tự và bé hơn 40 ký tự!")
-            }
-            else{
-                $('#tieu_de_error').text('')
-            }
-        })
-    })
-</script>
 @endsection
