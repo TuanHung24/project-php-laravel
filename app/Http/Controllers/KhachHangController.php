@@ -72,4 +72,10 @@ class KhachHangController extends Controller
         $khachHang->delete();
         return redirect()->route('khach-hang.danh-sach')->with(['thong_bao'=>"Xóa khách hàng {$khachHang->ho_ten} thành công!"]);
     }
+    public function timKiem(Request $request)
+    {
+        $reQuest=$request->search_name;
+        $dskhachHang=KhachHang::where('ho_ten','like','%'.$reQuest.'%')->get();
+        return view('khach-hang.danh-sach',compact('dskhachHang','reQuest'));
+    }
 }

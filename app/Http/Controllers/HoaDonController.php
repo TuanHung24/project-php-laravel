@@ -88,6 +88,12 @@ class HoaDonController extends Controller
         $dsHoaDon=HoaDon::all();
         return redirect()->route('hoa-don.danh-sach',compact('dsHoaDon'))->with(['thong_bao'=>"Xóa hóa đơn thành công!"]);;
     }
+    public function timKiem(Request $request)
+    {
+        $reQuest=$request->search_name;
+        $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->get();
+        return view('hoa-don.danh-sach',compact('dsHoaDon','reQuest'));
+    }
     
 
 

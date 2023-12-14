@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('loai-san-pham')->group(function(){
         Route::name('loai-san-pham.')->group(function(){
             Route::get('/', [LoaiSanPhamController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [LoaiSanPhamController::class, 'timKiem'])->name('tim-kiem');
             Route::get('them-moi',[LoaiSanPhamController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[LoaiSanPhamController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [LoaiSanPhamController::class, 'capNhat'])->name('cap-nhat');
@@ -72,6 +73,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('khach-hang')->group(function(){
         Route::name('khach-hang.')->group(function(){
             Route::get('/', [KhachHangController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [KhachHangController::class, 'timKiem'])->name('tim-kiem');
             Route::get('them-moi',[KhachHangController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[KhachHangController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [KhachHangController::class, 'capNhat'])->name('cap-nhat');
@@ -90,6 +92,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('hoa-don')->group(function(){
         Route::name('hoa-don.')->group(function(){
             Route::get('/',[HoaDonController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [HoaDonController::class, 'timKiem'])->name('tim-kiem');
             Route::get('chi-tiet/{id}',[HoaDonController::class, 'chiTiet'])->name('chi-tiet');
             Route::get('them-moi',[HoaDonController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[HoaDonController::class, 'xuLyThemMoi'])->name('xl-them-moi');
@@ -111,6 +114,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('nhan-vien')->group(function(){
         Route::name('nhan-vien.')->group(function(){
             Route::get('/', [QuanTriController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [QuanTriController::class, 'timKiem'])->name('tim-kiem');
             Route::get('them-moi',[QuanTriController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[QuanTriController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [QuanTriController::class, 'capNhat'])->name('cap-nhat');
