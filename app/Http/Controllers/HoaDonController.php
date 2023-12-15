@@ -8,6 +8,9 @@ use App\Models\HoaDon;
 use App\Models\QuanTri;
 use App\Models\SanPham;
 use App\Http\Requests\HoaDonRequest;
+use App\Models\CTSanPham;
+use App\Models\DungLuong;
+use App\Models\MauSac;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +21,9 @@ class HoaDonController extends Controller
         $dsHoaDon = HoaDon::all();
         $dsnhanVien=QuanTri::all();
         $dsSanPham=SanPham::all();
-        return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham'));
+        $dsDungLuong=DungLuong::all();
+        $dsMauSac=MauSac::all();
+        return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham','dsDungLuong','dsMauSac'));
  
     }
 
@@ -94,8 +99,34 @@ class HoaDonController extends Controller
         $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->get();
         return view('hoa-don.danh-sach',compact('dsHoaDon','reQuest'));
     }
-    
+    public function laySoLuongSanPham(Request $request)
+    {
+        $maxQuantity = CTSanPham::where('san_pham_id', $request->product)
+                            ->where('mau_sac_id', $request->color)
+                            ->where('dung_luong_id',$request->capacity)
+                            ->value('so_luong');
+        return response()->json(['maxQuantity' => $maxQuantity]);
+    }
 
+    public function layMauSacDungLuong(Request $request)
+    {
+        $sanPham        = SanPham::find($request->productId);
+        $dsMauSac       = $sanPham->chi_tiet_san_pham->pluck('mau_sac.ten', 'mau_sac_id');
+        $dsDungLuong    = $sanPham->chi_tiet_san_pham->pluck('dung_luong.ten', 'dung_luong_id');
+        
+        return response()->json(['colors' => $dsMauSac, 'sizes' => $dsDungLuong]);
+    }
+    public function layGiaBanSanPham(Request $request)
+    {
+        
+        $giaBan = CTSanPham::where('san_pham_id', $request->productid)
+                                ->where('mau_sac_id', $request->colorid)
+                                ->where('dung_luong_id', $request->sizeid)
+                                ->value('gia_ban');
+        
+        return response()->json(['giaBan' => $giaBan]);
+       
+    }
 
     
 }

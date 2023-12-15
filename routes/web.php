@@ -89,9 +89,14 @@ Route::middleware('auth')->group(function(){
         });
     });
 
+    Route::get('/ajax-lay',[HoaDonController::class, 'layMauSacDungLuong'])->name('lay-mau-dung-luong-ajax');
+    
+    Route::get('/ajax-lay-sl',[HoaDonController::class, 'laySoLuongSanPham'])->name('lay-so-luong-ajax');
+    Route::get('/ajax-lay-gb',[HoaDonController::class, 'layGiaBanSanPham'])->name('lay-gia-ban-ajax');
     Route::prefix('hoa-don')->group(function(){
         Route::name('hoa-don.')->group(function(){
             Route::get('/',[HoaDonController::class, 'danhSach'])->name('danh-sach');
+           
             Route::get('/tim-kiem', [HoaDonController::class, 'timKiem'])->name('tim-kiem');
             Route::get('chi-tiet/{id}',[HoaDonController::class, 'chiTiet'])->name('chi-tiet');
             Route::get('them-moi',[HoaDonController::class, 'themMoi'])->name('them-moi');

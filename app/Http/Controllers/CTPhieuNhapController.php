@@ -27,7 +27,7 @@ class CTPhieuNhapController extends Controller
  
     }
 
-    public function xuLyThemMoi(NhapHangRequest $request)
+    public function xuLyThemMoi(Request $request)
     {
         // try
         // {
