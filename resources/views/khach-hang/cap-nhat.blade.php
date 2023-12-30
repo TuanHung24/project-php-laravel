@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-md-6">
             <label for="mat-khau" class="form-label">Mật khẩu:</label>
-            <input type="password" class="form-control" name="password" value="{{old('mat_khau',$khachHang->password)}}" readonly>
+            <input type="password" class="form-control" name="mat_khau" value="{{old('mat_khau',$khachHang->password)}}" readonly>
             @error('mat_khau')
             <span class="error-message">{{ $message }}</span>
             @enderror

@@ -41,7 +41,7 @@
             <span class="error-message">{{ $message }}</span>
             @enderror
         </div>
-    </div>
+    </div> 
     <div class="row">
         <div class="col-md-6">
             <label for="username" class="form-label">Tên tài khoản:</label>
