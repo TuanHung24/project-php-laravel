@@ -22,19 +22,16 @@ class HoaDonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nhan_vien'=>'required|min:20|max:100',
-            'san_pham'=>'required',
-            'khach_hang'=>'required|min:20|max:50',
+            'nhan_vien'=>'min:20|max:100',
+            'khach_hang'=>'min:20|max:50',
             'so_luong'=>'required',
             'gia_ban'=>'required',
         ];
     }
     public function messages(){
         return[
-            'nhan_vien.required'=>"",
-            'san_pham.required'=>"Cần chọn sản phẩm thích hợp!",
             
-            'khach_hang.required'=>"Tên khách hàng không được bỏ trống!",
+            
             'khach_hang.min'=>"Tên khách hàng phải lớn hơn :min ký tự!",
             'khach_hang.max'=>"Tên khách hàng phải nhỏ hơn :max ký tự!",
 

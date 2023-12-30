@@ -89,7 +89,7 @@
                 <th scope="row">{{$cTSanPham->id}}</th>
                 <td>{{$cTSanPham->mau_sac->ten}}</td>
                 <td>{{$cTSanPham->dung_luong->ten}}</td>
-                <td>{{$cTSanPham->gia_ban}}</td>
+                <td>{{$cTSanPham->gia_ban_formatted}}</td>
                 <td>{{$cTSanPham->so_luong}}</td>
             </tr>
             @endforeach

@@ -18,22 +18,25 @@ class HoaDonController extends Controller
 {
     public function themMoi()
     {
-        $dsHoaDon = HoaDon::all();
-        $dsnhanVien=QuanTri::all();
-        $dsSanPham=SanPham::all();
-        $dsDungLuong=DungLuong::all();
-        $dsMauSac=MauSac::all();
-        return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham','dsDungLuong','dsMauSac'));
+        $dsSanPham=SanPham::whereHas('chi_tiet_san_pham',function($query){
+                $query->where('so_luong','>',0);
+        })->with('chi_tiet_san_pham')->get();
+        
+        $dsSanPham->each(function ($sanPham) {
+            $sanPham->chi_tiet_san_pham = $sanPham->chi_tiet_san_pham->unique('san_pham_id');
+        });
+        return view("hoa-don.them-moi",compact('dsSanPham'));
  
     }
 
-    public function xuLyThemMoi(HoaDonRequest $request)
+    public function xuLyThemMoi(Request $request)
     {
         try
         {
         $hoaDon= new HoaDon();
-        $hoaDon->nhan_vien_id = Auth::user()->id;
-        $hoaDon->khach_hang= $request->kHang[0];
+        $hoaDon->quan_tri_id = $request->qt;
+        $hoaDon->khach_hang= $request->kh;
+        $hoaDon->dien_thoai= $request->dien_thoai;
         $hoaDon->save();
         $tongTien=0;
        
@@ -42,7 +45,22 @@ class HoaDonController extends Controller
            $ctHoaDon =new CTHoaDon();
            $ctHoaDon->hoa_don_id=$hoaDon->id;
            $ctHoaDon->san_pham_id=$request->spID[$i];
+           $ctHoaDon->mau_sac_id=$request->msID[$i];
+           $ctHoaDon->dung_luong_id=$request->dlID[$i];
            $ctHoaDon->so_luong=$request->soLuong[$i];
+
+           $ctSanPham = CTSanPham::where('san_pham_id', $request->spID[$i])
+            ->where('mau_sac_id', $request->msID[$i])
+            ->where('dung_luong_id', $request->dlID[$i])
+            ->first();
+            if(!empty($ctSanPham))
+            {
+                
+                $ctSanPham->so_luong-=$ctHoaDon->so_luong;
+                $ctSanPham->save();
+            }
+            
+            
            $ctHoaDon->don_gia=$request->giaBan[$i];
            $ctHoaDon->thanh_tien=$request->thanhTien[$i];
            $ctHoaDon->save();
@@ -92,41 +110,19 @@ class HoaDonController extends Controller
         $hoaDon->save();
         $dsHoaDon=HoaDon::all();
         return redirect()->route('hoa-don.danh-sach',compact('dsHoaDon'))->with(['thong_bao'=>"Xóa hóa đơn thành công!"]);;
-    }
+    } 
     public function timKiem(Request $request)
     {
         $reQuest=$request->search_name;
         $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->get();
         return view('hoa-don.danh-sach',compact('dsHoaDon','reQuest'));
     }
-    public function laySoLuongSanPham(Request $request)
-    {
-        $maxQuantity = CTSanPham::where('san_pham_id', $request->product)
-                            ->where('mau_sac_id', $request->color)
-                            ->where('dung_luong_id',$request->capacity)
-                            ->value('so_luong');
-        return response()->json(['maxQuantity' => $maxQuantity]);
-    }
-
     public function layMauSacDungLuong(Request $request)
     {
-        $sanPham        = SanPham::find($request->productId);
-        $dsMauSac       = $sanPham->chi_tiet_san_pham->pluck('mau_sac.ten', 'mau_sac_id');
-        $dsDungLuong    = $sanPham->chi_tiet_san_pham->pluck('dung_luong.ten', 'dung_luong_id');
-        
-        return response()->json(['colors' => $dsMauSac, 'sizes' => $dsDungLuong]);
+        $dsSanPham = CTSanPham::where('san_pham_id',$request->productId)->get();
+        return view('hoa-don.chi-tiet-hoa-don',compact('dsSanPham'));
     }
-    public function layGiaBanSanPham(Request $request)
-    {
-        
-        $giaBan = CTSanPham::where('san_pham_id', $request->productid)
-                                ->where('mau_sac_id', $request->colorid)
-                                ->where('dung_luong_id', $request->sizeid)
-                                ->value('gia_ban');
-        
-        return response()->json(['giaBan' => $giaBan]);
-       
-    }
+    
 
     
 }

@@ -23,6 +23,7 @@ class SlidesRequest extends FormRequest
     {
         return [
             'tieu_de'=>'required|min:10|max:40',
+            
         ];
     }
     public function messages(){

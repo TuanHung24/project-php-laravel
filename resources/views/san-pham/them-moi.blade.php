@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('content')
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">THÊM MỚI SẢN PHẨM</h1>
 </div>
@@ -69,7 +70,7 @@
         </div>
         <div class="col-md-3"> 
             <label for="kich-thuoc" class="form-label">Kích thước(dài-ngang-dày):</label>
-            <textarea type="text" id="kich-thuoc" class="form-control" cols="3" name="kich_thuoc"></textarea>
+            <textarea type="text" id="kich-thuoc" class="form-control" cols="3" name="kich_thuoc">{{old('kich_thuoc')}}</textarea>
             @error('kich_thuoc')
             <span class="error-message">{{ $message }}</span>
             @enderror

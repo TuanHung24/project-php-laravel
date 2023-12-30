@@ -17,6 +17,18 @@ class CTPhieuNhap extends Model
     {
         return $this->belongsTo(SanPham::class);
     }
+    public function getGiaNhapFormattedAttribute()
+    {
+        return number_format($this->gia_nhap, 0, ',', '.');
+    }
+    public function getGiaBanFormattedAttribute()
+    {
+        return number_format($this->gia_ban, 0, ',', '.');
+    }
+    public function getThanhTienFormattedAttribute()
+    {
+        return number_format($this->thanh_tien, 0, ',', '.');
+    }
 }
 
 

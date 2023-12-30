@@ -22,9 +22,9 @@
             <td>{{ $ctPhieuNhap->id }}</td>
             <td>{{ $ctPhieuNhap->san_pham->ten }}</td>
             <td>{{ $ctPhieuNhap->so_luong }}</td>
-            <td>{{ $ctPhieuNhap->gia_nhap }}</td>
-            <td>{{ $ctPhieuNhap->gia_ban }}</td>
-            <td>{{ $ctPhieuNhap->thanh_tien }}</td>
+            <td>{{ $ctPhieuNhap->gia_nhap_formatted }}</td>
+            <td>{{ $ctPhieuNhap->gia_ban_formatted }}</td>
+            <td>{{ $ctPhieuNhap->thanh_tien_formatted }}</td>
 
         <tr>
             @endforeach

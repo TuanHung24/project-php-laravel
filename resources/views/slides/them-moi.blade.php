@@ -8,8 +8,8 @@
 @csrf
 <div class="row">
     <div class="col-md-6">
-        <label for="tieu_de" class="form-label">Tên tiêu đề:</label>
-        <input type="text" class="form-control" name="tieu_de" id="tieu-de">
+        <label for="tieu-de" class="form-label">Tên tiêu đề:</label>
+        <input type="text" class="form-control" name="tieu_de" id="tieu-de" value="{{old('tieu_de')}}">
         @error('tieu_de')
             <span class="error-message">{{ $message }}</span>
         @enderror
@@ -18,8 +18,8 @@
 
 <div class=row>
     <div class="col-md-6">
-    <label for="hinh_anh[]" class="form-label">Chọn ảnh Slides: </label>
-    <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple required/><br/>
+    <label for="hinh-anh" class="form-label">Chọn ảnh Slides: </label>
+    <input type="file" name="hinh_anh" value="{{old('hinh_anh')}}" required/><br/>
     </div>
 </div>
 <div class="col-md-2">

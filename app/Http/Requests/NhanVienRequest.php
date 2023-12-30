@@ -21,36 +21,46 @@ class NhanVienRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
         return [
-            'ho_ten'=>'required|min:10',
-            'dien_thoai'=>'required|min:10|max:11',
-            'email'=>'required|min:20|max:100',
-            'dia_chi'=>'required|min:20|max:100',
-            'username'=>'required|min:6|max:32',
-            'password'=>'required|min:6|max:32',
+            'ho_ten' => 'required|min:10',
+            'dien_thoai' => 'required|min:10|max:11',
+            'email' => 'required|min:15|max:80|unique:quan_tri,email,' . $id,
+            'dia_chi' => 'required|min:15|max:128',
+            'username' => 'required|min:6|max:60|unique:quan_tri,username,' . $id,
+            'mat_khau'=> 'required|min:6|max:128',
+            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:4048'
         ];
     }
     public function messages(){
-        return[
-            'ho_ten.required'=>"Tên nhân viên không được bỏ trống!",
-            'ho_ten.min'=>"Tên nhân viên phải lớn hơn :min ký tự",
-            'dien_thoai.required'=>"Điện thoại không được bỏ trống!",
-            'dien_thoai.min'=>"Số điện thoại phải lớn hơn :min ký tự",
-            'dien_thoai.max'=>"Số điện thoại phải nhỏ hơn :max ký tự",
+        return [
+            'ho_ten.required' => "Tên nhân viên không được bỏ trống!",
+            'ho_ten.min' => "Tên nhân viên phải lớn hơn :min ký tự",
+            'dien_thoai.required' => "Điện thoại không được bỏ trống!",
+            'dien_thoai.min' => "Số điện thoại phải lớn hơn :min ký tự",
+            'dien_thoai.max' => "Số điện thoại phải nhỏ hơn :max ký tự",
             
-            'email.required'=>"Email không được bỏ trống!",
-            'email.min'=>"Email phải lớn hơn :min ký tự!",
-            'email.max'=>"Email phải nhỏ hơn :max ký tự!",
-            'dia_chi.required'=>"Địa chỉ không được bỏ trống!",
-            'dia_chi.min'=>"Địa chỉ phải lớn hơn :min ký tự!",
-            'dia_chi.max'=>"Địa chỉ phải nhỏ hơn :max ký tự!",
+            'email.required' => "Email không được bỏ trống!",
+            'email.min' => "Email phải lớn hơn :min ký tự!",
+            'email.max' => "Email phải nhỏ hơn :max ký tự!",
+            'email.unique' => "Email đã tồn tại!",
+            'dia_chi.required' => "Địa chỉ không được bỏ trống!",
+            'dia_chi.min' => "Địa chỉ phải lớn hơn :min ký tự!",
+            'dia_chi.max' => "Địa chỉ phải nhỏ hơn :max ký tự!",
+    
+            'username.required' => "Tên đăng nhập không được bỏ trống!",
+            'username.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
+            'username.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
+            'username.unique' => "Tên đăng nhập đã tồn tại!",
+
+            'mat_khau.required' => "Tên đăng nhập không được bỏ trống!",
+            'mat_khau.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
+            'mat_khau.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
+
+            'hinh_anh.image' => 'File hình ảnh không hợp lệ!',
+            'hinh_anh.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg!',
+            'hinh_anh.max' => 'Hình ảnh không được vượt quá kích thước tối đa 2048KB!',
             
-            'username.required'=>"Tên đăng nhập không được bỏ trống!",
-            'username.min'=>"Tên đăng nhập phải lớn hơn :min ký tự!",
-            'username.max'=>"Tên đăng nhập phải nhỏ hơn :max ký tự!",
-            'password.required'=>"Mật khẩu không được bỏ trống!",
-            'password.min'=>"Mật khẩu phải lớn hơn :min ký tự!",
-            'password.max'=>"Mật khẩu phải nhỏ hơn :max ký tự!",
         ];
 
     }

@@ -18,7 +18,9 @@ return new class extends Migration
 
             
             $table->foreignId('san_pham_id')->constrained('san_pham');
-
+            $table->foreignId('mau_sac_id')->constrained('mau_sac');
+            $table->foreignId('dung_luong_id')->constrained('dung_luong');
+            
             $table->integer("so_luong");
             $table->decimal("don_gia",10,0);
             $table->decimal("thanh_tien",10,0);

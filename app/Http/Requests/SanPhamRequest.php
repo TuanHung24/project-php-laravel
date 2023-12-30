@@ -21,9 +21,9 @@ class SanPhamRequest extends FormRequest
      */
     public function rules(): array
     {
-        
-        $rules= [ 
-            'ten'=>'required|min:6',
+        $id=$this->route('id');
+        return [ 
+            'ten'=>'required|min:6|unique:san_pham,ten,'.$id,
             'do_phan_giai'=>'required|min:6',
 
             'trong_luong'=>'required|min:3',
@@ -37,13 +37,14 @@ class SanPhamRequest extends FormRequest
             'camera'=>'required|min:3',
             'pin'=>'required|min:4|max:6',
         ];
-        return $rules;
+        
     }
     public function messages()
     {
         return[
             'ten.required'=>"Tên sản phẩm không được bỏ trống!",
             'ten.min'=>"Tên phải lớn hơn :min ký tự!",
+            'ten.unique'=>"Tên sản phẩm không được trùng",
             'do_phan_giai.required'=>"Độ phân giải không được bỏ trống!",
             'do_phan_giai.min'=>"Độ phân giải phải lớn hơn :min ký tự!",
             'trong_luong.required'=>"Trọng lượng không được bỏ trống!",
@@ -51,8 +52,8 @@ class SanPhamRequest extends FormRequest
             
             'mo_ta.required'=>"Mô tả không được bỏ trống!",
             'mo_ta.min'=>"Mô tả phải lớn hơn :min ký tự!",
-            'kich_thuoc.required'=>"Chiều dài không được bỏ trống!",
-            'kich_thuoc.digits_between'=>"Chiều dài phải từ :min đến :max ký tự!",
+            'kich_thuoc.required'=>"Kích thước không được bỏ trống!",
+            'kich_thuoc.max'=>"Chiều dài phải từ :min đến :max ký tự!",
 
             'man_hinh.required'=>"Màn hình không được bỏ trống!",
             'man_hinh.min'=>"Màn hình phải lớn hơn :min ký tự!",

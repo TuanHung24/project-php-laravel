@@ -1,5 +1,18 @@
 @extends('master')
 
+@section('page-sw')
+@if(session('dang_nhap'))
+<script>
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: "{{session('dang_nhap')}}",
+        showConfirmButton: true,
+        timer: 3000
+        })
+    </script>
+@endif
+@endsection
 
 @section('content')
 <form action="{{route('san-pham.tim-kiem')}}" class="submit_search" id="search-form">
@@ -35,7 +48,8 @@
         <th>Trạng thái</th>
         <th>Thao tác</th>
     </tr>
-    </thead> 
+    </thead>
+    <tbody>
     @foreach($dsSanPham as $sanPham)
     <tr>
         <td>{{ $sanPham->id }}</td>
@@ -61,10 +75,11 @@
         </td>
     <tr>
     @endforeach
+    </tbody>
 </table>
 </div>
 @endsection
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function(){
         $('#search-form').submit(function(e) {
            
@@ -82,4 +97,4 @@
 </script>
 @section('page-js')
 
-@endsection
+@endsection -->

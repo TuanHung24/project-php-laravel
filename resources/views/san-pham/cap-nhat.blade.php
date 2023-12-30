@@ -5,6 +5,13 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">CẬP NHẬT SẢN PHẨM</h1>
 </div>
+@if(session('thong_bao'))
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div> 
+              {{session('thong_bao')}}
+        </div>
+    </div>
+@endif
 <form class="container" method="POST" action="{{ route('san-pham.xl-cap-nhat', ['id' => $sanPham->id]) }}" enctype="multipart/form-data">
     @csrf
 
@@ -20,7 +27,7 @@
                 <img class="img" src="{{asset($hinhAnh->img_url)}}" alt="hinh_anh" />
             </td>
             <td class="td-xoa-anh">
-                <a href="{{ route('hinh-anh', ['id' => $hinhAnh->id]) }}" class="btn btn-outline-danger">Xóa</a>
+                <a href="{{ route('hinh-anh',  ['spid' => $sanPham->id, 'id' => $hinhAnh->id]) }}" class="btn btn-outline-danger">Xóa</a>
 
             </td>
         <tr>

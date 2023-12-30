@@ -9,6 +9,8 @@ use App\Models\QuanTri;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
+use function Laravel\Prompts\error;
+
 class DangNhapController extends Controller
 {
     public function dangNhap()
@@ -17,13 +19,16 @@ class DangNhapController extends Controller
     }
     public function xuLyDangNhap(Request $rq)
     {
-        $remember = $rq->has('remember');
-        if(Auth::attempt(['username'=> $rq->ten_dang_nhap,'password'=>$rq->password,'trang_thai'=>true],$remember))
-        {   
-            return redirect()->route('san-pham.danh-sach')->with(['dang_nhap'=>"Đăng nhập thành công!"]);
+        
+        $user = QuanTri::whereRaw('BINARY username = ?', [$rq->ten_dang_nhap])->first();
+
+        if ($user && Hash::check($rq->password, $user->password) && $user->trang_thai) {
+            Auth::login($user, $rq->has('remember'));
+
+            return redirect()->route('san-pham.danh-sach')->with(['dang_nhap' => 'Đăng nhập thành công!']);
         }
-        return view('dang-nhap')->with(['error' => 'Đăng nhập không thành công']);
-            
+       
+        return redirect()->route('dang-nhap')->with(['user_name'=>$rq->ten_dang_nhap,'error-login' => 'Mật khẩu không chính xác!']);     
     }
     public function dangXuat()
     {

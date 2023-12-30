@@ -13,4 +13,18 @@ class CTHoaDon extends Model
     {
         return $this->belongsTo(SanPham::class);
     }
+    public function mau_sac(){
+        return $this->belongsTo(MauSac::class);
+    }
+    public function dung_luong(){
+        return $this->belongsTo(DungLuong::class);
+    }
+    public function getDonGiaFormattedAttribute()
+    {
+        return number_format($this->don_gia, 0, ',', '.');
+    }
+    public function getThanhTienFormattedAttribute()
+    {
+        return number_format($this->thanh_tien, 0, ',', '.');
+    }
 }

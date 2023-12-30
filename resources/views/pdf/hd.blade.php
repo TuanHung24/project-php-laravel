@@ -15,7 +15,7 @@
     </style>
 <body>
     <h2>Hóa đơn bán hàng</h2>
-    <h4>Nhân viên:{{$hoaDon->nhan_vien->ho_ten}} </h4>
+    <h4>Nhân viên:{{$hoaDon->quan_tri->ho_ten}} </h4>
     <h4>Tên khách hàng:{{$hoaDon->khach_hang}} </h4>
     <h4>Mã hóa đơn:{{$hoaDon->id}} </h4>
     <h4>Ngày tạo:{{$hoaDon->ngay_tao}} </h4>
@@ -33,12 +33,12 @@
                 <tr>
                     <td>{{ $cthd->san_pham->ten }}</td>
                     <td>{{ $cthd->so_luong }}</td>
-                    <td>{{ $cthd->don_gia }}</td>
+                    <td>{{ $cthd->don_gia_formatted }}</td>
                 <tr>
                     @endforeach
             </tbody>
         </table>
-        <span>Thành tiền: {{ $hoaDon->tong_tien }} VND</span>
+        <span>Thành tiền: {{ $hoaDon->tong_tien_formatted }} VND</span>
     </div>
 </body>
 </html>

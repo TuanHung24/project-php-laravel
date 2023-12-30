@@ -30,9 +30,10 @@
                 <th>Mã đơn hàng</th>
                 <th>Nhân viên</th>
                 <th>Khách hàng</th>
+                <th>Điện thoại</th>
                 <th>Tổng tiền</th>
                 <th>Ngày tạo</th>
-                <th>Trạng thái</th>
+                
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -41,16 +42,17 @@
             <td>{{ $hoaDon->id }}</td>
             <td>{{ $hoaDon->quan_tri->ho_ten}}</td>
             <td>{{ $hoaDon->khach_hang }}</td>
-            <td>{{ $hoaDon->tong_tien }}</td>
+            <td>{{ $hoaDon->dien_thoai }}</td>
+            <td>{{ $hoaDon->tong_tien_formatted }}</td>
             <td>{{ $hoaDon->ngay_tao }}</td>
-            <?php
+            <!-- <?php
             if ($hoaDon->trang_thai == true) {
                 $trang_thai = "Hoạt động";
             } else {
                 $trang_thai = "Không hoạt động";
             }
             ?>
-            <td>{{ $trang_thai }}</td>
+            <td>{{ $trang_thai }}</td> -->
             <td class="chuc-nang">
                 <a href="{{ route('hoa-don.chi-tiet', ['id' => $hoaDon->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a>|
                 <a href="{{ route('hoa-don.xoa', ['id' => $hoaDon->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>|

@@ -11,9 +11,13 @@ use App\Models\ThongTinSanPham;
 class HinhAnhController extends Controller
 {
     
-    public function hinhAnhXoa($id)
+    public function hinhAnhXoa($spid,$id)
     {
+        $sanPham=SanPham::find($spid);
         $hinhAnh=HinhAnh::find($id);
+        if(empty($sanPham) || empty($hinhAnh) || $hinhAnh->san_pham_id != $sanPham->id){
+            return redirect()->route("san-pham.cap-nhat", ['id' => $spid])->with(['thong_bao' => "Ảnh không tồn tại hoặc không thuộc về sản phẩm này!"]);
+        }
         if(!empty($hinhAnh->img_url))
         {
             $imgPath=$hinhAnh->img_url;
@@ -22,10 +26,8 @@ class HinhAnhController extends Controller
             $hinhAnh->delete();
             }
         }
-        if(empty($hinhAnh)){
-            return redirect()->route("san-pham.danh-sach")->with(['thong_bao'=>"Xóa ảnh thành công!"]);
-        }
-        return redirect()->route("san-pham.danh-sach")->with(['thong_bao'=>"Xóa ảnh thành công!"]);
+        
+        return redirect()->route("san-pham.cap-nhat", ['id' => $spid])->with(['thong_bao'=>"Xóa ảnh thành công!"]);
     
     }
     

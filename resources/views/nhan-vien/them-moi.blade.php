@@ -8,7 +8,7 @@
 @csrf
 <div class="row">
     <div class="col-md-6">
-        <label for="ho_ten" class="form-label">Họ tên:</label>
+        <label for="ho-ten" class="form-label">Họ tên:</label>
         <input type="text" class="form-control" name="ho_ten" id="ho-ten" value="{{old('ho_ten')}}">
         @error('ho_ten')
             <span class="error-message">{{ $message }}</span>
@@ -56,17 +56,17 @@
 <div class="row">
     <div class="col-md-6">
         <label for="password" class="form-label">Mật khẩu:</label>
-        <input type="password" class="form-control" name="password" id="password" value="{{old('password')}}">
-        @error('password')
+        <input type="text" class="form-control" name="mat_khau" id="password" value="{{old('mat_khau')}}">
+        @error('mat_khau')
             <span class="error-message">{{ $message }}</span>
         @enderror
     </div>
 </div>
 <div class=row>
     <div class="col-md-6">
-    <label for="hinh_anh[]" class="form-label">Chọn ảnh Đại diện của cưng đi bé: </label>
-    <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple required/><br/>
-        @error('hinh-anh')
+    <label for="hinh_anh" class="form-label">Chọn ảnh: </label>
+    <input type="file" name="hinh_anh" required/><br/>
+        @error('hinh_anh')
             <span class="error-message">{{$message}}</span>
         @enderror
     </div>

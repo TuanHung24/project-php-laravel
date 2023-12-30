@@ -17,24 +17,26 @@ class QuanTriController extends Controller
     }
     public function xuLyThemMoi(NhanVienRequest $request)
     {
-        $quanTri = new QuanTri();
-        dd($request);
-        if($request->ho_ten!=null)
-        {
-            $file=$request->hinh_anh;
-            $path=$file->store('avt');
-            $quanTri->avatar_url       = $path;
-            $quanTri->ho_ten           = $request->ho_ten;
-            $quanTri->email            = $request->email;
-            $quanTri->dien_thoai       = $request->dien_thoai;
-            $quanTri->dia_chi          = $request->dia_chi;
-            $quanTri->username         = $request->username;
-            $quanTri->password         = Hash::make($request->password);
-            $quanTri->save();
-            return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Thêm nhân viên {$quanTri->ho_ten} thành công!"]);
-        }
-        return view('nhan-vien.them-moi');
-        
+            
+            $files = $request->file('hinh_anh');
+            $quanTri=new QuanTri();
+            if (isset($files)) {
+                
+                $path = $files->store('avt');
+                $quanTri->avatar_url=$path;
+                $quanTri->ho_ten           = $request->ho_ten;
+                $quanTri->email            = $request->email;
+                $quanTri->dien_thoai       = $request->dien_thoai;
+                $quanTri->dia_chi          = $request->dia_chi;
+                
+                $quanTri->username   = $request->username;
+                $quanTri->password   = Hash::make($request->mat_khau);
+                $quanTri->save();
+                return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Thêm nhân viên {$quanTri->ho_ten} thành công!"]);
+            
+            
+            }
+        return view('nhan-vien.them-moi');  
     }
     public function danhSach()
     {
@@ -52,7 +54,7 @@ class QuanTriController extends Controller
         return view('nhan-vien.cap-nhat', compact('quanTri'));
     }
 
-    public function xuLyCapNhat(Request $request, $id)
+    public function xuLyCapNhat(NhanVienRequest $request, $id)
     {
         $quanTri = QuanTri::find($id);
         if (empty($quanTri)) {
@@ -61,26 +63,21 @@ class QuanTriController extends Controller
         $file                       = $request->hinh_anh;
         if(isset($file))
         {
-            $paths                       = $file->store('avt');
+            $paths                     = $file->store('avt');
             $quanTri->avatar_url       = $paths;
         }
-        $quanTri->ho_ten           = $request->ho_ten;
-        $quanTri->dien_thoai       = $request->dien_thoai;
-        $quanTri->dia_chi          = $request->dia_chi;
-        $quanTri->email            = $request->email;
-        $quanTri->username         = $request->username;
-        $quanTri->password         = $request->password;
-        if(isset($request->trang_thai))
-        {
-            $quanTri->trang_thai=1;
-        }
-        else
-        {
-            $quanTri->trang_thai=0;
-        }
-        $quanTri->save();      
-
-        return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Cập nhật nhân viên {$quanTri->ho_ten} thành công!"]);
+        
+            $quanTri->ho_ten           = $request->ho_ten;
+            $quanTri->dien_thoai       = $request->dien_thoai;
+            $quanTri->dia_chi          = $request->dia_chi;
+            $quanTri->email            = $request->email;
+            $quanTri->username         = $request->username;
+            $quanTri->trang_thai = isset($request->trang_thai) ? 1 : 0;
+            $quanTri->save();       
+            return redirect()->route('nhan-vien.danh-sach')->with(['thong_bao'=>"Cập nhật nhân viên {$quanTri->ho_ten} thành công!"]);
+        
+        
+        
     }
     public function xoa($id)
     {

@@ -34,7 +34,7 @@
         <tr>
             <td>{{ $phieuNhap->id }}</td>
             <td>{{ $phieuNhap->nha_cung_cap->ten }}</td>
-            <td>{{ $phieuNhap->tong_tien }}</td>
+            <td>{{ $phieuNhap->tong_tien_formatted }}</td>
             <td>{{ $phieuNhap->ngay_nhap }}</td>
             <?php
             if ($phieuNhap->trang_thai == true) {

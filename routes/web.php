@@ -30,7 +30,7 @@ use App\Http\Controllers\ThongKeController;
 Route::middleware('auth')->group(function(){
     Route::get('/thong-ke', [ThongKeController::class, 'danhSach'])->name('thong-ke');
     Route::get('/', [SanPhamController::class, 'danhSach'])->name('danh-sach');
-    Route::get('hinh-anh/{id}', [HinhAnhController::class, 'hinhAnhXoa'])->name('hinh-anh');
+    Route::get('hinh-anh/{spid}/{id}', [HinhAnhController::class, 'hinhAnhXoa'])->name('hinh-anh');
     Route::get('dang-xuat', [DangNhapController::class, 'dangXuat'])->name('dang-xuat');
     Route::get('thong-tin',[DangNhapController::class,'thongTin'])->name('thong-tin');
     Route::post('thong-tin',[DangNhapController::class, 'capNhatThongTin'])->name('update-info');
@@ -89,10 +89,10 @@ Route::middleware('auth')->group(function(){
         });
     });
 
-    Route::get('/ajax-lay',[HoaDonController::class, 'layMauSacDungLuong'])->name('lay-mau-dung-luong-ajax');
+   
     
-    Route::get('/ajax-lay-sl',[HoaDonController::class, 'laySoLuongSanPham'])->name('lay-so-luong-ajax');
-    Route::get('/ajax-lay-gb',[HoaDonController::class, 'layGiaBanSanPham'])->name('lay-gia-ban-ajax');
+    Route::get('/ajax-lay-chi-tiet',[HoaDonController::class, 'layMauSacDungLuong'])->name('lay-chi-tiet-sp-ajax');
+
     Route::prefix('hoa-don')->group(function(){
         Route::name('hoa-don.')->group(function(){
             Route::get('/',[HoaDonController::class, 'danhSach'])->name('danh-sach');
@@ -164,10 +164,6 @@ Route::middleware('guest')->group(function(){
     Route::get('dang-nhap', [DangNhapController::class, 'dangNhap'])->name('dang-nhap');
     Route::post('dang-nhap', [DangNhapController::class, 'xuLyDangNhap'])->name('xl-dang-nhap');
 });
-
-
-
-
 
 
 

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quan_tri_id')->constrained('quan_tri');
             $table->string("khach_hang",60);
+            $table->string("dien_thoai",10);
             $table->decimal("tong_tien",12,0)->nullable();
-            $table->string("phuong_thuc_tt",60);
+            $table->string("phuong_thuc_tt",60)->default('Tiền mặt');
             $table->boolean("trang_thai")->default(1);
             $table->timestamp("ngay_tao");
             $table->timestamps();

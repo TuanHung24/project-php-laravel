@@ -25,27 +25,23 @@
             <tr>
                 <th>Mã hóa đơn</th>
                 <th>Tên sản phẩm</th>
+                <th>Màu sắc</th>
+                <th>Dung lượng</th>
                 <th>Số lượng</th>
                 <th>Đơn giá</th>
                 <th>Thành tiền</th>
-                <th>Trạng thái</th>
+               
             </tr>
         </thead>
         @foreach($dsCTHoaDon as $cthoaDon)
         <tr>
             <td>{{ $cthoaDon->hoa_don_id }}</td>
             <td>{{ $cthoaDon->san_pham->ten }}</td>
+            <td>{{ $cthoaDon->mau_sac->ten }}</td>
+            <td>{{ $cthoaDon->dung_luong->ten }}</td>
             <td>{{ $cthoaDon->so_luong }}</td>
-            <td>{{ $cthoaDon->don_gia }}</td>
-            <td>{{ $cthoaDon->thanh_tien }}</td>
-            <?php
-            if ($cthoaDon->trang_thai == true) {
-                $trang_thai = "Hoạt động";
-            } else {
-                $trang_thai = "Không hoạt động";
-            }
-            ?>
-            <td>{{ $trang_thai }}</td>
+            <td>{{ $cthoaDon->don_gia_formatted }}</td>
+            <td>{{ $cthoaDon->thanh_tien_formatted }}</td>
         <tr>
             @endforeach
     </table>
