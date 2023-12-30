@@ -12,6 +12,7 @@
       @foreach($dsNhaCungCap as $nhaCungCap)
       <option value="{{$nhaCungCap->id}}" id="nha_cung_cap">{{$nhaCungCap->ten}}</option>
       @endforeach
+      <span class="error-message" id="error-nha-cung-cap"></span>
     </select>
     @error('nha_cung_cap')
             <span class="error-message">{{ $message }}</span>
@@ -125,9 +126,10 @@
 @section('page-js')
 <script type="text/javascript">
   $(document).ready(function() {
-
+    var STT=0;
     $("#btn-them").click(function() {
       var stt = $("#tb-ds-san-pham tbody tr").length + 1;
+      STT=stt;
       var tenSP = $("#san-pham").find(":selected").text();
       var idSP = $("#san-pham").find(":selected").val();
       var dungLuong = $("#dung-luong").find(":selected").text();
@@ -142,6 +144,7 @@
       if (!validateInput()) {
         return;
       }
+     
       var row = `<tr>
       <td>${stt}</td>
       <td>${tenSP}<input type="hidden" name="idSP[]" value="${idSP}"/></td>
@@ -157,14 +160,16 @@
       </tr>`;
 
       $('#tb-ds-san-pham').find('tbody').append(row);
-      $("#nha-cung-cap").val("Chọn nhà cung cấp");
       $("#san-pham").val("Chọn sản phẩm");
       $("#dung-luong").val("Chọn dung lượng");
       $("#mau-sac").val("Chọn màu");
       $("#gia-nhap").val("");
       $("#gia-ban").val("");
       $("#so-luong").val("1");
-
+      isValid=false;
+      Test();
+      
+      
       function validateInput() {
         var isValid = true;
         if ($("#ncc-id").val() === "" || $("#ncc-id").val() === "Chọn nhà cung cấp") {
@@ -218,10 +223,20 @@
         return isValid;
       }
     });
-
+    function Test(){
+      if(STT>0){
+        $('#nha-cung-cap').prop('disabled', true);
+      }
+      else{
+        $('#nha-cung-cap').prop('disabled', false);
+      }
+    }
+    
     $('#tb-ds-san-pham').on('click', '#btn-xoa', function() {
       var tr = $(this).closest('tr');
       tr.remove();
+      STT--;
+      Test();
     });
 
     $("#san-pham, #so-luong, #gia-nhap, #gia-ban").change(function() {
