@@ -156,7 +156,7 @@ Route::middleware('auth')->group(function(){
             Route::post('them-moi', [SlidesController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [SlidesController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [SlidesController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
-            Route::get('xoa/{id}', [DungLuongMauSacController::class, 'xoa'])->name('xoa');
+            Route::get('xoa/{id}', [SlidesController::class, 'xoa'])->name('xoa');
             });
         });
 });

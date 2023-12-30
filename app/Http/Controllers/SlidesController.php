@@ -56,4 +56,18 @@ class SlidesController extends Controller
         return view('slides.them-moi');
         
     }
+    public function xoa($id)
+    {
+        $silDe = Slides::find($id); 
+        if(!empty($silDe->img_url))
+        {
+            $imgPath=$silDe->img_url;
+            if (file_exists(public_path($imgPath))) {
+            unlink(public_path($imgPath));
+            $silDe->delete();
+            }
+        }
+        $dsSlide = Slides::all();
+        return view("slides.danh-sach",compact('dsSlide'));
+    }
 }
