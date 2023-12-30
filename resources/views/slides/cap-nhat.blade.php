@@ -10,7 +10,9 @@
     <div class="col-md-6">
         <label class="form-label">Ảnh:</label>
         <img class="img_slide" src="{{asset($silDe->img_url)}}"/>
-       
+        @error('hinh_anh')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
 </div>
 
@@ -19,7 +21,11 @@
         <label for="tieu_de" class="form-label">Tên tiêu đề:</label>
         <input type="text" class="form-control" name="tieu_de" id="tieu-de" value="{{$silDe->tieu_de}}">
         <span id="tieu_de_error" class="error-message"></span>
+        @error('tieu_de')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
     </div>
+
 </div>
 
 <div class=row>

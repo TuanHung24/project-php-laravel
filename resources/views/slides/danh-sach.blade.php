@@ -8,7 +8,12 @@
     <h6 class="h2"><span data-feather="list" ></span>DANH SÁCH SLIDESHOW</h6>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
-            <a href="{{ route('slides.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
+            <a href="{{ route('slides.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới SLIDESHOW</a>
+        </div>
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="{{ route('logo.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới LOGO</a>
         </div>
     </div>
 </div>
@@ -25,18 +30,20 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Ảnh tiêu đề</th>
+                <th>Ảnh</th>
                 <th>Tên tiêu đề</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
+
+        
+
         @foreach($dsSlide as $Slide)
         <tr>
             
             <td>{{ $Slide->id }}</td>
             <td>
                 <img src="{{ $Slide->img_url}}" alt="ảnh" class="img_slide">
-            </td>
             <td>{{ $Slide->tieu_de }}</td>
             <td class="chuc-nang">
                 <a href="{{ route('slides.cap-nhat', ['id' => $Slide->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
@@ -44,6 +51,35 @@
             </td>
         <tr>
             @endforeach
+        
+    </table>
+
+
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ảnh LOGO</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+
+        
+
+        @foreach($dsLogo as $Logo)
+        <tr>
+            
+            <td>{{ $Logo->id }}</td>
+            <td>
+                <img src="{{ $Logo->img_url }}" alt="ảnh" class="img_logo">
+            </td>
+            <td class="chuc-nang">
+                <a href="{{ route('logo.cap-nhat', ['id' => $Logo->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
+                <a href="{{ route('logo.xoa', ['id' => $Logo->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+            </td>
+        <tr>
+            @endforeach
+        
     </table>
 </div>
 @endsection

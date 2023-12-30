@@ -15,6 +15,7 @@ use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\SlidesController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\ThongKeController;
+use App\Http\Controllers\LogoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -159,6 +160,16 @@ Route::middleware('auth')->group(function(){
             Route::get('xoa/{id}', [SlidesController::class, 'xoa'])->name('xoa');
             });
         });
+
+        Route::prefix('logo')->group(function(){
+            Route::name('logo.')->group(function(){
+                Route::get('them-moi', [LogoController::class, 'themMoi'])->name('them-moi');
+                Route::post('them-moi', [LogoController::class, 'xuLyThemMoi'])->name('xl-them-moi');
+                Route::get('cap-nhat/{id}', [LogoController::class, 'capNhat'])->name('cap-nhat');
+                Route::post('cap-nhat/{id}', [LogoController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
+                Route::get('xoa/{id}', [LogoController::class, 'xoa'])->name('xoa');
+                });
+            });
 });
 Route::middleware('guest')->group(function(){
     Route::get('dang-nhap', [DangNhapController::class, 'dangNhap'])->name('dang-nhap');

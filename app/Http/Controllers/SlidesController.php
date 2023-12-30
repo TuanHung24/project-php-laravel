@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slides;
+use App\Models\Logo;
 use App\Http\Requests\SlidesRequest;
 use Illuminate\Support\Sleep;
+
 
 class SlidesController extends Controller
 {
@@ -31,7 +33,8 @@ class SlidesController extends Controller
 
     public function danhSach(){
         $dsSlide = Slides::all();
-        return view("slides.danh-sach",compact("dsSlide"));
+        $dsLogo = Logo::all();
+        return view("slides.danh-sach",compact("dsSlide","dsLogo"));
     }
 
     public function capNhat($id)
@@ -39,26 +42,41 @@ class SlidesController extends Controller
         $silDe = Slides::find($id); 
         return view("slides.cap-nhat",compact('silDe'));
     }
-    public function xuLyCapNhat(SlidesRequest $request,$id)
-    {
-        
-        if($request->tieu_de!=null || isset($request->hinh_anh))
-        {
-            $silDe = Slides::find($id);
-            $file=$request->hinh_anh;
-            $path=$file->store('slide');
-            $silDe->img_url          = $path;
-            $silDe->tieu_de          = $request->tieu_de;
-           
+    public function xuLyCapNhat(SlidesRequest $request, $id)
+{
+    $silDe = Slides::find($id);
+
+    // Ensure the slide exists before attempting to update
+    if ($silDe) {
+        // Check if either title or image is being updated
+        if ($request->filled('tieu_de') || $request->hasFile('hinh_anh')) {
+            // Check if an image is uploaded
+            if ($request->hasFile('hinh_anh')) {
+                $file = $request->file('hinh_anh');
+                $path = $file->store('slide');
+                $silDe->img_url = $path;
+            }
+
+            // Update title if it's present
+            if ($request->filled('tieu_de')) {
+                $silDe->tieu_de = $request->tieu_de;
+            }
+
+            // Save changes
             $silDe->save();
-            return redirect()->route('slides.danh-sach')->with(['thong_bao'=>"Thêm slide {$silDe->tieu_de} thành công!"]);
+
+            return redirect()->route('slides.danh-sach')->with(['thong_bao' => "Cập nhật slide '{$silDe->tieu_de}' thành công!"]);
         }
-        return view('slides.them-moi');
-        
     }
+
+    // If slide doesn't exist or no update performed, return to the form view
+    return view('slides.them-moi');
+}
+
     public function xoa($id)
     {
         $silDe = Slides::find($id); 
+
         if(!empty($silDe->img_url))
         {
             $imgPath=$silDe->img_url;
@@ -68,6 +86,12 @@ class SlidesController extends Controller
             }
         }
         $dsSlide = Slides::all();
-        return view("slides.danh-sach",compact('dsSlide'));
+        $dsLogo = Logo::all();
+        return redirect()->route('slides.danh-sach',compact('dsLogo','dsSlide'));
     }
+
+
+
+    //logo
+  
 }
