@@ -47,7 +47,7 @@ class KhachHangController extends Controller
         return view('khach-hang.cap-nhat', compact('khachHang'));
     }
 
-    public function xuLyCapNhat(Request $request, $id)
+    public function xuLyCapNhat(KhachHangRequest $request, $id)
     {
         $khachHang = KhachHang::find($id);
         if (empty($khachHang)) {

@@ -21,12 +21,13 @@ class KhachHangRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
         return [
             'ho_ten'=>'required|min:10',
-            'email'=>'required|min:20|max:100',
-            'ten_dang_nhap'=>'required|min:6|max:32',
-            'mat_khau'=>'required|min:6|max:32',
-            'dien_thoai'=>'required|min:10|max:11',
+            'email'=>'required|min:15|max:100' . $id,
+            'ten_dang_nhap'=>'required|min:6|max:32' . $id,
+            'mat_khau'=>'required|min:6|max:128',
+            'dien_thoai' =>'required|regex:/^0\d{9}$/',
             'dia_chi'=>'required|min:20|max:100',
         ];
     }
@@ -45,9 +46,8 @@ class KhachHangRequest extends FormRequest
             'mat_khau.min'=>"Mật khẩu phải lớn hơn :min ký tự!",
             'mat_khau.max'=>"Mật khẩu phải nhỏ hơn :max ký tự!",
 
-            'dien_thoai.required'=>"Điện thoại không được bỏ trống!",
-            'dien_thoai.min'=>"Số điện thoại phải lớn hơn :min ký tự",
-            'dien_thoai.max'=>"Số điện thoại phải nhỏ hơn :max ký tự",
+            'dien_thoai.required' => 'Số điện thoại không được bỏ trống!',
+            'dien_thoai.regex' => 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số!',
             'dia_chi.required'=>"Địa chỉ không được bỏ trống!",
             'dia_chi.min'=>"Địa chỉ phải lớn hơn :min ký tự!",
             'dia_chi.max'=>"Địa chỉ phải nhỏ hơn :max ký tự!",

@@ -9,37 +9,55 @@
    <div class="row">
         <div class="col-md-6">
             <label for="ho_ten" class="form-label">Họ tên:</label>
-            <input type="text" class="form-control" name="ho_ten" value="{{$khachHang->ho_ten}}">
+            <input type="text" class="form-control" name="ho_ten" value="{{old('ho_ten',$khachHang->ho_ten)}}">
+            @error('ho_ten')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="email" class="form-label">Email:</label>
-            <input type="text" class="form-control" name="email" value="{{$khachHang->email}}">
+            <input type="text" class="form-control" name="email" value="{{old('email',$khachHang->email)}}">
+            @error('email')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="ten_dang_nhap" class="form-label">Tên đăng nhập:</label>
-            <input type="text" class="form-control" name="ten_dang_nhap" value="{{$khachHang->ten_dang_nhap}}">
+            <input type="text" class="form-control" name="ten_dang_nhap" value="{{old('ten_dang_nhap',$khachHang->ten_dang_nhap)}}">
+            @error('ten_dang_nhap')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="mat-khau" class="form-label">Mật khẩu:</label>
-            <input type="password" class="form-control" name="password" value="{{$khachHang->password}}" readonly>
+            <input type="password" class="form-control" name="password" value="{{old('mat_khau',$khachHang->password)}}" readonly>
+            @error('mat_khau')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="dien_thoai" class="form-label">Điện thoại:</label>
-            <input type="text" class="form-control" name="dien_thoai" value="{{$khachHang->dien_thoai}}">
+            <input type="text" class="form-control" name="dien_thoai" value="{{old('dien_thoai',$khachHang->dien_thoai)}}">
+            @error('dien_thoai')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="dia_chi" class="form-label">Địa chỉ:</label>
-            <input type="text" class="form-control" name="dia_chi" value="{{$khachHang->dia_chi}}">
+            <input type="text" class="form-control" name="dia_chi" value="{{old('dia_chi',$khachHang->dia_chi)}}">
+            @error('dia_chi')
+            <span class="error-message">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <div class="col-md-2">

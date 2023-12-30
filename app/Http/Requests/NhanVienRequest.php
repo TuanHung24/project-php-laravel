@@ -24,7 +24,7 @@ class NhanVienRequest extends FormRequest
         $id = $this->route('id');
         return [
             'ho_ten' => 'required|min:10',
-            'dien_thoai' => 'required|min:10|max:11',
+            'dien_thoai' =>'required|regex:/^0\d{9}$/',
             'email' => 'required|min:15|max:80|unique:quan_tri,email,' . $id,
             'dia_chi' => 'required|min:15|max:128',
             'username' => 'required|min:6|max:60|unique:quan_tri,username,' . $id,
@@ -36,9 +36,8 @@ class NhanVienRequest extends FormRequest
         return [
             'ho_ten.required' => "Tên nhân viên không được bỏ trống!",
             'ho_ten.min' => "Tên nhân viên phải lớn hơn :min ký tự",
-            'dien_thoai.required' => "Điện thoại không được bỏ trống!",
-            'dien_thoai.min' => "Số điện thoại phải lớn hơn :min ký tự",
-            'dien_thoai.max' => "Số điện thoại phải nhỏ hơn :max ký tự",
+            'dien_thoai.required' => 'Số điện thoại không được bỏ trống!',
+            'dien_thoai.regex' => 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số!',
             
             'email.required' => "Email không được bỏ trống!",
             'email.min' => "Email phải lớn hơn :min ký tự!",
