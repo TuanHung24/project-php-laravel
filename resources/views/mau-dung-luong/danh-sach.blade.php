@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h4 class=""><span data-feather="list"></span>Danh Sách Màu Sắc Và Dung Lượng</h4>
+    <h4><span data-feather="list"></span>DANH SÁCH MÀU SẮC VÀ DUNG LƯỢNG</h4>
 </div>
 @if(session('thong_bao'))
     <div class="alert alert-success d-flex align-items-center" role="alert">

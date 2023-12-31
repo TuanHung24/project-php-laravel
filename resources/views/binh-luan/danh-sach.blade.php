@@ -17,7 +17,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><span data-feather="list" ></span>DANH SÁCH BÌNH LUẬN</h1>
+    <h4><span data-feather="list" ></span>DANH SÁCH BÌNH LUẬN</h4>
     
 </div>
 

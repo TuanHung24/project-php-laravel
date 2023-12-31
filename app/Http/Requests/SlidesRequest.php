@@ -21,8 +21,9 @@ class SlidesRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id=$this->route("id");
         return [
-            'tieu_de'=>'required|min:10|max:40|unique:slides,tieu_de',
+            'tieu_de'=>'required|min:10|max:40|unique:slides,tieu_de,'.$id,
             
         ];
     }
