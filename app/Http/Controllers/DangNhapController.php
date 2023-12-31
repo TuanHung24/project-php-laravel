@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\NhanVien;
 use App\Models\QuanTri;
+use App\Models\Logo;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,7 +16,12 @@ class DangNhapController extends Controller
 {
     public function dangNhap()
     {
-        return view('dang-nhap');
+        $loGo = Logo::first();
+
+    // Kiểm tra nếu tồn tại logo
+        // Truyền thông tin logo đến view 'dang-nhap'
+        return view('dang-nhap', compact('loGo'));
+    
     }
     public function xuLyDangNhap(Request $rq)
     {
@@ -74,4 +80,5 @@ class DangNhapController extends Controller
         $taiKhoan->save();
         return redirect()->route('thong-tin')->with(['thong_bao'=>"Thay đổi mật khẩu thành công!"]);
     }
+
 }

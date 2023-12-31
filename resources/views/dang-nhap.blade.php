@@ -16,10 +16,10 @@
   @csrf
 <div class="d-flex align-items-center mb-3 pb-1">
   
-  <span class="h1 fw-bold mb-0">Logo</span>
+  <img id="logo-dang-nhap" src="{{$loGo->img_url}}" alt="">
 </div>
 
-<h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập tài khoản</h5>
+<h5 class="fw-normal mb-3 pb-3" style="text-align:center;">Đăng nhập</h5>
 
 <div class="form-outline mb-4">
   <label class="form-label" for="form2Example17">Tên tài khoản:</label>

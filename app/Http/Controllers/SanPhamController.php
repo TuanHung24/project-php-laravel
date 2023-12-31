@@ -11,6 +11,7 @@ use App\Models\CTSanPham;
 use App\Models\tTSanPham;
 use App\Models\DungLuong;
 use App\Models\MauSac;
+use App\Models\Logo;
 use App\Models\ThongTinSanPham;
 
 class SanPhamController extends Controller
@@ -65,7 +66,7 @@ class SanPhamController extends Controller
     public function danhSach()
     {
         $dsSanPham=SanPham::all();
-        return view("san-pham.danh-sach", compact('dsSanPham'));
+        return view("san-pham.danh-sach", compact('dsSanPham','loGo'));
     }
 
     public function capNhat($id)

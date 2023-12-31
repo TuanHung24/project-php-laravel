@@ -42,8 +42,7 @@ class SlidesController extends Controller
         $silDe = Slides::find($id); 
         return view("slides.cap-nhat",compact('silDe'));
     }
-    public function xuLyCapNhat(SlidesRequest $request, $id)
-{
+    public function xuLyCapNhat(SlidesRequest $request, $id){
     $silDe = Slides::find($id);
 
     // Ensure the slide exists before attempting to update
@@ -68,11 +67,8 @@ class SlidesController extends Controller
             return redirect()->route('slides.danh-sach')->with(['thong_bao' => "Cập nhật slide '{$silDe->tieu_de}' thành công!"]);
         }
     }
-
-    // If slide doesn't exist or no update performed, return to the form view
     return view('slides.them-moi');
 }
-
     public function xoa($id)
     {
         $silDe = Slides::find($id); 
