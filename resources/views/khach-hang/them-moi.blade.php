@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="ho_ten" class="form-label">Họ tên:</label>
-        <input type="text" class="form-control" name="ho_ten">
+        <input type="text" class="form-control" name="ho_ten" id="ho-ten" value="{{old('ho_ten')}}>
         @error('ho_ten')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="email" class="form-label">Email:</label>
-        <input type="text" class="form-control" name="email">
+        <input type="text" class="form-control" name="email" value="{{old('email')}}>
         @error('email')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -27,7 +27,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="ten_dang_nhap" class="form-label">Tên đăng nhập:</label>
-        <input type="text" class="form-control" name="ten_dang_nhap">
+        <input type="text" class="form-control" name="ten_dang_nhap" id="username" value="{{old('username')}}>
         @error('ten_dang_nhap')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -36,7 +36,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="mat-khau" class="form-label">Mật khẩu:</label>
-        <input type="text" class="form-control" name="password">
+        <input type="text" class="form-control" name="password" id="password" value="{{old('mat_khau')}}>
         @error('mat_khau')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -45,7 +45,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="dien_thoai" class="form-label">Điện thoại:</label>
-        <input type="text" class="form-control" name="dien_thoai">
+        <input type="text" class="form-control" name="dien_thoai" id='dien-thoai' value="{{old('dien_thoai')}}>
         @error('dien_thoai')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -54,7 +54,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="dia_chi" class="form-label">Địa chỉ:</label>
-        <input type="text" class="form-control" name="dia_chi">
+        <input type="text" class="form-control" name="dia_chi" value="{{old('dia_chi')}}>
         @error('dia_chi')
             <span class="error-message"> {{ $message }} </span>
         @enderror
