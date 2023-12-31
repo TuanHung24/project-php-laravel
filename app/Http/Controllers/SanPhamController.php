@@ -66,7 +66,7 @@ class SanPhamController extends Controller
     public function danhSach()
     {
         $dsSanPham=SanPham::all();
-        return view("san-pham.danh-sach", compact('dsSanPham','loGo'));
+        return view("san-pham.danh-sach", compact('dsSanPham'));
     }
 
     public function capNhat($id)
@@ -157,6 +157,18 @@ class SanPhamController extends Controller
     {
         $reQuest=$request->search_name;
         $dsSanPham=SanPham::where('ten','like','%'.$reQuest.'%')->get();
-        return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
+       
+       
+       // return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
+       
+       // return view('san-pham.danh-sach',compact('dsSanPham','reQuest'))->with(['null_tk'=>"Không tồn tại sản phẩm nào !"]);
+        if ($dsSanPham) {
+            // Nếu tìm thấy sản phẩm, trả về thông tin sản phẩm hoặc làm gì đó với nó
+            return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
+        } else {
+            // Nếu không tìm thấy sản phẩm, trả về thông báo
+            return back()->with('null_tk', 'Không tìm thấy sản phẩm nào!');
+        
+        }
     }
 }

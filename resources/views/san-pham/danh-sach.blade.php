@@ -37,6 +37,7 @@
         </div>
     </div>
 @endif
+
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
@@ -77,6 +78,13 @@
     @endforeach
     </tbody>
 </table>
+@if(session('null_tk'))
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <div> 
+              {{session('null_tk')}}
+        </div>
+    </div>
+@endif
 </div>
 @endsection
 <!-- <script type="text/javascript">
