@@ -14,12 +14,11 @@
 
 <form method="POST" action="{{ route('xl-dang-nhap') }}" class="login"> 
   @csrf
-<div class="d-flex align-items-center mb-3 pb-1">
-  
+  <div class="hop-dieu-chinh align-items-center mb-3 pb-1">
   <img id="logo-dang-nhap" src="{{$loGo->img_url}}" alt="">
 </div>
 
-<h5 class="fw-normal mb-3 pb-3" style="text-align:center;">Đăng nhập</h5>
+
 
 <div class="form-outline mb-4">
   <label class="form-label" for="form2Example17">Tên tài khoản:</label>
@@ -30,12 +29,14 @@
 <div class="form-outline mb-4">
 <label class="form-label" for="form2Example27">Mật khẩu:</label>
   <input type="password" id="form2Example27"name="password" class="form-control form-control-lg">
+
   @if(session('error-login'))
   <span class="error-message">
     {{ session('error-login') }}
   </span>
   @endif
 </div>
+
 
 <div class="pt-1 mb-4">
   <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập</button>
