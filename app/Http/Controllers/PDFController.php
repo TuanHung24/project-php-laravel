@@ -25,4 +25,8 @@ class PDFController extends Controller
         $pdf = app('dompdf.wrapper')->loadView('pdf.nh', ['phieuNhap'=>$phieuNhap],['dsCTPhieuNhap'=>$dsCTPhieuNhap]);
         return $pdf->stream('hoa-don.pdf');
     }
+    public function export()
+    {
+        return Excel::download(new UsersExport(), 'users.xlsx');
+    }
 }
