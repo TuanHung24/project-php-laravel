@@ -1,9 +1,9 @@
 @extends('master')
 
 @section('content')
-
+ 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">THÊM MỚI SẢN PHẨM</h1>
+    <h4>THÊM MỚI SẢN PHẨM</h4>
 </div>
 <form method="POST" action="{{ route('san-pham.xl-them-moi') }}" enctype="multipart/form-data" class="container">
     @csrf

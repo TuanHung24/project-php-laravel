@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreignId('loai_san_pham_id')->constrained('loai_san_pham');
 
-            $table->boolean('trang_thai')->default(1);
+            $table->softDeletes();
             $table->timestamps(); 
         });
     }

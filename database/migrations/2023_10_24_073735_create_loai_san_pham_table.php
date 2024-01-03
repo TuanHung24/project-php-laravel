@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('loai_san_pham', function (Blueprint $table) {
             $table->id();
             $table->string('ten');
-            $table->boolean('trang_thai')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

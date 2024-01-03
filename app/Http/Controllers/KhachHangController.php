@@ -23,7 +23,8 @@ class KhachHangController extends Controller
             $khachHang->email           = $request->email;
             $khachHang->ten_dang_nhap   = $request->ten_dang_nhap;
             $khachHang->dien_thoai      = $request->dien_thoai;
-            $khachHang->password        = Hash::make($request->password);
+            $khachHang->password        = Hash::make($request->mat_khau);
+            $khachHang->dia_chi         =$request->dia_chi;
             $khachHang->save();
             return redirect()->route('khach-hang.danh-sach')->with(['thong_bao'=>"Thêm khách hàng {$khachHang->ho_ten} thành công!"]);
         }
@@ -58,6 +59,7 @@ class KhachHangController extends Controller
         $khachHang->email           = $request->email;
         $khachHang->ten_dang_nhap   = $request->ten_dang_nhap;
         $khachHang->dien_thoai      = $request->dien_thoai;
+        $khachHang->dia_chi         =$request->dia_chi;
         $khachHang->save();
 
         return redirect()->route('khach-hang.danh-sach')->with(['thong_bao'=>"Cập nhật  khách hàng {$khachHang->ho_ten} thành công!"]);

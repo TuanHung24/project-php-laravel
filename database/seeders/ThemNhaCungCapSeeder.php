@@ -18,14 +18,13 @@ class ThemNhaCungCapSeeder extends Seeder
         $nhaCungCap->dien_thoai="0345844444";
         $nhaCungCap->dia_chi="235 Đồng Khởi, P. Bến Nghé, Q. 1, Tp. Hồ Chí Minh";
         $nhaCungCap->save();
-        echo "Thêm nhà cung cấp {$nhaCungCap->ten} thành công!";
 
         $nhaCungCap=new NhaCungCap();
         $nhaCungCap->ten="Công Ty TNHH Thế Giới Di Động";
         $nhaCungCap->dien_thoai="0387765321";
         $nhaCungCap->dia_chi="364 Cộng Hòa, P. 13, Q. Tân Bình, Tp. Hồ Chí Minh";
         $nhaCungCap->save();
-        echo "Thêm nhà cung cấp {$nhaCungCap->ten} thành công!";
+        echo "Thêm nhà cung cấp thành công!";
 
     }
 }

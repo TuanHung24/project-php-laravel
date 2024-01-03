@@ -15,7 +15,7 @@
 <form method="POST" action="{{ route('xl-dang-nhap') }}" class="login"> 
   @csrf
   <div class="hop-dieu-chinh align-items-center mb-3 pb-1">
-  <img id="logo-dang-nhap" src="{{$loGo->img_url}}" alt="">
+  <img id="logo-dang-nhap" src="{{$loGo->img_url ?? null}}" alt="logo">
 </div>
 
 
@@ -23,7 +23,11 @@
 <div class="form-outline mb-4">
   <label class="form-label" for="form2Example17">Tên tài khoản:</label>
   <input type="text" id="form2Example17" name="ten_dang_nhap" class="form-control form-control-lg" value="{{session('user_name') ?? ''}}">
-  
+  @if(session('empty_username'))
+  <span class="error-message">
+    {{ session('empty_username') }}
+  </span>
+  @endif
 </div>
 
 <div class="form-outline mb-4">

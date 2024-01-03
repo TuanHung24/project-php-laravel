@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SanPham extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $table = "san_pham";
     protected $hidden=['loai_san_pham_id','created_at','updated_at','trang_thai'];
     public function loai_san_pham()

@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">THÊM MỚI NHÂN VIÊN</h1>
+    <h4>THÊM MỚI NHÂN VIÊN</h4>
 </div>
-<form method="POST" action="{{ route('nhan-vien.xl-them-moi') }}" class="container" id="add" enctype="multipart/form-data">
+<form method="POST" action="{{ route('nhan-vien.xl-them-moi') }}" enctype="multipart/form-data" class="container" >
 @csrf
 <div class="row">
     <div class="col-md-6">

@@ -46,7 +46,6 @@
         <th>Tên</th>
         <th>Mô tả</th>  
         <th>Loại sản phẩm</th>
-        <th>Trạng thái</th>
         <th>Thao tác</th>
     </tr>
     </thead>
@@ -57,18 +56,6 @@
         <td>{{ $sanPham->ten }}</td>
         <td>{{ $sanPham->mo_ta }}</td>
         <td>{{ $sanPham->loai_san_pham->ten }}</td>
-        <?php
-        if($sanPham->trang_thai==1)
-        {
-            $trang_thai="Hoạt động";
-        }
-        else
-        {
-            $trang_thai="Không hoạt động";
-        }
-        ?>
-        <td>{{$trang_thai}}</td>
-        
         <td class="chuc-nang">
             <a href="{{ route('san-pham.chi-tiet', ['id' => $sanPham->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a> |
             <a href="{{ route('san-pham.cap-nhat', ['id' => $sanPham->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |

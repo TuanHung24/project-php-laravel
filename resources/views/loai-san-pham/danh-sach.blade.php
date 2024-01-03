@@ -29,7 +29,6 @@
             <tr>
                 <th>Id</th>
                 <th>Tên</th>
-                <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -37,14 +36,6 @@
         <tr>
             <td>{{ $loaiSanPham->id }}</td>
             <td>{{ $loaiSanPham->ten }}</td>
-            <?php
-            if ($loaiSanPham->trang_thai == true) {
-                $trang_thai = "Hoạt động";
-            } else {
-                $trang_thai = "Không hoạt động";
-            }
-            ?>
-            <td>{{ $trang_thai }}</td>
             <td class="chuc-nang">
                 <a href="{{ route('loai-san-pham.cap-nhat', ['id' => $loaiSanPham->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
                 <a href="{{ route('loai-san-pham.xoa', ['id' => $loaiSanPham->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>

@@ -33,7 +33,10 @@ class DangNhapController extends Controller
 
             return redirect()->route('san-pham.danh-sach')->with(['dang_nhap' => 'Đăng nhập thành công!']);
         }
-       
+        if(empty($user))
+        {
+            return redirect()->route('dang-nhap')->with(['user_name'=>$rq->ten_dang_nhap,'error-login' => 'Mật khẩu không chính xác!','empty_username'=>"Tên tài khoản không tồn tại!"]);  
+        }
         return redirect()->route('dang-nhap')->with(['user_name'=>$rq->ten_dang_nhap,'error-login' => 'Mật khẩu không chính xác!']);     
     }
     public function dangXuat()

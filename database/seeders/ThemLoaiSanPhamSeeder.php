@@ -16,26 +16,22 @@ class ThemLoaiSanPhamSeeder extends Seeder
         $loaiSanPham=new LoaiSanPham();
         $loaiSanPham->ten="iPhone";
         $loaiSanPham->save();
-        echo "Thêm sản phẩm {$loaiSanPham->ten} thành công!";
 
         $loaiSanPham=new LoaiSanPham();
         $loaiSanPham->ten="Samsung";
         $loaiSanPham->save();
-        echo "Thêm sản phẩm {$loaiSanPham->ten} thành công!";
 
         $loaiSanPham=new LoaiSanPham();
         $loaiSanPham->ten="Xiaomi";
         $loaiSanPham->save();
-        echo "Thêm sản phẩm {$loaiSanPham->ten} thành công!";
 
         $loaiSanPham=new LoaiSanPham();
         $loaiSanPham->ten="OPPO";
         $loaiSanPham->save();
-        echo "Thêm sản phẩm {$loaiSanPham->ten} thành công!";
 
         $loaiSanPham=new LoaiSanPham();
         $loaiSanPham->ten="Nokia";
         $loaiSanPham->save();
-        echo "Thêm sản phẩm {$loaiSanPham->ten} thành công!";
+        echo "Thêm loại sản phẩm thành công!";
     }
 }

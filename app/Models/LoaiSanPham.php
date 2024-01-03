@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LoaiSanPham extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $hidden=['created_at','updated_at','trang_thai'];
     protected $table = "loai_san_pham";
     public function san_pham()
