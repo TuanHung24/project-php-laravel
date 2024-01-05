@@ -171,7 +171,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         App\Providers\LogoServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+        //Maatwebsite\Excel\ExcelServiceProvider::class,
         
     ])->toArray(),
 

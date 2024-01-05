@@ -8,6 +8,7 @@ use App\Models\KhachHang;
 use App\Models\PhieuNhap;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ThongKeController extends Controller
 {
@@ -26,5 +27,12 @@ class ThongKeController extends Controller
         $tongTienGiaNhap = number_format($tongGiaNhap, 0, ',', '.');
 
         return view('thong-ke',compact('hoaDon','khachHang','soLuongSanPham','tongTienGiaNhap','tongTienHoaDon'));
+    }
+    public function ThongKeHoaDon(){
+        $data = HoaDon::select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as count'))
+        ->groupBy('date')
+        ->get();
+    
+        return response()->json($data);
     }
 }

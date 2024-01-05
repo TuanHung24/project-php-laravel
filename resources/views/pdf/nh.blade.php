@@ -7,20 +7,27 @@
     <style>
         *{
             font-family: DejaVu Sans,sans-serif;
+            
         }
-        body{
-            font-size: 13px;
+        .table{
+            width: 100%;
+            margin-bottom: 1rem;
+            text-align: center;
+            
+        }
+        th,td{
+            border: 1px solid black;
         }
     </style>
 </head>
 
 <body>
-    <h2>Hóa đơn nhập hàng</h2>
-    <h3>Nhà cung cấp:{{$phieuNhap->nha_cung_cap->ten}} </h3>
-    <h3>Mã hóa đơn:{{$phieuNhap->id}} </h3>
-    <h3>Ngày tạo:{{$phieuNhap->ngay_nhap}}</h3>
+    <h3 style="text-align: center;">Hóa đơn nhập hàng</h3>
+    <h5>Công ty: {{$phieuNhap->nha_cung_cap->ten}}</h5>
+    <h5>Mã hóa đơn:{{$phieuNhap->id}} </h5> 
+    <h5>Ngày tạo:{{$phieuNhap->ngay_nhap}}</h5>
     <div class="bd-example">
-        <table class="table" border="1">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Sản phẩm</th>
@@ -34,13 +41,13 @@
                 <tr>
                     <td>{{ $cthd->san_pham->ten }}</td>
                     <td>{{ $cthd->so_luong }}</td>
-                    <td>{{ $cthd->gia_nhap }}</td>
-                    <td>{{ $cthd->gia_ban }}</td>
+                    <td>{{ $cthd->gia_nhap_formatted }} VND</td>
+                    <td>{{ $cthd->gia_ban_formatted }} VND</td>
                 <tr>
                     @endforeach
             </tbody>
         </table>
-        <span>Thành tiền: {{ $phieuNhap->tong_tien }}</span>
+        <span style="margin-left:60%">Thành tiền: {{ $phieuNhap->tong_tien_formatted }} VND</span>
     </div>
 </body>
 </html>

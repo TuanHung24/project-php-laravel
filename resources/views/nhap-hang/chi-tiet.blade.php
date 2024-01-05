@@ -11,9 +11,11 @@
             <tr>
                 <th>Mã chi tiết phiếu nhập</th>
                 <th>Sản phẩm</th>
-                <th>Số lượng</th>
+                <th>Màu sắc</th>
+                <th>Dung lượng</th>
                 <th>Giá nhập</th>
                 <th>Giá bán</th>
+                <th>Số lượng</th>
                 <th>Thành tiền</th>
             </tr>
         </thead>
@@ -21,9 +23,11 @@
         <tr>
             <td>{{ $ctPhieuNhap->id }}</td>
             <td>{{ $ctPhieuNhap->san_pham->ten }}</td>
-            <td>{{ $ctPhieuNhap->so_luong }}</td>
+            <td>{{ $ctPhieuNhap->mau_sac->ten }}</td>
+            <td>{{ $ctPhieuNhap->dung_luong->ten }}</td>
             <td>{{ $ctPhieuNhap->gia_nhap_formatted }}</td>
             <td>{{ $ctPhieuNhap->gia_ban_formatted }}</td>
+            <td>{{ $ctPhieuNhap->so_luong }}</td>
             <td>{{ $ctPhieuNhap->thanh_tien_formatted }}</td>
 
         <tr>

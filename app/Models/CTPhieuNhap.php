@@ -29,6 +29,14 @@ class CTPhieuNhap extends Model
     {
         return number_format($this->thanh_tien, 0, ',', '.');
     }
+    public function mau_sac()
+    {
+        return $this->belongsTo(MauSac::class);
+    }
+    public function dung_luong()
+    {
+        return $this->belongsTo(DungLuong::class);
+    }
 }
 
 

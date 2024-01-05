@@ -26,7 +26,6 @@
                 <th>Nhà cung cấp</th>  
                 <th>Tổng tiền</th>
                 <th>Ngày nhập</th>
-                <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -36,14 +35,6 @@
             <td>{{ $phieuNhap->nha_cung_cap->ten }}</td>
             <td>{{ $phieuNhap->tong_tien_formatted }}</td>
             <td>{{ $phieuNhap->ngay_nhap }}</td>
-            <?php
-            if ($phieuNhap->trang_thai == true) {
-                $trang_thai = "Hoạt động";
-            } else {
-                $trang_thai = "Không hoạt động";
-            }
-            ?>
-            <td>{{ $trang_thai }}</td>
             <td class="chuc-nang">
                 <a href="{{ route('nhap-hang.chi-tiet', ['id' => $phieuNhap->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a>|
                 <a href="{{ route('nhap-hang.xoa', ['id' => $phieuNhap->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>|
