@@ -20,10 +20,8 @@
     <span>Tổng số: {{$khachHang}}</span>
     </div>
  </span><br><br>
- 
  <h4>Thống kê theo biểu đồ hóa đơn</h4>
  <canvas id="orderChart" width="400" height="200"></canvas>
-
 @endsection
 
 @section('page-js')
@@ -99,6 +97,5 @@ $(document).ready(function(){
     });
 
 });
-
 </script>
 @endsection
