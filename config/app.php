@@ -173,6 +173,7 @@ return [
         App\Providers\LogoServiceProvider::class,
         //Maatwebsite\Excel\ExcelServiceProvider::class,
         
+        
     ])->toArray(),
 
     /*
@@ -194,5 +195,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class
         
     ])->toArray(),
+
+    
 
 ];
