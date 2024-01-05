@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function(){
             Route::get('/', [SanPhamController::class, 'danhSach'])->name('danh-sach');
             Route::get('/tim-kiem', [SanPhamController::class, 'timKiem'])->name('tim-kiem');
             Route::get('cap-nhat/{id}', [SanPhamController::class, 'capNhat'])->name('cap-nhat');
+            Route::get('khoi-phuc/{id}', [SanPhamController::class, 'khoiPhuc'])->name('khoi-phuc');
+            Route::get('xoa-vinh-vien/{id}', [SanPhamController::class, 'xoaVinhVien'])->name('xoa-vinh-vien');
+            Route::get('thung-rac', [SanPhamController::class, 'thungRac'])->name('thung-rac');
             Route::post('cap-nhat/{id}', [SanPhamController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
             Route::get('chi-tiet/{id}', [SanPhamController::class, 'chiTietSanPham'])->name('chi-tiet');
             Route::get('xoa/{id}', [SanPhamController::class, 'xoa'])->name('xoa'); 
@@ -53,11 +56,14 @@ Route::middleware('auth')->group(function(){
     Route::prefix('loai-san-pham')->group(function(){
         Route::name('loai-san-pham.')->group(function(){
             Route::get('/', [LoaiSanPhamController::class, 'danhSach'])->name('danh-sach');
-            Route::get('/tim-kiem', [LoaiSanPhamController::class, 'timKiem'])->name('tim-kiem');
+            Route::get('tim-kiem', [LoaiSanPhamController::class, 'timKiem'])->name('tim-kiem');
             Route::get('them-moi',[LoaiSanPhamController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[LoaiSanPhamController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [LoaiSanPhamController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [LoaiSanPhamController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
+            Route::get('khoi-phuc/{id}', [LoaiSanPhamController::class, 'khoiPhuc'])->name('khoi-phuc');
+            Route::get('xoa-vinh-vien/{id}', [LoaiSanPhamController::class, 'xoaVinhVien'])->name('xoa-vinh-vien');
+            Route::get('thung-rac', [LoaiSanPhamController::class, 'thungRac'])->name('thung-rac');
             Route::get('xoa/{id}', [LoaiSanPhamController::class, 'xoa'])->name('xoa');
         });
     });
@@ -167,7 +173,6 @@ Route::middleware('auth')->group(function(){
                 Route::post('them-moi', [LogoController::class, 'xuLyThemMoi'])->name('xl-them-moi');
                 Route::get('cap-nhat/{id}', [LogoController::class, 'capNhat'])->name('cap-nhat');
                 Route::post('cap-nhat/{id}', [LogoController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
-                Route::get('xoa/{id}', [LogoController::class, 'xoa'])->name('xoa');
                 });
             });
 });

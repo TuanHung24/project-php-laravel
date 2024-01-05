@@ -70,7 +70,7 @@ class ThemThongTinSanPhamSeeder extends Seeder
         $tTSanPham->he_dieu_hanh="Android 13";
         $tTSanPham->ram="4";
         $tTSanPham->camera="Chính 50 MP & Phụ 2 MP";
-        $tTSanPham->pin="5000 mAh";
+        $tTSanPham->pin="5000";
         $tTSanPham->save();
 
         $tTSanPham=new ThongTinSanPham();

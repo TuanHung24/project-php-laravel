@@ -15,7 +15,7 @@
     <link href="{{ asset('style.css') }}" rel="stylesheet">
 </head>
 <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow" id="header-navbar">
-<img src="{{asset('logo/logo-dt.png')}}" id="logo"/>
+<img src="{{asset($logoUrl->img_url??null)}}" id="logo"/>
     <div class="navbar_collapse">
         <div class="bell-mail">
         <div class="dropdown bell" id="bell">

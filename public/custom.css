@@ -83,7 +83,7 @@ td{
 }
 
 .chuc-nang{
-    width: 16%;
+    width: auto;
     vertical-align: middle;
 }
 
@@ -92,7 +92,8 @@ td{
 }
 
 .feather.feather-edit, .feather.feather-trash-2{
-    margin-right: 0px;
+   
+    margin-bottom: 4px;
 }
 
 .rounded-circle{
@@ -270,7 +271,7 @@ h3 {
     padding: 1%;
 }
 .info-name,.info-email,.info-phone,.info-address,.info-username{
-    width: 50%;
+    width: 600px;
     padding: 1%;
     border-bottom: 1px solid #000;
     font-weight: 600;
@@ -290,7 +291,7 @@ h3 {
 }
 #logo{
     height: 70px;
-    width: 248px;
+    width: 275.5px;
 }
 #navbar-collapse{
     height: 70px;
@@ -372,9 +373,9 @@ h3 {
     width: 400px;
     margin-top: -113px;
 }
-.img_slide{
-    width: 300px;
-    height: 60px;
+.img_slide,.img_logo{
+    width: 350px;
+    height: 80px;
 }
 .thong_ke{
     display: flex;
@@ -421,4 +422,7 @@ h3 {
     border-radius: 10px;
     width: 100%;
     height:200px;
+}
+.pagination-nav{
+    text-align: center;
 }

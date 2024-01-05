@@ -56,9 +56,12 @@ class CTPhieuNhapController extends Controller
                 $ctSanPham->so_luong=$request->soLuong[$i];
                 $ctSanPham->save();
             }
+            
             $ctPhieuNhap->phieu_nhap_id      = $phieuNhap->id;
             $ctPhieuNhap->so_luong           = $request->soLuong[$i];
             $ctPhieuNhap->gia_nhap           = $request->giaNhap[$i];
+            $ctPhieuNhap->mau_sac_id         = $request->idMauSac[$i];
+            $ctPhieuNhap->dung_luong_id      = $request->idDungLuong[$i];
             $ctPhieuNhap->gia_ban            = $request->giaBan[$i];
             $ctPhieuNhap->thanh_tien         = $request->thanhTien[$i];
             $ctPhieuNhap->save();

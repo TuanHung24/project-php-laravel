@@ -35,37 +35,19 @@ class LogoController extends Controller
         $loGo = Logo::find($id);
     
         if ($loGo && $request->hasFile('hinh_anh')) {
-            $file = $request->file('hinh_anh');
-            $path = $file->store('logo');
-    
-            // Update attributes of the logo model
-            $loGo->img_url = $path;
-            // Update other attributes if needed
-            // $loGo->ten_logo = $request->ten_logo;
-    
-            $loGo->save();
-    
-            return redirect()->route('slides.danh-sach')->with(['thong_bao' => "Cập nhật Logo thành công!"]);
-        }
-    
-        return view('logo.them-moi');
-    }
-    
-    public function xoa($id)
-    {
-
-        $loGo = Logo::find($id); 
-        if(!empty($loGo->img_url))
-        {
             $imgPath=$loGo->img_url;
             if (file_exists(public_path($imgPath))) {
             unlink(public_path($imgPath));
             $loGo->delete();
             }
+            $file = $request->file('hinh_anh');
+            $path = $file->store('logo');
+            $loGo->img_url = $path;
+            $loGo->save();
+            return redirect()->route('slides.danh-sach')->with(['thong_bao' => "Cập nhật Logo thành công!"]);
         }
-        $dsLogo = Logo::all();
-        $dsSlide = Slides::all();
-        return redirect()->route('slides.danh-sach',compact("dsSlide","dsLogo"));
+    
+        return view('logo.them-moi');
     }
 
 }

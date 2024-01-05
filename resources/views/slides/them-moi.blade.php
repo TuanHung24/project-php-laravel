@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">THÊM MỚI SLIDE</h1>
+    <h4>THÊM MỚI SLIDE</h4>
 </div>
 <form method="POST" action="{{ route('slides.xl-them-moi') }}" class="container" id="add" enctype="multipart/form-data">
 @csrf

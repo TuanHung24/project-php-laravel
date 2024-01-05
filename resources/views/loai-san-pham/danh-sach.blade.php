@@ -14,12 +14,21 @@
         <div class="btn-group me-2">
             <a href="{{ route('loai-san-pham.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
         </div>
+        <div class="btn-group me-2">
+            <a href="{{ route('loai-san-pham.thung-rac') }}" class="btn btn-warning"><span data-feather="trash-2"></span>Thùng rác</a>
+        </div>
     </div>
 </div>
 @if(session('thong_bao'))
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div class="alert alert-success d-flex align-items-center" role="alert">
         <div> 
               {{session('thong_bao')}}
+        </div>
+    </div>
+@elseif(session('error'))
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+        <div> 
+              {{session('error')}}
         </div>
     </div>
 @endif
@@ -43,5 +52,6 @@
         <tr>
             @endforeach
     </table>
+    {{ $dsLoaiSanPham->links('vendor.pagination.default') }}
 </div>
 @endsection

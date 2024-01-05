@@ -28,6 +28,9 @@
         <div class="btn-group me-2">
             <a href="{{ route('san-pham.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
         </div>
+        <div class="btn-group me-2">
+            <a href="{{ route('san-pham.thung-rac') }}" class="btn btn-warning"><span data-feather="trash-2"></span>Thùng rác</a>
+        </div>
     </div>
 </div>
 @if(session('thong_bao'))
@@ -65,13 +68,7 @@
     @endforeach
     </tbody>
 </table>
-@if(session('null_tk'))
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
-        <div> 
-              {{session('null_tk')}}
-        </div>
-    </div>
-@endif
+{{ $dsSanPham->links('vendor.pagination.custom') }}
 </div>
 @endsection
 <!-- <script type="text/javascript">

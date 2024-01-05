@@ -107,16 +107,12 @@
         @error('ram')
             <span class="error-message">{{ $message }}</span>
             @enderror
-</div>
+    </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label for="trang_thai" class="form-label">Trạng thái</label>
-            <?php if($sanPham->trang_thai==1):?>
-            <input type="checkbox" name="trang_thai" checked>
-            <?php else:?>
-            <input type="checkbox" name="trang_thai">
-            <?php endif;?>
+            <label for="hinh_anh[]" class="form-label">Thêm ảnh: </label>
+            <input type="file" name="hinh_anh[]" multiple/>
         </div>
         <div class="col-md-3">
         <label for="camera" class="form-label">Camera:</label>
@@ -132,13 +128,7 @@
             <span class="error-message">{{ $message }}</span>
             @enderror   
     </div>
-    </div>
-    <div class=row>
-        <div class="col-md-6">
-            <label for="hinh_anh[]" class="form-label">Thêm ảnh: </label>
-            <input type="file" name="hinh_anh[]" multiple/>
-        </div>
-    </div>
+    </div>  
     <div class="col-md-2">
         <button type="submit" class="btn btn-primary" class="Luu"><span data-feather="save"></span>Lưu</button>
     </div>

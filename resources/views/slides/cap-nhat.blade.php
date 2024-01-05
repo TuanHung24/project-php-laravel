@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">CẬP NHẬT SLIDESHOW</h1>
+    <h4>CẬP NHẬT SLIDESHOW</h4>
 </div>
 <form method="POST" action="{{ route('slides.xl-cap-nhat',['id'=>$silDe->id]) }}" class="container" id="add" enctype="multipart/form-data">
 @csrf
 <div class="row">
     <div class="col-md-6">
-        <label class="form-label">Ảnh:</label>
+        <label class="form-label">Ảnh:</label><br>
         <img class="img_slide" src="{{asset($silDe->img_url)}}"/>
         @error('hinh_anh')
             <span class="error-message">{{ $message }}</span>

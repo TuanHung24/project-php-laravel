@@ -36,8 +36,7 @@
                 <img src="{{ $Logo->img_url }}" alt="ảnh" class="img_slide">
             </td>
             <td class="chuc-nang">
-                <a href="{{ route('logo.cap-nhat', ['id' => $Logo->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
-                <a href="{{ route('logo.xoa', ['id' => $Logo->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+                <a href="{{ route('logo.cap-nhat', ['id' => $Logo->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span>Chỉnh sửa</a>
             </td>
         <tr>
             @endforeach

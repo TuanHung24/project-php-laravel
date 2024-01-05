@@ -52,9 +52,9 @@ class NhanVienRequest extends FormRequest
             'username.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
             'username.unique' => "Tên đăng nhập đã tồn tại!",
 
-            'mat_khau.required' => "Tên đăng nhập không được bỏ trống!",
-            'mat_khau.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
-            'mat_khau.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
+            'mat_khau.required' => "Mật khẩu không được bỏ trống!",
+            'mat_khau.min' => "Mật khẩu phải lớn hơn :min ký tự!",
+            'mat_khau.max' => "Mật khẩu phải nhỏ hơn :max ký tự!",
 
             'hinh_anh.image' => 'File hình ảnh không hợp lệ!',
             'hinh_anh.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg!',

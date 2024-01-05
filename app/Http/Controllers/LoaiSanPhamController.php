@@ -19,7 +19,6 @@ class LoaiSanPhamController extends Controller
         if($request->ten!=null)
         {
             $loaiSanPham->ten       = $request->ten;
-            $loaiSanPham->trang_thai       = 1;
             $loaiSanPham->save();
             return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Thêm loại sản phẩm {$loaiSanPham->ten} thành công!"]);
         }
@@ -29,7 +28,7 @@ class LoaiSanPhamController extends Controller
 
     public function danhSach()
     {
-        $dsLoaiSanPham=LoaiSanPham::all();
+        $dsLoaiSanPham=LoaiSanPham::paginate(10);
         return view("loai-san-pham.danh-sach", compact('dsLoaiSanPham'));
     }
 
@@ -50,17 +49,8 @@ class LoaiSanPhamController extends Controller
         if (empty($loaiSanPham)) {
             return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Loại sản phẩm không tồn tại!"]);
         }
-        
         $loaiSanPham->ten = $request->ten;
-        if(isset($request->trang_thai))
-        {
-            $loaiSanPham->trang_thai=1;
-        }
-        else{
-            $loaiSanPham->trang_thai=0;
-        }
         $loaiSanPham->save();
-
         return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Cập nhật loại sản phẩm {$loaiSanPham->ten} thành công!"]);
     }
 
@@ -70,20 +60,39 @@ class LoaiSanPhamController extends Controller
         $loaiSanPham = LoaiSanPham::find($id);
         if(!empty($sanPham))
         {
-            return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Loại sản phẩm {$loaiSanPham->ten} đã tồn tại trong bảng sản phẩm!"]);
+            return redirect()->route('loai-san-pham.danh-sach')->with(['error'=>"Loại sản phẩm {$loaiSanPham->ten} đã tồn tại trong bảng sản phẩm!"]);
         }
        
         if (empty($loaiSanPham)) {
             return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Loại sản phẩm không tồn tại!"]);
         }
-        $loaiSanPham->trang_thai=false;
-        $loaiSanPham->save();
+        $loaiSanPham->delete();
         return redirect()->route('loai-san-pham.danh-sach')->with(['thong_bao'=>"Xóa loại sản phẩm {$loaiSanPham->ten} thành công!"]);
+    }
+    public function thungRac()
+    {
+        $dsLoaiSanPham=LoaiSanPham::onlyTrashed()->get();
+        return view('loai-san-pham.thung-rac',compact('dsLoaiSanPham'));
+    }
+    public function khoiPhuc($id)
+    {
+        $loaiSanPham=LoaiSanPham::withTrashed()->find($id);
+        $loaiSanPham->restore();
+        $dsLoaiSanPham=LoaiSanPham::onlyTrashed()->get();
+        return redirect()->route('loai-san-pham.thung-rac',compact('dsLoaiSanPham'))->with(['thong_bao'=>"Phục hồi loại sản phẩm {$loaiSanPham->ten} thành công "]);
+    }
+    
+    public function xoaVinhVien($id)
+    {
+        $loaiSanPham=LoaiSanPham::withTrashed()->find($id);
+        $loaiSanPham->forceDelete();
+        $dsLoaiSanPham=LoaiSanPham::onlyTrashed()->get();
+        return view('loai-san-pham.thung-rac',compact('dsLoaiSanPham'))->with(['thong_bao'=>"Xóa vĩnh viễn loại sản phẩm {$loaiSanPham->ten} thành công "]);
     }
     public function timKiem(Request $request)
     {
         $reQuest=$request->search_name;
-        $dsLoaiSanPham=LoaiSanPham::where('ten','like','%'.$reQuest.'%')->get();
+        $dsLoaiSanPham=LoaiSanPham::where('ten','like','%'.$reQuest.'%')->paginate(10);
         return view('loai-san-pham.danh-sach',compact('dsLoaiSanPham','reQuest'));
     }
 }

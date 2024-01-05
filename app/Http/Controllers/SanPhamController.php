@@ -65,7 +65,7 @@ class SanPhamController extends Controller
     
     public function danhSach()
     {
-        $dsSanPham=SanPham::all();
+        $dsSanPham=SanPham::paginate(10);
         return view("san-pham.danh-sach", compact('dsSanPham'));
     }
 
@@ -91,15 +91,6 @@ class SanPhamController extends Controller
         $sanPham->ten               = $request->ten;
         $sanPham->mo_ta             = $request->mo_ta;
         $sanPham->loai_san_pham_id  = $request->loai_san_pham;
-        
-        if(isset($request->trang_thai))
-        {
-            $sanPham->trang_thai=1;
-        }
-        else
-        {
-            $sanPham->trang_thai=0;
-        }
         $sanPham->save();
 
         $tTSanPham=ThongTinSanPham::where('san_pham_id',$id)->first();
@@ -141,9 +132,28 @@ class SanPhamController extends Controller
         if (empty($sanPham)) {
             return "Sản phẩm không tồn tại";
         }
-        $sanPham->trang_thai=0;
-        $sanPham->save();
+        
+        $sanPham->delete();
         return redirect()->route('san-pham.danh-sach')->with(['thong_bao'=>"Xóa sản phẩm {$sanPham->ten} thành công!"]);
+    }
+    public function thungRac()
+    {
+        $dsSanPham=SanPham::onlyTrashed()->get();
+        return view('san-pham.thung-rac',compact('dsSanPham'));
+    }
+    public function khoiPhuc($id)
+    {
+        $sanPham=SanPham::withTrashed()->find($id);
+        $sanPham->restore();
+        $dsSanPham=SanPham::onlyTrashed()->get();
+        return redirect()->route('san-pham.thung-rac',compact('dsSanPham'))->with(['thong_bao'=>"Phục hồi sản phẩm {$sanPham->ten} thành công "]);
+    }
+    
+    public function xoaVinhVien($id)
+    {
+        $sanPham=SanPham::withTrashed()->find($id);
+        $sanPham->forceDelete();
+        return view('san-pham.thung-rac',compact('dsSanPham'))->with(['thong_bao'=>"Xóa vĩnh viễn sản phẩm {$sanPham->ten} thành công "]);
     }
     public function chiTietSanPham($id)
     {
@@ -156,7 +166,7 @@ class SanPhamController extends Controller
     public function timKiem(Request $request)
     {
         $reQuest=$request->search_name;
-        $dsSanPham=SanPham::where('ten','like','%'.$reQuest.'%')->get();
+        $dsSanPham=SanPham::where('ten','like','%'.$reQuest.'%')->paginate(10);
        
        
        // return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));

@@ -26,7 +26,7 @@
   </div>
   <div class="mb-3">
     <label for="respassword" class="form-label">Nhập mật khẩu mới:</label>
-    <input type="respassword" class="form-control" name="respassword" required>
+    <input type="password" class="form-control" name="respassword" required>
   </div>
   <button type="submit" class="btn btn-primary" ><span data-feather="save"></span>Lưu</button>
 </form>

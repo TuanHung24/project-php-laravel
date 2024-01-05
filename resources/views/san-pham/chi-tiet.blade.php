@@ -19,21 +19,7 @@
             <div class="info-label">Mô tả:</div>
             <div class="info-value">{{$sanPham->mo_ta}}</div><br>
             <div class="info-label">Loại sản phẩm:</div>
-            <div class="info-value">{{$sanPham->loai_san_pham->ten}}</div><br>
-            <div class="info-label">Trạng thái</div>
-            <?php
-            if($sanPham->trang_thai==1)
-            {
-                $trang_thai="Hoạt động";
-            }
-            else
-            {
-                $trang_thai="Không hoạt động";
-            }
-            ?>
-            <div class="info-value">{{$trang_thai}}</div><br>
-            <!-- <div class="info-label">Price:</div>
-            <div class="info-value">$99.99</div> -->
+            <div class="info-value">{{$sanPham->loai_san_pham->ten}}</div>
         </div>
         
     <div class="info-detail">
