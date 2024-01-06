@@ -9,6 +9,7 @@ use App\Models\PhieuNhap;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ThongKeController extends Controller
 {
@@ -28,11 +29,31 @@ class ThongKeController extends Controller
 
         return view('thong-ke',compact('hoaDon','khachHang','soLuongSanPham','tongTienGiaNhap','tongTienHoaDon'));
     }
-    public function ThongKeHoaDon(){
-        $data = HoaDon::select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as count'))
-        ->groupBy('date')
-        ->get();
+    public function ThongKeHoaDon(Request $request){
+
+        try {
+            $Month = $request->month;
+            $Year = $request->year;
     
-        return response()->json($data);
+            // Chỉ lấy dữ liệu nếu cả hai tham số tháng và năm đều được cung cấp
+            if ($Month && $Year) {
+                $data = HoaDon::select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as count'))
+                    ->whereYear('created_at', $Year)
+                    ->whereMonth('created_at', $Month)
+                    ->groupBy('date')
+                    ->get();
+            } else {
+                // Nếu không có tham số, trả về dữ liệu rỗng hoặc thông báo lỗi
+                $data = [];
+            }
+    
+           
+    
+            // Trả về JSON response sau khi kiểm tra request
+            return response()->json($data);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['error' => 'Lỗi máy chủ'], 500);
+        }
     }
 }

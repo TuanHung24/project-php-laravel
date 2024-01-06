@@ -21,31 +21,63 @@
     </div>
  </span><br><br>
  <h4>Thống kê theo biểu đồ hóa đơn</h4>
- <canvas id="orderChart" width="400" height="200"></canvas>
+ <div class="option-m-y">
+ <select id="monthSelect">
+    <option value="0" disabled selected>Chọn tháng</option>
+ </select>
+ <select id="yearSelect">
+    <option value="0" disabled selected>Chọn năm</option>
+ </select>
+<button class="btn btn-info" id='thong-ke'>Thống kê</button>
+</div>
+ <canvas id="orderChart" width="200" height="100"></canvas>
 @endsection
 
 @section('page-js')
 <script type="text/javascript">
 $(document).ready(function(){
-   
+    thongKe();
+    for (var month = 1; month <= 12; month++) {
+        $('#monthSelect').append('<option value="' + month + '">Tháng ' + month + '</option>');
+    }
+
+    var currentYear = new Date().getFullYear(); 
+    for (var year = 2010; year <= currentYear; year++) {
+        $('#yearSelect').append('<option value="' + year + '">' + year + '</option>');
+    }
+    $('#thong-ke').click(function(){
+        thongKe();
+    });
+    function thongKe(){
+
+    var selectedMonth = $('#monthSelect').find(':selected').val();
+    var selectedYear = $('#yearSelect').find(':selected').val();
+
     $.ajax({
         url: "{{route('tk-hoa-don')}}", // URL của API Laravel mà bạn đã tạo
         method: 'GET',
-        success: function(data) {
+        data:{'month':selectedMonth,'year':selectedYear},
+        success: function(response) {
             
-         var currentMonth = new Date().getMonth() + 1; // Lấy tháng hiện tại
-        var daysInMonth = new Date(new Date().getFullYear(), currentMonth, 0).getDate(); // Lấy số ngày trong tháng
-
+        var daysInMonth = new Date(selectedMonth, selectedYear, 0).getDate();
         var counts = Array(daysInMonth).fill(0);
 
-        for (var i in data) {
-            var date = new Date(data[i].date);
-            var day = date.getDate();
-            counts[day - 1] = data[i].count;
-        }
 
+        var canvasContainer = $("#orderChart").parent();
+        $("#orderChart").remove();
+        // Thêm canvas mới
+        canvasContainer.append('<canvas id="orderChart" width="200" height="100"></canvas>');
+        // Lấy context của canvas mới
+        var ctx = $("#orderChart");
+
+        for (var i in response) {
+            var date = new Date(response[i].date);
+            var day = date.getDate();
+            counts[day - 1] = response[i].count;
+        }
+        
         var chartData = {
-            labels: Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${currentMonth}`),
+            labels: Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${selectedMonth}`),
             datasets: [{
                 label: 'Số lượng đơn hàng',
                 backgroundColor: 'rgba(0, 123, 255, 0.5)',
@@ -53,20 +85,16 @@ $(document).ready(function(){
                 data: counts
             }]
         };
-
-            var ctx = $("#orderChart");
-
             var barGraph = new Chart(ctx, {
                 type: 'bar',
                 data: chartData,
                 options: {
                   scales: {
                         y: {
-                           stepSize: 5, // Mỗi bước tăng 1 đơn vị
+                           stepSize: 10, // Mỗi bước tăng 1 đơn vị
                            autoSkip: false, // Không tự động bỏ qua bất kỳ giá trị nào
                            min: 0,  // Giới hạn nhỏ nhất là 1
                            max: 100,
-                           
                         },
                         x:{
                            type: 'category', // Chuyển đổi sang kiểu dữ liệu số
@@ -80,7 +108,7 @@ $(document).ready(function(){
                            },
                            title: {
                               display: true,
-                              text: 'Ngày trong tháng'
+                              text: 'Năm '+selectedYear
                            }
                         }
                         
@@ -88,13 +116,15 @@ $(document).ready(function(){
                 
                 },
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                
             });
         },
         error: function(data) {
             console.log(data);
         }
     });
+    }
 
 });
 </script>
