@@ -7,6 +7,9 @@ use App\Http\Controllers\APISanPhamController;
 use App\Http\Controllers\APILoaiSanPhamController;
 use App\Http\Controllers\APIKhachHangController;
 use App\Http\Controllers\APIHoaDonController;
+use App\Http\Controllers\APISlidesController;
+use App\Http\Controllers\SlidesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,6 +49,7 @@ Route::put('/loai-san-pham/{id}',[APILoaiSanPhamController::class, "capNhap"]);
 Route::delete('/loai-san-pham/{id}',[APILoaiSanPhamController::class, 'xoa']);
 Route::post('/loai-san-pham/tim-kiem',[APILoaiSanPhamController::class, "timKiem"]);
 
+Route::get('/slide',[APISlidesController::class, 'danhSach']);
 Route::post('/hoa-don',[APIHoaDonController::class, "themHoaDon"]);
 
 Route::post('/dang-ky',[APIKhachHangController::class, "dangKy"]);
