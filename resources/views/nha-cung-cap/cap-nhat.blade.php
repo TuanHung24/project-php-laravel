@@ -9,19 +9,19 @@
    <div class="row">
         <div class="col-md-6">
             <label for="ten" class="form-label">Tên:</label>
-            <input type="text" class="form-control" name="ten" value="{{$nhaCungCap->ten}}">
+            <input type="text" class="form-control" name="ten" value="{{old('ten',$nhaCungCap->ten)}}">
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="dien_thoai" class="form-label">Điện thoại:</label>
-            <input type="text" class="form-control" name="dien_thoai" value="{{$nhaCungCap->dien_thoai}}">
+            <input type="text" class="form-control" name="dien_thoai" value="{{old('dien_thoai',$nhaCungCap->dien_thoai)}}">
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <label for="dia_chi" class="form-label">Địa chỉ:</label>
-            <input type="text" class="form-control" name="dia_chi" value="{{$nhaCungCap->dia_chi}}">
+            <input type="text" class="form-control" name="dia_chi" value="{{old('dia_chi',$nhaCungCap->dia_chi)}}">
         </div>
     </div>
     <div class="row">

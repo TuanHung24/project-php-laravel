@@ -22,7 +22,7 @@ class LoaiSanPhamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten'=>'required|min:5',
+            'ten'=>'required|min:5|regex:/^[^\d\W_][^\W_]*$/u',
         ];
     }
     public function messages(){
@@ -30,6 +30,7 @@ class LoaiSanPhamRequest extends FormRequest
             'ten.required'=>'Tên loại sản phẩm không được bỏ trống!',
             'ten.min'=>'Tên loại sản phẩm phải lớn hơn :min ký tự!',
             'ten.max'=>'Tên loại sản phẩm phải nhỏ hơn :max ký tự!',
+            'ten.regex'=>'Tên loại sản phẩm không được bắt đầu bằng số và không có ký tự đặc biệt!',
         ];
     }
 }

@@ -60,7 +60,7 @@
     <div class=row>
     <div class="col-md-6">
         <label for="hinh_anh" class="form-label">Chọn ảnh đại diện:</label>
-        <input type="file" name="hinh_anh"/>
+        <input type="file" name="hinh_anh"/><br>
         @error('hinh_anh')
             <span class="error-message">{{ $message }}</span>
         @enderror

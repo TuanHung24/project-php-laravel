@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="ten" class="form-label">Tên:</label>
-        <input type="text" class="form-control" name="ten">
+        <input type="text" class="form-control" name="ten" value="{{old('ten')}}">
         @error('ten')
             <span class="error-message">{{ $message }}</span>
         @enderror

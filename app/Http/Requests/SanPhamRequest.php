@@ -23,7 +23,7 @@ class SanPhamRequest extends FormRequest
     {
         $id=$this->route('id');
         return [ 
-            'ten'=>'required|min:6|unique:san_pham,ten,'.$id,
+            'ten'=>'required|min:6|regex:/^[a-zA-Z0-9\s]+$/u|unique:san_pham,ten,'.$id,
             'do_phan_giai'=>'required|min:6',
 
             'trong_luong'=>'required|min:3',
@@ -36,6 +36,8 @@ class SanPhamRequest extends FormRequest
             'ram'=>'required|min:1',
             'camera'=>'required|min:3',
             'pin'=>'required|min:4|max:6',
+
+            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:4048'
         ];
         
     }
@@ -45,6 +47,7 @@ class SanPhamRequest extends FormRequest
             'ten.required'=>"Tên sản phẩm không được bỏ trống!",
             'ten.min'=>"Tên phải lớn hơn :min ký tự!",
             'ten.unique'=>"Tên sản phẩm không được trùng",
+            'ten.regex'=>"Tên không được có ký tự đặc biệt!",
             'do_phan_giai.required'=>"Độ phân giải không được bỏ trống!",
             'do_phan_giai.min'=>"Độ phân giải phải lớn hơn :min ký tự!",
             'trong_luong.required'=>"Trọng lượng không được bỏ trống!",
@@ -69,6 +72,10 @@ class SanPhamRequest extends FormRequest
             'pin.required'=>"Pin không được bỏ trống!",
             'pin.min'=>"Pin phải lớn hơn :min ký tự!", 
             'pin.max'=>"Pin phải nhỏ hơn :max ký tự!",
+
+            'hinh_anh.image' => 'File hình ảnh không hợp lệ!',
+            'hinh_anh.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg!',
+            'hinh_anh.max' => 'Hình ảnh không được vượt quá kích thước tối đa 2048KB!',
         ];
         
     }

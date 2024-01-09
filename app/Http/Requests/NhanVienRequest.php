@@ -23,11 +23,11 @@ class NhanVienRequest extends FormRequest
     {
         $id = $this->route('id');
         return [
-            'ho_ten' => 'required|min:10',
+            'ho_ten' => 'required|min:10|regex:/^[^\d]+$/u',
             'dien_thoai' =>'required|regex:/^0\d{9}$/',
             'email' => 'required|min:15|max:80|unique:quan_tri,email,' . $id,
             'dia_chi' => 'required|min:15|max:128',
-            'username' => 'required|min:6|max:60|unique:quan_tri,username,' . $id,
+            'username' => 'required|min:6|max:60|regex:/^[^0-9]/|unique:quan_tri,username,' . $id, 
             'mat_khau'=> 'required|min:6|max:128',
             'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:4048'
         ];
@@ -36,6 +36,7 @@ class NhanVienRequest extends FormRequest
         return [
             'ho_ten.required' => "Tên nhân viên không được bỏ trống!",
             'ho_ten.min' => "Tên nhân viên phải lớn hơn :min ký tự",
+            'ho_ten.regex'=>"Tên nhân viên không được chứa ký tự là số!",
             'dien_thoai.required' => 'Số điện thoại không được bỏ trống!',
             'dien_thoai.regex' => 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số!',
             
@@ -50,6 +51,7 @@ class NhanVienRequest extends FormRequest
             'username.required' => "Tên đăng nhập không được bỏ trống!",
             'username.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
             'username.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
+            'username.regex'=>"Tên đăng nhập không được bắt đầu bằng số!",
             'username.unique' => "Tên đăng nhập đã tồn tại!",
 
             'mat_khau.required' => "Mật khẩu không được bỏ trống!",

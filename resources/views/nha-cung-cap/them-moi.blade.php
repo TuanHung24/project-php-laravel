@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="ten" class="form-label">Tên:</label>
-        <input type="text" class="form-control" name="ten">
+        <input type="text" class="form-control" name="ten" value="{{old('ten')}}">
         @error('ten')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="dien_thoai" class="form-label">Điện thoại:</label>
-        <input type="text" class="form-control" name="dien_thoai">
+        <input type="text" class="form-control" name="dien_thoai" value="{{old('dien_thoai')}}">
         @error('dien_thoai')
             <span class="error-message"> {{ $message }} </span>
         @enderror
@@ -27,7 +27,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="dia_chi" class="form-label">Địa chỉ:</label>
-        <input type="text" class="form-control" name="dia_chi">
+        <input type="text" class="form-control" name="dia_chi" value="{{old('dia_chi')}}">
         @error('dia_chi')
             <span class="error-message">{{ $message }}</span>
         @enderror
