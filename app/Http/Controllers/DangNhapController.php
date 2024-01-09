@@ -50,7 +50,7 @@ class DangNhapController extends Controller
         if(Auth::check())
         { 
             return view('thong-tin');
-        }
+        } 
         return view('dang-nhap');
     }
     public function capNhatThongTin(ThongTinTaiKhoanRequest $request)
@@ -58,7 +58,7 @@ class DangNhapController extends Controller
         
         $nhanVien=QuanTri::find(Auth::user()->id);
         if(isset($request->avatar))
-        {
+        { 
             $file=$request->avatar;
             $path=$file->store('avt');
             $nhanVien->avatar_url=$path;

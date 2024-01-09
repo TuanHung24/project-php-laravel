@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ThongTinTaiKhoanRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class ThongTinTaiKhoanRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-    }
+    } 
 
     /**
      * Get the validation rules that apply to the request.
@@ -21,13 +22,13 @@ class ThongTinTaiKhoanRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('id');
+        $id = Auth::user()->id;
         return [
             'ho_ten' => 'required|min:10|regex:/^[^\d]+$/u',
             'dien_thoai' =>'required|regex:/^0\d{9}$/',
             'email' => 'required|min:15|max:80|unique:quan_tri,email,' . $id,
             'dia_chi' => 'required|min:15|max:128',
-            'username' => 'required|min:6|max:60|regex:/^[^0-9]/|unique:quan_tri,username,' . $id, 
+            'username' => 'required|min:6|max:60|regex:/^[a-zA-Z][a-zA-Z0-9]*$/|unique:quan_tri,username,' . $id, 
             'avatar'=> 'image|mimes:jpg,png,jpeg|max:4048'
         ];
 
@@ -51,7 +52,7 @@ class ThongTinTaiKhoanRequest extends FormRequest
             'username.required' => "Tên đăng nhập không được bỏ trống!",
             'username.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
             'username.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
-            'username.regex'=>"Tên đăng nhập không được bắt đầu bằng số!",
+            'username.regex'=>"Tên đăng nhập không được bắt đầu bằng số và không được có ký tự đặc biệt!",
             'username.unique' => "Tên đăng nhập đã tồn tại!",
 
             'avatar.image' => 'File hình ảnh không hợp lệ!',
