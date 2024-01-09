@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\NhanVien;
 use App\Models\QuanTri;
 use App\Models\Logo;
+use App\Http\Requests\ThongTinTaiKhoanRequest;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,7 +53,7 @@ class DangNhapController extends Controller
         }
         return view('dang-nhap');
     }
-    public function capNhatThongTin(Request $request)
+    public function capNhatThongTin(ThongTinTaiKhoanRequest $request)
     {
         
         $nhanVien=QuanTri::find(Auth::user()->id);
