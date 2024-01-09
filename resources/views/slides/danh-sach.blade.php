@@ -6,12 +6,6 @@
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h4 ><span data-feather="list" ></span>DANH SÁCH LOGO</h4>
-    
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <a href="{{ route('logo.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm Logo</a>
-        </div>
-    </div>
 </div>
     
 @if(session('thong_bao'))
@@ -33,7 +27,7 @@
         @foreach($dsLogo as $Logo)
         <tr>
             <td>
-                <img src="{{ $Logo->img_url }}" alt="ảnh" class="img_slide">
+                <img src="{{ asset($Logo->img_url) }}" alt="ảnh" class="img_slide">
             </td>
             <td class="chuc-nang">
                 <a href="{{ route('logo.cap-nhat', ['id' => $Logo->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span>Chỉnh sửa</a>
@@ -46,11 +40,6 @@
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 <h4 ><span data-feather="list" ></span>DANH SÁCH SLIDESHOW</h4>
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <a href="{{ route('slides.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm Slideshow</a>
-        </div>
-    </div>
 </div>
     <table class="table table-striped table-sm">
         <thead>
@@ -60,17 +49,13 @@
                 <th>Thao tác</th>
             </tr>
         </thead>
-
-        
-
         @foreach($dsSlide as $Slide)
         <tr>
             <td>
-                <img src="{{ $Slide->img_url}}" alt="ảnh" class="img_slide">
+                <img src="{{asset($Slide->img_url)}}" alt="ảnh" class="img_slide">
             <td>{{ $Slide->tieu_de }}</td>
             <td class="chuc-nang">
-                <a href="{{ route('slides.cap-nhat', ['id' => $Slide->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
-                <a href="{{ route('slides.xoa', ['id' => $Slide->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+                <a href="{{ route('slides.cap-nhat', ['id' => $Slide->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span>Chỉnh sửa</a>
             </td>
         <tr>
             @endforeach

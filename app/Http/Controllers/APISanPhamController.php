@@ -6,12 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\SanPham;
 use App\Models\LoaiSanPham;
 use App\Models\HinhAnh;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+use function Laravel\Prompts\error;
+
 class APISanPhamController extends Controller
 {
     public function layDanhSach()
     {
         
-        $dsSanPham=SanPham::with('loai_san_pham','img','chi_tiet_san_pham')->get();
+        $dsSanPham = SanPham::with([
+            'loai_san_pham',
+            'img',
+            'chi_tiet_san_pham' => function ($query) {
+                $query->with('mau_sac','dung_luong');
+            }
+        ])->get();
+        
         
         return response()->json([
             'success' =>true,
@@ -20,7 +31,10 @@ class APISanPhamController extends Controller
     }
     public function layChiTiet($id)
     {
-        $sanPham=SanPham::with(["loai_san_pham",'img','chi_tiet_san_pham'])->find($id);
+        try{
+        $sanPham=SanPham::with(["loai_san_pham",'img','chi_tiet_san_pham'=>function($query){
+            $query->with('mau_sac','dung_luong');
+        }])->findOrFail($id);
         if(empty($sanPham))
         {
             return response()->json([
@@ -32,6 +46,12 @@ class APISanPhamController extends Controller
             'success' =>true,
             'data'=>$sanPham
         ]);
+        }catch(ModelNotFoundException $e){
+            return response()->json([
+                'success' => false,
+                'message' => "Sản phẩm ID {$id} không tồn tại"
+            ]);
+        }
     }
     public function themMoi(Request $request)
     {

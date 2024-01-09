@@ -160,18 +160,13 @@ Route::middleware('auth')->group(function(){
     Route::prefix('slides')->group(function(){
         Route::name('slides.')->group(function(){
             Route::get('/', [SlidesController::class, 'danhSach'])->name('danh-sach');
-            Route::get('them-moi', [SlidesController::class, 'themMoi'])->name('them-moi');
-            Route::post('them-moi', [SlidesController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [SlidesController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [SlidesController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
-            Route::get('xoa/{id}', [SlidesController::class, 'xoa'])->name('xoa');
             });
         });
 
         Route::prefix('logo')->group(function(){
             Route::name('logo.')->group(function(){
-                Route::get('them-moi', [LogoController::class, 'themMoi'])->name('them-moi');
-                Route::post('them-moi', [LogoController::class, 'xuLyThemMoi'])->name('xl-them-moi');
                 Route::get('cap-nhat/{id}', [LogoController::class, 'capNhat'])->name('cap-nhat');
                 Route::post('cap-nhat/{id}', [LogoController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
                 });

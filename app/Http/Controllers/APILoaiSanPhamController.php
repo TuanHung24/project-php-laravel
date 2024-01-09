@@ -10,19 +10,18 @@ class APILoaiSanPhamController extends Controller
     public function layDanhSach()
     {
         $dsLoaiSanPham = LoaiSanPham::with([
+            'san_pham' => function ($query) {
+                $query->whereHas('chi_tiet_san_pham', function ($subquery) {
+                    $subquery->where('so_luong', '>', 0); // Filter products with quantity > 0
+                });
+            },
             'san_pham.img',
             'san_pham.chi_tiet_san_pham' => function ($query) {
-                $query->where(function ($subquery) {
-                    $subquery->whereNotNull('id') // Chi tiết sản phẩm không rỗng ([]).
-                             ->where('so_luong', '>', 0); // Số lượng lớn hơn 0.
-                });
+                $query->where('so_luong', '>', 0); // Filter product details with quantity > 0
             },
             'san_pham.chi_tiet_san_pham.mau_sac',
             'san_pham.chi_tiet_san_pham.dung_luong',
-        ])
-        ->whereHas('chi_tiet_san_pham.mau_sac')
-        ->whereHas('chi_tiet_san_pham.dung_luong')
-        ->get();
+        ])->get();
         
 
         return response()->json([ 
@@ -33,7 +32,20 @@ class APILoaiSanPhamController extends Controller
     } 
     public function layChiTiet($id)
     {
-        $loaiSanPham=LoaiSanPham::with('san_pham')->find($id);
+        $loaiSanPham = LoaiSanPham::with([
+            'san_pham' => function ($query) {
+                $query->whereHas('chi_tiet_san_pham', function ($subquery) {
+                    $subquery->where('so_luong', '>', 0); 
+                });
+            },
+            'san_pham.img',
+            'san_pham.chi_tiet_san_pham' => function ($query) {
+                $query->where('so_luong', '>', 0); 
+            },
+            'san_pham.chi_tiet_san_pham.mau_sac',
+            'san_pham.chi_tiet_san_pham.dung_luong',
+        ])->find($id);
+        
         if(empty($loaiSanPham))
         {
             return response()->json([

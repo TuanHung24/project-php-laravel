@@ -449,6 +449,6 @@ h3 {
 }
 .option-m-y{
     display: flex;
-    margin: 20px 0 20px 10px;
+    margin: 20px 0 20px 0px;
     float: right;
 }

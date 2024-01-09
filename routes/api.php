@@ -24,9 +24,9 @@ use App\Http\Controllers\SlidesController;
 
 
     Route::post('login', 'APIAuthController@login');
-    Route::post('logout', 'APIAuthController@logout');
+    Route::post('logout',[APIAuthController::class, 'logout']);
     Route::post('refresh', 'APIAuthController@refresh');
-    Route::post('me', [APIAuthController::class,'me']);
+    Route::get('me', [APIAuthController::class,'me']);
 
 
 

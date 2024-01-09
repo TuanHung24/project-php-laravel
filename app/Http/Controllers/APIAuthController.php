@@ -30,17 +30,18 @@ class APIAuthController extends Controller
         auth('api')->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
-    public function me()
+    public function me() 
     {
         return response()->json([auth('api')->user()]);
     }
 
     protected function respondWithToken($token)
     {
+       
         return response()->json([
             'access_token'=>$token,
             'token_type'=>'bearer',
-            'expires_in'=>JWTAuth::factory()->getTTL()*60
+            'expires_in'=>JWTAuth::factory()->getTTL()*60,
         ]);
     }
 }

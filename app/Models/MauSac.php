@@ -18,4 +18,5 @@ class MauSac extends Model
     {
         return $this->belongsTo(CTSanPham::class,'mau_sac_id');
     }
+    
 }

@@ -8,23 +8,23 @@ use Illuminate\Http\Request;
 
 class LogoController extends Controller
 {
-    public function themMoi()
-    {
-        return view("logo.them-moi");
-    }
-    public function xuLyThemMoi(Request $request)
-    {
+    // public function themMoi()
+    // {
+    //     return view("logo.them-moi");
+    // }
+    // public function xuLyThemMoi(Request $request)
+    // {
        
-        if (isset($request->hinh_anh)) {
-            $loGo = new Logo;
-            $file=$request->hinh_anh;
-            $path=$file->store('logo');
-            $loGo->img_url          = $path;
-            $loGo->save();
-            return redirect()->route('slides.danh-sach')->with(['thong_bao'=>"Thêm LOGO thành công!"]);
-        }
-        return view('logo.them-moi');
-    }
+    //     if (isset($request->hinh_anh)) {
+    //         $loGo = new Logo;
+    //         $file=$request->hinh_anh;
+    //         $path=$file->store('logo');
+    //         $loGo->img_url          = $path;
+    //         $loGo->save();
+    //         return redirect()->route('slides.danh-sach')->with(['thong_bao'=>"Thêm LOGO thành công!"]);
+    //     }
+    //     return view('logo.them-moi');
+    // }
     public function capNhat($id)
     {
         $loGo = Logo::find($id); 
@@ -33,8 +33,8 @@ class LogoController extends Controller
     public function xuLyCapNhat(Request $request, $id)
     {
         $loGo = Logo::find($id);
-    
-        if ($loGo && $request->hasFile('hinh_anh')) {
+        //dd($request->all());
+        if($request->hasFile('hinh_anh')){
             $imgPath=$loGo->img_url;
             if (file_exists(public_path($imgPath))) {
             unlink(public_path($imgPath));
@@ -46,8 +46,9 @@ class LogoController extends Controller
             $loGo->save();
             return redirect()->route('slides.danh-sach')->with(['thong_bao' => "Cập nhật Logo thành công!"]);
         }
-    
-        return view('logo.them-moi');
+        $dsLogo=Logo::all();
+        $dsSlide=Slides::all();
+        return view('slides.danh-sach',compact('dsLogo','dsSlide'));
     }
 
 }
