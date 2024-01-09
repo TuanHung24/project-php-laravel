@@ -6,14 +6,11 @@ use App\Models\Slides;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ThemSidesShowSeeder extends Seeder
+class ThemSlidesShowSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
     public function run(): void
     {
-        
         $sliDe=new Slides();
         $sliDe->img_url="slide/usyx7rN2cPP7RVSHMuw2HWLVu2Xw0zBjB63irsSD.jpg";
         $sliDe->tieu_de="Banner chính";
@@ -30,6 +27,5 @@ class ThemSidesShowSeeder extends Seeder
         $sliDe->save();
 
         echo "Thêm slides thành công!";
-
     }
 }

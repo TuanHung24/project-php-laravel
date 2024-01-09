@@ -8,28 +8,22 @@
   <div class="col-md-6">
     <label for="nhan_vien" class="form-label">Nhân viên:</label>
     <input type="text" class="form-control" value="{{Auth::user()->ho_ten}}" id="nhan-vien" readonly />
-    
-    @error('nhan_vien')
-    <span class="error-message">{{ $message }}</span>
-    @enderror
   </div>
 </div>
 <div class="row">
   <div class="col-md-4">
     <label for="khach-hang" class="form-label">Họ tên khách hàng:</label>
     <input type="text" class="form-control" name="khach_hang" id="khach-hang">
-    @error('khach_hang')
-    <span class="error-message">{{ $message }}</span>
-    @enderror
+
+    <span class="error-message" id = "error-khach-hang">Vui lòng nhập tên khách hàng</span>
+
   </div>
 </div>
 <div class="row">
   <div class="col-md-2">
     <label for="so-dien-thoai" class="form-label">Số điện thoại:</label>
     <input type="text" class="form-control" name="so_dien_thoai" id="so-dien-thoai">
-    @error('so_dien_thoai')
-    <span class="error-message">{{ $message }}</span>
-    @enderror
+    <span class="error-message" id = "error-so-dien-thoai">Vui lòng nhập số điện thoại</span>
   </div>
 </div>
 <div class="row">
@@ -44,9 +38,6 @@
       @endforeach
     </select>
     <span class="error" id="error-san-pham">Vui lòng chọn sản phẩm.</span>
-    @error('san_pham')
-    <span class="error-message">{{ $message }}</span>
-    @enderror
   </div>
 </div>
 
@@ -136,13 +127,13 @@
       } else {
         $("#error-san-pham").hide();
       }
-
-      if (soLuong === "") {
-        $("#error-so-luong").show();
+      if ($("#error-so-dien-thoai").val() === "") {
+        $("#error-so-dien-thoai").show();
         return;
-      } else {
-        $("#error-so-luong").hide();
+      }else{
+        $("#error-so-dien-thoai").hide();
       }
+     
 
       if (kHang === "") {
         $("#error-khach-hang").show();
@@ -151,12 +142,6 @@
         $("#error-khach-hang").hide();
       }
 
-      if (giaBan === "") {
-        $("#error-gia-ban").show();
-        return;
-      } else {
-        $("#error-gia-ban").hide();
-      }
       var row = `<tr>
       <td>${stt}</td>
       <td>${tenSP}<input type="hidden" name="spID[]" value="${idSP}"/></td>

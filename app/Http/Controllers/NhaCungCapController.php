@@ -45,7 +45,7 @@ class NhaCungCapController extends Controller
         return view('nha-cung-cap.cap-nhat', compact('nhaCungCap'));
     }
 
-    public function xuLyCapNhat(Request $request, $id)
+    public function xuLyCapNhat(NhaCungCapRequest $request, $id)
     {
         $nhaCungCap = NhaCungCap::find($id);
         if (empty($nhaCungCap)) {

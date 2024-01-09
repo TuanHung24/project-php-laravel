@@ -29,8 +29,8 @@ class CTPhieuNhapController extends Controller
 
     public function xuLyThemMoi(Request $request)
     {
-        // try
-        // {
+        try
+        {
         $phieuNhap= new PhieuNhap();
         $phieuNhap->nha_cung_cap_id=$request->ncc;
         $phieuNhap->save();
@@ -72,15 +72,15 @@ class CTPhieuNhapController extends Controller
         $phieuNhap->tong_tien=$tongTien;
         $phieuNhap->save();
         return redirect()->route('nhap-hang.danh-sach')->with(['thong_bao'=>"Nhập đơn hàng {$phieuNhap->id} thành công!"]);
-        // }catch(Exception $ex)
-        // {
-        //     $dsNhaCungCap = NhaCungCap::all();
-        //     $dsSanPham=SanPham::all();
-        //     $dsnhanVien=QuanTri::all();
-        //     $dsMauSac=MauSac::all();
-        //     $dsDungLuong=DungLuong::all();
-        //     return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien','dsMauSac', 'dsDungLuong'));
-        // }
+        }catch(Exception $ex)
+        {
+            $dsNhaCungCap = NhaCungCap::all();
+            $dsSanPham=SanPham::all();
+            $dsnhanVien=QuanTri::all();
+            $dsMauSac=MauSac::all();
+            $dsDungLuong=DungLuong::all();
+            return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien','dsMauSac', 'dsDungLuong'));
+        }
        
     } 
     public function danhSach()

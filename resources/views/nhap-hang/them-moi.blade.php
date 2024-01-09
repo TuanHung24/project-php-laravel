@@ -12,11 +12,11 @@
       @foreach($dsNhaCungCap as $nhaCungCap)
       <option value="{{$nhaCungCap->id}}" id="nha_cung_cap">{{$nhaCungCap->ten}}</option>
       @endforeach
-      <span class="error-message" id="error-nha-cung-cap"></span>
+     
     </select>
-    @error('nha_cung_cap')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+    <span class="error-message" id="error-nha-cung-cap"></span>
+
   </div>
 </div>
 <div class="row">
@@ -28,9 +28,9 @@
       <option value="{{$sanPham->id}}">{{$sanPham->ten}}</option>
       @endforeach
     </select>
-    @error('san_pham')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+            <span class="error-message" id = "error-san-pham"></span>
+
   </div>
 </div>
 
@@ -43,9 +43,9 @@
       <option value="{{$mauSac->id}}">{{$mauSac->ten}}</option>
       @endforeach
     </select>
-    @error('mau_sac')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+            <span class="error-message" id ="error-mau"></span>
+
   </div>
 </div>
 
@@ -58,36 +58,36 @@
       <option value="{{$dungLuong->id}}">{{$dungLuong->ten}}</option>
       @endforeach
     </select>
-    @error('dung_luong')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+            <span class="error-message" id="error-dung-luong"></span>
+
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="so_luong" class="form-label">Số lượng:</label>
     <input type="number" class="form-control" name="so_luong" id="so-luong" value="1">
-    @error('so_luong')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+            <span class="error-message"></span>
+
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="gia_nhap" class="form-label">Giá nhập:</label>
     <input type="number" class="form-control" name="gia_nhap" id="gia-nhap">
-    @error('gia_nhap')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+            <span class="error-message" id="error-gia-nhap"></span>
+
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <label for="gia_ban" class="form-label">Giá bán:</label>
     <input type="number" class="form-control" name="gia_ban" id="gia-ban">
-    @error('gia_ban')
-            <span class="error-message">{{ $message }}</span>
-    @enderror
+
+            <span class="error-message" id = 'error-gia-ban'></span>
+
   </div>
 </div>
 <button type="button" id="btn-them" class="btn btn-success"><span data-feather="plus"></span>Thêm</button>
@@ -203,8 +203,10 @@
           $("#error-dung-luong").text("");
 
         }
-
-        if (giaNhap === "") {
+        var giaNhap = parseFloat($("#gia-nhap").val()); // Xác định giá nhập từ trường nhập liệu
+        var giaBan = parseFloat($("#gia-ban").val()); // Xác định giá bán từ trường nhập liệu
+        console.log(giaNhap,giaBan);
+        if (isNaN(giaNhap)) {
           $("#error-gia-nhap").text("Vui lòng nhập giá nhập!");
           isValid = false;
 
@@ -212,14 +214,20 @@
           $("#error-gia-nhap").text("");
 
         }
-
-        if (giaBan === "") {
-          $("#error-gia-ban").text("Vui lòng nhập giá bán");
-          isValid = false;
-
-        } else {
-          $("#error-gia-ban").text("");
-        }
+       
+       
+            if ( isNaN(giaBan)) {
+            $("#error-gia-ban").text("Vui lòng nhập giá bán!");
+            isValid = false;
+          } else {
+            
+            if (giaBan <= giaNhap) {
+              $("#error-gia-ban").text("Giá bán phải lớn hơn giá nhập!");
+              isValid = false;
+            } else {
+              $("#error-gia-ban").text("");
+            }
+          }
         return isValid;
       }
     });
