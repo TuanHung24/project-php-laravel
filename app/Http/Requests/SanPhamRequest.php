@@ -37,7 +37,7 @@ class SanPhamRequest extends FormRequest
             'camera'=>'required|min:3',
             'pin'=>'required|min:4|max:6',
 
-            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:4048'
+            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:9048'
         ];
         
     }

@@ -29,7 +29,7 @@ class NhanVienRequest extends FormRequest
             'dia_chi' => 'required|min:15|max:128',
             'username' => 'required|min:6|max:60|regex:/^[^0-9]/|unique:quan_tri,username,' . $id, 
             'mat_khau'=> 'required|min:6|max:128',
-            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:4048'
+            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:6048'
         ];
     }
     public function messages(){

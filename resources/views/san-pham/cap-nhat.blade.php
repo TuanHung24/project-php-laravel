@@ -111,7 +111,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label for="hinh_anh[]" class="form-label">Thêm ảnh: </label>
+            <label for="hinh-anh" class="form-label">Thêm ảnh: </label>
             <input type="file" name="hinh_anh[]" multiple/><br>
             @error('hinh_anh')
             <span class="error-message">{{ $message }}</span>
