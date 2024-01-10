@@ -37,7 +37,8 @@ class SanPhamRequest extends FormRequest
             'camera'=>'required|min:3',
             'pin'=>'required|min:4|max:6',
 
-            'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:9048'
+            
+
         ];
         
     }
@@ -73,9 +74,7 @@ class SanPhamRequest extends FormRequest
             'pin.min'=>"Pin phải lớn hơn :min ký tự!", 
             'pin.max'=>"Pin phải nhỏ hơn :max ký tự!",
 
-            'hinh_anh.image' => 'File hình ảnh không hợp lệ!',
-            'hinh_anh.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg!',
-            'hinh_anh.max' => 'Hình ảnh không được vượt quá kích thước tối đa 2048KB!',
+
         ];
         
     }

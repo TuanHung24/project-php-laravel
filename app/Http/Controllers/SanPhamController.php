@@ -30,7 +30,19 @@ class SanPhamController extends Controller
         
         foreach($files as $file)
         {
-            $paths[]=$file -> store('uploads');
+            if ($file->isValid() && in_array($file->getClientOriginalExtension(), ['jpg', 'png', 'jpeg'])) {
+                // Kiểm tra kích thước của từng tệp tin
+                $maxSize = 10240; // 10MB
+                if ($file->getSize() <= $maxSize * 1024) { // Chuyển đổi sang byte
+                    $paths[] = $file->store('uploads');
+                } else {
+                    // Kích thước hình ảnh quá lớn
+                    return redirect()->back()->with(['error'=>"Kích thước hình ảnh quá lớn. Vui lòng chọn hình ảnh nhỏ hơn 10MB."]);
+                }
+            } else {
+                // Tệp không phải là hình ảnh
+                return redirect()->back()->with(['error'=>"Tệp không phải là hình ảnh jpg, png, hoặc jpeg."]);
+            }
            
         }     
         $sanPham = new SanPham();
@@ -111,7 +123,19 @@ class SanPhamController extends Controller
             
             foreach($files as $file)
             {
-                $paths[]=$file -> store('uploads');
+                if ($file->isValid() && in_array($file->getClientOriginalExtension(), ['jpg', 'png', 'jpeg'])) {
+                    // Kiểm tra kích thước của từng tệp tin
+                    $maxSize = 10240; // 10MB
+                    if ($file->getSize() <= $maxSize * 1024) { // Chuyển đổi sang byte
+                        $paths[] = $file->store('uploads');
+                    } else {
+                        // Kích thước hình ảnh quá lớn
+                        return redirect()->back()->with(['error'=>"Kích thước hình ảnh quá lớn. Vui lòng chọn hình ảnh nhỏ hơn 10MB."]);
+                    }
+                } else {
+                    // Tệp không phải là hình ảnh
+                    return redirect()->back()->with(['error'=>"Tệp không phải là hình ảnh jpg, png, hoặc jpeg."]);
+                }
             
             }
            

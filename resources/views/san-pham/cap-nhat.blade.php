@@ -113,9 +113,10 @@
         <div class="col-md-6">
             <label for="hinh-anh" class="form-label">Thêm ảnh: </label>
             <input type="file" name="hinh_anh[]" multiple/><br>
-            @error('hinh_anh')
-            <span class="error-message">{{ $message }}</span>
-            @enderror
+           @if(session('error'))
+            <span class="error-message">{{session('error')}}</span>
+            @endif
+           
         </div>
         <div class="col-md-3">
         <label for="camera" class="form-label">Camera:</label>

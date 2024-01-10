@@ -87,9 +87,9 @@
         <div class="col-md-3">
             <label for="hinh_anh[]" class="form-label">Chọn ảnh: </label>
             <input type="file" name="hinh_anh[]" value="{{old('hinh_anh')}}" multiple required/><br/>
-            @error('hinh_anh')
-            <span class="error-message">{{$message}}</span>
-            @enderror
+            @if(session('error'))
+            <span class="error-message">{{session('error')}}</span>
+            @endif
         </div>
         <div class="col-md-3 offset-md-3">
             <label for="he-dieu-hanh" class="form-label">Hệ điều hành:</label>

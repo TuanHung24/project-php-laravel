@@ -27,7 +27,7 @@ class NhanVienRequest extends FormRequest
             'dien_thoai' =>'required|regex:/^0\d{9}$/',
             'email' => 'required|min:15|max:80|unique:quan_tri,email,' . $id,
             'dia_chi' => 'required|min:15|max:128',
-            'username' => 'required|min:6|max:60|regex:/^[^0-9]/|unique:quan_tri,username,' . $id, 
+            'username' => 'required|min:6|max:60|regex:/^[^\s\d\x80-\xFF!@#$%^&*()]+$/|unique:quan_tri,username,' . $id, 
             'mat_khau'=> 'required|min:6|max:128',
             'hinh_anh'=> 'image|mimes:jpg,png,jpeg|max:6048'
         ];
@@ -51,7 +51,7 @@ class NhanVienRequest extends FormRequest
             'username.required' => "Tên đăng nhập không được bỏ trống!",
             'username.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
             'username.max' => "Tên đăng nhập phải nhỏ hơn :max ký tự!",
-            'username.regex'=>"Tên đăng nhập không được bắt đầu bằng số!",
+            'username.regex'=>"Tên đăng nhập không được bắt đầu bằng số,không chứa khoản trắng, không được có dấu và chứa ký tự đặc biệt! ",
             'username.unique' => "Tên đăng nhập đã tồn tại!",
 
             'mat_khau.required' => "Mật khẩu không được bỏ trống!",
