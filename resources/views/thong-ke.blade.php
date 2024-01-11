@@ -20,8 +20,13 @@
     <span>Tổng số: {{$khachHang}}</span>
     </div>
  </span><br><br>
- <h4>Thống kê theo biểu đồ hóa đơn</h4>
+ <h4>Thống kê theo biểu đồ hóa đơn:</h4>
+
+ 
  <div class="option-m-y">
+ <div class="doanh_thu"> Doanh thu: <span id='doanh-thu'></span>đ</div>
+ <div class="lai"> Lãi: <span id='lai'></span>đ</div>
+ <div class="sp-da-ban"> Số lượng đã bán: <span id='so-luong'></span></div>
  <select id="monthSelect">
     <option value="0" disabled selected>Chọn tháng</option>
  </select>
@@ -36,7 +41,9 @@
 @section('page-js')
 <script type="text/javascript">
 $(document).ready(function(){
+
     thongKe();
+
     for (var month = 1; month <= 12; month++) {
         $('#monthSelect').append('<option value="' + month + '">Tháng ' + month + '</option>');
     }
@@ -45,11 +52,13 @@ $(document).ready(function(){
     for (var year = 2010; year <= currentYear; year++) {
         $('#yearSelect').append('<option value="' + year + '">' + year + '</option>');
     }
+
     $('#thong-ke').click(function(){
         thongKe();
     });
-    function thongKe(){
+ 
 
+    function thongKe(){
     var selectedMonth = $('#monthSelect').find(':selected').val();
     var selectedYear = $('#yearSelect').find(':selected').val();
 
@@ -62,19 +71,24 @@ $(document).ready(function(){
         var daysInMonth = new Date(selectedMonth, selectedYear, 0).getDate();
         var counts = Array(daysInMonth).fill(0);
 
-
+        let tongTienHoaDon=0;
+        let tongSoLuong=0;
         var canvasContainer = $("#orderChart").parent();
         $("#orderChart").remove();
         // Thêm canvas mới
         canvasContainer.append('<canvas id="orderChart" width="200" height="100"></canvas>');
         // Lấy context của canvas mới
         var ctx = $("#orderChart");
-
         for (var i in response) {
             var date = new Date(response[i].date);
             var day = date.getDate();
             counts[day - 1] = response[i].count;
+            tongTienHoaDon+=parseFloat(response[i].tongtien);
+            tongSoLuong+=parseInt(response[i].soluong);
         }
+        
+        $('#doanh-thu').text(tongTienHoaDon);
+        $('#so-luong').text(tongSoLuong);
         
         var chartData = {
             labels: Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${selectedMonth}`),

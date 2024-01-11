@@ -37,11 +37,19 @@ class ThongKeController extends Controller
     
             // Chỉ lấy dữ liệu nếu cả hai tham số tháng và năm đều được cung cấp
             if ($Month && $Year) {
-                $data = HoaDon::select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as count'))
-                    ->whereYear('created_at', $Year)
-                    ->whereMonth('created_at', $Month)
-                    ->groupBy('date')
-                    ->get();
+                $data = DB::table('hoa_don')
+                ->join('chi_tiet_hoa_don', 'hoa_don.id', '=', 'chi_tiet_hoa_don.hoa_don_id')
+                ->select(
+                    DB::raw('DATE(hoa_don.created_at) as date'), 
+                    DB::raw('COUNT(DISTINCT hoa_don.id) as count'), 
+                    DB::raw('SUM(hoa_don.tong_tien) as tongtien'),
+                    DB::raw('SUM(chi_tiet_hoa_don.so_luong) as soluong')
+                )
+                ->whereYear('hoa_don.created_at', $Year)
+                ->whereMonth('hoa_don.created_at', $Month)
+                ->groupBy('date')
+                ->get();
+                
             } else {
                 // Nếu không có tham số, trả về dữ liệu rỗng hoặc thông báo lỗi
                 $data = [];

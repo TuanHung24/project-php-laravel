@@ -16,7 +16,7 @@
 
 @section('content')
 <form action="{{route('san-pham.tim-kiem')}}" class="submit_search" id="search-form">
-    <label class="label_title">Nhập tên sản phẩm:</label>
+    <label class="label_title">Tên sản phẩm:</label>
     <div class="Search">
         <input type="search" class="form-control form-control-dark" name="search_name" value="{{$reQuest ?? null}}" placeholder="Tìm kiếm..." aria-label="Search" />
         <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
