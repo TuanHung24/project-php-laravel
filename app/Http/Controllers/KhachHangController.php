@@ -78,6 +78,10 @@ class KhachHangController extends Controller
     {
         $reQuest=$request->search_name;
         $dskhachHang=KhachHang::where('ho_ten','like','%'.$reQuest.'%')->get();
+        if ($dskhachHang->isEmpty()) {
+            $errorMessage = "Tên Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuest'";
+            return view('khach-hang.danh-sach', compact('dskhachHang', 'reQuest', 'errorMessage'));
+        }
         return view('khach-hang.danh-sach',compact('dskhachHang','reQuest'));
     }
 }

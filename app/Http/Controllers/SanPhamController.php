@@ -191,18 +191,11 @@ class SanPhamController extends Controller
     {
         $reQuest=$request->search_name;
         $dsSanPham=SanPham::where('ten','like','%'.$reQuest.'%')->paginate(10);
-       
-       
-       // return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
-       
-       // return view('san-pham.danh-sach',compact('dsSanPham','reQuest'))->with(['null_tk'=>"Không tồn tại sản phẩm nào !"]);
-        if ($dsSanPham) {
-            // Nếu tìm thấy sản phẩm, trả về thông tin sản phẩm hoặc làm gì đó với nó
-            return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
-        } else {
-            // Nếu không tìm thấy sản phẩm, trả về thông báo
-            return back()->with('null_tk', 'Không tìm thấy sản phẩm nào!');
-        
+        if ($dsSanPham->isEmpty()) {
+            $errorMessage = "Tên sản phẩm không tồn tại với từ khóa tìm kiếm: '$reQuest'";
+            return view('san-pham.danh-sach', compact('dsSanPham', 'reQuest', 'errorMessage'));
         }
+       
+        return view('san-pham.danh-sach',compact('dsSanPham','reQuest'));
     }
 }

@@ -78,4 +78,21 @@ class NhaCungCapController extends Controller
         $nhaCungCap->save();
         return redirect()->route('nha-cung-cap.danh-sach')->with(['thong_bao'=>"Xóa nhà cung cấp {$nhaCungCap->ten} thành công!"]);
     }
+
+public function timKiem(Request $request )
+    {
+        $reQuest=$request->search_name;
+        $dsnhaCungCap=NhaCungCap::where('ten','like','%'.$reQuest.'%')->paginate(10);
+        //return view('nha-cung-cap.danh-sach',compact('dsnhaCungCap','reQuest'));
+        
+        if ($dsnhaCungCap->isEmpty()) {
+            $errorMessage = "Tên nhà cung cấp không tồn tại với từ khóa tìm kiếm: '$reQuest'";
+            return view('nha-cung-cap.danh-sach', compact('dsnhaCungCap', 'reQuest', 'errorMessage'));
+        }
+        return view('nha-cung-cap.danh-sach',compact('dsnhaCungCap','reQuest'));
+        
+
+    }
+    
+    
 }

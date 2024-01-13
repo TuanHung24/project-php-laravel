@@ -115,6 +115,10 @@ class HoaDonController extends Controller
     {
         $reQuest=$request->search_name;
         $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->get();
+        if ($dsHoaDon->isEmpty()) {
+            $errorMessage = "Tên Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuest'";
+            return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuest', 'errorMessage'));
+        }
         return view('hoa-don.danh-sach',compact('dsHoaDon','reQuest'));
     }
     public function layMauSacDungLuong(Request $request)

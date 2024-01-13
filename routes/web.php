@@ -116,6 +116,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('nha-cung-cap')->group(function(){
         Route::name('nha-cung-cap.')->group(function(){
             Route::get('/', [NhaCungCapController::class, 'danhSach'])->name('danh-sach');
+            Route::get('/tim-kiem', [NhaCungCapController::class, 'timKiem'])->name('tim-kiem');
             Route::get('them-moi',[NhaCungCapController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[NhaCungCapController::class, 'xuLyThemMoi'])->name('xl-them-moi');
             Route::get('cap-nhat/{id}', [NhaCungCapController::class, 'capNhat'])->name('cap-nhat');

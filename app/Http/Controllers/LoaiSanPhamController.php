@@ -93,6 +93,10 @@ class LoaiSanPhamController extends Controller
     {
         $reQuest=$request->search_name;
         $dsLoaiSanPham=LoaiSanPham::where('ten','like','%'.$reQuest.'%')->paginate(10);
+        if ($dsLoaiSanPham->isEmpty()) {
+            $errorMessage = "Tên loại sản phẩm không tồn tại với từ khóa tìm kiếm: '$reQuest'";
+            return view('loai-san-pham.danh-sach', compact('dsLoaiSanPham', 'reQuest', 'errorMessage'));
+        }
         return view('loai-san-pham.danh-sach',compact('dsLoaiSanPham','reQuest'));
     }
 }
