@@ -15,7 +15,7 @@
     <label for="khach-hang" class="form-label">Họ tên khách hàng:</label>
     <input type="text" class="form-control" name="khach_hang" id="khach-hang">
 
-    <span class="error-message" id = "error-khach-hang">Vui lòng nhập tên khách hàng</span>
+    <span class="error" id="error-san-pham">Vui lòng nhập tên khách hàng.</span>
 
   </div>
 </div>
@@ -23,7 +23,7 @@
   <div class="col-md-2">
     <label for="so-dien-thoai" class="form-label">Số điện thoại:</label>
     <input type="text" class="form-control" name="so_dien_thoai" id="so-dien-thoai">
-    <span class="error-message" id = "error-so-dien-thoai">Vui lòng nhập số điện thoại</span>
+    <span class="error" id="error-so-dien-thoai">Vui lòng chọn số điện thoại.</span>
   </div>
 </div>
 <div class="row">
@@ -86,6 +86,29 @@
   $(document).ready(function() {
     var STT=0;
     $("#btn-them").click(function() {
+      
+     
+     
+
+      if ($("#khach-hang").val() === "") {
+        $("#error-khach-hang").show();
+        return;
+      } else {
+        $("#error-khach-hang").hide();
+      }
+
+      if ($("#so-dien-thoai").val() === "") {
+        $("#error-so-dien-thoai").show();
+        return;
+      } else {
+        $("#error-so-dien-thoai").hide();
+      }
+      if ($("#sp-id").val() === "" || $("#sp-id").val() == "Chọn sản phẩm") {
+        $("#error-san-pham").show();
+        return;
+      } else {
+        $("#error-san-pham").hide();
+      }
       // var stt = $("#tb-ds-san-pham tbody tr").length + 1;
       // var tenSP = $("#san-pham").find(":selected").text();
       // var idSP = $("#san-pham").find(":selected").val();
@@ -120,27 +143,8 @@
         var soLuong = item.soLuong;
         var giaBan = item.giaBan;
         var thanhTien = soLuong*giaBan;
-
-        if ($("#sp-id").val() === "" || $("#sp-id").val() == "Chọn sản phẩm") {
-        $("#error-san-pham").show();
-        return;
-      } else {
-        $("#error-san-pham").hide();
-      }
-      if ($("#error-so-dien-thoai").val() === "") {
-        $("#error-so-dien-thoai").show();
-        return;
-      }else{
-        $("#error-so-dien-thoai").hide();
-      }
-     
-
-      if (kHang === "") {
-        $("#error-khach-hang").show();
-        return;
-      } else {
-        $("#error-khach-hang").hide();
-      }
+        
+       
 
       var row = `<tr>
       <td>${stt}</td>

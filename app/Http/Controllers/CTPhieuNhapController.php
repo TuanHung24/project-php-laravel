@@ -81,7 +81,6 @@ class CTPhieuNhapController extends Controller
             $dsDungLuong=DungLuong::all();
             return view("nhap-hang.them-moi",compact('dsNhaCungCap','dsSanPham','dsnhanVien','dsMauSac', 'dsDungLuong'));
         }
-       
     } 
     public function danhSach()
     {

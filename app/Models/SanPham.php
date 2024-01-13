@@ -20,6 +20,10 @@ class SanPham extends Model
     {
         return $this->hasMany(HinhAnh::class);
     }
+    public function thong_tin_san_pham()
+    {
+        return $this->hasOne(ThongTinSanPham::class,'san_pham_id');
+    }
     public function chi_tiet_san_pham()
     {
         return $this->hasMany(CTSanPham::class);

@@ -32,9 +32,9 @@ class APISanPhamController extends Controller
     public function layChiTiet($id)
     {
         try{
-        $sanPham=SanPham::with(["loai_san_pham",'img','chi_tiet_san_pham'=>function($query){
-            $query->with('mau_sac','dung_luong');
-        }])->findOrFail($id);
+            $sanPham = SanPham::with(['thong_tin_san_pham', 'loai_san_pham', 'img', 'chi_tiet_san_pham' => function($query) {
+                $query->with('mau_sac', 'dung_luong');
+            }])->findOrFail($id);
         if(empty($sanPham))
         {
             return response()->json([
