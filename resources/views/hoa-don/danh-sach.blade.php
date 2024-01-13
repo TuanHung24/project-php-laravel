@@ -27,23 +27,24 @@
     <table class="table table-striped table-sm">
         <thead>
             <tr>
-                <th>Mã đơn hàng</th>
-                <th>Nhân viên</th>
+                <th>Id</th>
                 <th>Khách hàng</th>
                 <th>Điện thoại</th>
+                <th>Địa chỉ</th>
                 <th>Tổng tiền</th>
                 <th>Ngày tạo</th>
-                
+                <th>Phương thức thanh toán</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
         @foreach($dsHoaDon as $hoaDon)
         <tr>
-            <td>{{ $hoaDon->id }}</td>
-            <td>{{ $hoaDon->quan_tri->ho_ten}}</td>
+            <td>{{$hoaDon->id}}</td>
             <td>{{ $hoaDon->khach_hang }}</td>
             <td>{{ $hoaDon->dien_thoai }}</td>
+            <td>{{ $hoaDon->dia_chi }}</td>
             <td>{{ $hoaDon->tong_tien_formatted }}</td>
+            <td>{{ $hoaDon->phuong_thuc_tt }}</td>
             <td>{{ $hoaDon->ngay_tao }}</td>
             <!-- <?php
             if ($hoaDon->trang_thai == true) {

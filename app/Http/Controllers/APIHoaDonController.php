@@ -34,6 +34,8 @@ class APIHoaDonController extends Controller
             $cTHoaDon=new CTHoaDon();
             $cTHoaDon->hoa_don_id=$hoaDon->id;
             $cTHoaDon->san_pham_id=$request->cthd[$i]['san_pham_id'];
+            $cTHoaDon->mau_sac_id=$request->cthd[$i]['mau_sac_id'];
+            $cTHoaDon->dung_luong_id=$request->cthd[$i]['dung_luong_id'];
             $cTHoaDon->so_luong=$request->cthd[$i]['so_luong'];
             $cTHoaDon->don_gia=$request->cthd[$i]['gia_ban'];
             $cTHoaDon->thanh_tien=$request->cthd[$i]['thanh_tien'];
