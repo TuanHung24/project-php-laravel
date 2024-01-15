@@ -7,6 +7,7 @@ use App\Models\KhachHang;
 use App\Models\BinhLuan;
 use App\Models\SanPham;
 
+
 class BinhLuanController extends Controller
 {
     public function danhSach(){
