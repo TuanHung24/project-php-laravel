@@ -87,9 +87,6 @@
     var STT=0;
     $("#btn-them").click(function() {
       
-     
-     
-
       if ($("#khach-hang").val() === "") {
         $("#error-khach-hang").show();
         return;

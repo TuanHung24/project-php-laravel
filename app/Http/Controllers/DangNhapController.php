@@ -10,7 +10,8 @@ use App\Models\Logo;
 use App\Http\Requests\ThongTinTaiKhoanRequest;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use function Laravel\Prompts\error;
 
 class DangNhapController extends Controller
@@ -83,6 +84,29 @@ class DangNhapController extends Controller
         $taiKhoan->password=Hash::make($rq->respassword);
         $taiKhoan->save();
         return redirect()->route('thong-tin')->with(['thong_bao'=>"Thay đổi mật khẩu thành công!"]);
+    }
+    public function quenMatKhau(){
+        return view("admin.quen-mat-khau");
+    }
+    public function xuLyQuenMatKhau(Request $request){
+        $request->validate([
+            'email'=>'required|exists:quan_tri'
+        ],[
+            'email.required'=> "Vui lòng nhập email hợp lệ!",
+            'email.exists'=> "Email này không tồn tại trong hệ thống!",
+        ]);
+        $token= strtoupper(Str::random(20));
+        $quanLy= QuanTri::where('email', $request->email)->first();
+        $quanLy->update(['token'=>$token]);
+        
+       
+            Mail::send('email',compact('quanLy'), function($email) use($quanLy){
+                    $email->subject('HDK - lấy lại mật khẩu tài khoản');
+                    $email->to($quanLy->email, $quanLy->ho_ten);
+            });
+    
+    
+            return redirect()->back()->with('thong_bao','Vui lòng check email để thực hiện đổi mật khẩu!');
     }
 
 }

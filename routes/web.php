@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function(){
     Route::post('thong-tin',[DangNhapController::class, 'capNhatThongTin'])->name('update-info');
     Route::get('admin/doi-mat-khau', [DangNhapController::class, 'DoiMatKhau'])->name('doi-mat-khau');
     Route::post('admin/doi-mat-khau', [DangNhapController::class, 'xlDoiMatKhau'])->name('xl-doi-mat-khau');
+    
     Route::prefix('san-pham')->group(function(){
         Route::name('san-pham.')->group(function(){
             Route::get('them-moi', [SanPhamController::class, 'themMoi'])->name('them-moi');
@@ -176,6 +177,12 @@ Route::middleware('auth')->group(function(){
 Route::middleware('guest')->group(function(){
     Route::get('dang-nhap', [DangNhapController::class, 'dangNhap'])->name('dang-nhap');
     Route::post('dang-nhap', [DangNhapController::class, 'xuLyDangNhap'])->name('xl-dang-nhap');
+
+    Route::get('quen-mat-khau', [DangNhapController::class, 'quenMatKhau'])->name('quen-mat-khau');
+    Route::post('quen-mat-khau', [DangNhapController::class, 'xuLyQuenMatKhau'])->name('xl-quen-mat-khau');
+
+    Route::get('lay-mat-khau/{customer}/{token}', [DangNhapController::class, 'layMatKhau'])->name('quen-mat-khau');
+    Route::post('lay-mat-khau/{customer}/{token}', [DangNhapController::class, 'xuLyLayMatKhau'])->name('xl-lay-mat-khau');
 });
 
 

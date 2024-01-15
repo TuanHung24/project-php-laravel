@@ -29,7 +29,7 @@
         <div class="btn-group me-2">
             <a href="{{ route('san-pham.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
         </div>
-        <div class="btn-group me-2">
+        <div>
             <a href="{{ route('san-pham.thung-rac') }}" class="btn btn-warning"><span data-feather="trash-2"></span>Thùng rác</a>
         </div>
     </div>
@@ -41,7 +41,6 @@
         </div>
     </div>
 @endif
-
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
@@ -77,22 +76,58 @@
     @endif
 </div>
 @endsection
-<!-- <script type="text/javascript">
+
+
+<!-- @section('page-js')
+<script type="text/javascript">
     $(document).ready(function(){
-        $('#search-form').submit(function(e) {
-           
-            e.preventDefault();
+        $("#popupButton").click(function() {
+      showPopup();
+    });
 
-            
-            var searchValue = $('search_name]').val();
+    $("#closePopupButton").click(function() {
+      closePopup();
+    });
 
-           
-            if (searchValue.trim() !== '') {
-                console.log('Searching for: ' + searchValue);
-            }
-        });
+    function showPopup() {
+      // Hiển thị form popup
+      $("#popupForm").show();
+
+      // Tạo và hiển thị màn nền mờ
+      $("<div>").addClass("backdrop").on("click", closePopup).appendTo("body");
+    }
+
+    function closePopup() {
+      // Ẩn form popup
+      $("#popupForm").hide();
+
+      // Loại bỏ màn nền mờ
+      $(".backdrop").remove();
+    }
+
+    $("#myPopupForm").submit(function(event) {
+      event.preventDefault();
+
+      // Lấy dữ liệu từ form
+      let formData = new FormData(this);
+
+      // Gửi dữ liệu sử dụng AJAX
+      $.ajax({
+        url: 'url-xử-lý',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          console.log(data);
+          closePopup();
+        },
+        error: function(error) {
+          console.error('Lỗi:', error);
+        }
+      });
+    });
+
     })
 </script>
-@section('page-js')
-
 @endsection -->

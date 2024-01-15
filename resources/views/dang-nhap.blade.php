@@ -33,10 +33,11 @@
       </span>
       @endif
     </div>
+    <a class="small text-muted" href="#">Forgot password?</a>
     <div class="pt-1 mb-4">
       <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập</button>
     </div>
-    <a class="small text-muted" href="#!">Forgot password?</a>
+    
   </form>
   <script src="{{ asset('sweetalert2/sweetalert2.all.min.js')}}"></script>
   <script src="{{ asset('jquery-3.7.1.min.js') }}"></script>
