@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
 use App\Models\HoaDon;
 use App\Models\CTHoaDon;
@@ -24,9 +25,5 @@ class PDFController extends Controller
         $dsCTPhieuNhap=CTPhieuNhap::where('phieu_nhap_id',$id)->get();
         $pdf = app('dompdf.wrapper')->loadView('pdf.nh', ['phieuNhap'=>$phieuNhap],['dsCTPhieuNhap'=>$dsCTPhieuNhap]);
         return $pdf->stream('hoa-don.pdf');
-    }
-    public function export()
-    {
-        return Excel::download(new UsersExport(), 'users.xlsx');
     }
 }

@@ -16,6 +16,7 @@ use App\Http\Controllers\SlidesController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
