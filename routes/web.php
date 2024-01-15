@@ -29,9 +29,9 @@ use App\Http\Controllers\LogoController;
 */
 
 Route::middleware('auth')->group(function(){
-    Route::get('/thong-ke', [ThongKeController::class, 'danhSach'])->name('thong-ke');
+    Route::get('/', [ThongKeController::class, 'danhSach'])->name('thong-ke');
     Route::get('/tk-hoa-don', [ThongKeController::class, 'ThongKeHoaDon'])->name('tk-hoa-don');
-    Route::get('/', [SanPhamController::class, 'danhSach'])->name('danh-sach');
+    Route::get('/san-pham', [SanPhamController::class, 'danhSach'])->name('danh-sach');
     Route::get('hinh-anh/{spid}/{id}', [HinhAnhController::class, 'hinhAnhXoa'])->name('hinh-anh');
     Route::get('dang-xuat', [DangNhapController::class, 'dangXuat'])->name('dang-xuat');
     Route::get('thong-tin',[DangNhapController::class,'thongTin'])->name('thong-tin');

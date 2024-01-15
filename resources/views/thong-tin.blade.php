@@ -22,7 +22,7 @@
         <h4>Thông tin cá nhân</h4>
     </div>  
         <img src="{{asset(Auth::user()->avatar_url)}}"/><span data-feather="repeat"></span><input type="file" name="avatar" placeholder="Thay đổi ảnh đại diện"/>
-        <p class="info-username">Tên tài khoản: <input id="info-cn" value="{{old('username',Auth::user()->username)}}" name="username"/><span data-feather="edit-3"></span></p>
+        <p class="info-username">Tên tài khoản: <input id="info-cn" value="{{old('username',Auth::user()->username)}}" readonly name="username"/><span data-feather="edit-3"></span></p>
         @error('username')
             <span class="error-message-tt">{{ $message }}</span>
         @enderror

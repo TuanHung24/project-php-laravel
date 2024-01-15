@@ -33,7 +33,7 @@ class DangNhapController extends Controller
         if ($user && Hash::check($rq->password, $user->password) && $user->trang_thai) {
             Auth::login($user, $rq->has('remember'));
 
-            return redirect()->route('san-pham.danh-sach')->with(['dang_nhap' => 'Đăng nhập thành công!']);
+            return redirect()->route('thong-ke')->with(['dang_nhap' => 'Đăng nhập thành công!']);
         }
         if(empty($user))
         {

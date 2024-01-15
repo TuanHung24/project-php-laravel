@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-md-6">
             <label for="username" class="form-label">Tên tài khoản:</label>
-            <input type="text" class="form-control" name="username" id="username" value="{{old('username',$quanTri->username)}} ">
+            <input type="text" class="form-control" name="username" id="username" value="{{old('username',$quanTri->username)}}" readonly>
             @error('username')
             <span class="error-message">{{ $message }}</span>
             @enderror
