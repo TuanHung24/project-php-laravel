@@ -1,5 +1,19 @@
 @extends('master')
 
+@section('page-sw')
+@if(session('dang_nhap'))
+<script>
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: "{{session('dang_nhap')}}",
+        showConfirmButton: true,
+        timer: 3000
+        })
+    </script>
+@endif
+@endsection
+
 @section('content')
  <span class="thong_ke">
     <div class="count_container count_sp">

@@ -121,6 +121,16 @@ class HoaDonController extends Controller
         }
         return view('hoa-don.danh-sach',compact('dsHoaDon','reQuest'));
     }
+    public function timKiemSdt(Request $request)
+    {
+        $reQuestSdt=$request->search_sdt;
+        $dsHoaDon=HoaDon::where('dien_thoai','like','%'.$reQuestSdt.'%')->paginate(12);
+        if ($dsHoaDon->isEmpty()) {
+            $errorMessage = "số điện thoại Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuestSdt'";
+            return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuestSdt', 'errorMessage'));
+        }
+        return view('hoa-don.danh-sach',compact('dsHoaDon','reQuestSdt'));
+    }
     public function layMauSacDungLuong(Request $request)
     {
         $dsSanPham = CTSanPham::where('san_pham_id',$request->productId)->get();

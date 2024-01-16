@@ -8,7 +8,13 @@
         <input type="search" class="form-control form-control-dark" name="search_name" value="{{$reQuest ?? null}}" placeholder="Tên khách hàng..." aria-label="Search" />
         <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
     </div>
-</form>
+    </form>
+    <form action="{{route('hoa-don.tim-kiem-sdt')}}" class="submit_search" id="search-form">
+        <div class="Search">
+            <input type="number" class="form-control form-control-dark" name="search_sdt" value="{{$reQuestSdt ?? null}}" placeholder="Số điện thoại khách hàng..." aria-label="Search" />
+            <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
+        </div>
+        </form>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
             <a href="{{ route('hoa-don.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
@@ -67,10 +73,5 @@
         </div>
     @endif
     {{ $dsHoaDon->links('vendor.pagination.default') }}
-    @if(isset($errorMessage))
-        <div class="alert alert-danger">
-            {{ $errorMessage }}
-        </div>
-    @endif
 </div>
 @endsection

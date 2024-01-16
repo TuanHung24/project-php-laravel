@@ -1,19 +1,5 @@
 @extends('master')
 
-@section('page-sw')
-@if(session('dang_nhap'))
-<script>
-        Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: "{{session('dang_nhap')}}",
-        showConfirmButton: true,
-        timer: 3000
-        })
-    </script>
-@endif
-@endsection
-
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
