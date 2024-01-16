@@ -33,6 +33,7 @@
                 <th>Tổng tiền</th>
                 <th>Ngày tạo</th>
                 <th>Phương thức thanh toán</th>
+                <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
         </thead>
@@ -45,14 +46,34 @@
             <td>{{ $hoaDon->tong_tien_formatted }}</td>
             <td>{{ $hoaDon->phuong_thuc_tt }}</td>
             <td>{{ $hoaDon->ngay_tao }}</td>
-            <!-- <?php
-            if ($hoaDon->trang_thai == true) {
+             <!-- <?php
+            if ($hoaDon->trang_thai == 1) {
                 $trang_thai = "Hoạt động";
             } else {
                 $trang_thai = "Không hoạt động";
             }
+
+
+
+
+            
             ?>
             <td>{{ $trang_thai }}</td> -->
+
+            @if ($hoaDon->trang_thai == 1)
+            <td>Duyệt
+                <form>
+                    <button type="submit">Duyệt</button>
+                </form>
+            </td>
+            @elseif ($hoaDon->trang_thai == 2)
+                <td>Hoàn thành</td>
+            @elseif ($hoaDon->trang_thai == 3)
+                <td>Đã hủy</td>
+            @endif
+
+
+
             <td class="chuc-nang">
                 <a href="{{ route('hoa-don.chi-tiet', ['id' => $hoaDon->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a>|
                 <a href="{{ route('hoa-don.xoa', ['id' => $hoaDon->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>|

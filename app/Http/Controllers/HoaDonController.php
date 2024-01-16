@@ -80,7 +80,7 @@ class HoaDonController extends Controller
     }
     public function danhSach()
     {
-        $dsHoaDon=HoaDon::paginate(12); 
+        $dsHoaDon=HoaDon::paginate(7); 
         return view("hoa-don.danh-sach", compact('dsHoaDon'));
     }
     public function chiTiet($id)
@@ -114,7 +114,7 @@ class HoaDonController extends Controller
     public function timKiem(Request $request)
     {
         $reQuest=$request->search_name;
-        $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->paginate(12);
+        $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->paginate(7);
         if ($dsHoaDon->isEmpty()) {
             $errorMessage = "Tên Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuest'";
             return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuest', 'errorMessage'));
