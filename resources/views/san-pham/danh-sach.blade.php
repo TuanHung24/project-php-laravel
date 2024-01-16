@@ -67,7 +67,7 @@
     <tr>
     @endforeach
     </tbody>
-</table>
+</table> 
 {{ $dsSanPham->links('vendor.pagination.custom') }}
 @if(isset($errorMessage))
         <div class="alert alert-danger">

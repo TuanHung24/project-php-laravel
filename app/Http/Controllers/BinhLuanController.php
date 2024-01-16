@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\KhachHang;
 use App\Models\BinhLuan;
 use App\Models\SanPham;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class BinhLuanController extends Controller
 {

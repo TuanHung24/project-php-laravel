@@ -14,7 +14,7 @@
             <a href="{{ route('hoa-don.them-moi') }}" class="btn btn-success"><span data-feather="plus-circle"></span>Thêm mới</a>
         </div>
     </div>
-</div>
+</div>  
 @if(session('thong_bao'))
     <div class="alert alert-success d-flex align-items-center" role="alert">
         <div> 
@@ -61,6 +61,12 @@
         <tr>
             @endforeach
     </table>
+    @if(isset($errorMessage))
+        <div class="alert alert-danger">
+            {{ $errorMessage }}
+        </div>
+    @endif
+    {{ $dsHoaDon->links('vendor.pagination.default') }}
     @if(isset($errorMessage))
         <div class="alert alert-danger">
             {{ $errorMessage }}

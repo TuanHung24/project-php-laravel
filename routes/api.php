@@ -53,6 +53,7 @@ Route::get('/slide',[APISlidesController::class, 'danhSach']);
 Route::post('/hoa-don',[APIHoaDonController::class, "themHoaDon"]);
 
 Route::post('/dang-ky',[APIKhachHangController::class, "dangKy"]);
+Route::post('/update-info',[APIKhachHangController::class, "capNhapThongTin"]);
 
 
 

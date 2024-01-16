@@ -27,7 +27,26 @@ class APIKhachHangController extends Controller
         $khachHang->save();
         return response()->json([
             'success'=>true,
-            'message'=>'Đăng ký tài khoản thành công'
+            'message'=>'Đăng ký tài khoản thành công!'
+        ]);
+    }
+    public function capNhapThongTin(Request $request)
+    {
+        $khachHang= KhachHang::where("email",$request->email)->first();
+        if(empty($khachHang)){
+            return response()->json([
+                'success'=>false,
+                'message'=>'Email không tồn tại!'
+            ]);
+        }
+        $khachHang->ho_ten=$request->ho_ten;
+        $khachHang->dien_thoai=$request->so_dien_thoai;
+        $khachHang->dia_chi=$request->dia_chi;
+        $khachHang->save();
+        return response()->json([
+            'success'=>true,
+            'data'=>$khachHang,
+            'message'=>"Cập nhật tài khoản thành công!"
         ]);
     }
 }

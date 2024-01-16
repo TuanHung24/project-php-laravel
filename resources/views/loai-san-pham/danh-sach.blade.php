@@ -52,7 +52,7 @@
             @endforeach
     </table>
     {{ $dsLoaiSanPham->links('vendor.pagination.default') }}
-    @if(isset($errorMessage))
+    @if(isset($errorMessage)) 
         <div class="alert alert-danger">
             {{ $errorMessage }}
         </div>
