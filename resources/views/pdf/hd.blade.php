@@ -12,15 +12,19 @@
         body{
             font-size: 13px;
         }
+        #hd{
+            text-align:center;
+        }
+        
     </style>
 <body>
-    <h2>Hóa đơn bán hàng</h2>
+    <h2 id="hd">Hóa đơn bán hàng</h2>
     <h4>Nhân viên:{{$hoaDon->quan_tri->ho_ten}} </h4>
     <h4>Tên khách hàng:{{$hoaDon->khach_hang}} </h4>
     <h4>Mã hóa đơn:{{$hoaDon->id}} </h4>
     <h4>Ngày tạo:{{$hoaDon->ngay_tao}} </h4>
     <div class="bd-example">
-        <table class="table" border="1" style="width:60%;margin:2% 2% 2% 0;text-align:center">
+        <table class="table" border="1" style="width:80%;margin:2% 2% 2% 0%;text-align:center">
             <thead>
                 <tr>
                     <th>Sản phẩm</th>
