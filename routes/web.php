@@ -108,6 +108,7 @@ Route::middleware('auth')->group(function(){
             Route::get('/',[HoaDonController::class, 'danhSach'])->name('danh-sach');
            
             Route::get('/tim-kiem', [HoaDonController::class, 'timKiem'])->name('tim-kiem');
+            Route::get('/tim-kiem-sdt', [HoaDonController::class, 'timKiemSdt'])->name('tim-kiem-sdt');
             Route::get('chi-tiet/{id}',[HoaDonController::class, 'chiTiet'])->name('chi-tiet');
             Route::get('them-moi',[HoaDonController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[HoaDonController::class, 'xuLyThemMoi'])->name('xl-them-moi');

@@ -26,8 +26,22 @@ class ThongTinTaiKhoanRequest extends FormRequest
         return [
             'ho_ten' => 'required|min:10|regex:/^[^\d]+$/u',
             'dien_thoai' =>'required|regex:/^0\d{9}$/',
-            'email' => 'required|min:15|max:80|unique:quan_tri,email,' . $id,
-            'dia_chi' => 'required|min:15|max:128',
+            'email' => [
+                'required',
+                'min:15',
+                'max:80',
+                'regex:/^[a-zA-Z0-9._-]+@gmail\.com$/',
+                'unique:quan_tri,email,' . $id,
+            ],
+            
+            
+            'dia_chi' => [
+                'required',
+                'min:15',
+                'max:128',
+            ],
+            
+            
             'username' => 'required|min:6|max:60|regex:/^[a-zA-Z][a-zA-Z0-9]*$/|unique:quan_tri,username,' . $id, 
             'avatar'=> 'image|mimes:jpg,png,jpeg|max:4048'
         ];
@@ -45,9 +59,12 @@ class ThongTinTaiKhoanRequest extends FormRequest
             'email.min' => "Email phải lớn hơn :min ký tự!",
             'email.max' => "Email phải nhỏ hơn :max ký tự!",
             'email.unique' => "Email đã tồn tại!",
+            'email.regex'=>"Không đúng định dạng Email ví dụ:'abc@gmail.com' !",
+
             'dia_chi.required' => "Địa chỉ không được bỏ trống!",
             'dia_chi.min' => "Địa chỉ phải lớn hơn :min ký tự!",
             'dia_chi.max' => "Địa chỉ phải nhỏ hơn :max ký tự!",
+            'dia_chi.regex' => "Địa chỉ không được chứa ký tự đặc biệt!",
     
             'username.required' => "Tên đăng nhập không được bỏ trống!",
             'username.min' => "Tên đăng nhập phải lớn hơn :min ký tự!",
