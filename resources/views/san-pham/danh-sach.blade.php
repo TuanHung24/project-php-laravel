@@ -54,13 +54,14 @@
     @endforeach
     </tbody>
 </table> 
-{{ $dsSanPham->links('vendor.pagination.custom') }}
+
 @if(isset($errorMessage))
         <div class="alert alert-danger">
             {{ $errorMessage }}
         </div>
     @endif
 </div>
+{{ $dsSanPham->links('vendor.pagination.custom') }}
 @endsection
 
 

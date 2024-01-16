@@ -228,6 +228,14 @@ h3 {
 .border-bottom{
     background: mintcream;
 }
+tr{
+    vertical-align: middle;
+}
+.trang-thai-don{
+    margin-top: 5px;
+    display: flex;
+    
+}
 .error-message{
     color:red;
 }

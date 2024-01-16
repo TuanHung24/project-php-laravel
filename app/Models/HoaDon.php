@@ -9,7 +9,7 @@ class HoaDon extends Model
 {
     use HasFactory;
     protected $table="hoa_don";
-    const TRANG_THAI_CHO_XU_LY = 1;
+    const TRANG_THAI_CHO_XU_LY = 1; 
     const TRANG_THAI_DA_DUYET = 2;
     const TRANG_THAI_DANG_GIAO = 3;
     const TRANG_THAI_HOAN_THANH = 4;
