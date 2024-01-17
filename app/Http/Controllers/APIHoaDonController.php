@@ -49,4 +49,21 @@ class APIHoaDonController extends Controller
             ]);
         
     }
+    public function huyDon(Request $request){
+        $hoaDon = HoaDon::find($request->id);
+        if(empty($hoaDon)){
+            return response()->json([
+                "success"=>false,
+                "message"=>"Hóa đơn không tồn tại!"
+            ]);
+        }
+        $hoaDon->trang_thai=HoaDon::TRANG_THAI_DA_HUY;
+        $hoaDon->save();
+
+        return response()->json([
+            "success"=>true,
+            "message"=>"Hủy hóa đơn thành công!",
+            "data"=>$hoaDon
+        ]);
+    }
 }
