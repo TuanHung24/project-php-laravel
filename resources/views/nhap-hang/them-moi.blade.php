@@ -7,30 +7,26 @@
 <div class="row">
   <div class="col-md-6"> 
     <label for="nha_cung_cap" class="form-label">Chọn nhà cung cấp:</label>
-    <select for="nha_cung_cap" class="form-select" id="nha-cung-cap">
-      <option selected disabled>Chọn nhà cung cấp</option>
-      @foreach($dsNhaCungCap as $nhaCungCap)
-      <option value="{{$nhaCungCap->id}}" id="nha_cung_cap">{{$nhaCungCap->ten}}</option>
-      @endforeach
-     
-    </select>
-
+      <select for="nha_cung_cap" class="form-select" id="nha-cung-cap">
+        <option selected disabled>Chọn nhà cung cấp</option>
+          @foreach($dsNhaCungCap as $nhaCungCap)
+            <option value="{{$nhaCungCap->id}}" id="nha_cung_cap">{{$nhaCungCap->ten}}</option>
+          @endforeach
+      </select>
     <span class="error-message" id="error-nha-cung-cap"></span>
-
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-6">
     <label for="san_pham" class="form-label">Sản phẩm:</label>
-    <select name="san_pham" class="form-select" id="san-pham">
-      <option selected disabled>Chọn sản phẩm</option>
-      @foreach($dsSanPham as $sanPham)
-      <option value="{{$sanPham->id}}">{{$sanPham->ten}}</option>
-      @endforeach
-    </select>
-
-            <span class="error-message" id = "error-san-pham"></span>
-
+      <select name="san_pham" class="form-select" id="san-pham">
+        <option selected disabled>Chọn sản phẩm</option>
+          @foreach($dsSanPham as $sanPham)
+            <option value="{{$sanPham->id}}">{{$sanPham->ten}}</option>
+          @endforeach
+      </select>
+    <span class="error-message" id = "error-san-pham"></span>
   </div>
 </div>
 
@@ -44,7 +40,7 @@
       @endforeach
     </select>
 
-            <span class="error-message" id ="error-mau"></span>
+            <span class="error-message" id ="error-#mau-sac"></span>
 
   </div>
 </div>
@@ -177,6 +173,7 @@
           isValid = false;
         } else {
           $("#error-nha-cung-cap").text("");
+
         }
 
         if ($("#sp-id").val() === "" || $("#sp-id").val() === "Chọn sản phẩm") {
@@ -188,10 +185,10 @@
         }
 
         if ($("#mau-id").val() === "" || $("#mau-id").val() === "Chọn màu") {
-          $("#error-mau").text("Vui lòng chọn màu!");
+          $("#error-mau-sac").text("Vui lòng chọn màu!");
           isValid = false;
         } else {
-          $("#error-mau").text("");
+          $("#error-mau-sac").text("");
 
         }
 
@@ -247,7 +244,7 @@
       Test();
     });
 
-    $("#san-pham, #so-luong, #gia-nhap, #gia-ban").change(function() {
+    $("#nha-cung-cap, #san-pham, #mau-sac, #dung-luong, #so-luong, #gia-nhap, #gia-ban").change(function() {
       $(`#error-${this.id}`).hide();
     });
 

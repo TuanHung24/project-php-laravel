@@ -21,10 +21,11 @@ class NhaCungCapRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
         return [
-           'ten' => 'required|min:10|regex:/^\s*[a-zA-Z\s]{10,}$/',
+           'ten' => 'required|min:10|regex:/^[^\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/u|unique:nha_cung_cap,ten,'. $id,
            'dien_thoai'=>'required|regex:/^0\d{9}$/',
-           'dia_chi' => 'required|min:10|max:100|',
+           'dia_chi' => 'required|min:10|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u',
 
         ];
     }
@@ -33,6 +34,7 @@ class NhaCungCapRequest extends FormRequest
             'ten.required'=>"Tên nhà cung cấp không được bỏ trống!",
             'ten.min'=>'Tên nhà cung cấp phải lớn hơn :min ký tự!',
             'ten.regex'=>"Tên nhà cung cấp không được chứa ký tự đặc biệt và số!",
+            'ten.unique'=>'Nhà cung cấp đã tồn tại!',
 
             'dien_thoai.required'=>"Số điện thoại nhà cung cấp không được bỏ trống!",
             'dien_thoai.regex' => 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số!',

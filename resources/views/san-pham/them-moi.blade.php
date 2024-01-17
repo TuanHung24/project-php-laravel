@@ -10,7 +10,7 @@
     <h5 class="offset-md-6">Thông tin sản phẩm:</h5>
     <div class="row">
         <div class="col-md-6">
-            <label for="ten" class="form-label">Tên:</label>
+            <label for="ten" class="form-label">Tên sản phẩm:</label>
             <input type="text" class="form-control" name="ten" value="{{old('ten')}}">
             @error('ten')
             <span class="error-message">{{ $message }}</span>
@@ -24,8 +24,8 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="trong-luong" class="form-label">Trọng lượng:</label>
-            <input type="text" id="trong-luong" class="form-control" name="trong_luong" value="{{old('trong_luong')}}">
+            <label for="trong-luong" class="form-label">Trọng lượng(g):</label>
+            <input type="number" id="trong-luong" class="form-control" name="trong_luong" step="0.1" value="{{old('trong_luong')}}">
             @error('trong_luong')
             <span class="error-message">{{ $message }}</span>
             @enderror
@@ -54,7 +54,7 @@
         </div>
         <div class="col-md-3">
             <label for="pin" class="form-label">Pin(mAh):</label>
-            <input type="text" id="pin" class="form-control" name="pin" value="{{old('pin')}}">
+            <input type="number" id="pin" class="form-control" name="pin" value="{{old('pin')}}">
             @error('pin')
             <span class="error-message">{{ $message }}</span>
             @enderror
@@ -77,7 +77,7 @@
         </div>
         <div class="col-md-3">
             <label for="man-hinh" class="form-label">Màn hình(inch):</label>
-            <input type="text" id="man-hinh" class="form-control" name="man_hinh" value="{{old('man_hinh')}}">
+            <input type="number" id="man-hinh" class="form-control" name="man_hinh" step="0.1" value="{{old('man_hinh')}}">
             @error('man_hinh')
             <span class="error-message">{{ $message }}</span>
             @enderror
@@ -100,7 +100,7 @@
         </div>
         <div class="col-md-3">
             <label for="ram" class="form-label">Ram(GB):</label>
-            <input type="text" id="ram" class="form-control" name="ram" value="{{old('ram')}}">
+            <input type="number" id="ram" class="form-control" name="ram" value="{{old('ram')}}">
             @error('ram')
             <span class="error-message">{{ $message }}</span>
             @enderror

@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-6">
             <label for="ten_dang_nhap" class="form-label">Tên đăng nhập:</label>
-            <input type="text" class="form-control" name="ten_dang_nhap" value="{{old('ten_dang_nhap',$khachHang->ten_dang_nhap)}}">
+            <input type="text" class="form-control" name="ten_dang_nhap" value="{{old('ten_dang_nhap',$khachHang->ten_dang_nhap)}}"readonly>
             @error('ten_dang_nhap')
             <span class="error-message">{{ $message }}</span>
             @enderror
@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-md-6">
             <label for="dien_thoai" class="form-label">Điện thoại:</label>
-            <input type="text" class="form-control" name="dien_thoai" value="{{old('dien_thoai',$khachHang->dien_thoai)}}">
+            <input type="number" class="form-control" name="dien_thoai" value="{{old('dien_thoai',$khachHang->dien_thoai)}}">
             @error('dien_thoai')
             <span class="error-message">{{ $message }}</span>
             @enderror

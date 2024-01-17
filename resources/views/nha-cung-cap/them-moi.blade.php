@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-md-6">
         <label for="dien_thoai" class="form-label">Điện thoại:</label>
-        <input type="text" class="form-control" name="dien_thoai" value="{{old('dien_thoai')}}">
+        <input type="number" class="form-control" name="dien_thoai" value="{{old('dien_thoai')}}">
         @error('dien_thoai')
             <span class="error-message"> {{ $message }} </span>
         @enderror
