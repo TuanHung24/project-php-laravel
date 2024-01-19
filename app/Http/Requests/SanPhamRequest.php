@@ -59,7 +59,7 @@ class SanPhamRequest extends FormRequest
 
             'do_phan_giai.required'=>"Độ phân giải không được bỏ trống!",
             'do_phan_giai.min'=>"Độ phân giải phải lớn hơn :min ký tự!",
-            'do_phan_giai.max'=>"Tên sản phẩm phải nhỏ hơn :max ký tự!",
+            'do_phan_giai.max'=>"Độ phân giải sản phẩm phải nhỏ hơn :max ký tự!",
             
             'trong_luong.required'=>"Trọng lượng không được bỏ trống!",
             'trong_luong.min'=>"Trọng lượng phải lớn hơn :min g!",
@@ -70,8 +70,8 @@ class SanPhamRequest extends FormRequest
             'mo_ta.regex'=>"Mô tả không chứa ký tự đặc biệt!",
 
             'kich_thuoc.required'=>"Kích thước không được bỏ trống!",
-            'kich_thuoc.min'=>"Độ dài phải từ :min đến :max ký tự!",
-            'kich_thuoc.max'=>"Độ dài phải từ :min đến :max ký tự!",
+            'kich_thuoc.min'=>"Kích thước từ :min đến :max ký tự!",
+            'kich_thuoc.max'=>"Kích thước từ :min đến :max ký tự!",
             'kich_thuoc.regex'=>"Kích thước không chứa ký tự đặc biệt!",
 
             'man_hinh.required'=>"Màn hình không được bỏ trống!",

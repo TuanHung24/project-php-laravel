@@ -48,6 +48,7 @@ class NhanVienRequest extends FormRequest
             'ho_ten.min' => "Tên nhân viên phải lớn hơn :min ký tự",
             'ho_ten.max' => "Tên nhân viên phải nhỏ hơn :max ký tự",
             'ho_ten.regex'=>"Tên nhân viên không được chứa ký tự là số và ký tự đặc biệt!",
+            
             'dien_thoai.required' => 'Số điện thoại không được bỏ trống!',
             'dien_thoai.regex' => 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số!',
             
