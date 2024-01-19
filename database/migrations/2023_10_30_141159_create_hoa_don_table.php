@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('hoa_don', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quan_tri_id')->constrained('quan_tri');
-            $table->string("khach_hang",60);
-            $table->string("dien_thoai",10);
-            $table->string("dia_chi",128)->nullable();
+            $table->foreignId('khach_hang_id')->constrained('khach_hang');
+            $table->decimal("dien_thoai",10);
+            $table->decimal("dia_chi",128)->nullable();
             $table->decimal("tong_tien",12,0)->nullable();
             $table->string("phuong_thuc_tt",60)->default('Tiền mặt');
             $table->unsignedSmallInteger("trang_thai")->default(1);

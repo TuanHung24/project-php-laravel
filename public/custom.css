@@ -416,6 +416,10 @@ tr{
     background: rgb(235, 71, 71);
     line-height: 1.8em;
 }
+.sp_top{
+    background: orange;
+    line-height: 1.8em;
+}
 #icon-tk
 {
     height: 50px;

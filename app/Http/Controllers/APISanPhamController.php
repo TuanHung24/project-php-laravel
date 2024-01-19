@@ -152,13 +152,34 @@ class APISanPhamController extends Controller
             return response()->json([
                 'success'=>false,
                 'message'=>"Sản phẩm tên {$request->ten} không tồn tại"
-            ]);
+            ]); 
         }
         return response()->json([
             'success'=>true,
             'data'=>$sanPham
         ]);
     }
-    
+    public function timKiemTen(Request $request )
+    {
+        $ten=$request->searchTerm;
+        $sanPham = SanPham::with([
+            'loai_san_pham',
+            'img',
+            'chi_tiet_san_pham' => function ($query) {
+                $query->with('mau_sac', 'dung_luong');
+            }
+        ])->where('ten', 'like', '%' . $ten . '%')->get();
+        if($sanPham->isEmpty())
+        {
+            return response()->json([
+                'success'=>false,
+                'message'=>"Sản phẩm không tồn tại"
+            ]); 
+        }
+        return response()->json([
+            'success'=>true,
+            'data'=>$sanPham
+        ]);
+    }
     
 }

@@ -25,7 +25,7 @@ class SanPhamRequest extends FormRequest
         return [ 
             'ten' => 'required|min:6|regex:/^[a-zA-Z][a-zA-Z0-9\s]*$/u|unique:san_pham,ten,' . $id,
 
-            'do_phan_giai'=>'required|min:3|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u',
+            'do_phan_giai'=>'required|min:3',
 
             'trong_luong'=>'required|numeric|min:3',
 
@@ -39,7 +39,7 @@ class SanPhamRequest extends FormRequest
 
             'ram'=>'required|min:1',
 
-            'camera'=>'required|min:3|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u',
+            'camera'=>'required|min:3',
 
             'pin'=>'required|min:4|max:6',
 
@@ -58,8 +58,7 @@ class SanPhamRequest extends FormRequest
 
             'do_phan_giai.required'=>"Độ phân giải không được bỏ trống!",
             'do_phan_giai.min'=>"Độ phân giải phải lớn hơn :min ký tự!",
-            'do_phan_giai.regex'=>"Độ phân giải không chứa ký tự đặc biệt!",
-
+            
             'trong_luong.required'=>"Trọng lượng không được bỏ trống!",
             'trong_luong.min'=>"Trọng lượng phải lớn hơn :min ký tự!",
 
@@ -85,7 +84,7 @@ class SanPhamRequest extends FormRequest
 
             'camera.required'=>"Camera không được bỏ trống!",
             'camera.min'=>"Camera phải lớn hơn :min ký tự!",
-            'camera.regex'=>"Camera không chứa ký tự đặc biệt!",
+            
 
             'pin.required'=>"Pin không được bỏ trống!",
             'pin.min'=>"Pin phải lớn hơn :min ký tự!", 

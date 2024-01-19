@@ -10,6 +10,7 @@ use App\Models\SanPham;
 use App\Http\Requests\HoaDonRequest;
 use App\Models\CTSanPham;
 use App\Models\DungLuong;
+use App\Models\KhachHang;
 use App\Models\MauSac;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,9 @@ class HoaDonController extends Controller
         $dsSanPham->each(function ($sanPham) {
             $sanPham->chi_tiet_san_pham = $sanPham->chi_tiet_san_pham->unique('san_pham_id');
         });
-        return view("hoa-don.them-moi",compact('dsSanPham'));
+        $dsKhachHang=KhachHang::all();
+        
+        return view("hoa-don.them-moi",compact('dsSanPham','dsKhachHang'));
  
     }
 
@@ -33,13 +36,14 @@ class HoaDonController extends Controller
     {
         try
         {
+       
         $hoaDon= new HoaDon();
         $hoaDon->quan_tri_id = $request->qt;
-        $hoaDon->khach_hang= $request->kh;
+        $hoaDon->khach_hang_id= $request->kh;
         $hoaDon->dien_thoai= $request->dien_thoai;
         $hoaDon->save();
         $tongTien=0;
-       
+        
         for($i=0;$i<count($request->spID);$i++)
         {
            $ctHoaDon =new CTHoaDon();
@@ -68,6 +72,7 @@ class HoaDonController extends Controller
             $tongTien += $ctHoaDon->thanh_tien;
         }
         $hoaDon->tong_tien=$tongTien;
+        $hoaDon->trang_thai=HoaDon::TRANG_THAI_HOAN_THANH;
         $hoaDon->save();
         return redirect()->route('hoa-don.danh-sach')->with(['thong_bao'=>"Nhập hóa đơn thành công!"]);
         }catch(Exception $ex)
@@ -75,11 +80,12 @@ class HoaDonController extends Controller
             $dsHoaDon = HoaDon::all();
             $dsnhanVien=QuanTri::all();
             $dsSanPham=SanPham::all();
-            return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham'));
+            $dsKhachHang=KhachHang::all();
+            return view("hoa-don.them-moi",compact('dsHoaDon','dsnhanVien','dsSanPham','dsKhachHang'));
         }
     }
     public function danhSach()
-    {
+    { 
         $dsHoaDon = HoaDon::orderBy('ngay_tao', 'asc')
                    ->orderBy('trang_thai', 'asc')
                    ->paginate(10);
@@ -116,7 +122,11 @@ class HoaDonController extends Controller
     public function timKiem(Request $request)
     {
         $reQuest=$request->search_name;
-        $dsHoaDon=HoaDon::where('khach_hang','like','%'.$reQuest.'%')->paginate(10);
+
+        $dsHoaDon = HoaDon::whereHas('khach_hang', function($query) use ($reQuest) {
+            $query->where('ho_ten', 'like', '%' . $reQuest . '%');
+        })->paginate(10);
+        
         if ($dsHoaDon->isEmpty()) {
             $errorMessage = "Tên Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuest'";
             return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuest', 'errorMessage'));
@@ -144,7 +154,7 @@ class HoaDonController extends Controller
         $hoaDon->trang_thai=HoaDon::TRANG_THAI_DA_HUY;
         $hoaDon->save();
 
-        return redirect()->route('hoa-don.danh-sach')->with('thong_bao', "Hóa đơn {$hoaDon->id} đã được hủy!");
+        return redirect()->route('hoa-don.danh-sach')->with('don_hang', "Hóa đơn {$hoaDon->id} đã được hủy!");
     }
     public function duyetDon($id)
     {
@@ -153,7 +163,7 @@ class HoaDonController extends Controller
         $hoaDon->save();
        
         
-        return redirect()->route('hoa-don.danh-sach')->with('thong_bao', "Hóa đơn {$hoaDon->id} đã được duyệt và chuyển sang trạng thái đang giao!");
+        return redirect()->route('hoa-don.danh-sach')->with('don_hang', "Hóa đơn {$hoaDon->id} đã được duyệt và chuyển sang trạng thái đang giao!");
     }
     public function dangGiao($id)
     {
@@ -161,15 +171,18 @@ class HoaDonController extends Controller
         $hoaDon->trang_thai=HoaDon::TRANG_THAI_DANG_GIAO;
         $hoaDon->save();
        
-        return redirect()->route('hoa-don.danh-sach')->with('thong_bao', "Hóa đơn {$hoaDon->id} đang được giao và chuyển sang trạng thái hoàn thành!");
+        return redirect()->route('hoa-don.danh-sach')->with('don_hang', "Hóa đơn {$hoaDon->id} đang được giao và chuyển sang trạng thái hoàn thành!");
     }
     public function hoanThanh($id)
     {
         $hoaDon = HoaDon::find($id);
+
+
         $hoaDon->trang_thai=HoaDon::TRANG_THAI_HOAN_THANH;
+
         $hoaDon->save();
 
-        return redirect()->route('hoa-don.danh-sach')->with('thong_bao', "Hóa đơn {$hoaDon->id} hoàn thành!");
+        return redirect()->route('hoa-don.danh-sach')->with('don_hang', "Hóa đơn {$hoaDon->id} hoàn thành!");
     }
 
 

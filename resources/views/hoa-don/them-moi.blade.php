@@ -9,13 +9,19 @@
     <label for="nhan_vien" class="form-label">Nhân viên:</label>
     <input type="text" class="form-control" value="{{Auth::user()->ho_ten}}" id="nhan-vien" readonly />
   </div>
-</div>
+</div> 
 <div class="row">
   <div class="col-md-4">
-    <label for="khach-hang" class="form-label">Họ tên khách hàng:</label>
-    <input type="text" class="form-control" name="khach_hang" id="khach-hang">
+    <label for="khach-hang" class="form-label">Khách hàng:</label>
+    <select name="khach_hang" class="form-select" id="khach-hang" required>
+   
+      <option selected disabled>Chọn khách hàng</option>
+      @foreach($dsKhachHang as $khachHang)
+      <option value="{{$khachHang->id}}" data-so-dien-thoai="{{$khachHang->dien_thoai}}" id="khach-hang">{{$khachHang->ho_ten}}</option>
+      @endforeach
 
-    <span class="error" id="error-san-pham">Vui lòng nhập tên khách hàng.</span>
+    </select>
+    <span class="error" id="error-khach-hang">Vui lòng nhập tên khách hàng.</span>
 
   </div>
 </div>
@@ -71,7 +77,6 @@
       </tbody>
     </table>
   </div>
-  <input type="hidden" id="sp-id" name="sp"/>
   <input type="hidden" id="nv-id" name="qt" value="{{Auth::user()->id}}"/>
   <input type="hidden" id="k-h" name="kh"/>
   <input type="hidden" id='dien-thoai' name="dien_thoai"/>
@@ -92,7 +97,7 @@
         return;
       } else {
         $("#error-khach-hang").hide();
-      }
+      } 
 
       if ($("#so-dien-thoai").val() === "") {
         $("#error-so-dien-thoai").show();
@@ -127,9 +132,9 @@
         var stt = $("#tb-ds-san-pham tbody tr").length + 1;
         STT=stt;
         var idNV = $("#nhan-vien").find(":selected").val();
-        var kHang = $("#khach-hang").val();
+        var idKH = $("#khach-hang").find(":selected").val();
         var soDT=$('#so-dien-thoai').val();
-        $('#k-h').val(kHang);
+        $('#k-h').val(idKH);
         $('#dien-thoai').val(soDT);
         var tenSP = $("#san-pham").find(":selected").text();
         var idSP = $("#san-pham").find(":selected").val();
@@ -197,7 +202,16 @@
       $("#sp-id").val(this.value);
     });
 
+    $("#khach-hang").click(function() {
+      $("#k-h").val(this.value);
+    });
     
+     $('#khach-hang').click(function() {
+        var selectedOption = $(this).find(':selected');
+        var soDienThoai = selectedOption.data('so-dien-thoai');
+
+        $('#so-dien-thoai').val(soDienThoai);
+    });
 
     $('#san-pham').change(function() {
       var spId = $('#san-pham').find(':selected').val();

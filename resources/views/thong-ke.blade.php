@@ -30,8 +30,16 @@
     </div>
     <div class="count_container count_nd">
     <span data-feather="users" class="align-text-bottom" id="icon-tk"></span>
-    <h5>Số lượng người dùng</h5>
+    <h5>Số lượng người dùng</h5>    
     <span>Tổng số: {{$khachHang}}</span>
+    </div>
+
+    <div class="count_container sp_top">
+    <span data-feather="shopping-cart" class="align-text-bottom" id="icon-tk"></span>
+    <h5>Sản phẩm bán chạy</h5>
+    @foreach ($sanPhamBanChay as $item)
+    <span>Sản phẩm: {{$item->san_pham->ten}}-Số lượng {{$item->tong_so_luong}}</span>
+    @endforeach
     </div>
  </span><br><br>
  <h4>Thống kê theo biểu đồ hóa đơn:</h4>

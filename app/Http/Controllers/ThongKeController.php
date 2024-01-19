@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CTHoaDon;
 use App\Models\CTSanPham;
 use App\Models\HoaDon;
 use App\Models\KhachHang;
@@ -27,7 +28,13 @@ class ThongKeController extends Controller
         $tongGiaNhap=PhieuNhap::sum('tong_tien');
         $tongTienGiaNhap = number_format($tongGiaNhap, 0, ',', '.');
 
-        return view('thong-ke',compact('hoaDon','khachHang','soLuongSanPham','tongTienGiaNhap','tongTienHoaDon'));
+        $sanPhamBanChay = CTHoaDon::select('san_pham_id', DB::raw('SUM(so_luong) as tong_so_luong'))
+        ->groupBy('san_pham_id')
+        ->orderByDesc('tong_so_luong')
+        ->take(3)
+        ->get();
+        
+        return view('thong-ke',compact('hoaDon','khachHang','soLuongSanPham','tongTienGiaNhap','tongTienHoaDon','sanPhamBanChay'));
     }
     public function ThongKeHoaDon(Request $request){
 

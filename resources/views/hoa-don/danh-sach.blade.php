@@ -2,14 +2,14 @@
 
 
 @section('page-sw')
-@if(session('thong_bao'))
+@if(session('don_hang'))
 <script>
         Swal.fire({
         position: 'center',
         icon: 'success',
-        title: "{{session('thong_bao')}}",
+        title: "{{session('don_hang')}}",
         showConfirmButton: true,
-        timer: 3000
+        timer: 9000
         })
     </script>
 @endif
@@ -61,7 +61,7 @@
         @foreach($dsHoaDon as $hoaDon)
         <tr>
             <td>{{$hoaDon->id}}</td>
-            <td>{{ $hoaDon->khach_hang }}</td>
+            <td>{{ $hoaDon->khach_hang->ho_ten }}</td>
             <td>{{ $hoaDon->dien_thoai }}</td>
             <td>{{ $hoaDon->dia_chi }}</td>
             <td>{{ $hoaDon->tong_tien_formatted }}</td>

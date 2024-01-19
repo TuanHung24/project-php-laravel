@@ -23,7 +23,10 @@ class HoaDon extends Model
     {
         return $this->belongsTo(NhaCungCap::class);
     }
-
+    public function khach_hang()
+    {
+        return $this->belongsTo(KhachHang::class);
+    }
     public function getTongTienFormattedAttribute()
     {
         return number_format($this->tong_tien, 0, ',', '.');
