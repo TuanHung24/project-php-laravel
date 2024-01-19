@@ -35,11 +35,7 @@ class ThongTinTaiKhoanRequest extends FormRequest
             ],
             
             
-            'dia_chi' => [
-                'required',
-                'min:15',
-                'max:128',
-            ],
+            'dia_chi' => 'required|min:10|max:128|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u',
             
             
             'username' => 'required|min:6|max:60|regex:/^[a-zA-Z][a-zA-Z0-9]*$/|unique:quan_tri,username,' . $id, 
@@ -51,6 +47,7 @@ class ThongTinTaiKhoanRequest extends FormRequest
         return [
             'ho_ten.required' => "Tên nhân viên không được bỏ trống!",
             'ho_ten.min' => "Tên nhân viên phải lớn hơn :min ký tự",
+            'ho_ten.max' => "Tên nhân viên phải nhỏ hơn :max ký tự",
             'ho_ten.regex'=>"Tên nhân viên không được chứa ký tự là số!",
             'dien_thoai.required' => 'Số điện thoại không được bỏ trống!',
             'dien_thoai.regex' => 'Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số!',

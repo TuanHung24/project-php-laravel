@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ten_dang_nhap',80);
             $table->string('password',100);
             $table->string('dien_thoai',10);
-            $table->string('dia_chi',100)->nullable();
+            $table->string('dia_chi',128)->nullable();
             $table->boolean('trang_thai')->default(1);
             $table->rememberToken();
             $table->timestamps();

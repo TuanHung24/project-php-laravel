@@ -40,7 +40,7 @@
       @endforeach
     </select>
 
-            <span class="error-message" id ="error-#mau-sac"></span>
+            <span class="error-message" id ="error-mau-sac"></span>
 
   </div>
 </div>
@@ -122,7 +122,7 @@
 @section('page-js')
 <script type="text/javascript">
   $(document).ready(function() {
-    var STT=0;
+    var STT=0 ;var isValid;
     $("#btn-them").click(function() {
       var stt = $("#tb-ds-san-pham tbody tr").length + 1;
       STT=stt;
@@ -139,7 +139,9 @@
 
       if (!validateInput()) {
         return;
+       
       }
+      
      
       var row = `<tr>
       <td>${stt}</td>
@@ -163,11 +165,49 @@
       $("#gia-ban").val("");
       $("#so-luong").val("1");
       isValid=false;
+      
       Test();
       
       
-      function validateInput() {
-        var isValid = true;
+      
+    });
+    function Test(){
+      if(STT>0){
+        $('#nha-cung-cap').prop('disabled', true);
+      }
+      else{
+        $('#nha-cung-cap').prop('disabled', false);
+      }
+    }
+    
+    $('#tb-ds-san-pham').on('click', '#btn-xoa', function() {
+      var tr = $(this).closest('tr');
+      tr.remove();
+      STT--;
+      Test();
+    });
+    
+    $("#nha-cung-cap, #san-pham, #mau-sac, #dung-luong, #so-luong, #gia-nhap, #gia-ban").change(function() {
+      $(`#error-${this.id}`).hide();
+    });
+
+    $("#nha-cung-cap").click(function() {
+      $("#ncc-id").val(this.value);
+    });
+
+    $("#san-pham").click(function() {
+      $("#sp-id").val(this.value);
+    });
+
+    $("#mau-sac").click(function() {
+      $("#mau-id").val(this.value);
+    });
+
+    $("#dung-luong").click(function() {
+      $("#dl-id").val(this.value);
+    });
+    function validateInput() {
+        isValid =true;
         if ($("#ncc-id").val() === "" || $("#ncc-id").val() === "Chọn nhà cung cấp") {
           $("#error-nha-cung-cap").text("Vui lòng chọn nhà cung cấp!");
           isValid = false;
@@ -227,42 +267,6 @@
           }
         return isValid;
       }
-    });
-    function Test(){
-      if(STT>0){
-        $('#nha-cung-cap').prop('disabled', true);
-      }
-      else{
-        $('#nha-cung-cap').prop('disabled', false);
-      }
-    }
-    
-    $('#tb-ds-san-pham').on('click', '#btn-xoa', function() {
-      var tr = $(this).closest('tr');
-      tr.remove();
-      STT--;
-      Test();
-    });
-
-    $("#nha-cung-cap, #san-pham, #mau-sac, #dung-luong, #so-luong, #gia-nhap, #gia-ban").change(function() {
-      $(`#error-${this.id}`).hide();
-    });
-
-    $("#nha-cung-cap").click(function() {
-      $("#ncc-id").val(this.value);
-    });
-
-    $("#san-pham").click(function() {
-      $("#sp-id").val(this.value);
-    });
-
-    $("#mau-sac").click(function() {
-      $("#mau-id").val(this.value);
-    });
-
-    $("#dung-luong").click(function() {
-      $("#dl-id").val(this.value);
-    });
   });
 </script>
 @endsection

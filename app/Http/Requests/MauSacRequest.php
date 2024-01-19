@@ -22,7 +22,7 @@ class MauSacRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mau_sac'=>'required|min:2|max:10',
+            'mau_sac'=>'required|min:2|max:10|regex:/^[^\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/u',
         ];
     }
     public function messages(){
@@ -30,6 +30,7 @@ class MauSacRequest extends FormRequest
                 'mau_sac.required'=>"màu sắc không được bỏ trống!",
                 'mau_sac.min'=>"màu sắc phải lớn hơn :min ký tự!",
                 'mau_sac.max'=>'màu sắc phải nhỏ hơn :max ký tự!',
+                'mau_sac.regex'=>'màu sắc không chứa ký tự đặc biệt và số!',
         ];
     }
 }

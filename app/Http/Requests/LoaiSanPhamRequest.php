@@ -22,7 +22,7 @@ class LoaiSanPhamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten'=>'required|min:5|regex:/^[^\d\W_][^\W_]*$/u',
+            'ten'=>'required|min:5|max:50|regex:/^[^\d\W_][^\W_]*$/u',
         ];
     }
     public function messages(){

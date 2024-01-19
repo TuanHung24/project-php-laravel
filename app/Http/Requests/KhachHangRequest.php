@@ -23,12 +23,12 @@ class KhachHangRequest extends FormRequest
     {
         $id = $this->route('id');
         return [
-            'ho_ten' => 'required|min:10|regex:/^[^\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/u',
+            'ho_ten' => 'required|min:10|max:50|regex:/^[^\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/u',
 
             'email' => [
                 'required',
                 'min:15',
-                'max:80',
+                'max:50',
                 'regex:/^[a-zA-Z0-9._-]+@gmail\.com$/',
                 'unique:quan_tri,email,' . $id,
             ],
@@ -39,14 +39,16 @@ class KhachHangRequest extends FormRequest
 
             'dien_thoai' =>'required|regex:/^0\d{9}$/',
 
-            'dia_chi' => 'required|min:10|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u',
+            'dia_chi' => 'required|min:10|max:128|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u',
         ];
     }
     public function messages(){
         return[
             'ho_ten.required'=>"Tên khách hàng không được bỏ trống!",
             'ho_ten.min'=>"Tên khách hàng phải lớn hơn :min ký tự",
+            'ho_ten.max'=>"Tên khách hàng phải nhỏ hơn :max ký tự",
             'ho_ten.regex'=>"Tên khách hàng không được chứa ký tự là số!",
+            
             'email.required'=>"Email không được bỏ trống!",
             'email.min'=>"Email phải lớn hơn :min ký tự!",
             'email.max'=>"Email phải nhỏ hơn :max ký tự!",

@@ -29,7 +29,7 @@
   <div class="col-md-2">
     <label for="so-dien-thoai" class="form-label">Số điện thoại:</label>
     <input type="text" class="form-control" name="so_dien_thoai" id="so-dien-thoai">
-    <span class="error" id="error-so-dien-thoai">Vui lòng chọn số điện thoại.</span>
+    <span class="error" id="error-so-dien-thoai">Vui lòng nhập số điện thoại.</span>
   </div>
 </div>
 <div class="row">
