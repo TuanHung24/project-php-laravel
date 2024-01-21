@@ -28,6 +28,14 @@ class SanPham extends Model
     {
         return $this->hasMany(CTSanPham::class);
     }
+    public function binh_luan(){
+
+        return $this->hasMany(BinhLuan::class);
+    }
+    public function danh_gia(){
+        
+        return $this->hasMany(DanhGia::class);
+    }
     
 }
 

@@ -38,7 +38,7 @@
     <span data-feather="shopping-cart" class="align-text-bottom" id="icon-tk"></span>
     <h5>Sản phẩm bán chạy</h5>
     @foreach ($sanPhamBanChay as $item)
-    <span>Sản phẩm: {{$item->san_pham->ten}}-Số lượng {{$item->tong_so_luong}}</span>
+    <span>Sản phẩm: {{$item->san_pham->ten}}-Số lượng {{$item->tong_so_luong}}</span><br/>
     @endforeach
     </div>
  </span><br><br>

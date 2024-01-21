@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Contracts\Providers\Auth as ProvidersAuth;
+
 class APIAuthController extends Controller
 {
     public function dangNhap(Request $request)
@@ -32,6 +35,7 @@ class APIAuthController extends Controller
     }
     public function me() 
     {
+        
         return response()->json([auth('api')->user()]);
     }
 
@@ -44,4 +48,6 @@ class APIAuthController extends Controller
             'expires_in'=>JWTAuth::factory()->getTTL()*60,
         ]);
     }
+    
+    
 }

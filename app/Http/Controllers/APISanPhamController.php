@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BinhLuan;
+use App\Models\DanhGia;
 use Illuminate\Http\Request;
 use App\Models\SanPham;
 use App\Models\LoaiSanPham;
-use App\Models\HinhAnh;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
-use function Laravel\Prompts\error;
 
 class APISanPhamController extends Controller
 {
@@ -32,7 +31,7 @@ class APISanPhamController extends Controller
     public function layChiTiet($id)
     {
         try{
-            $sanPham = SanPham::with(['thong_tin_san_pham', 'loai_san_pham', 'img', 'chi_tiet_san_pham' => function($query) {
+            $sanPham = SanPham::with(['thong_tin_san_pham','danh_gia','binh_luan', 'loai_san_pham', 'img', 'chi_tiet_san_pham' => function($query) {
                 $query->with('mau_sac', 'dung_luong');
             }])->findOrFail($id);
         if(empty($sanPham))
@@ -180,6 +179,57 @@ class APISanPhamController extends Controller
             'success'=>true,
             'data'=>$sanPham
         ]);
+    }
+    public function danhGia(Request $request){
+        $request->validate([
+            'khach_hang_id' => 'required|numeric',
+            'san_pham_id' => 'required|numeric',
+            'so_sao' => 'required|numeric|between:1,5',
+        ],[
+            'khach_hang_id.required' => 'ID khách hàng là bắt buộc.',
+            'khach_hang_id.numeric' => 'ID khách hàng phải là một số.',
+            'san_pham_id.required' => 'ID sản phẩm là bắt buộc.',
+            'san_pham_id.numeric' => 'ID sản phẩm phải là một số.',
+            'so_sao.required' => 'Số sao là bắt buộc.',
+            'so_sao.numeric' => 'Nội dung bình luận là bắt buộc.',
+            'so_sao.between' => 'Số sao phải từ :between',
+        ]);
+        
+        $danhGia=new DanhGia();
+        $danhGia->khach_hang_id=$request->khach_hang_id;
+        $danhGia->san_pham_id=$request->san_pham_id;
+        $danhGia->so_sao=$request->so_sao;
+        $danhGia->save();
+
+        return response()->json([
+            'success'=>true,
+            'message'=>"Đánh giá thành công!"
+        ]);
+    }
+    public function binhLuan(Request $request){
+
+        $request->validate([
+            'khach_hang_id' => 'required|numeric',
+            'san_pham_id' => 'required|numeric',
+            'noi_dung' => 'required|string|',
+        ], [
+            'khach_hang_id.required' => 'ID khách hàng là bắt buộc.',
+            'khach_hang_id.numeric' => 'ID khách hàng phải là một số.',
+            'san_pham_id.required' => 'ID sản phẩm là bắt buộc.',
+            'san_pham_id.numeric' => 'ID sản phẩm phải là một số.',
+            'noi_dung.required' => 'Nội dung bình luận là bắt buộc.',
+            'noi_dung.string' => 'Nội dung bình luận phải là một chuỗi ký tự.',
+        ]);
+            $binhLuan=new BinhLuan();
+            $binhLuan->khach_hang_id=$request->khach_hang_id;
+            $binhLuan->san_pham_id=$request->san_pham_id;
+            $binhLuan->noi_dung=$request->noi_dung;
+            $binhLuan->save();
+        return response()->json([
+            'success'=>true,
+            'message'=>"Bình luận thành công!"
+        ]);
+
     }
     
 }

@@ -206,6 +206,7 @@
     $("#dung-luong").click(function() {
       $("#dl-id").val(this.value);
     });
+
     function validateInput() {
         isValid =true;
         if ($("#ncc-id").val() === "" || $("#ncc-id").val() === "Chọn nhà cung cấp") {
@@ -242,7 +243,7 @@
         }
         var giaNhap = parseFloat($("#gia-nhap").val()); // Xác định giá nhập từ trường nhập liệu
         var giaBan = parseFloat($("#gia-ban").val()); // Xác định giá bán từ trường nhập liệu
-        console.log(giaNhap,giaBan);
+       
         if (isNaN(giaNhap)) {
           $("#error-gia-nhap").text("Vui lòng nhập giá nhập!");
           isValid = false;
@@ -253,18 +254,18 @@
         }
        
        
-            if ( isNaN(giaBan)) {
-            $("#error-gia-ban").text("Vui lòng nhập giá bán!");
-            isValid = false;
-          } else {
+        if ( isNaN(giaBan)) {
+          $("#error-gia-ban").text("Vui lòng nhập giá bán!");
+          isValid = false;
+        } else {
             
-            if (giaBan <= giaNhap) {
-              $("#error-gia-ban").text("Giá bán phải lớn hơn giá nhập!");
-              isValid = false;
-            } else {
-              $("#error-gia-ban").text("");
-            }
-          }
+        if (giaBan <= giaNhap) {
+          $("#error-gia-ban").text("Giá bán phải lớn hơn giá nhập!");
+          isValid = false;
+        } else {
+          $("#error-gia-ban").text("");
+        }
+      }
         return isValid;
       }
   });

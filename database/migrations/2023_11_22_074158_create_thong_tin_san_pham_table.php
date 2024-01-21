@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('trong_luong',10);
             $table->string('he_dieu_hanh',50);
             $table->string('camera',50);
-            $table->string('pin',20);
-            $table->string('ram',20);
+            $table->string('pin',5);
+            $table->string('ram',5);
             $table->timestamps();
         });
     }

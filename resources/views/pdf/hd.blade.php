@@ -19,7 +19,6 @@
     </style>
 <body>
     <h2 id="hd">Hóa đơn bán hàng</h2>
-    <h4>Nhân viên:{{$hoaDon->quan_tri->ho_ten}} </h4>
     <h4>Tên khách hàng:{{$hoaDon->khach_hang->ho_ten}} </h4>
     <h4>Mã hóa đơn:{{$hoaDon->id}} </h4>
     <h4>Ngày tạo:{{$hoaDon->ngay_tao}} </h4>

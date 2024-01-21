@@ -30,7 +30,7 @@ class KhachHangRequest extends FormRequest
                 'min:15',
                 'max:50',
                 'regex:/^[a-zA-Z0-9._-]+@gmail\.com$/',
-                'unique:quan_tri,email,' . $id,
+                'unique:khach_hang,email,' . $id,
             ],
 
             'ten_dang_nhap'=>'required|min:6|max:32|regex:/^[a-zA-Z][a-zA-Z0-9]*$/u|not_regex:/[\p{P}\p{M}\p{S}\p{C}\p{Z}]/u|not_regex:/[^\p{L}\p{N}]/u|unique:khach_hang,ten_dang_nhap,' . $id,
@@ -53,6 +53,7 @@ class KhachHangRequest extends FormRequest
             'email.min'=>"Email phải lớn hơn :min ký tự!",
             'email.max'=>"Email phải nhỏ hơn :max ký tự!",
             'email.regex'=>"Không đúng định dạng Email ví dụ:'abc@gmail.com' !",
+            'email.unique'=>"Email đã tồn tại!",
 
             'ten_dang_nhap.required'=>"Tên đăng nhập không được bỏ trống!",
             'ten_dang_nhap.min'=>"Tên đăng nhập phải lớn hơn :min ký tự!",

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\HoaDon;
 use App\Models\QuanTri;
 use App\Models\SanPham;
-use App\Http\Requests\HoaDonRequest;
 use App\Models\CTSanPham;
 use App\Models\DungLuong;
 use App\Models\KhachHang;
@@ -38,7 +37,6 @@ class HoaDonController extends Controller
         {
        
         $hoaDon= new HoaDon();
-        $hoaDon->quan_tri_id = $request->qt;
         $hoaDon->khach_hang_id= $request->kh;
         $hoaDon->dien_thoai= $request->dien_thoai;
         $hoaDon->save();
@@ -86,8 +84,8 @@ class HoaDonController extends Controller
     }
     public function danhSach()
     { 
-        $dsHoaDon = HoaDon::orderBy('ngay_tao', 'asc')
-                   ->orderBy('trang_thai', 'asc')
+        $dsHoaDon = HoaDon::orderBy('trang_thai','asc')
+                   ->orderBy('ngay_tao', 'desc')
                    ->paginate(10);
         return view("hoa-don.danh-sach", compact('dsHoaDon'));
     }

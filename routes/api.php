@@ -55,6 +55,10 @@ Route::post('/hoa-don',[APIHoaDonController::class, "themHoaDon"]);
 Route::post('/huy-don',[APIHoaDonController::class, "huyDon"]);
 Route::post('/dang-ky',[APIKhachHangController::class, "dangKy"]);
 Route::post('/update-info',[APIKhachHangController::class, "capNhapThongTin"]);
+Route::post('/doi-mat-khau',[APIKhachHangController::class, "doiMatKhau"]);
+
+Route::post('/binh-luan',[APISanPhamController::class, "binhLuan"]);
+Route::post('/danh-gia',[APISanPhamController::class, "danhGia"]);
 
 Route::post('/trang-thai-don-hang/{userId}',[APIHoaDonController::class, "layTrangThaiDonHang"]);
 
