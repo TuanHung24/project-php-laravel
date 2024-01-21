@@ -21,7 +21,7 @@
       @endforeach
 
     </select>
-    <span class="error" id="error-khach-hang">Vui lòng nhập tên khách hàng.</span>
+    <span class="error" id="error-khach-hang"></span>
 
   </div>
 </div>
@@ -29,7 +29,7 @@
   <div class="col-md-2">
     <label for="so-dien-thoai" class="form-label">Số điện thoại:</label>
     <input type="text" class="form-control" name="so_dien_thoai" id="so-dien-thoai">
-    <span class="error" id="error-so-dien-thoai">Vui lòng nhập số điện thoại.</span>
+    <span class="error-message" id="error-so-dien-thoai"></span>
   </div>
 </div>
 <div class="row">
@@ -43,7 +43,7 @@
       @endforeach
       @endforeach
     </select>
-    <span class="error" id="error-san-pham">Vui lòng chọn sản phẩm.</span>
+    <span class="error-message" id="error-san-pham"></span>
   </div>
 </div>
 
@@ -80,6 +80,7 @@
   <input type="hidden" id="nv-id" name="qt" value="{{Auth::user()->id}}"/>
   <input type="hidden" id="k-h" name="kh"/>
   <input type="hidden" id='dien-thoai' name="dien_thoai"/>
+  <input type="hidden" id='san-pham-id' name="san-pham"/>
   <div class="col-md-2">
     <button type="submit" class="btn btn-primary" id="luu"><span data-feather="save"></span>Lưu</button>
   </div>
@@ -92,24 +93,24 @@
     var STT=0;
     $("#btn-them").click(function() {
       
-      if ($("#khach-hang").val() === "") {
-        $("#error-khach-hang").show();
+      if ($("#khach-hang").val() === " " || $("khach-hang-id").val() == "Chọn khách hàng") {
+        $("#error-khach-hang").text("Vui lòng chọn tên khách hàng!");
         return;
       } else {
-        $("#error-khach-hang").hide();
+        $("#error-khach-hang").text("");
       } 
 
-      if ($("#so-dien-thoai").val() === "") {
-        $("#error-so-dien-thoai").show();
+      if ($("#so-dien-thoai").val() === " ") {
+        $("#error-so-dien-thoai").text("Vui lòng nhập số điện thoại!");
         return;
       } else {
-        $("#error-so-dien-thoai").hide();
+        $("#error-so-dien-thoai").text("");
       }
-      if ($("#sp-id").val() === "" || $("#sp-id").val() == "Chọn sản phẩm") {
-        $("#error-san-pham").show();
+      if ($("#sp-id").val() === " " || $("#sp-id").val() == "Chọn sản phẩm") {
+        $("#error-san-pham").text("Vui lòng chọn sản phẩm!");
         return;
       } else {
-        $("#error-san-pham").hide();
+        $("#error-san-pham").text("");
       }
       // var stt = $("#tb-ds-san-pham tbody tr").length + 1;
       // var tenSP = $("#san-pham").find(":selected").text();

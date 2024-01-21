@@ -19,7 +19,9 @@
         <div class="col-md-6">
             <label for="mau_sac" class="form-label">Nhập màu sắc:</label>
             <input type="text" class="form-control" name="mau_sac" id="mau-sac">
-            <span class="error" id="error-mau-sac">Vui lòng nhập màu sắc!</span>
+        
+            <span id ="error-mau-sac" class="error-message"></span>
+        
         </div>
     </div>
     <button class="btn btn-primary" id="save-color"><span data-feather="save"></span>Lưu</button>
@@ -28,7 +30,7 @@
         <div class="col-md-6">
             <label for="dung_luong" class="form-label">Nhập dung lượng:</label>
             <input type="text" class="form-control" name="dung_luong" id="dung-luong">
-            <span class="error" id="error-dung-luong">Vui lòng nhập dung lượng!</span>
+            <span class="error-message" id="error-dung-luong"></span>
         </div>
     </div>
     <button class="btn btn-primary" id="save-size"><span data-feather="save"></span>Lưu</button>
@@ -68,49 +70,79 @@
         $('#save-color').click(function() {
             var mauSac=$('#mau-sac').val();
             $.ajax({
-                    
-                    method: "POST",
-                    url: "{{route('mau-dung-luong.them-moi-mau-ajax')}}",
-                    data: {
-                        "_token":"{{ csrf_token() }}",
-                        "mau_sac": mauSac}
-                })
-                .done(function(response) {
+                method: 'POST',
+                url: "{{route('mau-dung-luong.them-moi-mau-ajax')}}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "mau_sac": mauSac
+                },
+                success: function (response) {
                     Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: `Thêm màu ${mauSac} thành công!`,
-                                showConfirmButton: true,
-                                timer: 3000
-                            });
-                            $('#mau-sac').val("");
+                        position: 'center',
+                        icon: 'success',
+                        title: `Thêm màu ${mauSac} thành công!`,
+                        showConfirmButton: true,
+                        timer: 3000
+                    });
+                    $('#mau-sac').val("");
+                    $("#error-mau-sac").text("");
+                },
+                error: function (xhr, status, error) {
+                    $("#error-mau-sac").text(xhr.responseJSON.message);
+                }
+            });
 
-                });
             
         });
 
         $('#save-size').click(function() {
             var dungLuong=$('#dung-luong').val();
-            $.ajax({
-                    method: "POST",
-                    url: "{{route('mau-dung-luong.them-moi-dung-luong-ajax')}}",
-                    data: {
-                        "_token":"{{ csrf_token() }}",
-                        "dung_luong":dungLuong}
+        //     $.ajax({
+        //             method: "POST",
+        //             url: "{{route('mau-dung-luong.them-moi-dung-luong-ajax')}}",
+        //             data: {
+        //                 "_token":"{{ csrf_token() }}",
+        //                 "dung_luong":dungLuong
+        //             },
+                    
                     
 
-                })
-                .done(function(response) {
-                    Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: `Thêm dung lượng ${dungLuong} thành công!`,
-                                showConfirmButton: true,
-                                timer: 3000
-                            });
-                            $('#dung-luong').val("");
+        //         })
+        //         .done(function(response) {
+        //             Swal.fire({
+        //                         position: 'center',
+        //                         icon: 'success',
+        //                         title: `Thêm dung lượng ${dungLuong} thành công!`,
+        //                         showConfirmButton: true,
+        //                         timer: 3000
+        //                     });
+        //                     $('#dung-luong').val("");
+        //         });
+        // });
+        $.ajax({
+            method: 'POST',
+            url: "{{route('mau-dung-luong.them-moi-dung-luong-ajax')}}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "dung_luong": dungLuong
+            },
+            success: function (response) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: `Thêm dung lượng ${dungLuong} thành công!`,
+                    showConfirmButton: true,
+                    timer: 3000
                 });
+                $('#dung-luong').val("");
+                $("#error-dung-luong").text("");
+            },
+            error: function (xhr, status, error) {
+                $("#error-dung-luong").text(xhr.responseJSON.message);
+            }
         });
+    });
     })
+
 </script>
 @endsection

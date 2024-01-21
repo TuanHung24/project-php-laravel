@@ -33,7 +33,7 @@
                 <th>Điện thoại</th>
                 <th>Email</th>
                 <th>Địa chỉ</th>
-                <th>Username</th>
+                <th>Tên đăng nhập</th>
                 <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>

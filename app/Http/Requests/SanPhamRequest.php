@@ -35,7 +35,7 @@ class SanPhamRequest extends FormRequest
            
             'man_hinh'=>'required|numeric|min:1|max:50',
 
-            'he_dieu_hanh' => 'required|min:3|max:50|regex:/^[^0-9][^!@#$%^&*()_+{}\[\]:;<>?~\\/\\-]+$/u',
+            'he_dieu_hanh' => 'required|min:3|max:50|regex:/^[^0-9,^!@#$%^&*()_+{}\[\]:;<>?~\\/\\-][^!@#$%^&*()_+{}\[\]:;<>?~\\/\\-]+$/u',
 
             'ram'=>'required|numeric|min:1|max:16',
 
@@ -81,7 +81,7 @@ class SanPhamRequest extends FormRequest
             'he_dieu_hanh.required'=>"Hệ điều hành không được bỏ trống!",
             'he_dieu_hanh.min'=>"Hệ điều hành phải lớn hơn :min ký tự!",
             'he_dieu_hanh.max'=>"Hệ điều hành phải nhỏ hơn :max ký tự!",
-            'he_dieu_hanh.regex'=>"Hệ điều hành không chứa ký tự đặc biệt!",
+            'he_dieu_hanh.regex'=>"Hệ điều hành không bắt đầu bằng số và không chứa ký tự đặc biệt!",
 
             'ram.required'=>"Ram không được bỏ trống!",
             'ram.min'=>"Ram phải lớn hơn :minGB!", 

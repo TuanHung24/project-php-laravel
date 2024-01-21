@@ -27,8 +27,8 @@ class NhapHangRequest extends FormRequest
             'mau_sac'=>'required',
             'dung_luong'=>'required',
             'so_luong'=>'required',
-            'gia_nhap'=>'required|min:10|max:1000',
-            'gia_ban'=>'required',
+            'gia_nhap'=>'required|numeric|min:100000|max:200000000',
+            'gia_ban'=>'required|numeric|min:100000|max:200000000',
         ];
     }
     public function messages(){

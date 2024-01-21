@@ -46,7 +46,7 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <label for="username" class="form-label">Tên tài khoản:</label>
+        <label for="username" class="form-label">Tên đăng nhập:</label>
         <input type="text" class="form-control" name="username" id="username" value="{{old('username')}}"> 
         @error('username')
             <span class="error-message">{{ $message }}</span>

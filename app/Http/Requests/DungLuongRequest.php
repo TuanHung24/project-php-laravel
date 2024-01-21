@@ -22,14 +22,16 @@ class DungLuongRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dung_luong'=>'required|min:1|max:100',
+            'dung_luong'=>'required|min:1|max:100|regex:/^[^!@#$%^&*()_+{}\[\]:;<>?~\\/-]+$/u|unique:dung_luong,ten',
         ];
     }
     public function messages(){
         return [
-            'dung_luong.required'=>"dung lượng không được bỏ trống!",
-            'dung_luong.min'=>"dung lượng phải lốn hơn :min ký tự!",
-            'dung_luong.max'=>"dung lượng phải nhỏ hơn :max ký tự!",
+            'dung_luong.required'=>"Dung lượng không được bỏ trống!",
+            'dung_luong.min'=>"Dung lượng phải lốn hơn :min ký tự!",
+            'dung_luong.max'=>"Dung lượng phải nhỏ hơn :max ký tự!",
+            'dung_luong.regex'=>"Dung lượng không chứa ký tự đặc biệt!",
+            'dung_luong.unique'=>"Dung lượng đã tồn tại!",
         ];
     }
 }

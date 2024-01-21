@@ -24,7 +24,7 @@ class ThongTinTaiKhoanRequest extends FormRequest
     {
         $id = Auth::user()->id;
         return [
-            'ho_ten' => 'required|min:10|regex:/^[^\d]+$/u',
+            'ho_ten' => 'required|min:10|max:50|regex:/^[^\d]+$/u',
             'dien_thoai' =>'required|regex:/^0\d{9}$/',
             'email' => [
                 'required',
