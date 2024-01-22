@@ -11,7 +11,7 @@ use function PHPUnit\Framework\isEmpty;
 
 class APIKhachHangController extends Controller
 {
-    public function dangKy(Request $request)
+    public function dangKy(KhachHangRequest $request)
     {
         $taiKhoan=KhachHang::where('email',$request->email)->first();
         if(!empty($taiKhoan))
@@ -26,7 +26,7 @@ class APIKhachHangController extends Controller
         $khachHang->email=$request->email;
         $khachHang->ten_dang_nhap=$request->ten_dang_nhap;
         $khachHang->password=Hash::make($request->mat_khau);
-        $khachHang->dien_thoai=$request->so_dien_thoai;
+        $khachHang->dien_thoai=$request->dien_thoai;
         $khachHang->dia_chi=$request->dia_chi;
         $khachHang->save();
         return response()->json([

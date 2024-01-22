@@ -50,7 +50,7 @@ class HoaDonController extends Controller
            $ctHoaDon->mau_sac_id=$request->msID[$i];
            $ctHoaDon->dung_luong_id=$request->dlID[$i];
            $ctHoaDon->so_luong=$request->soLuong[$i];
-
+ 
            $ctSanPham = CTSanPham::where('san_pham_id', $request->spID[$i])
             ->where('mau_sac_id', $request->msID[$i])
             ->where('dung_luong_id', $request->dlID[$i])
@@ -157,10 +157,30 @@ class HoaDonController extends Controller
     public function duyetDon($id)
     {
         $hoaDon = HoaDon::find($id);
+        if (!$hoaDon) {
+            return redirect()->route('hoa-don.danh-sach')->with('error', "Hóa đơn không tồn tại.");
+        }
+
+        $cTHoaDon=CTHoaDon::where('hoa_don_id',$id)->get();
+
+        if (!$cTHoaDon) {
+            return redirect()->route('hoa-don.danh-sach')->with('error', "Chi tiết hóa đơn không tồn tại.");
+        }
+
+        
+            foreach ($cTHoaDon as $item) {
+                $cTSanPham = CTSanPham::where('san_pham_id', $item->san_pham_id)
+                                    ->where('mau_sac_id', $item->mau_sac_id)
+                                    ->where('dung_luong_id', $item->dung_luong_id)
+                                    ->first();
+                if (!$cTSanPham) {  
+                    return redirect()->route('hoa-don.danh-sach')->with('error', "Chi tiết hóa đơn không tồn tại.");
+                }
+                $cTSanPham->so_luong -= $item->so_luong;
+                $cTSanPham->save();
+        }
         $hoaDon->trang_thai=HoaDon::TRANG_THAI_DA_DUYET;
         $hoaDon->save();
-       
-        
         return redirect()->route('hoa-don.danh-sach')->with('don_hang', "Hóa đơn {$hoaDon->id} đã được duyệt và chuyển sang trạng thái đang giao!");
     }
     public function dangGiao($id)

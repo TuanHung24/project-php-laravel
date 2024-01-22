@@ -97,7 +97,7 @@ class APIHoaDonController extends Controller
                     'trang_thai' => $donHang->trang_thai, // Đặt lại tên cột tương ứng trong CSDL
                 ];
             }
-    
+     
             return response()->json([
                 "success" => true,
                 "message" => "Lấy trạng thái thành công!",

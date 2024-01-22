@@ -38,7 +38,7 @@
     <span data-feather="shopping-cart" class="align-text-bottom" id="icon-tk"></span>
     <h5>Sản phẩm bán chạy</h5>
     @foreach ($sanPhamBanChay as $item)
-    <span>Sản phẩm: {{$item->san_pham->ten}}-Số lượng {{$item->tong_so_luong}}</span><br/>
+    <span>{{$item->san_pham->ten}} - Số lượng: {{$item->tong_so_luong}}</span><br/>
     @endforeach
     </div>
  </span><br><br>
@@ -47,7 +47,7 @@
  
  <div class="option-m-y">
  <div class="doanh_thu"> Doanh thu: <span id='doanh-thu'></span>đ</div>
- <div class="lai"> Lãi: <span id='lai'></span>đ</div>
+ <!-- <div class="lai"> Lãi: <span id='lai'></span>đ</div> -->
  <div class="sp-da-ban"> Số lượng đã bán: <span id='so-luong'></span></div>
  <select id="monthSelect">
     <option value="0" disabled selected>Chọn tháng</option>

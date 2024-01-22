@@ -13,14 +13,6 @@ class APIAuthController extends Controller
     { 
         $credentials= $request->only(['email','password']);
        
-        // if (Auth::attempt($credentials)) {
-        //     $user = Auth::user();
-        //     $token = $user->createToken('app-token')->accessToken;
-    
-        //     return response()->json(['token' => $token]);
-        // }
-    
-        // return response()->json(['error' => 'Unauthorized'], 401);
         if(!$token=auth('api')->attempt($credentials)){
             return response()->json(['error'=>"Đăng nhập không thành công"],401);
         }

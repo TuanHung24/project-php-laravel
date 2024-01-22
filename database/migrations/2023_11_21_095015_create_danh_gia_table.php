@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('danh_gia', function (Blueprint $table) {
             $table->id();
-            
+
             $table->foreignId('khach_hang_id')->constrained('khach_hang');
-
-           
             $table->foreignId('san_pham_id')->constrained('san_pham');
-
+            
             $table->integer('so_sao')->nullable();
             $table->timestamps();
         });

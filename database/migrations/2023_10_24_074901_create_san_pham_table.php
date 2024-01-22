@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('ten',50);
             $table->text('mo_ta')->nullable();
-
-
             $table->foreignId('loai_san_pham_id')->constrained('loai_san_pham');
-
-            $table->softDeletes();
+            $table->softDeletes(); 
             $table->timestamps(); 
         });
     }
