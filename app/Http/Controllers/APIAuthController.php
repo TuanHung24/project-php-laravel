@@ -23,7 +23,7 @@ class APIAuthController extends Controller
     public function logout()
     { 
         auth('api')->logout();
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Đăng xuất thành công!']);
     }
     public function me() 
     {

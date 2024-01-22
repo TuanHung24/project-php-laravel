@@ -67,17 +67,17 @@ class APISanPhamController extends Controller
             'success'=>true,
             'data'=>$sanPham
         ]);
-    }
-    public function timKiemTen(Request $request )
+    } 
+    public function timKiemTen($searchTerm)
     {
-        $ten=$request->searchTerm;
+        $ten=$searchTerm;
         $sanPham = SanPham::with([
             'loai_san_pham',
             'img',
             'chi_tiet_san_pham' => function ($query) {
                 $query->with('mau_sac', 'dung_luong');
             }
-        ])->where('ten', 'like', '%' . $ten . '%')->get();
+        ])->where('ten', 'like', $ten . '%')->get();
         if($sanPham->isEmpty())
         {
             return response()->json([
