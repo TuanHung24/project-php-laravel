@@ -1,12 +1,8 @@
-<div style="width:600px;margin:0px">
+<div style="width:600px; margin:0px;">
     <div>
-        <h2>Xin chào {{$quanLy->name}}</h2>
-        <p>Email này giúp bạn lấy lại mật khẩu </p>
-        <p>Vui lòng click vào link dưới đây để đặt lại mật khẩu </p>
-        <p>
-            <a href="{{route('xl-lay-mat-khau',['customer'=>$quanLy->id, 'token'=>$quanLy->token])}}">
-                Đặt lại mật khẩu
-            </a>
-        </p>
+    <h2>Xin chào, {{$name}}</h2>
+        <p>Mật khẩu tạm thời của bạn là: <strong>{{$password}}</strong></p>
+        <p>Vui lòng đăng nhập và đổi lại mật khẩu để bảo vệ tài khoản của bạn.</p>
+        <p>Trân trọng,<br/>HDK</p>
     </div>
 </div>

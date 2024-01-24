@@ -35,6 +35,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/dang-nhap',[APIAuthController::class,"dangNhap"]);
 
+Route::post('/send-email', [APIAuthController::class, 'sendEmail']);
+
 Route::get('/san-pham',[APISanPhamController::class, "layDanhSach"]);
 Route::get('/san-pham/{id}',[APISanPhamController::class, "layChiTiet"]);
 Route::post('/san-pham',[APISanPhamController::class, "themMoi"]);

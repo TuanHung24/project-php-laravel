@@ -39,7 +39,9 @@ Route::middleware('auth')->group(function(){
     Route::post('thong-tin',[DangNhapController::class, 'capNhatThongTin'])->name('update-info');
     Route::get('admin/doi-mat-khau', [DangNhapController::class, 'DoiMatKhau'])->name('doi-mat-khau');
     Route::post('admin/doi-mat-khau', [DangNhapController::class, 'xlDoiMatKhau'])->name('xl-doi-mat-khau');
+
     
+
     Route::prefix('san-pham')->group(function(){
         Route::name('san-pham.')->group(function(){
             Route::get('them-moi', [SanPhamController::class, 'themMoi'])->name('them-moi');
@@ -149,7 +151,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('binh-luan')->group(function(){
         Route::name('binh-luan.')->group(function(){
             Route::get('/',[BinhLuanController::class, 'danhSach'])->name('danh-sach');
-            Route::get('tra-loi/{id}',[BinhLuanController::class, 'traLoiBinhLuan'])->name('tra-loi');
+            Route::post('tra-loi/{id}',[BinhLuanController::class, 'traLoiBinhLuan'])->name('tra-loi');
             Route::get('xoa/{id}',[BinhLuanController::class, 'xoa'])->name('xoa');
         });
     });

@@ -45,7 +45,7 @@ class APIHoaDonController extends Controller
             return response()->json([
                 "success"=>true,
                 "message"=>"Thanh toán thành công!",
-                "order_id" => $hoaDon->id,
+                "orderId" => $hoaDon->id,
             ]);
         
     }

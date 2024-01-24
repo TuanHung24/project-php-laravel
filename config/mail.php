@@ -41,7 +41,7 @@ return [
             'port' => 587,
             'encryption' => 'tls',
             'username' => 'tuanhung2401003@gmail.com',
-            'password' => env('MAIL_PASSWORD'),
+            'password' => 'uhihuauvakzurfmc',
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],

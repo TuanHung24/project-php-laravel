@@ -1,10 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\KhachHang;
+use Carbon\Carbon;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Tymon\JWTAuth\Contracts\Providers\Auth as ProvidersAuth;
 
 class APIAuthController extends Controller
@@ -40,6 +46,42 @@ class APIAuthController extends Controller
             'expires_in'=>JWTAuth::factory()->getTTL()*60,
         ]);
     }
-    
+    public function sendEmail(Request $request){
+        
+        $khachHang = KhachHang::where('email', $request->email)->first();
+
+        if (!$khachHang) {
+            return response()->json([
+                'access' => false,
+                'message' => 'Email không tồn tại!',
+            ]);
+        }
+
+        $numbers = range(0, 9);
+        $randomPassword = '';
+        for ($i = 0; $i < 6; $i++) {
+            $randomPassword .= $numbers[mt_rand(0, 9)];
+        }
+
+
+       
+        $khachHang->password = Hash::make($randomPassword);
+        $khachHang->save(); 
+
+      
+        $data = [
+            'name' => $khachHang->ho_ten,
+            'password' => $randomPassword,
+        ];
+
+        Mail::send('email', $data, function($message) use ($khachHang) {
+            $message->to($khachHang->email)->subject('Mật Khẩu Mới');
+        });
+
+        return response()->json([
+            'access' => true,
+            'message' => 'Email với mật khẩu mới đã được gửi!'
+        ]);
+    }
     
 }

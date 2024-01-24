@@ -11,9 +11,15 @@ class BinhLuan extends Model
     protected $table="binh_luan";
 
     public function khach_hang(){
+
         return $this->belongsTo(KhachHang::class);
     }
     public function san_pham(){
+        
         return $this->belongsTo(SanPham::class);
+    }
+    public function chi_tiet_binh_luan(){
+
+        return $this->hasOne(CTBinhLuan::class);
     }
 }

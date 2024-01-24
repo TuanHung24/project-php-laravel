@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BinhLuan;
+use App\Models\CTBinhLuan;
 use App\Models\DanhGia;
 use Illuminate\Http\Request;
 use App\Models\SanPham;
@@ -31,9 +32,21 @@ class APISanPhamController extends Controller
     public function layChiTiet($id)
     {
         try{
-            $sanPham = SanPham::with(['thong_tin_san_pham','danh_gia','binh_luan.khach_hang', 'loai_san_pham', 'img', 'chi_tiet_san_pham' => function($query) {
-                $query->with('mau_sac', 'dung_luong');
-            }])->findOrFail($id);
+            $sanPham = SanPham::with([
+                'thong_tin_san_pham',
+                'danh_gia',
+                'binh_luan.khach_hang'=>function($query){
+                    $query->select('id','ho_ten');
+                },
+                'binh_luan.chi_tiet_binh_luan.quan_tri'=>function($query){
+                    $query->select('id','ho_ten');
+                },
+                'loai_san_pham', 
+                'img', 
+                'chi_tiet_san_pham' => function($query) {
+                    $query->with(['mau_sac', 'dung_luong']);
+                }
+            ])->findOrFail($id);
         if(empty($sanPham))
         {
             return response()->json([
