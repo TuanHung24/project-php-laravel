@@ -25,7 +25,8 @@
     <div class="count_container count_hd">
     <span data-feather="shopping-bag" class="align-text-bottom" id="icon-tk"></span>
     <h5>Số lượng hóa đơn</h5>
-    <span>Đã đặt: {{$hoaDon}}</span><br/>
+    <span>Hóa đơn đang giao -> thanh toán: {{$hoaDon}}</span><br/>
+    <span>Đã hủy: {{$huyHoaDon}}</span><br/>
     <span>Tổng tiền hóa đơn xuất: {{$tongTienHoaDon}}đ</span>
     </div>
     <div class="count_container count_nd">
@@ -48,7 +49,8 @@
  <div class="option-m-y">
  <div class="doanh_thu"> Doanh thu: <span id='doanh-thu'></span>đ</div>
  <!-- <div class="lai"> Lãi: <span id='lai'></span>đ</div> -->
- <div class="sp-da-ban"> Số lượng đã bán: <span id='so-luong'></span></div>
+ <div class="sp-da-ban"> Số lượng sản phẩm đã bán: <span id='so-luong'></span></div>
+ <div class="hd-da-ban"> Số lượng đơn hàng: <span id='so-luong-hoa-don'></span></div>
  <select id="monthSelect">
     <option value="0" disabled selected>Chọn tháng</option>
  </select>
@@ -92,9 +94,10 @@ $(document).ready(function(){
             
         var daysInMonth = new Date(selectedMonth, selectedYear, 0).getDate();
         var counts = Array(daysInMonth).fill(0);
-
+        
         let tongTienHoaDon=0;
         let tongSoLuong=0;
+        let tongHoaDon=0;
         var canvasContainer = $("#orderChart").parent();
         $("#orderChart").remove();
         // Thêm canvas mới
@@ -107,11 +110,12 @@ $(document).ready(function(){
             counts[day - 1] = response[i].count;
             tongTienHoaDon+=parseFloat(response[i].tongtien);
             tongSoLuong+=parseInt(response[i].soluong);
+            tongHoaDon=parseInt(response[0].count);
         }
-        
-        $('#doanh-thu').text(tongTienHoaDon);
+        let formattedTongTienHoaDon = formatNumber(tongTienHoaDon);
+        $('#doanh-thu').text(formattedTongTienHoaDon);
         $('#so-luong').text(tongSoLuong);
-        
+        $('#so-luong-hoa-don').text(tongHoaDon)
         var chartData = {
             labels: Array.from({ length: daysInMonth }, (_, i) => `${i + 1}/${selectedMonth}`),
             datasets: [{
@@ -162,6 +166,9 @@ $(document).ready(function(){
     });
     }
 
+    function formatNumber(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 });
 </script>
 @endsection

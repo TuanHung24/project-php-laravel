@@ -61,7 +61,7 @@
         </div>
     @endif
 </div>
-{{ $dsSanPham->links('vendor.pagination.custom') }}
+{{ $dsSanPham->links('vendor.pagination.default') }}
 @endsection
 
 

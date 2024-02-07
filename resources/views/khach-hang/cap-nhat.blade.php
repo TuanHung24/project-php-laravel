@@ -51,7 +51,7 @@
             @enderror
         </div>
     </div>
-    <div class="row">
+    <div class="row"> 
         <div class="col-md-6">
             <label for="dia_chi" class="form-label">Địa chỉ:</label>
             <input type="text" class="form-control" name="dia_chi" value="{{old('dia_chi',$khachHang->dia_chi)}}">
@@ -60,6 +60,18 @@
             @enderror
         </div>
     </div>
+
+    <div class="row"> 
+        <div class="col-md-6">
+            <label for="trang_thai" class="form-label">Trạng thái</label>
+            <?php if($khachHang->trang_thai==1):?>
+            <input type="checkbox" name="trang_thai" checked>
+            <?php else:?>
+            <input type="checkbox" name="trang_thai">
+            <?php endif;?>
+        </div>
+    </div>
+
     <div class="col-md-2">
         <button type="submit" class="btn btn-primary" class="Luu"><span data-feather="save"></span>Lưu</button>
     </div>

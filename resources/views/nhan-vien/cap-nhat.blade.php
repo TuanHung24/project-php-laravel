@@ -66,7 +66,7 @@
         @enderror
     </div>
 </div>
-    <div class="row">
+    <div class="row"> 
     <div class="col-md-6">
         <label for="trang_thai" class="form-label">Trạng thái</label>
         <?php if($quanTri->trang_thai==1):?>

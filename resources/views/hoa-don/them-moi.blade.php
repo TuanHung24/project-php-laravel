@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h2 class="h2">NHẬP HÓA ĐƠN</h2>
 </div>
-<div class="row">
+<div class="row"> 
   <div class="col-md-6">
     <label for="nhan_vien" class="form-label">Nhân viên:</label>
     <input type="text" class="form-control" value="{{Auth::user()->ho_ten}}" id="nhan-vien" readonly />
@@ -17,7 +17,7 @@
    
       <option selected disabled>Chọn khách hàng</option>
       @foreach($dsKhachHang as $khachHang)
-      <option value="{{$khachHang->id}}" data-so-dien-thoai="{{$khachHang->dien_thoai}}" id="khach-hang">{{$khachHang->ho_ten}}</option>
+      <option value="{{$khachHang->id}}" data-so-dien-thoai="{{$khachHang->dien_thoai}}">{{$khachHang->ho_ten}}</option>
       @endforeach
 
     </select>
@@ -93,39 +93,26 @@
     var STT=0;
     $("#btn-them").click(function() {
       
-      if ($("#khach-hang").val() === " " || $("khach-hang-id").val() == "Chọn khách hàng") {
+      if ($("#k-h").val() === "" || $("#khach-hang").val() == "Chọn khách hàng") {
         $("#error-khach-hang").text("Vui lòng chọn tên khách hàng!");
         return;
       } else {
         $("#error-khach-hang").text("");
       } 
 
-      if ($("#so-dien-thoai").val() === " ") {
+      if ($("#so-dien-thoai").val() === "") {
         $("#error-so-dien-thoai").text("Vui lòng nhập số điện thoại!");
         return;
       } else {
         $("#error-so-dien-thoai").text("");
       }
-      if ($("#sp-id").val() === " " || $("#sp-id").val() == "Chọn sản phẩm") {
+      if ($("#san-pham-id").val() === "" || $("#san-pham").val() == "Chọn sản phẩm") {
         $("#error-san-pham").text("Vui lòng chọn sản phẩm!");
         return;
       } else {
         $("#error-san-pham").text("");
       }
-      // var stt = $("#tb-ds-san-pham tbody tr").length + 1;
-      // var tenSP = $("#san-pham").find(":selected").text();
-      // var idSP = $("#san-pham").find(":selected").val();
-      // var idNV = $("#nhan-vien").find(":selected").val();
-      // var tenNV = $("#nhan-vien").val();
-      // var kHang = $("#khach-hang").val();
-      // var soLuong = $("#so-luong-ct").val();
-      // var giaBan = $("#gia-ban").val();
-      // var msID = $("#mau-sac-id").val();
-      // var dlID = $("#dung-luong-id").val();
-      // var mauSac = $('#td-mau-sac').text();
-      // var dungLuong = $('#td-dung-luong').text();
-
-      // var thanhTien = soLuong * giaBan;
+      
       themVao();
       
       for (var i = 0; i < selectedItems.length; i++) {
@@ -147,8 +134,6 @@
         var giaBan = item.giaBan;
         var thanhTien = soLuong*giaBan;
         
-       
-
       var row = `<tr>
       <td>${stt}</td>
       <td>${tenSP}<input type="hidden" name="spID[]" value="${idSP}"/></td>
@@ -166,26 +151,14 @@
       $("#san-pham").val("Chọn sản phẩm");
       $("#gia-ban").val("");
       $("#so-luong").val("1");
-      $("#sp-id").val("");
+      $("#san-pham-id").val("");
      
       
       testNamePhone();
       
     });
     
-    function testNamePhone()
-    {
-      if (STT > 0) {
-        $('#khach-hang').prop('readonly', true);
-        $('#so-dien-thoai').prop('readonly', true);
-        
-      }
-      else{
-        $('#khach-hang').prop('readonly', false);
-        $('#so-dien-thoai').prop('readonly', false);
-        
-      }
-    }
+    
 
     $('#tb-ds-san-pham').on('click', '#btn-xoa', function() {
       var tr = $(this).closest('tr');
@@ -195,12 +168,12 @@
     });
 
     $("#san-pham, #so-luong, #gia-ban, #khach-hang").change(function() {
-      $(`#error-${this.id}`).hide();
+      $(`#error-${this.id}`).text(""); // Xóa thông báo khi người dùng thay đổi lựa chọn
     });
 
 
     $("#san-pham").click(function() {
-      $("#sp-id").val(this.value);
+      $("#san-pham-id").val(this.value);
     });
 
     $("#khach-hang").click(function() {
@@ -225,8 +198,26 @@
         })
         .done(function(response) {
           $('#chi-tiet-sp').html(response);
+          var soLuongMax = $('#so-luong-ct').attr('max'); // Lấy giá trị max từ thuộc tính max của ô nhập số lượng
+          $('#so-luong-ct').attr('min', 1); // Cập nhật giá trị min là 1
+          $('#so-luong-ct').val(1); // Đặt giá trị mặc định là 1
         });
     });
+    
+    function testNamePhone()
+    {
+     
+      if (STT > 0) {
+        $('#khach-hang').prop('disabled', true);
+        $('#so-dien-thoai').prop('readonly', true);
+        
+      }
+      else{
+        $('#khach-hang').prop('disabled', false);
+        $('#so-dien-thoai').prop('readonly', false);
+        
+      }
+    }
 
     function themVao() {
     selectedItems = [];  // Reset mảng trước khi chọn mua

@@ -16,9 +16,9 @@ class ThongKeController extends Controller
 {
     public function danhSach()
     {
-        $hoaDon=HoaDon::count();
-
-        $tongTien = HoaDon::sum('tong_tien');
+        $hoaDon=HoaDon::where('trang_thai',4)->count();
+        $huyHoaDon=HoaDon::where('trang_thai',5)->count();
+        $tongTien = HoaDon::where('trang_thai',4)->sum('tong_tien');
         $tongTienHoaDon = number_format($tongTien, 0, ',', '.');
 
         $khachHang=KhachHang::count();
@@ -34,7 +34,7 @@ class ThongKeController extends Controller
         ->take(3)
         ->get();
         
-        return view('thong-ke',compact('hoaDon','khachHang','soLuongSanPham','tongTienGiaNhap','tongTienHoaDon','sanPhamBanChay'));
+        return view('thong-ke',compact('huyHoaDon','hoaDon','khachHang','soLuongSanPham','tongTienGiaNhap','tongTienHoaDon','sanPhamBanChay'));
     }
     public function ThongKeHoaDon(Request $request){
 

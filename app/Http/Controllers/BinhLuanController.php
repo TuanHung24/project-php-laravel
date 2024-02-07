@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class BinhLuanController extends Controller
 {
     public function danhSach(){
-        $dsBinhLuan=BinhLuan::all();
+        $dsBinhLuan=BinhLuan::orderBy('created_at','desc')->paginate(2);
         return view("binh-luan.danh-sach" , compact('dsBinhLuan'));
     }
 
@@ -29,20 +29,23 @@ class BinhLuanController extends Controller
             if (empty($binhLuan)) {
                 return "Bình luận không tồn tại";
             }
+            $cTBL=CTBinhLuan::where('binh_luan_id',$id)->count();
             
+            if ($cTBL>0){
+                return response()->json(['error' => 'Đã trả lời bình luận']);
+            }
             $ctBinhLuan = new CTBinhLuan();
             $ctBinhLuan->binh_luan_id=$id;
             $ctBinhLuan->quan_tri_id=Auth::user()->id;
             $ctBinhLuan->noi_dung=$request->binh_luan;
-           
             $ctBinhLuan->save();
-            
-        return redirect()->route("binh-luan.danh-sach");
+
+            return response()->json(['success' => 'Bình luận đã được trả lời']);
     }
     
     public function xoa($id){
         $binhLuan=Binhluan::find($id);
-        if(empty($dsBinhLuan))
+        if(empty($binhLuan))
         {
             return "Bình luận không tồn tại";
         }

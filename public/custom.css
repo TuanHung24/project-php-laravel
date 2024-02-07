@@ -469,13 +469,7 @@ tr{
     margin: 20px 0 20px 0px;
     float: right;
 }
-.doanh_thu{
-    width: 250px;
-    font-size: 18px;
-    background: #74a27b;
-    padding: 5px 0px 0px 4px;
-    margin-right: 10px;
-}
+
 .lai{
     width: 250px;
     font-size: 18px;
@@ -483,13 +477,35 @@ tr{
     padding: 5px 0px 0px 4px;
     margin-right: 10px;
 }
-.sp-da-ban{
+.doanh_thu {
     width: 250px;
     font-size: 18px;
-    background: #948780;
+    background: #5cdb95; /* Màu xanh nhạt */
     padding: 5px 0px 0px 4px;
-    
+    margin-right: 10px;
+}
+
+.hd-da-ban {
+    width: 250px;
+    font-size: 18px;
+    background: #7184ec; /* Màu xanh lam nhạt */
+    padding: 5px 0px 0px 4px;
     margin-right: 100px;
+}
+
+.sp-da-ban {
+    width: 250px;
+    font-size: 18px;
+    background: #f0a79b; /* Màu hồng nhạt */
+    padding: 5px 0px 0px 4px;
+    margin-right: 10px;
+}
+
+/* Đổi màu chữ thành trắng */
+.doanh_thu span,
+.sp-da-ban span,
+.hd-da-ban span {
+    color: #000000; /* Màu trắng */
 }
 
 .noi-dung-binh-luan {

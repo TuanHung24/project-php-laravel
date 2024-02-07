@@ -4,10 +4,17 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h4><span data-feather="list" ></span>DANH SÁCH BÌNH LUẬN</h4>
 </div>
+@if(session('thong_bao'))
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div> 
+              {{session('thong_bao')}}
+        </div>
+    </div>
+@endif
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
+            <tr> 
                 <th>Mã bình luận</th>
                 <th>Khách hàng</th>
                 <th>Sản phẩm</th>
@@ -31,6 +38,7 @@
             @endforeach
     </table>
 </div>
+{{ $dsBinhLuan->links('vendor.pagination.default') }}
 @endsection
 
 @section('page-js')
@@ -49,16 +57,22 @@
                 "binh_luan": binhLuan
             },
             success: function (response) {
+                if (response.success) {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: `Thêm bình luận thành công!`,
+                    title: response.success,
                     showConfirmButton: true,
                     timer: 3000
                 });
 
-                button.siblings('textarea').val(""); // Sử dụng biến button thay vì $(this)
-                button.siblings('.error-message').text("");
+                    button.siblings('textarea').val("");
+                    button.siblings('.error-message').text("");
+                } else if (response.error) {
+                    button.siblings('.error-message').text(response.error);
+                    button.siblings('textarea').val(""); 
+                   
+                }
             },
             error: function (xhr, status, error) {
                 button.siblings('.error-message').text(xhr.responseJSON.message);
