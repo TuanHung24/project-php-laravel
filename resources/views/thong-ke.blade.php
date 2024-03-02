@@ -94,7 +94,7 @@ $(document).ready(function(){
             
         var daysInMonth = new Date(selectedMonth, selectedYear, 0).getDate();
         var counts = Array(daysInMonth).fill(0);
-        
+       
         let tongTienHoaDon=0;
         let tongSoLuong=0;
         let tongHoaDon=0;
@@ -110,7 +110,7 @@ $(document).ready(function(){
             counts[day - 1] = response[i].count;
             tongTienHoaDon+=parseFloat(response[i].tongtien);
             tongSoLuong+=parseInt(response[i].soluong);
-            tongHoaDon=parseInt(response[0].count);
+            tongHoaDon+=parseInt(response[i].count);
         }
         let formattedTongTienHoaDon = formatNumber(tongTienHoaDon);
         $('#doanh-thu').text(formattedTongTienHoaDon);

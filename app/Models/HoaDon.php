@@ -31,5 +31,9 @@ class HoaDon extends Model
     {
         return number_format($this->tong_tien, 0, ',', '.');
     }
+    public function chi_tiet_hoa_don()
+    {
+        return $this->hasMany(CTHoaDon::class);
+    }
     
 }

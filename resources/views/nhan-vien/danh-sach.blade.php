@@ -56,7 +56,7 @@
             <td>{{ $trang_thai }}</td>
             <td class="chuc-nang">
                 <a href="{{ route('nhan-vien.cap-nhat', ['id' => $quanTri->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
-                <a href="{{ route('nhan-vien.xoa', ['id' => $quanTri->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+                <a href="{{ route('nhan-vien.xoa', ['id' => $quanTri->id]) }}" class="btn btn-outline-danger"><span data-feather="lock"></span></a>
             </td>
         <tr>
             @endforeach

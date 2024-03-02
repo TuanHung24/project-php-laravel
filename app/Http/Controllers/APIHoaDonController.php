@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CTHoaDon;
+use App\Models\CTSanPham;
 use App\Models\HoaDon;
 use App\Models\KhachHang;
 use Illuminate\Http\Request;
@@ -110,5 +111,17 @@ class APIHoaDonController extends Controller
                 "message" => "Có lỗi khi xử lý yêu cầu: " . $e->getMessage(),
             ]);
         }
+    }
+    public function timSoLuongTon(Request $request){
+        $cTSanPham = CTSanPham::where([
+            'san_pham_id' => $request->sp_id,
+            'dung_luong_id' => $request->dl_id,
+            'mau_sac_id' => $request->ms_id
+        ])->first();
+
+        return response()->json([
+            'success'=>true,
+            'soLuongTon'=>$cTSanPham->so_luong
+        ]);
     }
 }

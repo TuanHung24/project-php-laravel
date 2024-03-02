@@ -91,6 +91,9 @@ Route::middleware('auth')->group(function(){
             Route::get('cap-nhat/{id}', [KhachHangController::class, 'capNhat'])->name('cap-nhat');
             Route::post('cap-nhat/{id}', [KhachHangController::class, 'xuLyCapNhat'])->name('xl-cap-nhat');
             Route::get('xoa/{id}', [KhachHangController::class, 'xoa'])->name('xoa');
+            Route::get('don-hang/{id}', [KhachHangController::class, 'donHang'])->name('don-hang');
+           
+            // Route::get('chi-tiet-don-hang', [KhachHangController::class, 'donHang'])->name('don-hang');
         });
     });
 
@@ -102,7 +105,8 @@ Route::middleware('auth')->group(function(){
     });
 
    
-    
+    Route::post('don-hang-chi-tiet', [KhachHangController::class, 'chiTiet'])->name('don-hang-chi-tiet-ajax');
+
     Route::get('/ajax-lay-chi-tiet',[HoaDonController::class, 'layMauSacDungLuong'])->name('lay-chi-tiet-sp-ajax');
 
     Route::prefix('hoa-don')->group(function(){

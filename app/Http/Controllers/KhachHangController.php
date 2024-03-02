@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\KhachHang;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\KhachHangRequest;
+use App\Models\CTHoaDon;
+use App\Models\HoaDon;
+use Illuminate\Support\Facades\DB;
 
 class KhachHangController extends Controller
 {
@@ -85,5 +88,18 @@ class KhachHangController extends Controller
             return view('khach-hang.danh-sach', compact('dskhachHang', 'reQuest', 'errorMessage'));
         }
         return view('khach-hang.danh-sach',compact('dskhachHang','reQuest'));
+    }
+    public function donHang($id){
+        $dsHoaDon=HoaDon::where('khach_hang_id',$id)->get();
+        
+        $khachHang=KhachHang::findOrFail($id);
+        
+        return view('khach-hang.don-hang',compact('dsHoaDon','khachHang'));
+
+    }
+    public function chiTiet(Request $request) {
+        $ctHoaDon = CTHoaDon::where('hoa_don_id',$request->id)->get();
+        
+        return response()->json($ctHoaDon);
     }
 }

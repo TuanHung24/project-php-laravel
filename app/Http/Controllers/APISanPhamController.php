@@ -90,7 +90,7 @@ class APISanPhamController extends Controller
             'chi_tiet_san_pham' => function ($query) {
                 $query->with('mau_sac', 'dung_luong');
             }
-        ])->where('ten', 'like', $ten . '%')->get();
+        ])->where('ten', 'like', '%'. $ten . '%')->get();
         if($sanPham->isEmpty())
         {
             return response()->json([

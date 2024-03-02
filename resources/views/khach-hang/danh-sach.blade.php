@@ -48,8 +48,9 @@
             <td>{{ $khachHang->dien_thoai }}</td>
             <td>{{ $khachHang->dia_chi }}</td>
             <td class="chu-nang">
+                <a href="{{ route('khach-hang.don-hang', ['id'=>$khachHang->id]) }}" class="btn btn-outline-success"><span data-feather="briefcase"></span></a> | 
                 <a href="{{ route('khach-hang.cap-nhat', ['id' => $khachHang->id]) }}" class="btn btn-outline-primary"><span data-feather="edit"></span></a> |
-                <a href="{{ route('khach-hang.xoa', ['id' => $khachHang->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>
+                <a href="{{ route('khach-hang.xoa', ['id' => $khachHang->id]) }}" class="btn btn-outline-danger"><span data-feather="lock"></span></a>
             </td>
         <tr>
             @endforeach

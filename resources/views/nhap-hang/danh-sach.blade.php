@@ -36,8 +36,8 @@
             <td>{{ $phieuNhap->tong_tien_formatted }}</td>
             <td>{{ $phieuNhap->ngay_nhap }}</td>
             <td class="chuc-nang">
-                <a href="{{ route('nhap-hang.chi-tiet', ['id' => $phieuNhap->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a>|
-                <a href="{{ route('nhap-hang.xoa', ['id' => $phieuNhap->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>|
+                <a href="{{ route('nhap-hang.chi-tiet', ['id' => $phieuNhap->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a> |
+                <a href="{{ route('nhap-hang.xoa', ['id' => $phieuNhap->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a> |
                 <a href="{{ route('pdf.nhap-hang',['id' => $phieuNhap->id]) }}" class="btn btn-outline-secondary"><span data-feather="download"></span></a>
             </td>
         <tr>

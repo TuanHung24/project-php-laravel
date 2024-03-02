@@ -51,13 +51,16 @@ Route::post('/loai-san-pham',[APILoaiSanPhamController::class, "themMoi"]);
 Route::put('/loai-san-pham/{id}',[APILoaiSanPhamController::class, "capNhap"]);
 Route::delete('/loai-san-pham/{id}',[APILoaiSanPhamController::class, 'xoa']);
 Route::post('/loai-san-pham/tim-kiem',[APILoaiSanPhamController::class, "timKiem"]);
-
+ 
 Route::get('/slide',[APISlidesController::class, 'danhSach']);
 Route::post('/hoa-don',[APIHoaDonController::class, "themHoaDon"]);
 Route::post('/huy-don',[APIHoaDonController::class, "huyDon"]);
 Route::post('/dang-ky',[APIKhachHangController::class, "dangKy"]);
 Route::post('/update-info',[APIKhachHangController::class, "capNhapThongTin"]);
 Route::post('/doi-mat-khau',[APIKhachHangController::class, "doiMatKhau"]);
+
+
+Route::post('/tim-so-luong-ton',[APIHoaDonController::class, 'timSoLuongTon']);
 
 Route::post('/binh-luan',[APISanPhamController::class, "binhLuan"]);
 Route::post('/danh-gia',[APISanPhamController::class, "danhGia"]);

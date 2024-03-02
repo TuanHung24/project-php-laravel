@@ -101,8 +101,8 @@
 
 
             <td class="chuc-nang">
-                <a href="{{ route('hoa-don.chi-tiet', ['id' => $hoaDon->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a>|
-                <a href="{{ route('hoa-don.xoa', ['id' => $hoaDon->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a>|
+                <a href="{{ route('hoa-don.chi-tiet', ['id' => $hoaDon->id]) }}" class="btn btn-outline-info"><span data-feather="chevrons-right"></span></a> |
+                <a href="{{ route('hoa-don.xoa', ['id' => $hoaDon->id]) }}" class="btn btn-outline-danger"><span data-feather="trash-2"></span></a> |
                 <a href="{{ route('pdf.hoa-don',['id' => $hoaDon->id]) }}" class="btn btn-outline-secondary"><span data-feather="download"></span></a>
             </td>
         <tr>

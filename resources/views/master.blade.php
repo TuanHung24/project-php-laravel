@@ -132,7 +132,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('slides.danh-sach')}}">
                                 <span data-feather="file-plus" class="align-text-bottom"></span>
-                                Quản lý slideshow
+                                Quản lý logo và slideshow
                             </a>
                         </li>
                         

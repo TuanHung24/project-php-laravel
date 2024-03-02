@@ -51,7 +51,7 @@ class ThongKeController extends Controller
                 ->where('hoa_don.trang_thai', 4)
                 ->select(
                     DB::raw('DATE(hoa_don.created_at) as date'),
-                    DB::raw('COUNT(DISTINCT hoa_don.id) as count'),
+                    DB::raw('COUNT(DISTINCT hoa_don.id) as count'), 
                     DB::raw('SUM(chi_tiet_hoa_don.thanh_tien) as tongtien'),
                     DB::raw('SUM(chi_tiet_hoa_don.so_luong) as soluong')
                 )
