@@ -30,8 +30,8 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="title_ncc">
+                <th id="th-id">Id</th>
                 <th>Tên</th>
                 <th>Điện thoại</th>
                 <th>Địa chỉ</th>
@@ -41,7 +41,7 @@
         </thead>
         @foreach($dsnhaCungCap as $nhaCungCap)
         <tr>
-            <td>{{ $nhaCungCap->id }}</td>
+            <td id="td-id">{{ $nhaCungCap->id }}</td>
             <td>{{ $nhaCungCap->ten }}</td>
             <td>{{ $nhaCungCap->dien_thoai }}</td>
             <td>{{ $nhaCungCap->dia_chi }}</td>

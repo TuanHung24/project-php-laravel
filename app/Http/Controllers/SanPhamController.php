@@ -13,6 +13,7 @@ use App\Models\DungLuong;
 use App\Models\MauSac;
 use App\Models\Logo;
 use App\Models\ThongTinSanPham;
+use Exception;
 
 class SanPhamController extends Controller
 {
@@ -88,12 +89,15 @@ class SanPhamController extends Controller
         $dsHinhAnh=HinhAnh::where('san_pham_id',$id)->get();
         $tTSanPham=ThongTinSanPham::where('san_pham_id',$id)->first();
         if (empty($sanPham)) {
-            return "Sản phẩm không tồn tại";
+            return redirect()->route('san-pham.danh-sach')->with(["thong_bao"=>"Sản phẩm không tồn tại!"]);
         }
         return view('san-pham.cap-nhat', compact('sanPham', 'dsLoaiSanPham','dsHinhAnh','tTSanPham'));
     }
     public function xuLyCapNhat(SanPhamRequest $request, $id)
     {
+        try{
+
+        
         $sanPham = SanPham::find($id);
         if(!$sanPham){
             $dsSanPham=SanPham::all();
@@ -148,6 +152,9 @@ class SanPhamController extends Controller
             }
         }  
         return redirect()->route('san-pham.danh-sach')->with(['thong_bao'=>"Cập nhật sản phẩm {$sanPham->ten} thành công!"]);
+    }catch(Exception $e){
+        return redirect()->back();
+    }
     }
 
     public function xoa($id)
@@ -181,11 +188,21 @@ class SanPhamController extends Controller
     }
     public function chiTietSanPham($id)
     {
+        try
+        {
+
+        
         $sanPham=SanPham::find($id);
+        if (!$sanPham) {
+            throw new Exception("Product not found");
+        }
         $tTSanPham=ThongTinSanPham::where('san_pham_id',$id)->first();
         $dsHinhAnh=HinhAnh::where('san_pham_id',$id)->get();
         $dsCTSanPham=CTSanPham::where('san_pham_id',$id)->get();
         return view('san-pham.chi-tiet', compact('sanPham', 'tTSanPham', 'dsHinhAnh','dsCTSanPham'));
+        }catch(Exception $e){
+            return redirect()->back()->with('error', "Lỗi".$e);
+        }
     }
     public function timKiem(Request $request)
     {

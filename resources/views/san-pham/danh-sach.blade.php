@@ -30,8 +30,8 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-    <tr>
-        <th>Id</td>
+    <tr class="title_sp">
+        <th id="th-id">Id</td>
         <th>Tên</th>
         <th>Mô tả</th>  
         <th>Loại sản phẩm</th>
@@ -41,7 +41,7 @@
     <tbody>
     @foreach($dsSanPham as $sanPham)
     <tr>
-        <td>{{ $sanPham->id }}</td>
+        <td id="td-id">{{ $sanPham->id }}</td>
         <td>{{ $sanPham->ten }}</td>
         <td>{{ $sanPham->mo_ta }}</td>
         <td>{{ $sanPham->loai_san_pham->ten }}</td>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">CẬP NHẬT KHÁCH HÀNG</h1>
+    <h4>CẬP NHẬT KHÁCH HÀNG</h4>
 </div>
 <form class="container" method="POST" action="{{ route('khach-hang.xl-cap-nhat', ['id' => $khachHang->id]) }}">
    @csrf

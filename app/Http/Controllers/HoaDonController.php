@@ -11,6 +11,7 @@ use App\Models\CTSanPham;
 use App\Models\DungLuong;
 use App\Models\KhachHang;
 use App\Models\MauSac;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,7 +87,7 @@ class HoaDonController extends Controller
     { 
         $dsHoaDon = HoaDon::orderBy('trang_thai','asc')
                    ->orderBy('ngay_tao', 'desc')
-                   ->paginate(10);
+                   ->paginate(10); 
         return view("hoa-don.danh-sach", compact('dsHoaDon'));
     }
     public function chiTiet($id)
@@ -123,10 +124,10 @@ class HoaDonController extends Controller
 
         $dsHoaDon = HoaDon::whereHas('khach_hang', function($query) use ($reQuest) {
             $query->where('ho_ten', 'like', '%' . $reQuest . '%');
-        })->paginate(10);
+        })->orderBy('trang_thai', 'asc')->orderBy('ngay_tao','desc')->paginate(10);
         
         if ($dsHoaDon->isEmpty()) {
-            $errorMessage = "Tên Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuest'";
+            $errorMessage = "Tên khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuest'";
             return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuest', 'errorMessage'));
         }
         return view('hoa-don.danh-sach',compact('dsHoaDon','reQuest'));
@@ -134,12 +135,38 @@ class HoaDonController extends Controller
     public function timKiemSdt(Request $request)
     {
         $reQuestSdt=$request->search_sdt;
-        $dsHoaDon=HoaDon::where('dien_thoai','like','%'.$reQuestSdt.'%')->paginate(10);
+        $dsHoaDon=HoaDon::where('dien_thoai','like','%'.$reQuestSdt.'%')->orderBy('trang_thai','asc')->orderBy('ngay_tao','desc')->paginate(10);
         if ($dsHoaDon->isEmpty()) {
-            $errorMessage = "số điện thoại Khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuestSdt'";
+            $errorMessage = "Số điện thoại khách hàng không tồn tại với từ khóa tìm kiếm: '$reQuestSdt'";
             return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuestSdt', 'errorMessage'));
         }
         return view('hoa-don.danh-sach',compact('dsHoaDon','reQuestSdt'));
+    } 
+    public function seachDate(Request $request)
+    {
+        $reQuestDate = $request->search_date;
+        if (!$reQuestDate) {
+            return redirect()->back()->with('error', 'Vui lòng nhập ngày tạo để tìm kiếm.');
+        }
+
+        
+        try {
+            $searchDate = Carbon::parse($reQuestDate);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ngày tạo không hợp lệ.');
+        }
+
+       
+        $dsHoaDon = HoaDon::whereDate('ngay_tao', $searchDate)->paginate(10);
+
+        
+        if ($dsHoaDon->isEmpty()) {
+            $errorMessage = "Không tìm thấy hóa đơn được tạo vào ngày: '$reQuestDate'";
+            return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuestDate', 'errorMessage'));
+        }
+
+       
+        return view('hoa-don.danh-sach', compact('dsHoaDon', 'reQuestDate'));
     } 
     public function layMauSacDungLuong(Request $request)
     {

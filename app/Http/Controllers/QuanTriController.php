@@ -7,6 +7,7 @@ use App\Models\QuanTri;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\NhanVienRequest;
+use Exception;
 use LengthException;
 
 class QuanTriController extends Controller
@@ -17,6 +18,8 @@ class QuanTriController extends Controller
     }
     public function xuLyThemMoi(NhanVienRequest $request)
     {
+        try
+        {
             
             $files = $request->file('hinh_anh');
             $quanTri=new QuanTri();
@@ -37,6 +40,9 @@ class QuanTriController extends Controller
             
             }
         return view('nhan-vien.them-moi');  
+        }catch(Exception){
+            return redirect()->back();
+        }
     }
     public function danhSach()
     {
@@ -49,7 +55,7 @@ class QuanTriController extends Controller
         
         $quanTri = QuanTri::find($id);
         if (empty($quanTri)) {
-            return "Loại sản phẩm không tồn tại";
+            return redirect()->route('nhan-vien.danh-sach');
         }
         return view('nhan-vien.cap-nhat', compact('quanTri'));
     }
@@ -58,7 +64,7 @@ class QuanTriController extends Controller
     {
         $quanTri = QuanTri::find($id);
         if (empty($quanTri)) {
-            return "Nhân viên không tồn tại";
+            return redirect()->route('nhan-vien.danh-sach');
         }
         $file                       = $request->hinh_anh;
         if(isset($file))

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('ho_ten',80);
             $table->string('email',100);
-            $table->string('ten_dang_nhap',80);
+            //$table->string('ten_dang_nhap',80);
             $table->string('password',100);
             $table->string('dien_thoai',10);
             $table->string('dia_chi',128)->nullable();

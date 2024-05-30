@@ -114,7 +114,7 @@
       }
       
       themVao();
-      
+       
       for (var i = 0; i < selectedItems.length; i++) {
         var item = selectedItems[i];
         var stt = $("#tb-ds-san-pham tbody tr").length + 1;

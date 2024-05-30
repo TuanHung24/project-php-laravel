@@ -29,6 +29,13 @@
             <input type="number" class="form-control form-control-dark" name="search_sdt" value="{{$reQuestSdt ?? null}}" placeholder="Số điện thoại khách hàng..." aria-label="Search" />
             <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
         </div>
+    </form>
+    <form action="{{route('hoa-don.tim-kiem-date')}}" class="submit_search" id="search-form">
+        <div class="Search">
+            <input type="date" class="form-control form-control-dark" name="search_date" value="{{ $reQuestDate ?? null }}" aria-label="Search" />
+
+            <button class="btn btn-primary seach" type="submit"><span data-feather="search"></span></button>
+        </div>
         </form>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
@@ -46,8 +53,8 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="title_hd">
+                <th id="th-id">Id</th>
                 <th>Khách hàng</th>
                 <th>Điện thoại</th>
                 <th>Địa chỉ</th>
@@ -60,7 +67,7 @@
         </thead>
         @foreach($dsHoaDon as $hoaDon)
         <tr>
-            <td>{{$hoaDon->id}}</td>
+            <td id="td-id">{{$hoaDon->id}}</td>
             <td>{{ $hoaDon->khach_hang->ho_ten }}</td>
             <td>{{ $hoaDon->dien_thoai }}</td>
             <td>{{ $hoaDon->dia_chi }}</td>
@@ -69,7 +76,7 @@
             <td>{{ $hoaDon->ngay_tao }}</td>
 
             @if ($hoaDon->trang_thai == 1)
-            <td class="trang-thai-don"> 
+            <td > 
                         <button type="button" class="btn btn-danger huy-don-btn" data-id="{{ $hoaDon->id }}">Hủy</button>    
                 &nbsp;
                 <a href="{{route('hoa-don.duyet-don', ['id' => $hoaDon->id])}}">
@@ -128,6 +135,7 @@ function confirmHuyDon(url) {
 @section('page-js')
 <script type="text/javascript">
     $(document).ready(function(){
+
         $('.huy-don-btn').on('click', function(){
         var hoaDonId = $(this).data('id');
         var confirmHuy = false; 

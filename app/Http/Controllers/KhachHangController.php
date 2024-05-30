@@ -46,7 +46,7 @@ class KhachHangController extends Controller
         
         $khachHang = KhachHang::find($id);
         if (empty($khachHang)) {
-            return "Loại sản phẩm không tồn tại";
+            return redirect()->back();
         }
         return view('khach-hang.cap-nhat', compact('khachHang'));
     }

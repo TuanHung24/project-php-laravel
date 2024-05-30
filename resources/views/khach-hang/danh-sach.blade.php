@@ -29,9 +29,9 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Họ tên</th>
+            <tr class="title_kh">
+                
+                <th id="th-id">Họ tên</th>
                 <th>Email</th>
                 <th>Tên đăng nhập</th>
                 <th>Điện thoại</th>
@@ -41,8 +41,8 @@
         </thead>
         @foreach($dskhachHang as $khachHang)
         <tr>
-            <td>{{ $khachHang->id }}</td>
-            <td>{{ $khachHang->ho_ten }}</td>
+            
+            <td id="td-id">{{ $khachHang->ho_ten }}</td>
             <td>{{ $khachHang->email }}</td>
             <td>{{ $khachHang->ten_dang_nhap }}</td>
             <td>{{ $khachHang->dien_thoai }}</td>

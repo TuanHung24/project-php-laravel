@@ -59,7 +59,7 @@
  </select>
 <button class="btn btn-info" id='thong-ke'>Thống kê</button>
 </div>
- <canvas id="orderChart" width="200" height="100"></canvas>
+ <canvas id="orderChart"></canvas>
 @endsection
 
 @section('page-js')
@@ -101,7 +101,7 @@ $(document).ready(function(){
         var canvasContainer = $("#orderChart").parent();
         $("#orderChart").remove();
         // Thêm canvas mới
-        canvasContainer.append('<canvas id="orderChart" width="200" height="100"></canvas>');
+        canvasContainer.append('<canvas id="orderChart"></canvas>');
         // Lấy context của canvas mới
         var ctx = $("#orderChart");
         for (var i in response) {
@@ -157,7 +157,14 @@ $(document).ready(function(){
                 },
                 responsive: true,
                 maintainAspectRatio: false,
-                
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 20
+                    }
+                }
             });
         },
         error: function(data) {

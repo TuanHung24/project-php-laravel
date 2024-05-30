@@ -27,8 +27,9 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="title_nv">
+                
+                <th id="th-id">Ảnh đại diện</th>
                 <th>Họ tên</th>
                 <th>Điện thoại</th>
                 <th>Email</th>
@@ -40,7 +41,8 @@
         </thead>
         @foreach($dsQuanTri as $quanTri)
         <tr>
-            <td>{{ $quanTri->id }}</td>
+            
+            <td><img src="{{asset($quanTri->avatar_url)}}" alt="avatar" class="avatar"></td>
             <td>{{ $quanTri->ho_ten }}</td>
             <td>{{ $quanTri->dien_thoai }}</td>
             <td>{{ $quanTri->email }}</td>

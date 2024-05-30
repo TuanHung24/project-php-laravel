@@ -27,19 +27,28 @@ class DangNhapController extends Controller
     }
     public function xuLyDangNhap(Request $rq)
     {
-        
+        // Tìm kiếm người dùng theo tên đăng nhập
         $user = QuanTri::whereRaw('BINARY username = ?', [$rq->ten_dang_nhap])->first();
-
+        
+        // Kiểm tra xem người dùng tồn tại, mật khẩu có đúng và tài khoản đang được kích hoạt không
         if ($user && Hash::check($rq->password, $user->password) && $user->trang_thai) {
+            // Đăng nhập người dùng và ghi nhớ nếu có
             Auth::login($user, $rq->has('remember'));
 
+            // Chuyển hướng người dùng đến trang thống kê
             return redirect()->route('thong-ke')->with(['dang_nhap' => 'Đăng nhập thành công!']);
         }
-        if(empty($user))
-        {
-            return redirect()->route('dang-nhap')->with(['user_name'=>$rq->ten_dang_nhap,'error-login' => 'Mật khẩu không chính xác!','empty_username'=>"Tên tài khoản không tồn tại!"]);  
+
+        // Xử lý trường hợp người dùng không tồn tại hoặc mật khẩu không chính xác
+        $redirect = redirect()->route('dang-nhap')->with(['user_name' => $rq->ten_dang_nhap]);
+
+        // Kiểm tra trường hợp người dùng không tồn tại
+        if(empty($user)) {
+            return $redirect->with(['error-login' => 'Mật khẩu không chính xác!', 'empty_username' => "Tên tài khoản không tồn tại!"]);
         }
-        return redirect()->route('dang-nhap')->with(['user_name'=>$rq->ten_dang_nhap,'error-login' => 'Mật khẩu không chính xác!']);     
+
+        // Xử lý trường hợp mật khẩu không chính xác
+        return $redirect->with(['error-login' => 'Mật khẩu không chính xác!']);       
     }
     public function dangXuat()
     {
@@ -77,6 +86,10 @@ class DangNhapController extends Controller
         return view("admin.doi-mat-khau");
     }
     public function xlDoiMatKhau(Request $rq){
+
+        if ($rq->respassword != $rq->respassword1){
+            return redirect()->route("doi-mat-khau")->with(['error'=> 'Mật khẩu mới không trùng khớp!']);
+        }
         if (!Hash::check($rq->password, Auth::user()->password)) {
             return redirect()->route("doi-mat-khau")->with(['error' => 'Mật khẩu cũ không đúng!']);
         }

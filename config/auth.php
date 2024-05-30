@@ -71,7 +71,7 @@ return [
         ],
         
         'khach_hang' => [
-            'driver' => 'eloquent',
+            'driver' => 'eloquent', 
             'model' => \App\Models\KhachHang::class,
         ],
         // 'users' => [

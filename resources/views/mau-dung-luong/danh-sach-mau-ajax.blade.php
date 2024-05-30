@@ -7,6 +7,7 @@
             <tr>
                 <th>Id</th>
                 <th>Màu sắc</th>
+                <th>Thao tác</th>
             </tr>  
         </thead>
         @foreach($dsMauSac as $mauSac)

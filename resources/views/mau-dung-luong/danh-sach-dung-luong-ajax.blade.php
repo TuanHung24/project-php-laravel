@@ -5,6 +5,7 @@
             <tr>
                 <th>Id</th>
                 <th>Dung lượng</th>
+                <th>Thao tác</th>
             </tr>  
         </thead>
         <tbody>

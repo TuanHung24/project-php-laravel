@@ -19,7 +19,7 @@
 
 <table class="table table-striped table-sm">
         <thead>
-            <tr>
+            <tr class="title_lg">
                 <th>Ảnh logo</th>
                 <th>Thao tác</th>
             </tr>
@@ -43,7 +43,7 @@
 </div>
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
+            <tr class="title_sl">
                 <th>Ảnh</th>
                 <th>Tên tiêu đề</th>
                 <th>Thao tác</th>

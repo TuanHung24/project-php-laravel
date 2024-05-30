@@ -18,6 +18,7 @@ class APISanPhamController extends Controller
         $dsSanPham = SanPham::with([
             'loai_san_pham',
             'img',
+            'danh_gia',
             'chi_tiet_san_pham' => function ($query) {
                 $query->with('mau_sac','dung_luong');
             }

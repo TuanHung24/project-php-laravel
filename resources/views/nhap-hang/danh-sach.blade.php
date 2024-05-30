@@ -21,8 +21,8 @@
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
-                <th>Mã phiếu nhập</th>
+            <tr class="title_nh">
+                <th id="th-id">Mã phiếu nhập</th>
                 <th>Nhà cung cấp</th>  
                 <th>Tổng tiền</th>
                 <th>Ngày nhập</th>
@@ -31,7 +31,7 @@
         </thead>
         @foreach($dsPhieuNhap as $phieuNhap)
         <tr>
-            <td>{{ $phieuNhap->id }}</td>
+            <td id="td-id">{{ $phieuNhap->id }}</td>
             <td>{{ $phieuNhap->nha_cung_cap->ten }}</td>
             <td>{{ $phieuNhap->tong_tien_formatted }}</td>
             <td>{{ $phieuNhap->ngay_nhap }}</td>

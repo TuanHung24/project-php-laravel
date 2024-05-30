@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function(){
     Route::get('admin/doi-mat-khau', [DangNhapController::class, 'DoiMatKhau'])->name('doi-mat-khau');
     Route::post('admin/doi-mat-khau', [DangNhapController::class, 'xlDoiMatKhau'])->name('xl-doi-mat-khau');
 
-    
+     
 
     Route::prefix('san-pham')->group(function(){
         Route::name('san-pham.')->group(function(){
@@ -103,7 +103,7 @@ Route::middleware('auth')->group(function(){
             Route::get('nh/{id}',[PDFController::class, 'export_goods_pdf'])->name('nhap-hang');
         });
     });
-
+ 
    
     Route::post('don-hang-chi-tiet', [KhachHangController::class, 'chiTiet'])->name('don-hang-chi-tiet-ajax');
 
@@ -115,6 +115,7 @@ Route::middleware('auth')->group(function(){
            
             Route::get('/tim-kiem', [HoaDonController::class, 'timKiem'])->name('tim-kiem');
             Route::get('/tim-kiem-sdt', [HoaDonController::class, 'timKiemSdt'])->name('tim-kiem-sdt');
+            Route::get('/tim-kiem-date', [HoaDonController::class, 'seachDate'])->name('tim-kiem-date');
             Route::get('chi-tiet/{id}',[HoaDonController::class, 'chiTiet'])->name('chi-tiet');
             Route::get('them-moi',[HoaDonController::class, 'themMoi'])->name('them-moi');
             Route::post('them-moi',[HoaDonController::class, 'xuLyThemMoi'])->name('xl-them-moi');
